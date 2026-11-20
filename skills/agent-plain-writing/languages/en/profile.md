@@ -5,26 +5,15 @@ The numbers live in `profile.json`. This file explains how to use them.
 ## Unit
 
 - The script counts **words** (letters and digits, with internal hyphens and apostrophes).
-- Blog length is counted in words.
+- `length` in `profile.json` is counted in words.
 
-## Limits by document type
+## Limits and voice
 
-| Type | Max sentence (words) | Max paragraph (sentences) | Length | Jargon |
-|---|---|---|---|---|
-| blog | 20 | 3 | 600–800 words | unlimited (3 with `--non-tech`) |
-| prose | 30 | 6 | any | unlimited |
-| poetry | n/a | n/a | any | unlimited |
-| design | 18 | 3 | per template | unlimited |
-| guide | 12 | 3 | any | at most 3 |
+Every number (sentence, paragraph, length, jargon) lives in `profile.json`. This file does not repeat them.
+Voice, speaker and structure are set by `doc-types/<type>.md`. The language adds only its forms:
 
-These are starting points. Run the script on real texts, then adjust `profile.json`.
-
-## Voice and register
-
-- Blog: "I" and "you". Contractions are fine ("don't", "it's").
-- Guide: "you". Plain imperative verbs ("Click", "Select", "Enter"). Contractions are fine.
-- Design: name the actor ("The system...", "The client..."). No "I", no "you". No contractions.
-- Prose: follow the chosen point of view. Past tense by default unless the brief says otherwise.
+- Pronouns: "I" and "you". Contractions ("don't", "it's") are a register choice that the type file makes.
+- Plain imperative verbs for steps ("Click", "Select", "Enter"). Button names in bold, exactly as on screen.
 
 ## Requirement words (detail design)
 

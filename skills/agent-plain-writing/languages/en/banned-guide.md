@@ -7,7 +7,6 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | Phrase | Use instead | Example |
 |---|---|---|
 | in order to | to | "in order to speed up" → "to speed up" |
-| utilize, leverage | use | |
 | delve into | look at | |
 | it is important to note that | (delete), or bold "Note:" | |
 | in today's fast-paced world | (delete). Open with a concrete event | |
@@ -16,7 +15,6 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | plays a crucial role | say the role | "Caching plays a crucial role" → "Caching keeps page loads under 1 second" |
 | a wide range of | name them, or "many" | |
 | furthermore, moreover *(warn)* | (delete), or use a heading | |
-| in conclusion, to sum up | (delete). Do not recap | |
 | very, really | (delete), or give a number | |
 | perform / carry out + noun | the verb itself | "perform validation" → "validate" |
 
@@ -39,12 +37,22 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | carry out, perform | a concrete verb: click, select, enter |
 | configure | set up, change the settings |
 
-## Meta-report phrases in blog posts
+## Phrases of blog
 
 | Phrase | Use instead |
 |---|---|
 | i am writing this blog to, i'm writing this blog to | open with the event or conclusion directly |
 | lesson learned:, lesson:, key takeaway: | weave the point into the narrative, no label |
+| utilize, leverage | use |
+| in conclusion, to sum up | (delete). Do not recap |
+
+## Phrases of prose
+
+| Phrase | Use instead |
+|---|---|
+| heart pounded, heart skipped a beat, time stood still, shiver ran, breath she/he didn't know, eyes sparkled, orbs | one visible action or detail |
+| utilize, leverage | use |
+| in conclusion, to sum up | (delete) |
 
 ## General rules
 

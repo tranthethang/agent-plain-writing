@@ -2,8 +2,6 @@
 # Keep in sync with banned-guide.md. Phrases match from the start of a word.
 [all]
 in order to
-utilize
-leverage
 delve
 it is important to note
 it's important to note
@@ -26,8 +24,6 @@ in the realm of
 at the end of the day
 needless to say
 as we all know
-in conclusion
-to sum up
 very
 really
 [warn]
@@ -60,6 +56,10 @@ silent tears
 tears fell
 dark night of the soul
 [prose]
+utilize
+leverage
+in conclusion
+to sum up
 heart pounded
 heart skipped a beat
 time stood still
@@ -69,6 +69,10 @@ breath he didn't know
 eyes sparkled
 orbs
 [blog]
+utilize
+leverage
+in conclusion
+to sum up
 i am writing this blog to
 i'm writing this blog to
 lesson learned:

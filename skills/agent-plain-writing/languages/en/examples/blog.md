@@ -19,7 +19,7 @@ Details in the stories are made up to serve as models. In real work, use the aut
 **Bad:** It can be said that the adoption of TypeScript brings a number of significant benefits throughout the software development lifecycle.
 **Good:** Since I switched to TypeScript, my editor flags type mistakes as I type. I no longer wait until runtime to find out.
 
-### 4. The lesson
+### 4. What you learned
 
 **Bad:** Through this experience, we can draw many valuable lessons about the importance of planning.
 **Good:** I lost a whole afternoon because I skipped a ten-minute plan before coding. I do not skip that step anymore.
@@ -33,11 +33,6 @@ Details in the stories are made up to serve as models. In real work, use the aut
 
 **Bad:** While this solution may have certain limitations, overall it provides relatively good results.
 **Good:** This solution can't handle a network drop halfway through. I haven't found a simpler fix yet.
-
-### 7. Closing
-
-**Bad:** In conclusion, I hope this post has given you useful insights. Thanks for reading, and see you next time!
-**Good:** Try one thing today: open your project and count the global state values. If there are more than five, start splitting.
 
 ## Complete sample post (about 620 words)
 

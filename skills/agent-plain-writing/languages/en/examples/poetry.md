@@ -38,24 +38,12 @@ I still can't take it off.
 Worn-down heels,
 and still the hill.
 
-### 4. Closing with a moral
-
-**Bad:**
-Petals fall upon the path,
-leaving only regret.
-So cherish every moment.
-
-**Good:**
-Petals fall on the path.
-No one bends to pick them up.
-Tomorrow, the broom.
-
-### 5. Stock adjectives
+### 4. Stock adjectives
 
 **Bad:** The ethereal moonlight whispers softly over the lonely soul.
 **Good:** The moon hangs where it always hangs. One chair on the porch is empty.
 
-### 6. A call to action
+### 5. A call to action
 
 **Bad:** O young hearts, rise up and be strong!
 **Good:**
