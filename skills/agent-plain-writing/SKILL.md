@@ -22,12 +22,12 @@ Each rule has one owner. Read a rule in its owner file, not in a copy.
 
 - On limits and structure, `doc-types/<type>.md` wins over `SKILL.md`.
 - On words and grammar, `languages/<lang>/` wins over `doc-types/<type>.md`.
-- Every number comes from `profile.json`. No other file repeats it.
+- Every limit that has a key in `profile.json` comes from `profile.json`. No other file repeats it.
 
 ## Workflow
 
 0. **Check for `PLAIN-WRITING.md`** in the project root (template: `templates/PLAIN-WRITING.example.md`). If `PLAIN-WRITING.md` exists, read it and let it win on voice and terms. Use `default_lang` and `default_type` to skip the questions in steps 1 and 2.
-1. **Pick the output language** (`vi`, `en` or `ja`). It is the language of the text you produce, not the language of the prompt. A Vietnamese brief that asks for a Japanese manual means `ja`. If unclear, ask one question. Then read `languages/<lang>/profile.md`.
+1. **Pick the output language** (`vi`, `en` or `ja`). It is the language of the text you produce, not the language of the prompt. A Vietnamese brief that asks for a Japanese manual means `ja`. If unclear, ask one question. Then read `languages/<lang>/profile.json` (the limits for your type) and `languages/<lang>/profile.md`.
 2. **Pick the document type** (table below). Read `doc-types/<type>.md` and `languages/<lang>/examples/<type>.md`. Read only these.
 3. **Know the reader**: who they are, what they already know, what they must do after reading. If missing, ask one question. If you cannot ask, state your assumption outside the document (or mark `TBD:` inline in specs).
 4. **Outline** (one line per idea) for any text longer than about 400 words. Write only ideas that are in the outline.
