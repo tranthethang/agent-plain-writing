@@ -1,4 +1,4 @@
-# One phrase per line (case-insensitive). [name] = applies only to that document type. [all] = every type.
+# One phrase per line (case-insensitive). [name] = applies only to that document type. [all] = every type. [warn] = warning only.
 # Keep in sync with banned-guide.md. Phrases match from the start of a word.
 [all]
 in order to
@@ -22,17 +22,18 @@ empower
 a wide range of
 plays a crucial role
 plays a vital role
-not only
 in the realm of
 at the end of the day
 needless to say
 as we all know
-furthermore
-moreover
 in conclusion
 to sum up
 very
 really
+[warn]
+not only
+furthermore
+moreover
 [design]
 appropriate
 as needed

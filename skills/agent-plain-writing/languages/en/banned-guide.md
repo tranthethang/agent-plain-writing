@@ -12,10 +12,10 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | it is important to note that | (delete), or bold "Note:" | |
 | in today's fast-paced world | (delete). Open with a concrete event | |
 | seamless, robust, comprehensive, cutting-edge, game-changer | say what it does, with a number | "robust tool" → "tool that handles 10,000 rows a second" |
-| not only … but also | two sentences | "Not only fast but cheap" → "It is fast. It is also cheap." |
+| not only … but also *(warn)* | two sentences | "Not only fast but cheap" → "It is fast. It is also cheap." |
 | plays a crucial role | say the role | "Caching plays a crucial role" → "Caching keeps page loads under 1 second" |
 | a wide range of | name them, or "many" | |
-| furthermore, moreover | (delete), or use a heading | |
+| furthermore, moreover *(warn)* | (delete), or use a heading | |
 | in conclusion, to sum up | (delete). Do not recap | |
 | very, really | (delete), or give a number | |
 | perform / carry out + noun | the verb itself | "perform validation" → "validate" |

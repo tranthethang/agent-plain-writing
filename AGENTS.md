@@ -14,6 +14,7 @@ skills/agent-plain-writing/
 ├── doc-types/            # structure per document type, language-neutral (English)
 ├── languages/<lang>/     # profile.json, profile.md, banned.txt, banned-guide.md,
 │                         # terms.txt, examples/
+├── templates/            # PLAIN-WRITING.example.md
 └── scripts/check_style.py
 ```
 
@@ -53,7 +54,7 @@ skills/agent-plain-writing/
 
 ### Japanese content
 
-- Do not change register (です・ます調 / である調 / 常体) conventions, requirement words or example pairs on your own judgement. Ask for a review by a native or fluent Japanese reader.
+- The agent may change `ja` content, but must state that it changed `ja` and record "no native review yet".
 - If you are not sure a Japanese sentence is natural, say so in your reply instead of guessing.
 - Do not count Japanese text by words. The unit is characters (`char`).
 

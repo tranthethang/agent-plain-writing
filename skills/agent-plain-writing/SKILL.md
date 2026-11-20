@@ -14,6 +14,7 @@ Works in Vietnamese (`vi`), English (`en`) and Japanese (`ja`).
 
 ## Workflow
 
+0. **Check for `PLAIN-WRITING.md`** in the project root (template: `templates/PLAIN-WRITING.example.md`). If `PLAIN-WRITING.md` exists, read it and let it win on voice and terms. Use `default_lang` and `default_type` to skip the questions in steps 1 and 2.
 1. **Pick the output language** (`vi`, `en` or `ja`). It is the language of the text you produce, not the language of the prompt. A Vietnamese brief that asks for a Japanese manual means `ja`. If unclear, ask one question. Then read `languages/<lang>/profile.md`.
 2. **Pick the document type** (table below). Read `doc-types/<type>.md` and `languages/<lang>/examples/<type>.md`. Read only these.
 3. **Know the reader**: who they are, what they already know, what they must do after reading. If missing, ask one question. If you cannot ask, state your assumption at the end.
@@ -49,7 +50,7 @@ Numeric limits are per language and type. They live in `languages/<lang>/profile
 | 4 | Concrete verbs, active voice | "send", not "perform the sending of" |
 | 5 | Banned phrases | Zero hits from `banned.txt` |
 | 6 | Jargon (reader outside the field) | At most 3 terms per text. Explain each in one sentence, or replace it with an everyday word |
-| 7 | Examples and metaphors | At most 1 per main point |
+| 7 | Examples and metaphors | One example or story per section, and a section is one main point |
 | 8 | Evaluative adjectives ("great", "powerful", "beautiful") | Replace with a number or a visible detail |
 | 9 | Opening and closing | Opening: at most 2 sentences, straight to the point. No recap, no empty thanks |
 | 10 | No invention | Add no idea or number that is not in the source. If missing, write `TBD: <specific question>` or ask |
@@ -99,7 +100,8 @@ python3 scripts/check_style.py guide.md --lang vi --type guide
 python3 scripts/check_style.py post.md  --lang en --type blog --non-tech
 ```
 
-- `--lang`: `vi`, `en`, `ja`. `--type`: `blog`, `prose`, `poetry`, `design`, `guide` (`detail-design` and `user-guide` also work).
+- `--lang`: `vi`, `en`, `ja` (optional if `default_lang` is set in `PLAIN-WRITING.md`). `--type`: `blog`, `prose`, `poetry`, `design`, `guide` (`detail-design` and `user-guide` also work; defaults to `default_type` in `PLAIN-WRITING.md` or `blog`).
+- `--config <path>`: path to a `PLAIN-WRITING.md` config file. By default, the script reads `PLAIN-WRITING.md` from the current directory if present.
 - Units differ by language: Vietnamese counts syllables (tiếng), English counts words, Japanese counts characters (字). The unit is set in `profile.json`.
 - The script checks sentence length, paragraph length, banned phrases, jargon count and text length. It does **not** judge whether the voice is good, and it does not check rhyme or meter.
 - Edit `banned.txt` and `terms.txt` in the language folder to fit your needs.

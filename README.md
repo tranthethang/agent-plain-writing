@@ -36,6 +36,12 @@ Adjectives such as "clear" or "friendly" in a prompt do not fix this. Limits tha
 .
 ├── README.md
 ├── AGENTS.md                         # instructions for AI agents that edit this repo
+├── evals/
+│   ├── README.md                     # eval structure and cost warning
+│   ├── cases/                        # 6 simulated cases (blog and design x vi, en, ja)
+│   ├── judge-prompt.md               # AI judge prompt (clarity and coverage)
+│   ├── score.py                      # mechanical scorer and judge-prompt builder
+│   └── run_eval.py                   # user-confirmed runner (antigravity or claude)
 └── skills/
     └── agent-plain-writing/          # the skill (copy this folder into your agent)
         ├── SKILL.md                  # workflow, 12 core rules, language and type routing
@@ -53,6 +59,8 @@ Adjectives such as "clear" or "friendly" in a prompt do not fix this. Limits tha
         │   │   ├── banned-guide.md   #   the same phrases with replacements
         │   │   ├── terms.txt         #   jargon list for the jargon count
         │   │   └── examples/         #   common, blog, prose, poetry, detail-design, user-guide
+        ├── templates/
+        │   └── PLAIN-WRITING.example.md
         └── scripts/
             └── check_style.py
 ```
@@ -100,9 +108,10 @@ python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --t
 
 | Option | Values |
 |---|---|
-| `--lang` | `vi`, `en`, `ja` |
+| `--lang` | `vi`, `en`, `ja` (optional if `default_lang` is in `PLAIN-WRITING.md`) |
 | `--type` | `blog`, `prose`, `poetry`, `design`, `guide` (`detail-design` and `user-guide` also work) |
 | `--non-tech` | Limit jargon to 3 terms (for readers outside the field). The `guide` type always applies this limit. |
+| `--config` | Path to a `PLAIN-WRITING.md` file (default: `./PLAIN-WRITING.md` if present). |
 
 Exit codes: `0` clean, `1` violations found, `2` usage error.
 
@@ -120,6 +129,7 @@ The full table for every type is in each language's `profile.md`. The numbers ar
 
 ## Customize
 
+- **Add a project config.** Copy `skills/agent-plain-writing/templates/PLAIN-WRITING.example.md` to `PLAIN-WRITING.md` in your project root to set `default_lang`, `default_type`, project voice, extra terms, extra banned phrases and numeric limits.
 - **Add your own samples.** Each `examples/*.md` file ends with a "Your own samples" section. Paste sentences the AI wrote badly together with your rewrite. Samples written by you matter more than samples written by AI.
 - **Add banned phrases.** Add the phrase to `banned.txt` and to `banned-guide.md` in the same language folder.
 - **Tune the limits.** Edit `profile.json` and keep the table in `profile.md` in sync.
@@ -129,7 +139,7 @@ The full table for every type is in each language's `profile.md`. The numbers ar
 
 - **The script is mechanical.** It does not judge voice, and it does not check rhyme or meter. For haiku and other fixed forms, count by hand.
 - **The numeric limits are starting estimates.** Run the script on real texts from your team and adjust them.
-- **The Japanese content has not been reviewed by a native speaker.** Register conventions (です・ます調 or である調 by document type), requirement words and the example pairs should be reviewed before real use.
+- **The Japanese content was improved by an AI and has no native review yet.** Register conventions (です・ます調 or である調 by document type), requirement words and the example pairs should be reviewed before real use.
 - **Stories and numbers in the examples are illustrations.** In real work, use the author's own facts, or write `TBD`.
 - **There is no automated test suite yet.** See `AGENTS.md` for the manual checks.
 
@@ -139,4 +149,4 @@ Read `AGENTS.md` before changing anything. It lists the rules that keep the thre
 
 ## License
 
-Not yet chosen. Add a `LICENSE` file before sharing this repository.
+GNU GPL v3, see `LICENSE`.

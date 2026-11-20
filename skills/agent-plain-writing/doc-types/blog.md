@@ -35,7 +35,7 @@ Give these five. Whatever is missing, the AI will guess.
 ## Checklist
 
 - [ ] The opening is a concrete event or conclusion, not a greeting.
-- [ ] Every section has at least one example or story.
+- [ ] One example or story per section, and a section is one main point.
 - [ ] At least one place where the author admits a limit or a mistake (if the brief has one).
 - [ ] The closing is one action, not a summary.
 - [ ] `python3 scripts/check_style.py post.md --lang <lang> --type blog`

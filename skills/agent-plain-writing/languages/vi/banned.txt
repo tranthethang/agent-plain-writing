@@ -1,5 +1,5 @@
 # Mỗi dòng một cụm (không phân biệt hoa thường).
-# [tên] = chỉ áp dụng cho profile đó. [all] = mọi profile.
+# [tên] = chỉ áp dụng cho profile đó. [all] = mọi profile. [warn] = cảnh báo, không tính lỗi.
 # Giữ đồng bộ với banned-guide.md. Cụm khớp từ đầu từ.
 [all]
 nhằm mục đích
@@ -9,13 +9,11 @@ có thể nói rằng
 hãy cùng
 trong thế giới ngày nay
 trong thời đại
-không chỉ
 toàn diện
 tối ưu hóa
 mạnh mẽ
 tiến hành
 thực hiện việc
-một cách
 cho phép người dùng có thể
 đảm bảo rằng
 tận dụng
@@ -26,10 +24,13 @@ trong quá trình
 như chúng ta đã biết
 nhìn chung
 tóm lại
-bên cạnh đó
-ngoài ra
 vô cùng
 hạng mục
+[warn]
+không chỉ
+một cách
+bên cạnh đó
+ngoài ra
 [design]
 phù hợp
 thích hợp

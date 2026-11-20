@@ -35,7 +35,7 @@ def load_profile(lang):
 
 
 def load_banned(lang, doc_type):
-    section, out = "all", []
+    section, out, warns = "all", [], []
     for line in (LANG_DIR / lang / "banned.txt").read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if not line or line.startswith("#"):
@@ -46,7 +46,9 @@ def load_banned(lang, doc_type):
             continue
         if section in ("all", doc_type):
             out.append(line.lower())
-    return out
+        elif section == "warn":
+            warns.append(line.lower())
+    return out, warns
 
 
 def load_terms(lang):
@@ -108,8 +110,18 @@ def count_units(s, unit):
     return len(re.findall(r"\w+", s))  # syllable (Vietnamese)
 
 
+ABBREV_RE = re.compile(
+    r"\b(?:e\.g|i\.e|etc|vs|cf|dr|mr|mrs|ms|prof|v\.v)\.",
+    re.IGNORECASE,
+)
+
+
 def split_sentences(s, pattern):
-    return [x.strip() for x in re.split(pattern, s) if x.strip()]
+    # Protect dots in decimals, versions, URLs, and common abbreviations before splitting.
+    protected = re.sub(r"https?://\S+", lambda m: m.group(0).replace(".", "\x00"), s)
+    protected = re.sub(r"(?<=\d)\.(?=\d)", "\x00", protected)
+    protected = ABBREV_RE.sub(lambda m: m.group(0).replace(".", "\x00"), protected)
+    return [x.replace("\x00", ".").strip() for x in re.split(pattern, protected) if x.strip()]
 
 
 def phrase_pattern(phrase, boundary, end_boundary=False):
@@ -121,23 +133,77 @@ def phrase_pattern(phrase, boundary, end_boundary=False):
     return p
 
 
+def load_project_config(config_path):
+    """Load optional PLAIN-WRITING.md config from --config or cwd."""
+    if config_path is not None:
+        path = Path(config_path)
+        if not path.exists():
+            print(f"Config file not found: {path}", file=sys.stderr)
+            return None, True
+    else:
+        path = Path.cwd() / "PLAIN-WRITING.md"
+        if not path.exists():
+            return {}, False
+    text = path.read_text(encoding="utf-8")
+    m = re.search(r"```plain-writing\s*\n(.*?)\n```", text, flags=re.S)
+    if not m:
+        return {}, False
+    try:
+        data = json.loads(m.group(1))
+    except json.JSONDecodeError as exc:
+        print(f"Invalid JSON in {path}: {exc}", file=sys.stderr)
+        return None, True
+    if not isinstance(data, dict):
+        print(f"Invalid config in {path}: expected JSON object", file=sys.stderr)
+        return None, True
+    return data, False
+
+
 def main():
     langs = available_langs()
     ap = argparse.ArgumentParser(description="Plain-writing checker")
     ap.add_argument("file")
-    ap.add_argument("--lang", required=True, choices=langs)
-    ap.add_argument("--type", dest="doc_type", default="blog",
+    ap.add_argument("--lang", default=None, choices=langs)
+    ap.add_argument("--type", dest="doc_type", default=None,
                     help="blog, prose, poetry, design, guide")
     ap.add_argument("--non-tech", action="store_true",
                     help="limit jargon (reader is outside the field)")
+    ap.add_argument("--config", default=None,
+                    help="path to PLAIN-WRITING.md (default: ./PLAIN-WRITING.md)")
     args = ap.parse_args()
 
-    doc_type = TYPE_ALIASES.get(args.doc_type, args.doc_type)
-    prof = load_profile(args.lang)
+    proj, err = load_project_config(args.config)
+    if err:
+        return 2
+
+    lang = args.lang or proj.get("default_lang")
+    if not lang:
+        print("Missing --lang (and no default_lang in PLAIN-WRITING.md)", file=sys.stderr)
+        return 2
+    if lang not in langs:
+        print(f"Unknown lang '{lang}'. Use: {', '.join(langs)}", file=sys.stderr)
+        return 2
+
+    raw_type = args.doc_type or proj.get("default_type") or "blog"
+    doc_type = TYPE_ALIASES.get(raw_type, raw_type)
+    prof = load_profile(lang)
     if doc_type not in prof["types"]:
-        print(f"Unknown type '{args.doc_type}'. Use: {', '.join(prof['types'])}", file=sys.stderr)
+        print(f"Unknown type '{raw_type}'. Use: {', '.join(prof['types'])}", file=sys.stderr)
         return 2
     cfg = dict(prof["types"][doc_type])
+    warnings = []
+
+    proj_limits = (proj.get("limits") or {}).get(doc_type, {})
+    for key in ("sentence", "paragraph", "terms"):
+        if key in proj_limits and proj_limits[key] is not None:
+            base = cfg.get(key)
+            val = proj_limits[key]
+            if base is not None and val > base * 1.5:
+                warnings.append(
+                    f'Project limit "{key}"={val} exceeds 1.5x profile base ({base})'
+                )
+            cfg[key] = val
+
     if args.non_tech and cfg["terms"] is None:
         cfg["terms"] = prof.get("non_tech_terms", 3)
 
@@ -161,13 +227,22 @@ def main():
             issues.append(f'Paragraph has {len(sents)} sentences (max {cfg["paragraph"]}): "{body[:50]}..."')
 
     lower = text.lower()
-    for phrase in load_banned(args.lang, doc_type):
+    banned_phrases, warn_phrases = load_banned(lang, doc_type)
+    extra_banned = [str(p).strip().lower() for p in (proj.get("banned") or []) if str(p).strip()]
+    for phrase in dict.fromkeys(banned_phrases + extra_banned):
         c = len(re.findall(phrase_pattern(phrase, boundary), lower))
         if c:
             issues.append(f'Banned phrase "{phrase}": {c}x')
 
+    for phrase in warn_phrases:
+        c = len(re.findall(phrase_pattern(phrase, boundary), lower))
+        if c:
+            warnings.append(f'Ambiguous phrase "{phrase}": {c}x')
+
     if cfg["terms"] is not None:
-        found = [t for t in load_terms(args.lang)
+        extra_terms = [str(t).strip().lower() for t in (proj.get("terms") or []) if str(t).strip()]
+        all_terms = list(dict.fromkeys(load_terms(lang) + extra_terms))
+        found = [t for t in all_terms
                  if re.search(phrase_pattern(t, boundary, end_boundary=True), lower)]
         if len(found) > cfg["terms"]:
             issues.append(f'Jargon: {len(found)} terms (max {cfg["terms"]}): {", ".join(found)}')
@@ -179,9 +254,13 @@ def main():
             issues.append(f'Length about {length} {prof["length_label"]} (allowed {lo}-{hi})')
 
     avg = total / n_sent if n_sent else 0
-    print(f"lang={args.lang} type={doc_type} | {total} {label} "
+    print(f"lang={lang} type={doc_type} | {total} {label} "
           f"(about {length} {prof['length_label']}), {n_sent} sentences, "
           f"avg {avg:.1f} {label}/sentence")
+    if warnings:
+        print(f"\nWarnings ({len(warnings)}):")
+        for w in warnings:
+            print(f"- {w}")
     if issues:
         print(f"\n{len(issues)} violation(s):")
         for i in issues:

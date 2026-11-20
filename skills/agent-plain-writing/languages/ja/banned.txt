@@ -1,4 +1,4 @@
-# One phrase per line. [name] = applies only to that document type. [all] = every type.
+# One phrase per line. [name] = applies only to that document type. [all] = every type. [warn] = warning only.
 # Keep in sync with banned-guide.md. Japanese phrases match anywhere in the text.
 [all]
 することができます
@@ -6,11 +6,8 @@
 を行う
 を行います
 を行った
-において
-に関して
 させていただ
 非常に
-大変
 と言えるでしょう
 と言えます
 ではないでしょうか
@@ -19,6 +16,10 @@
 包括的
 シームレス
 強力な
+[warn]
+において
+に関して
+大変
 [design]
 適切
 適宜
