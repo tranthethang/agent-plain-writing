@@ -19,12 +19,9 @@ Danh sách máy đọc nằm ở `banned.txt` cùng thư mục. File này giải
 | một cách + tính từ *(warn)* | trạng từ trực tiếp hoặc bỏ | "Một cách nhanh chóng" → "nhanh" |
 | cho phép người dùng có thể | người dùng có thể | |
 | đảm bảo rằng | (bỏ) hoặc "để chắc là" | |
-| tận dụng | dùng | |
 | điều quan trọng cần lưu ý là, cần lưu ý rằng | (bỏ) hoặc in đậm "Chú ý:" | |
 | thông qua việc | bằng cách, bằng | |
-| trong quá trình | khi | |
 | như chúng ta đã biết | (bỏ) | |
-| nhìn chung, tóm lại | (bỏ) | Đừng tóm tắt lại điều vừa nói |
 | bên cạnh đó, ngoài ra *(warn)* | (bỏ) hoặc dùng tiêu đề mục | Tránh mở đầu câu liên tục |
 | vô cùng, rất, khá | (bỏ) hoặc số liệu | |
 | hạng mục | việc, mục | |
@@ -47,13 +44,25 @@ Danh sách máy đọc nằm ở `banned.txt` cùng thư mục. File này giải
 | thực hiện, tiến hành | động từ cụ thể: bấm, chọn, nhập |
 | cấu hình | cài đặt, thiết lập |
 
-## Cụm kiểu báo cáo trong blog
+## Cụm của blog
 
 | Cụm | Thay bằng |
 |---|---|
 | tôi viết blog này để | vào thẳng sự việc hoặc kết luận |
 | bài học rút ra:, bài học: | lồng vào đoạn kết tự nhiên, không gắn nhãn |
 | lưu ý: | viết thẳng vào mạch bài hoặc bỏ |
+| tận dụng | dùng |
+| trong quá trình | khi |
+| nhìn chung, tóm lại | (bỏ). Đừng tóm tắt lại điều vừa nói |
+
+## Cụm của prose
+
+| Cụm | Thay bằng |
+|---|---|
+| trái tim loạn nhịp, thời gian như ngừng trôi, nước mắt lăn dài, một cảm giác khó tả, nỗi buồn bao trùm, ánh mắt sâu thẳm, tim như thắt lại | một hành động hoặc chi tiết nhìn thấy được |
+| tận dụng | dùng |
+| trong quá trình | khi |
+| nhìn chung, tóm lại | (bỏ) |
 
 ## Quy tắc chung
 

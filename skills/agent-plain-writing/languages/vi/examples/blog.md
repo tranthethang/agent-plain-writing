@@ -21,7 +21,7 @@ Ví dụ minh họa. Chi tiết trong câu chuyện là bịa để làm mẫu. 
 **Xấu:** Có thể nói rằng việc sử dụng TypeScript mang lại nhiều lợi ích đáng kể trong quá trình phát triển phần mềm.
 **Tốt:** Từ khi chuyển sang TypeScript, trình soạn thảo báo lỗi kiểu dữ liệu ngay lúc tôi gõ. Tôi không còn đợi đến lúc chạy mới biết.
 
-### 4. Bài học
+### 4. Điều rút ra
 
 **Xấu:** Qua trải nghiệm này, chúng ta có thể rút ra nhiều bài học quý giá về tầm quan trọng của việc lập kế hoạch.
 **Tốt:** Tôi mất cả buổi chiều chỉ vì lao vào code mà không viết plan 10 phút trước. Từ hôm đó, tôi không bỏ qua bước này nữa.
@@ -46,12 +46,7 @@ Ví dụ minh họa. Chi tiết trong câu chuyện là bịa để làm mẫu. 
 **Xấu:** Chúng ta nên luôn luôn chú ý đến chất lượng mã nguồn để đảm bảo tính bền vững lâu dài của dự án.
 **Tốt:** Đặt một quy tắc: không merge nếu test đỏ. Quy tắc này cứu tôi ba lần trong tháng qua.
 
-### 9. Kết bài
-
-**Xấu:** Tóm lại, hy vọng bài viết đã mang đến cho bạn những thông tin hữu ích. Cảm ơn các bạn đã đọc và hẹn gặp lại!
-**Tốt:** Hôm nay thử một việc: mở dự án, đếm số state toàn cục. Nếu quá 5, bắt đầu tách.
-
-### 10. Thừa nhận giới hạn
+### 9. Thừa nhận giới hạn
 
 **Xấu:** Giải pháp này tuy có thể còn một số hạn chế nhất định nhưng nhìn chung vẫn mang lại hiệu quả tương đối tốt.
 **Tốt:** Giải pháp này chưa xử lý được trường hợp mất mạng giữa chừng. Tôi chưa tìm ra cách gọn hơn.

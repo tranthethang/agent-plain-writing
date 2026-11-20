@@ -16,14 +16,10 @@ tiến hành
 thực hiện việc
 cho phép người dùng có thể
 đảm bảo rằng
-tận dụng
 điều quan trọng cần lưu ý
 cần lưu ý rằng
 thông qua việc
-trong quá trình
 như chúng ta đã biết
-nhìn chung
-tóm lại
 vô cùng
 hạng mục
 [warn]
@@ -56,6 +52,10 @@ nỗi nhớ
 tâm hồn
 cuộc đời
 [prose]
+tận dụng
+trong quá trình
+nhìn chung
+tóm lại
 trái tim loạn nhịp
 thời gian như ngừng trôi
 nước mắt lăn dài
@@ -64,6 +64,10 @@ nỗi buồn bao trùm
 ánh mắt sâu thẳm
 tim như thắt lại
 [blog]
+tận dụng
+trong quá trình
+nhìn chung
+tóm lại
 tôi viết blog này để
 bài học rút ra:
 bài học:
