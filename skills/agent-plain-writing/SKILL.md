@@ -8,9 +8,21 @@ description: "Plain-language writing standard with measurable limits, for Vietna
 One voice: **short, concrete, understood on first read.**
 Works in Vietnamese (`vi`), English (`en`) and Japanese (`ja`).
 
-- Universal rules live in this file.
-- Document structure lives in `doc-types/`.
-- Limits, banned phrases, register and examples live in `languages/<lang>/`.
+## Who owns what
+
+Each rule has one owner. Read a rule in its owner file, not in a copy.
+
+| Owner | Owns |
+|---|---|
+| `SKILL.md` (this file) | The workflow and the core rules that hold for every type and every language |
+| `doc-types/<type>.md` | Everything that depends on the type: voice, structure, length policy, sentence rhythm, and the kinds of phrases to ban |
+| `languages/<lang>/` | Everything that depends on the language: the unit, numeric limits (`profile.json`), the actual banned phrases (`banned.txt`, `banned-guide.md`), grammar traps, pronoun and level words, terms (`terms.txt`), and examples |
+
+**When two owners disagree:**
+
+- On limits and structure, `doc-types/<type>.md` wins over `SKILL.md`.
+- On words and grammar, `languages/<lang>/` wins over `doc-types/<type>.md`.
+- Every number comes from `profile.json`. No other file repeats it.
 
 ## Workflow
 
@@ -19,7 +31,7 @@ Works in Vietnamese (`vi`), English (`en`) and Japanese (`ja`).
 2. **Pick the document type** (table below). Read `doc-types/<type>.md` and `languages/<lang>/examples/<type>.md`. Read only these.
 3. **Know the reader**: who they are, what they already know, what they must do after reading. If missing, ask one question. If you cannot ask, state your assumption outside the document (or mark `TBD:` inline in specs).
 4. **Outline** (one line per idea) for any text longer than about 400 words. Write only ideas that are in the outline.
-5. **Draft** with the core rules and the type's structure. Vary sentence rhythm: mix short punchy sentences with medium sentences up to the profile limit, and avoid three consecutive short single-clause sentences. Write normal paragraphs—never put every sentence on its own line.
+5. **Draft** with the core rules and the type's voice, structure and rhythm. Write normal paragraphs—never put every sentence on its own line.
 6. **Edit** in a separate pass: cut, run the checklist, run the script. Fix until clean.
 7. **Report** two things outside the generated text: the result, and what you had to guess. Keep the document clean—never prepend or append `Result:`, `Guesses:`, `---`, or `**推測したこと:**` blocks inside the document text. When your reply is the standalone document itself (no separate chat note), output only the document (and mark missing details inline with `TBD:` in specs).
 
@@ -40,26 +52,26 @@ Always read `languages/<lang>/banned-guide.md` too (banned phrases and what repl
 
 ## Core rules (all languages)
 
-Numeric limits are per language and type. They live in `languages/<lang>/profile.json` and are explained in `profile.md`.
+Numeric limits are per language and type. They live only in `languages/<lang>/profile.json`.
 
 | # | Rule | Limit |
 |---|---|---|
-| 1 | Sentence length | Per profile. Guideline: about 20 English words |
-| 2 | Paragraph length | At most 3 sentences, one idea (prose: 6) |
+| 1 | Sentence length | `sentence` in `profile.json` |
+| 2 | Paragraph length | `paragraph` in `profile.json`, one idea |
 | 3 | One idea per sentence | Two subordinate clauses means split |
 | 4 | Concrete verbs, active voice | "send", not "perform the sending of" |
-| 5 | Banned phrases | Zero hits from `banned.txt` |
-| 6 | Jargon (reader outside the field) | At most 3 terms per text. Explain each in one sentence, or replace it with an everyday word |
+| 5 | Banned phrases | Zero hits from `banned.txt` (`[all]` plus the type section) |
+| 6 | Jargon (reader outside the field) | `terms` or `non_tech_terms` in `profile.json`. Explain each term in one sentence, or replace it with an everyday word |
 | 7 | Examples and metaphors | One example or story per section, and a section is one main point |
 | 8 | Evaluative adjectives ("great", "powerful", "beautiful") | Replace with a number or a visible detail |
 | 9 | Opening and closing | Opening: at most 2 sentences, straight to the point. No recap, no empty thanks |
 | 10 | No invention | Add no number, technical spec, or outcome that is not in the source. In `blog` and `prose`, keep human context, reasoning, and reactions grounded in the brief; in specs and guides, write `TBD: <specific question>` or ask |
 | 11 | Consistency | One concept, one name. One register for the whole text |
-| 12 | Length | Per type. Never more than 10% over |
+| 12 | Length | `length` in `profile.json`, under the type's length policy. Never more than 10% over |
 
-A doc type or language profile may override a limit (prose allows longer sentences, detail design allows more jargon). When they conflict, the more specific file wins.
+A type file may relax or tighten a core rule (prose allows longer sentences, detail design allows more jargon). See "Who owns what" for which file wins.
 
-**Sentence rhythm and paragraphs:** Short does not mean choppy. Mix short sentences with medium sentences up to the profile limit, and avoid three consecutive short single-clause sentences. Write sentences continuously inside a paragraph—never split every sentence onto its own line (no trailing-space `  \n` line breaks).
+**Paragraph form:** Write sentences continuously inside a paragraph—never split every sentence onto its own line (no trailing-space `  \n` line breaks). Sentence rhythm is set by the type file.
 
 ## When the reader is outside the field
 
@@ -91,7 +103,7 @@ For `blog` and `prose`, keep human context, reasoning, and tension instead of cu
 - [ ] One idea per paragraph, one idea per sentence.
 - [ ] No banned phrase. No empty adjective.
 - [ ] Jargon is within the limit. Each term is explained or replaced.
-- [ ] Sentence lengths vary (not three short single-clause sentences in a row).
+- [ ] The type file's checklist passes.
 - [ ] Every number and claim appears in the user's source.
 - [ ] Register is consistent.
 - [ ] Guesses are reported outside the generated document (or marked `TBD:` inline in specs).
