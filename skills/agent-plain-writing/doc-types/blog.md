@@ -6,7 +6,7 @@ Use for sharing posts, field notes and technical write-ups for peers.
 
 - Reader: peers in the same field. Technical terms are allowed. Define a term once if it is new or rare.
 - Outside readers: run the script with `--non-tech`.
-- Length: aim for `languages/<lang>/profile.json` (`600–800` words for `en` and `vi`, `1500–2000` chars for `ja`) when the brief has enough material. Do not cut a rich brief down to a bare summary—and never pad, repeat points, or add recap paragraphs to hit the word count when the brief is thin.
+- Length: aim for `languages/<lang>/profile.json` (`600–800` words for `en` and `vi`, `1500–2000` chars for `ja`) only when the brief has enough material. When a brief is thin (e.g., 3 short points), a tight `150–300` word post is better than padding, repeating points, or adding recap paragraphs to hit the word count.
 
 ## Voice
 
@@ -17,14 +17,14 @@ Use for sharing posts, field notes and technical write-ups for peers.
 - Admit mistakes. A story about your own error is more convincing than a success story.
 - No emoji. No "hey everyone". No chains of rhetorical questions.
 - No meta-report openings ("I am writing this blog to...") or meta-report closings ("Lesson learned:", "Lesson:", "Note:"). Start directly in the event or conclusion.
-- No throat-clearing lead-ins ("This is an important difference from the old approach:") and no references to the prompt ("The brief does not say..."). Keep one plain, consistent term for a mechanism instead of re-explaining it with wordy paraphrases.
+- No throat-clearing lead-ins ("This is an important difference from the old approach:") and no references to the prompt ("The brief does not say..."). State what the system does in one concrete sentence instead of naming a pattern in one sentence and re-explaining it in the next. Keep one plain, consistent term for a mechanism.
 
 ## Structure
 
-1. **Title**: states the takeaway or what you did. Not "Everything about X". Keep the cause accurate to the facts.
+1. **Title**: states the takeaway or what you did. Not "Everything about X". Keep both the action and the cause accurate to the facts—do not claim you removed something you only changed or shortened.
 2. **Opening** (at most 2 sentences): one concrete event or one conclusion.
-3. **Body**: 3 to 5 sections, each with a short heading. Each section runs *claim → example or story → lesson*. Move forward from the opening—do not retell facts the opening already stated, and explain each mechanism once.
-4. **Closing** (1 or 2 sentences): one action the reader can take now. No recap paragraph before the closing.
+3. **Body**: 3 to 5 sections, each with a short heading. Use *claim → example or story → lesson* when a section has its own example, not as a template that forces repeating the opening's incident or numbers. Move forward from the opening: state each fact or number once, explain each mechanism once, and keep a section to one short paragraph if it only has one point.
+4. **Closing** (1 or 2 sentences): one concrete action or takeaway for the reader. Never recap earlier sections, summarize the incident, or restate the steps you just explained.
 
 ## Brief the AI needs
 
