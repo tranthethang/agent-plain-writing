@@ -39,9 +39,14 @@ Each file in `cases/` (`<type>-<lang>.md`) has:
    ```bash
    python3 evals/run_eval.py --dry-run
    ```
+   Filter by document type and/or language with `--type` (`blog`, `design`) and `--lang` (`vi`, `en`, `ja`):
+   ```bash
+   python3 evals/run_eval.py --type blog --lang vi --dry-run
+   ```
 3. Run interactively (type `yes` to confirm):
    ```bash
    python3 evals/run_eval.py
+   python3 evals/run_eval.py --type blog --lang vi
    ```
 3. Outputs and `results.json` are saved under `evals/runs/<timestamp>/` (ignored by git).
 4. To score a single output or print an AI judge prompt:
