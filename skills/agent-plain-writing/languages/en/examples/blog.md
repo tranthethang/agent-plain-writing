@@ -22,7 +22,7 @@ Details in the stories are made up to serve as models. In real work, use the aut
 ### 4. The lesson
 
 **Bad:** Through this experience, we can draw many valuable lessons about the importance of planning.
-**Good:** Lesson: write a ten-minute plan before you code. I lost a whole afternoon by skipping it.
+**Good:** I lost a whole afternoon because I skipped a ten-minute plan before coding. I do not skip that step anymore.
 
 ### 5. Vague advice
 

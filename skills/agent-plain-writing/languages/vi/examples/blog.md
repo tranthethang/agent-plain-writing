@@ -24,7 +24,7 @@ Ví dụ minh họa. Chi tiết trong câu chuyện là bịa để làm mẫu. 
 ### 4. Bài học
 
 **Xấu:** Qua trải nghiệm này, chúng ta có thể rút ra nhiều bài học quý giá về tầm quan trọng của việc lập kế hoạch.
-**Tốt:** Bài học: viết plan 10 phút trước khi code. Tôi mất cả buổi chiều vì bỏ qua bước này.
+**Tốt:** Tôi mất cả buổi chiều chỉ vì lao vào code mà không viết plan 10 phút trước. Từ hôm đó, tôi không bỏ qua bước này nữa.
 
 ### 5. Chuyển mục
 

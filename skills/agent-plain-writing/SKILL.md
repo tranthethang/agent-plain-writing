@@ -17,11 +17,11 @@ Works in Vietnamese (`vi`), English (`en`) and Japanese (`ja`).
 0. **Check for `PLAIN-WRITING.md`** in the project root (template: `templates/PLAIN-WRITING.example.md`). If `PLAIN-WRITING.md` exists, read it and let it win on voice and terms. Use `default_lang` and `default_type` to skip the questions in steps 1 and 2.
 1. **Pick the output language** (`vi`, `en` or `ja`). It is the language of the text you produce, not the language of the prompt. A Vietnamese brief that asks for a Japanese manual means `ja`. If unclear, ask one question. Then read `languages/<lang>/profile.md`.
 2. **Pick the document type** (table below). Read `doc-types/<type>.md` and `languages/<lang>/examples/<type>.md`. Read only these.
-3. **Know the reader**: who they are, what they already know, what they must do after reading. If missing, ask one question. If you cannot ask, state your assumption at the end.
+3. **Know the reader**: who they are, what they already know, what they must do after reading. If missing, ask one question. If you cannot ask, state your assumption outside the document (or mark `TBD:` inline in specs).
 4. **Outline** (one line per idea) for any text longer than about 400 words. Write only ideas that are in the outline.
-5. **Draft** with the core rules and the type's structure. Vary sentence rhythm: mix short punchy sentences with medium sentences up to the profile limit, and avoid three consecutive short single-clause sentences.
+5. **Draft** with the core rules and the type's structure. Vary sentence rhythm: mix short punchy sentences with medium sentences up to the profile limit, and avoid three consecutive short single-clause sentences. Write normal paragraphs—never put every sentence on its own line.
 6. **Edit** in a separate pass: cut, run the checklist, run the script. Fix until clean.
-7. **Report** two things outside the generated text: the result, and what you had to guess. Keep the document clean—never append `---`, `Guesses:`, or `**推測したこと:**` blocks to the generated text (in specs, mark missing details inline with `TBD:`).
+7. **Report** two things outside the generated text: the result, and what you had to guess. Keep the document clean—never prepend or append `Result:`, `Guesses:`, `---`, or `**推測したこと:**` blocks inside the document text. When your reply is the standalone document itself (no separate chat note), output only the document (and mark missing details inline with `TBD:` in specs).
 
 Draft and edit are two passes. Do not try to get it right in the first pass.
 
@@ -59,7 +59,7 @@ Numeric limits are per language and type. They live in `languages/<lang>/profile
 
 A doc type or language profile may override a limit (prose allows longer sentences, detail design allows more jargon). When they conflict, the more specific file wins.
 
-**Sentence rhythm:** Short does not mean choppy. Mix short sentences with medium sentences up to the profile limit, and avoid three consecutive short single-clause sentences.
+**Sentence rhythm and paragraphs:** Short does not mean choppy. Mix short sentences with medium sentences up to the profile limit, and avoid three consecutive short single-clause sentences. Write sentences continuously inside a paragraph—never split every sentence onto its own line (no trailing-space `  \n` line breaks).
 
 ## When the reader is outside the field
 

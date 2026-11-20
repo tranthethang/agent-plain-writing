@@ -6,16 +6,17 @@ Use for sharing posts, field notes and technical write-ups for peers.
 
 - Reader: peers in the same field. Technical terms are allowed. Define a term once if it is new or rare.
 - Outside readers: run the script with `--non-tech`.
-- Length: hit the target range in `languages/<lang>/profile.json` (`600–800` words/syllables, `1500–2000` chars for `ja`). Do not cut a post down to a short summary.
+- Length: hit the target range in `languages/<lang>/profile.json` (`600–800` words for `en` and `vi`, `1500–2000` chars for `ja`). Do not cut a post down to a short summary.
 
 ## Voice
 
 - First person. Speak to the reader directly ("you").
 - Talk as if telling a colleague at the next desk. Direct, opinionated, no preaching.
 - Vary sentence length and keep natural narrative flow (context, mistake, tension, fix, lesson). Do not restate the brief as a flat, bullet-like report.
+- Write normal paragraphs of 2–3 flowing sentences—never split every sentence onto its own line with trailing spaces (`  \n`) like a social-media thread.
 - Admit mistakes. A story about your own error is more convincing than a success story.
 - No emoji. No "hey everyone". No chains of rhetorical questions.
-- No meta-report openings ("I am writing this blog to...") or meta-report closings ("Lesson learned:", "Note:"). Start directly in the event or conclusion.
+- No meta-report openings ("I am writing this blog to...") or meta-report closings ("Lesson learned:", "Lesson:", "Note:"). Start directly in the event or conclusion.
 
 ## Structure
 
