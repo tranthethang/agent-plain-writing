@@ -19,7 +19,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CASES_DIR = Path(__file__).resolve().parent / "cases"
 RUNS_DIR = Path(__file__).resolve().parent / "runs"
-SKILL_FILE = ROOT / "skills" / "agent-plain-writing" / "SKILL.md"
+SKILL_DIR = ROOT / "skills" / "agent-plain-writing"
+SKILL_FILE = SKILL_DIR / "SKILL.md"
+TYPE_FILES = {
+    "blog": "blog.md",
+    "prose": "prose.md",
+    "poetry": "poetry.md",
+    "design": "detail-design.md",
+    "guide": "user-guide.md",
+}
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import score  # noqa: E402
@@ -101,15 +109,29 @@ def call_openai(prompt, cfg):
 
 
 def build_prompt(case_path, with_skill):
-    """Build the prompt for one case, optionally prepending SKILL.md."""
+    """Build the prompt for one case, optionally prepending SKILL.md and its type/lang files."""
     case_text = case_path.read_text(encoding="utf-8")
     parts = [
         "Write the requested document using only the facts in the brief below.",
         "Do not invent numbers or details. Follow the requested language, type, and audience.",
     ]
     if with_skill:
-        skill_text = SKILL_FILE.read_text(encoding="utf-8")
-        parts.append("\n## Skill instructions\n\n" + skill_text)
+        meta = score.parse_case_meta(case_text)
+        lang = meta["lang"]
+        doc_type = meta["type"]
+        type_file = TYPE_FILES.get(doc_type, "blog.md")
+
+        parts.append("\n## Skill instructions\n\n" + SKILL_FILE.read_text(encoding="utf-8"))
+
+        extra_files = [
+            ("Document type guide", SKILL_DIR / "doc-types" / type_file),
+            ("Language profile", SKILL_DIR / "languages" / lang / "profile.md"),
+            ("Banned phrases guide", SKILL_DIR / "languages" / lang / "banned-guide.md"),
+            ("Examples", SKILL_DIR / "languages" / lang / "examples" / type_file),
+        ]
+        for label, path in extra_files:
+            if path.is_file():
+                parts.append(f"\n## {label} ({path.relative_to(SKILL_DIR)})\n\n" + path.read_text(encoding="utf-8"))
     parts.append("\n## Case\n\n" + case_text)
     return "\n".join(parts)
 

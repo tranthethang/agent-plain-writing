@@ -72,4 +72,5 @@ orbs
 i am writing this blog to
 i'm writing this blog to
 lesson learned:
+lesson:
 key takeaway:

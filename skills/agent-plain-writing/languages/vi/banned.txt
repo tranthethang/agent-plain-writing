@@ -66,4 +66,5 @@ tim như thắt lại
 [blog]
 tôi viết blog này để
 bài học rút ra:
+bài học:
 lưu ý:

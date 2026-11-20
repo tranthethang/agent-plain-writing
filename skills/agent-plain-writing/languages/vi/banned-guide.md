@@ -52,7 +52,7 @@ Danh sách máy đọc nằm ở `banned.txt` cùng thư mục. File này giải
 | Cụm | Thay bằng |
 |---|---|
 | tôi viết blog này để | vào thẳng sự việc hoặc kết luận |
-| bài học rút ra: | lồng vào đoạn kết tự nhiên, không gắn nhãn |
+| bài học rút ra:, bài học: | lồng vào đoạn kết tự nhiên, không gắn nhãn |
 | lưu ý: | viết thẳng vào mạch bài hoặc bỏ |
 
 ## Quy tắc chung

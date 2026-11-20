@@ -44,7 +44,7 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | Phrase | Use instead |
 |---|---|
 | i am writing this blog to, i'm writing this blog to | open with the event or conclusion directly |
-| lesson learned:, key takeaway: | weave the point into the narrative, no label |
+| lesson learned:, lesson:, key takeaway: | weave the point into the narrative, no label |
 
 ## General rules
 
