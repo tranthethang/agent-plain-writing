@@ -16,6 +16,8 @@ Adjectives such as "clear" or "friendly" in a prompt do not fix this. Limits tha
 
 ## What it does
 
+- **One owner per rule:** `SKILL.md` owns the workflow and core rules. `doc-types/<type>.md` owns voice, structure, length policy and rhythm. `languages/<lang>/` owns the unit, numeric limits, banned phrases, grammar and examples. On limits and structure, `doc-types` wins over `SKILL.md`. On words and grammar, `languages` wins over `doc-types`.
+
 - **One skill, three languages:** Vietnamese (`vi`), English (`en`), Japanese (`ja`). The language of the output text selects the language folder.
 - **Five document types:** blog post, prose, poetry, detail design (API specs), user guide.
 - **Measurable rules:** sentence length, paragraph length, banned phrases, jargon count, text length. Limits are set per language and per document type.
@@ -45,7 +47,7 @@ Adjectives such as "clear" or "friendly" in a prompt do not fix this. Limits tha
 └── skills/
     └── agent-plain-writing/          # the skill (copy this folder into your agent)
         ├── SKILL.md                  # workflow, 12 core rules, language and type routing
-        ├── doc-types/                # structure per document type (language-neutral)
+        ├── doc-types/                # type rules: voice, structure, length policy, rhythm (language-neutral)
         │   ├── blog.md
         │   ├── prose.md
         │   ├── poetry.md
@@ -54,8 +56,8 @@ Adjectives such as "clear" or "friendly" in a prompt do not fix this. Limits tha
         ├── languages/
         │   ├── vi/  en/  ja/         # the same file set in each language folder:
         │   │   ├── profile.json      #   unit and numeric limits per document type
-        │   │   ├── profile.md        #   register, voice, common traps
-        │   │   ├── banned.txt        #   banned phrases (machine-readable)
+        │   │   ├── profile.md        #   unit, register, grammar traps, pronoun and level words
+        │   │   ├── banned.txt        #   the actual banned phrases (machine-readable)
         │   │   ├── banned-guide.md   #   the same phrases with replacements
         │   │   ├── terms.txt         #   jargon list for the jargon count
         │   │   └── examples/         #   common, blog, prose, poetry, detail-design, user-guide
@@ -125,14 +127,14 @@ The script checks sentence length, paragraph length, banned phrases, jargon coun
 | `en` | words | 20 |
 | `ja` | characters (字), punctuation and spaces excluded | 60 |
 
-The full table for every type is in each language's `profile.md`. The numbers are in `profile.json`.
+The numbers for every type are only in each language's `profile.json`. `profile.md` and `doc-types/` point to them and do not repeat them.
 
 ## Customize
 
 - **Add a project config.** Copy `skills/agent-plain-writing/templates/PLAIN-WRITING.example.md` to `PLAIN-WRITING.md` in your project root to set `default_lang`, `default_type`, project voice, extra terms, extra banned phrases and numeric limits.
 - **Add your own samples.** Each `examples/*.md` file ends with a "Your own samples" section. Paste sentences the AI wrote badly together with your rewrite. Samples written by you matter more than samples written by AI.
 - **Add banned phrases.** Add the phrase to `banned.txt` and to `banned-guide.md` in the same language folder.
-- **Tune the limits.** Edit `profile.json` and keep the table in `profile.md` in sync.
+- **Tune the limits.** Edit `profile.json`. Update the "Units" table above if the `blog` sentence limit changes.
 - **Add a language.** Create `languages/<code>/` with `profile.json`, `profile.md`, `banned.txt`, `banned-guide.md`, `terms.txt` and `examples/`. The script supports three units: `syllable`, `word`, `char`. No code change is needed.
 
 ## Limitations
