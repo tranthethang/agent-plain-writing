@@ -153,13 +153,27 @@ def main():
     ap = argparse.ArgumentParser(description="Run agent-plain-writing evals")
     ap.add_argument("--tool", choices=ALL_TOOLS, default="openai",
                     help="AI backend to run (default: openai)")
+    ap.add_argument("--type", dest="doc_type",
+                    help="Run only cases matching this document type (e.g. blog, design)")
+    ap.add_argument("--lang",
+                    help="Run only cases matching this language (e.g. vi, en, ja)")
     ap.add_argument("--dry-run", action="store_true",
                     help="Print planned commands without calling any AI tool")
     args = ap.parse_args()
 
     cases = sorted(CASES_DIR.glob("*.md"))
+    if args.doc_type or args.lang:
+        filtered = []
+        for case in cases:
+            meta = score.parse_case_meta(case.read_text(encoding="utf-8"))
+            if args.doc_type and meta["type"] != args.doc_type:
+                continue
+            if args.lang and meta["lang"] != args.lang:
+                continue
+            filtered.append(case)
+        cases = filtered
     if not cases:
-        print(f"No case files found in {CASES_DIR}", file=sys.stderr)
+        print(f"No matching case files found in {CASES_DIR}", file=sys.stderr)
         return 2
 
     tool = args.tool
