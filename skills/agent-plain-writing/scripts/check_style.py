@@ -51,6 +51,46 @@ def load_banned(lang, doc_type):
     return out, warns
 
 
+def load_report_labels(lang):
+    """Labels in the [report] section of banned.txt."""
+    section, out = "all", []
+    for line in (LANG_DIR / lang / "banned.txt").read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        m = re.fullmatch(r"\[(\w+)\]", line)
+        if m:
+            section = m.group(1)
+            continue
+        if section == "report":
+            out.append(line.lower())
+    return out
+
+
+EDGE_LINES = 3
+
+
+def report_issues(text, labels):
+    """Flag report labels on the first or last EDGE_LINES non-empty lines."""
+    lines = [l.strip().lstrip("-*> ").strip().lower() for l in text.splitlines()
+             if l.strip() and not l.lstrip().startswith("#")]
+    edge = lines[:EDGE_LINES] + lines[EDGE_LINES:][-EDGE_LINES:]
+    issues = []
+    for line in edge:
+        for label in labels:
+            if line.startswith(label):
+                issues.append(f'Report line inside the document: "{line[:50]}"')
+                break
+    return issues
+
+
+def hard_break_issues(raw):
+    """Flag trailing-space line breaks outside code blocks."""
+    body = re.sub(r"```.*?```", "", raw, flags=re.S)
+    n = len(re.findall(r"\S {2,}\n(?=[ \t]*\S)", body))
+    return [f"Line break with trailing spaces: {n}x"] if n else []
+
+
 def load_terms(lang):
     path = LANG_DIR / lang / "terms.txt"
     return [
@@ -214,10 +254,16 @@ def main():
     unit, label = prof["unit"], prof["unit_label"]
     boundary = prof["boundary"]
 
-    text = clean(Path(args.file).read_text(encoding="utf-8"))
+    if not Path(args.file).is_file():
+        print(f"File not found: {args.file}", file=sys.stderr)
+        return 2
+    raw = unicodedata.normalize("NFC", Path(args.file).read_text(encoding="utf-8"))
+    text = clean(raw)
     blocks = split_blocks(text)
 
     issues, total, n_sent = [], 0, 0
+    issues += report_issues(text, load_report_labels(lang))
+    issues += hard_break_issues(raw)
     for kind, body in blocks:
         sents = split_sentences(body, prof["sentence_split"])
         n_sent += len(sents)

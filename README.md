@@ -117,7 +117,7 @@ python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --t
 
 Exit codes: `0` clean, `1` violations found, `2` usage error.
 
-The script checks sentence length, paragraph length, banned phrases, jargon count and text length. It skips code blocks, tables and headings. Requires Python 3.7 or later. No packages to install.
+The script checks sentence length, paragraph length, banned phrases, jargon count and text length. It also flags report labels (such as `Result:`) on the first or last 3 lines, and line breaks made with trailing spaces. It skips code blocks, tables and headings. Requires Python 3.7 or later. No packages to install.
 
 ### Units
 

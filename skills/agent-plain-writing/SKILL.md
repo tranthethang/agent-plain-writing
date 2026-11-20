@@ -33,7 +33,7 @@ Each rule has one owner. Read a rule in its owner file, not in a copy.
 4. **Outline** (one line per idea) for any text longer than about 400 words. Write only ideas that are in the outline.
 5. **Draft** with the core rules and the type's voice, structure and rhythm. Write normal paragraphs—never put every sentence on its own line.
 6. **Edit** in a separate pass: cut, run the checklist, run the script. Fix until clean.
-7. **Report** two things outside the generated text: the result, and what you had to guess. Keep the document clean—never prepend or append `Result:`, `Guesses:`, `---`, or `**推測したこと:**` blocks inside the document text. When your reply is the standalone document itself (no separate chat note), output only the document (and mark missing details inline with `TBD:` in specs).
+7. **Report** two things outside the generated text: the result, and what you had to guess. Never prepend or append `Result:`, `Guesses:`, `---`, or `**推測したこと:**` lines inside the document. When your reply is the document itself and you have no other place for a note, leave the report out. In specs, mark missing details inline with `TBD:`. The script flags the labels in `banned.txt`, section `[report]`, on the first or last 3 lines.
 
 Draft and edit are two passes. Do not try to get it right in the first pass.
 

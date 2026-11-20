@@ -53,6 +53,12 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 |---|---|
 | 胸が締めつけ、胸が締め付け、涙があふれ、涙が溢れ、心の奥、永遠に | one concrete image: an object, a sound, a gesture |
 
+## Report labels (first or last 3 lines)
+
+| Label | Use instead |
+|---|---|
+| 結果:, 結果：, 推測したこと:, 推測したこと：, 仮定:, 仮定： | (delete from the document). Put the report outside it, or leave it out when there is no other place |
+
 ## General rules
 
 - A banned phrase may stay when it is a **direct quote**, a proper name or a fixed label on a screen.

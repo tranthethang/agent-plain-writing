@@ -62,6 +62,12 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | tapestry, whisper, echoes of, ethereal | one concrete image: an object, a sound, a gesture |
 | heart aflutter, silent tears, tears fell, dark night of the soul | the action or object that carries the feeling |
 
+## Report labels (first or last 3 lines)
+
+| Label | Use instead |
+|---|---|
+| result:, guesses:, assumptions: | (delete from the document). Put the report outside it, or leave it out when there is no other place |
+
 ## General rules
 
 - A banned phrase may stay when it is a **direct quote** or a proper name.

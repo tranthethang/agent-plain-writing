@@ -73,6 +73,12 @@ Danh sách máy đọc nằm ở `banned.txt` cùng thư mục. File này giải
 | tràn về, lặng lẽ, mênh mang, nao nao, bồi hồi, thổn thức | một hình ảnh cụ thể: vật, tiếng động, cử chỉ |
 | con tim, nỗi nhớ, tâm hồn, cuộc đời | tên vật hoặc việc làm gợi ra cảm xúc đó |
 
+## Nhãn báo cáo (3 dòng đầu hoặc 3 dòng cuối)
+
+| Nhãn | Thay bằng |
+|---|---|
+| kết quả:, giả định:, phỏng đoán: | (bỏ khỏi văn bản). Ghi báo cáo ngoài văn bản, hoặc bỏ nếu không có chỗ nào khác |
+
 ## Quy tắc chung
 
 - Cụm bị cấm vẫn dùng được khi **trích nguyên văn** hoặc khi nó là tên riêng.
