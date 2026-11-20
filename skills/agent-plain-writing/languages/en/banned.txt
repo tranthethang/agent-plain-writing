@@ -1,0 +1,69 @@
+# One phrase per line (case-insensitive). [name] = applies only to that document type. [all] = every type.
+# Keep in sync with banned-guide.md. Phrases match from the start of a word.
+[all]
+in order to
+utilize
+leverage
+delve
+it is important to note
+it's important to note
+it is worth noting
+in today's
+fast-paced
+seamless
+robust
+comprehensive
+cutting-edge
+state-of-the-art
+game-changer
+revolutionize
+unlock the
+empower
+a wide range of
+plays a crucial role
+plays a vital role
+not only
+in the realm of
+at the end of the day
+needless to say
+as we all know
+furthermore
+moreover
+in conclusion
+to sum up
+very
+really
+[design]
+appropriate
+as needed
+if necessary
+etc.
+quickly
+easily
+flexible
+efficient
+secure
+user-friendly
+[guide]
+carry out
+perform the
+perform a
+configure
+[poetry]
+tapestry
+whisper
+echoes of
+ethereal
+heart aflutter
+silent tears
+tears fell
+dark night of the soul
+[prose]
+heart pounded
+heart skipped a beat
+time stood still
+shiver ran
+breath she didn't know
+breath he didn't know
+eyes sparkled
+orbs
