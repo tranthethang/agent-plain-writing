@@ -11,7 +11,6 @@ trong thế giới ngày nay
 trong thời đại
 toàn diện
 tối ưu hóa
-mạnh mẽ
 tiến hành
 thực hiện việc
 cho phép người dùng có thể
@@ -20,7 +19,6 @@ cho phép người dùng có thể
 cần lưu ý rằng
 thông qua việc
 như chúng ta đã biết
-vô cùng
 hạng mục
 [warn]
 không chỉ
@@ -52,6 +50,8 @@ nỗi nhớ
 tâm hồn
 cuộc đời
 [prose]
+vô cùng
+mạnh mẽ
 tận dụng
 trong quá trình
 nhìn chung
@@ -64,6 +64,8 @@ nỗi buồn bao trùm
 ánh mắt sâu thẳm
 tim như thắt lại
 [blog]
+vô cùng
+mạnh mẽ
 tận dụng
 trong quá trình
 nhìn chung

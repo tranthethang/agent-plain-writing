@@ -125,6 +125,7 @@ def build_prompt(case_path, with_skill):
 
         extra_files = [
             ("Document type guide", SKILL_DIR / "doc-types" / type_file),
+            ("Language limits", SKILL_DIR / "languages" / lang / "profile.json"),
             ("Language profile", SKILL_DIR / "languages" / lang / "profile.md"),
             ("Banned phrases guide", SKILL_DIR / "languages" / lang / "banned-guide.md"),
             ("Examples", SKILL_DIR / "languages" / lang / "examples" / type_file),

@@ -7,7 +7,7 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | Phrase | Use instead | Example |
 |---|---|---|
 | することができる / することができます | 〜できる / 〜できます | 「送信することができます」→「送信できます」 |
-| 〜を行う / 〜を行います | the verb itself | 「確認を行う」→「確認する」 |
+| 〜を行う / 〜を行います / を行った | the verb itself | 「確認を行う」→「確認する」 |
 | 〜において *(warn)* | 〜で | 「本システムにおいて」→「本システムで」 |
 | 〜に関して *(warn)* | 〜について | |
 | させていただ(く) | 〜します (use it only when the situation truly needs humility) | 「報告させていただきます」→「報告します」 |
@@ -46,6 +46,12 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 |---|---|
 | 胸が高鳴、時が止まっ、言葉にできない、心が張り裂け、瞳が輝 | one visible action or detail |
 | と言えるでしょう / と言えます / ではないでしょうか | state the claim, or delete |
+
+## Phrases of poetry
+
+| Phrase | Use instead |
+|---|---|
+| 胸が締めつけ、胸が締め付け、涙があふれ、涙が溢れ、心の奥、永遠に | one concrete image: an object, a sound, a gesture |
 
 ## General rules
 
