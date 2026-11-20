@@ -33,6 +33,13 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | 実施、〜を行う | a concrete verb: タップする、選ぶ、入力する |
 | 設定を行う | 設定する |
 
+## Meta-report phrases in blog posts
+
+| Phrase | Use instead |
+|---|---|
+| この記事を書いた | open with the event or conclusion directly |
+| 学んだこと：, 注意点： | weave the point into the paragraph, no label |
+
 ## General rules
 
 - A banned phrase may stay when it is a **direct quote**, a proper name or a fixed label on a screen.

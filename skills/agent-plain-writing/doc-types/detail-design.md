@@ -7,6 +7,7 @@ Use when filling a design template: API detail design, function descriptions, pr
 - Sentence limit is a little looser (see profile).
 - Jargon is allowed without limit, but **one concept gets one name**.
 - No long prose. Use tables, bullets and numbered steps.
+- When writing prose descriptions, use normal paragraphs—never split every sentence onto its own line with trailing spaces (`  \n`).
 - **Fill the template only.** Do not add sections, do not remove sections.
 
 ## Principles

@@ -68,3 +68,8 @@ breath she didn't know
 breath he didn't know
 eyes sparkled
 orbs
+[blog]
+i am writing this blog to
+i'm writing this blog to
+lesson learned:
+key takeaway:

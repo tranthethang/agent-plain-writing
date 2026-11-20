@@ -63,3 +63,7 @@ một cảm giác khó tả
 nỗi buồn bao trùm
 ánh mắt sâu thẳm
 tim như thắt lại
+[blog]
+tôi viết blog này để
+bài học rút ra:
+lưu ý:

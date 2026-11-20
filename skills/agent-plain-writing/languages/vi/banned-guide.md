@@ -47,6 +47,14 @@ Danh sách máy đọc nằm ở `banned.txt` cùng thư mục. File này giải
 | thực hiện, tiến hành | động từ cụ thể: bấm, chọn, nhập |
 | cấu hình | cài đặt, thiết lập |
 
+## Cụm kiểu báo cáo trong blog
+
+| Cụm | Thay bằng |
+|---|---|
+| tôi viết blog này để | vào thẳng sự việc hoặc kết luận |
+| bài học rút ra: | lồng vào đoạn kết tự nhiên, không gắn nhãn |
+| lưu ý: | viết thẳng vào mạch bài hoặc bỏ |
+
 ## Quy tắc chung
 
 - Cụm bị cấm vẫn dùng được khi **trích nguyên văn** hoặc khi nó là tên riêng.

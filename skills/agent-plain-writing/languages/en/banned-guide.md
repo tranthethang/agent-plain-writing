@@ -39,6 +39,13 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | carry out, perform | a concrete verb: click, select, enter |
 | configure | set up, change the settings |
 
+## Meta-report phrases in blog posts
+
+| Phrase | Use instead |
+|---|---|
+| i am writing this blog to, i'm writing this blog to | open with the event or conclusion directly |
+| lesson learned:, key takeaway: | weave the point into the narrative, no label |
+
 ## General rules
 
 - A banned phrase may stay when it is a **direct quote** or a proper name.

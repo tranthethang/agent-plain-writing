@@ -56,31 +56,56 @@ Ví dụ minh họa. Chi tiết trong câu chuyện là bịa để làm mẫu. 
 **Xấu:** Giải pháp này tuy có thể còn một số hạn chế nhất định nhưng nhìn chung vẫn mang lại hiệu quả tương đối tốt.
 **Tốt:** Giải pháp này chưa xử lý được trường hợp mất mạng giữa chừng. Tôi chưa tìm ra cách gọn hơn.
 
-## Bài mẫu hoàn chỉnh (khoảng 180 từ, rút gọn để làm khuôn nhịp)
+## Bài mẫu hoàn chỉnh (khoảng 610 từ)
 
 ```markdown
 # Tôi bỏ state toàn cục sau một buổi chiều mất trắng
 
-Nút "Lưu" trong app của tôi phản hồi chậm hai giây. Tôi mất cả buổi chiều mới tìm ra lý do.
+Nút "Lưu" trong app của tôi phản hồi chậm hai giây sau mỗi lần người dùng gõ phím. Tôi mất cả buổi chiều đổ lỗi cho server trước khi nhận ra lỗi nằm ngay ở cái store toàn cục mình từng tự hào.
 
-## Mọi thứ nằm trong một chỗ
+## Lúc đầu mọi thứ trông rất gọn
 
-Tôi để toàn bộ dữ liệu trong một state duy nhất. Sửa một ô, cả trang vẽ lại.
+Ba tháng trước, trang cài đặt chỉ có bốn ô nhập: tên, email, múi giờ và ngôn ngữ. Tôi gom cả bốn vào một state toàn cục để khỏi phải truyền prop qua ba tầng component lồng nhau.
 
-Lúc đầu nó chạy ổn. Hai tháng sau, trang có 40 ô nhập.
+Cách làm này chạy mượt đến mức tôi thấy mình thông minh hẳn ra. Mỗi lần thêm tính năng mới, tôi lại ném thêm vài trường vào đúng chỗ cũ. Tôi cứ nghĩ đằng nào dữ liệu cũng thuộc về màn hình cài đặt.
 
-## Cách tôi sửa
+Trong các buổi review code, không ai phản đối vì mọi thứ vẫn chạy bình thường. Số lượng dữ liệu còn ít nên máy tính xử lý xong trong nháy mắt. Sự trơn tru đó khiến tôi chủ quan suốt hai tháng liền.
 
-Tôi tách state theo từng form. Mỗi form tự giữ dữ liệu của nó.
-Chỉ dữ liệu dùng chung (người dùng, ngôn ngữ) mới ở lại chỗ cũ.
+Hai tháng sau, trang đó phình lên 40 ô nhập, kèm ba bảng chọn ngày và một khung xem trước. Không ai trong nhóm để ý, cho đến khi QA gửi video quay cảnh con trỏ chuột đứng khựng lại. Mỗi lần gõ một chữ, màn hình đứng im gần hai giây rồi mới hiện ra.
 
-Kết quả: sửa một ô, chỉ form đó vẽ lại.
+## Hai tiếng tìm lỗi nhầm chỗ
 
-## Bài học
+Phản xạ đầu tiên của tôi là mở tab Network để xem API nào đang treo. Toàn bộ request trả về dưới 80 ms, không một lỗi 500 nào xuất hiện. Tôi thậm chí còn gọi sang bạn backend để hỏi xem server có vừa đổi giới hạn gì không.
 
-Đừng hỏi "dữ liệu này để ở đâu cho tiện". Hãy hỏi "ai thật sự cần dữ liệu này".
+Bạn ấy kiểm tra log xong liền gửi lại ảnh chụp màn hình xanh lè, không một cảnh báo chậm. Thậm chí truy vấn nặng nhất trong cơ sở dữ liệu cũng chỉ mất 15 ms để phản hồi.
 
-Hôm nay thử một việc: mở dự án, đếm số state toàn cục. Nếu quá 5, bắt đầu tách.
+Tôi đành quay sang nghi ngờ trình duyệt thiếu bộ nhớ rồi thử tắt hết extension. Nút "Lưu" vẫn ì ạch như cũ.
+
+Phải đến 4 giờ chiều, tôi mới mở React DevTools Profiler lên ghi lại một lần gõ phím. Màn hình hiện ra một màu đỏ rực: toàn bộ 40 ô nhập đều vẽ lại cùng lúc.
+
+Chỉ cần sửa một chữ trong ô tên, cây component lại chạy lại từ gốc đến ngọn. Khung xem trước nặng nhất cũng tính toán lại theo, dù chẳng liên quan gì đến tên người dùng. Ba bảng chọn ngày cũng dựng lại toàn bộ lịch tháng chỉ vì một ký tự thay đổi ở tận góc trên.
+
+## Cách tôi tách lại từng phần
+
+Tôi tắt trình soạn thảo đi và ngồi vẽ ra giấy xem ô nhập nào thật sự cần nói chuyện với ô nào. Hóa ra phần lớn các nhóm cài đặt đều đứng độc lập với nhau. Chỉ có hai ô liên quan đến quyền hạn là cần đọc dữ liệu từ phần tài khoản.
+
+Thay vì giữ một khối lớn, tôi tách state về đúng từng form con để mỗi phần tự giữ dữ liệu của mình. Những thứ dùng chung cho cả app như thông tin đăng nhập và ngôn ngữ hiển thị vẫn ở lại chỗ cũ. Phần xem trước chỉ đọc dữ liệu từ form đang mở thay vì lắng nghe cả cây state khổng lồ như trước.
+
+Công việc mất đúng một buổi sáng, chủ yếu là xóa bớt các hook nối dây chằng chịt. Tôi giữ nguyên tên các trường dữ liệu để không làm hỏng phần lưu tạm trên trình duyệt. Nhờ vậy, người dùng đang nhập dở cũng không bị mất chữ khi bản cập nhật mới chạy lên.
+
+Sau khi tách xong, tôi mở Profiler đo lại trên đúng thao tác gõ phím ban đầu. Thời gian vẽ lại giảm từ 1.800 ms xuống còn 12 ms, và con trỏ không còn khựng lại giữa chừng.
+
+## Thứ vẫn còn vướng
+
+Cách tách này giải quyết xong chuyện chậm, nhưng chưa phải phép màu cho mọi trường hợp. Khi hai tab khác nhau cần kiểm tra chéo dữ liệu trước lúc gửi lên server, tôi vẫn phải viết thêm một lớp nối nhỏ ở component cha.
+
+Lớp nối đó trông hơi thủ công và tôi chưa tìm ra cách nào gọn hơn. Nếu gom lên lại store chung thì lại quay về vết xe đổ cũ. Với 20 form độc lập, tách nhỏ là đường thẳng nhất, còn với một bảng tính liên kết chằng chịt thì câu chuyện lại khác.
+
+## Đừng hỏi chỗ nào tiện tay
+
+Sai lầm của tôi không nằm ở thư viện quản lý state, mà nằm ở câu hỏi tôi đặt ra lúc mới code. Tôi đã hỏi "nhét dữ liệu vào đâu cho đỡ phải truyền nhiều tầng", thay vì hỏi "ai thật sự cần đọc dữ liệu này".
+
+Hôm nay bạn thử mở dự án đang làm và đếm số trường nằm trong state toàn cục. Nếu con số vượt quá 5 mà không phải dữ liệu dùng chung cho cả app, hãy tách bớt trước khi nó làm chậm nút "Lưu" của bạn.
 ```
 
 ## Mẫu của bạn (thêm vào đây)

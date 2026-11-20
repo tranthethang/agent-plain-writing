@@ -19,9 +19,9 @@ Works in Vietnamese (`vi`), English (`en`) and Japanese (`ja`).
 2. **Pick the document type** (table below). Read `doc-types/<type>.md` and `languages/<lang>/examples/<type>.md`. Read only these.
 3. **Know the reader**: who they are, what they already know, what they must do after reading. If missing, ask one question. If you cannot ask, state your assumption at the end.
 4. **Outline** (one line per idea) for any text longer than about 400 words. Write only ideas that are in the outline.
-5. **Draft** with the core rules and the type's structure.
+5. **Draft** with the core rules and the type's structure. Vary sentence rhythm: mix short punchy sentences with medium sentences up to the profile limit, and avoid three consecutive short single-clause sentences.
 6. **Edit** in a separate pass: cut, run the checklist, run the script. Fix until clean.
-7. **Report** two things: the result, and what you had to guess.
+7. **Report** two things outside the generated text: the result, and what you had to guess. Keep the document clean—never append `---`, `Guesses:`, or `**推測したこと:**` blocks to the generated text (in specs, mark missing details inline with `TBD:`).
 
 Draft and edit are two passes. Do not try to get it right in the first pass.
 
@@ -53,11 +53,13 @@ Numeric limits are per language and type. They live in `languages/<lang>/profile
 | 7 | Examples and metaphors | One example or story per section, and a section is one main point |
 | 8 | Evaluative adjectives ("great", "powerful", "beautiful") | Replace with a number or a visible detail |
 | 9 | Opening and closing | Opening: at most 2 sentences, straight to the point. No recap, no empty thanks |
-| 10 | No invention | Add no idea or number that is not in the source. If missing, write `TBD: <specific question>` or ask |
+| 10 | No invention | Add no number, technical spec, or outcome that is not in the source. In `blog` and `prose`, keep human context, reasoning, and reactions grounded in the brief; in specs and guides, write `TBD: <specific question>` or ask |
 | 11 | Consistency | One concept, one name. One register for the whole text |
 | 12 | Length | Per type. Never more than 10% over |
 
 A doc type or language profile may override a limit (prose allows longer sentences, detail design allows more jargon). When they conflict, the more specific file wins.
+
+**Sentence rhythm:** Short does not mean choppy. Mix short sentences with medium sentences up to the profile limit, and avoid three consecutive short single-clause sentences.
 
 ## When the reader is outside the field
 
@@ -75,6 +77,8 @@ Common failure: the AI "translates" every technical detail into plain words. The
 4. Adjectives and adverbs.
 5. Empty opening and closing.
 
+For `blog` and `prose`, keep human context, reasoning, and tension instead of cutting down to a bare fact list.
+
 ## When editing existing text
 
 - Keep meaning, proper names, numbers, paths and code unchanged.
@@ -87,9 +91,10 @@ Common failure: the AI "translates" every technical detail into plain words. The
 - [ ] One idea per paragraph, one idea per sentence.
 - [ ] No banned phrase. No empty adjective.
 - [ ] Jargon is within the limit. Each term is explained or replaced.
+- [ ] Sentence lengths vary (not three short single-clause sentences in a row).
 - [ ] Every number and claim appears in the user's source.
 - [ ] Register is consistent.
-- [ ] Guesses are reported.
+- [ ] Guesses are reported outside the generated document (or marked `TBD:` inline in specs).
 
 ## Check with the script
 

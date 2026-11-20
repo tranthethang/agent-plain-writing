@@ -39,31 +39,52 @@ Details in the stories are made up to serve as models. In real work, use the aut
 **Bad:** In conclusion, I hope this post has given you useful insights. Thanks for reading, and see you next time!
 **Good:** Try one thing today: open your project and count the global state values. If there are more than five, start splitting.
 
-## Complete sample post (about 130 words, a model for rhythm)
+## Complete sample post (about 620 words)
 
 ```markdown
 # I dropped global state after one lost afternoon
 
-My "Save" button reacted two seconds late. It took me a whole afternoon to find out why.
+My "Save" button reacted two seconds late every time a user typed into the settings form. I spent half an afternoon blaming our backend server before realizing the bug lived in my own global store.
 
-## Everything lived in one place
+## Everything felt clean at first
 
-I kept all the data in a single state. Edit one field, and the whole page redrew.
+Three months ago, the settings page held four fields: name, email, timezone, and language. I put all four into one global state to avoid passing props down three nested levels.
 
-It worked at first. Two months later, the page had 40 fields.
+That shortcut worked well enough that I felt clever for choosing it. Each time product asked for a new option, I tossed another field into the same bucket. After all, the data belonged to the settings screen.
 
-## How I fixed it
+Nobody pushed back during code review because the page still felt fast on small test accounts. Local machines handled four fields in less than a millisecond. That early smoothness hid the cost for two full months.
 
-I split the state by form. Each form now keeps its own data.
-Only shared data (the user, the language) stayed where it was.
+By week eight, the page had grown to 40 fields, three date pickers, and a live preview panel. Still, nobody noticed until QA sent a screen recording where the text cursor froze on every keystroke. You typed a single letter and waited two seconds for it to appear.
 
-Result: edit one field, and only that form redraws.
+## Two hours looking in the wrong place
 
-## The lesson
+My first instinct was to open the Network tab and hunt for a slow API call. Every request returned in under 80 ms, and not a single 500 error showed up. I even pinged our backend engineer to ask if the database had a new lock.
 
-Don't ask "where is it convenient to put this data?" Ask "who needs it?"
+She checked the server logs and sent back a clean screenshot with zero slow queries. Even our heaviest lookup finished in 15 ms.
 
-Try one thing today: open your project and count the global state values. If there are more than five, start splitting.
+Next, I blamed browser memory and disabled every extension I had installed. The "Save" button stayed just as sluggish as before.
+
+Around four o'clock, I finally opened React DevTools Profiler and recorded a single keystroke in the name box. The flame graph lit up bright red across all 40 inputs at once. Changing one letter in the name box forced the live preview and all three date pickers to recalculate from scratch.
+
+## How I split the state back up
+
+I closed my editor and sketched on paper which fields actually needed to talk to each other. Most groups on the page were completely independent. Only two permission toggles needed to read anything from the main account object.
+
+Instead of one giant store, I moved each form's state down into its own component. Shared values—the signed-in user and the active language—stayed in the global store. The live preview subscribed only to the form currently open on screen.
+
+The refactor took one morning, mostly deleting wiring hooks I should never have added. I kept every field name identical so unsaved drafts in browser storage still loaded cleanly after deploy. When I recorded the same keystroke in the Profiler afterward, render time dropped from 1,800 ms to 12 ms.
+
+## What still feels clumsy
+
+Splitting state fixed the lag, yet it is no silver bullet for every screen. When two tabs must cross-check each other before submit, I still write a small bridge in the parent.
+
+That bridge feels manual, and I have not found a cleaner pattern that avoids dragging everything back upstairs. If you have 20 independent forms on one screen, local state is the straightest line. If your whole page works like one connected spreadsheet, global state still earns its keep.
+
+## Ask who needs the data
+
+My mistake had nothing to do with the state library we picked. I had asked "where is it convenient to dump this data" instead of asking "who actually needs to read it."
+
+Try one thing today: open your current project and count the fields sitting in global state. If more than five belong to a single screen, start moving them down before your "Save" button pays the price.
 ```
 
 ## Your own samples

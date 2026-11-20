@@ -6,14 +6,16 @@ Use for sharing posts, field notes and technical write-ups for peers.
 
 - Reader: peers in the same field. Technical terms are allowed. Define a term once if it is new or rare.
 - Outside readers: run the script with `--non-tech`.
-- Length: see the `blog` entry in `languages/<lang>/profile.json`.
+- Length: hit the target range in `languages/<lang>/profile.json` (`600–800` words/syllables, `1500–2000` chars for `ja`). Do not cut a post down to a short summary.
 
 ## Voice
 
 - First person. Speak to the reader directly ("you").
 - Talk as if telling a colleague at the next desk. Direct, opinionated, no preaching.
+- Vary sentence length and keep natural narrative flow (context, mistake, tension, fix, lesson). Do not restate the brief as a flat, bullet-like report.
 - Admit mistakes. A story about your own error is more convincing than a success story.
 - No emoji. No "hey everyone". No chains of rhetorical questions.
+- No meta-report openings ("I am writing this blog to...") or meta-report closings ("Lesson learned:", "Note:"). Start directly in the event or conclusion.
 
 ## Structure
 
@@ -34,7 +36,8 @@ Give these five. Whatever is missing, the AI will guess.
 
 ## Checklist
 
-- [ ] The opening is a concrete event or conclusion, not a greeting.
+- [ ] The opening is a concrete event or conclusion, not a greeting or meta-report.
+- [ ] Sentence lengths vary naturally instead of reading like a telegram.
 - [ ] One example or story per section, and a section is one main point.
 - [ ] At least one place where the author admits a limit or a mistake (if the brief has one).
 - [ ] The closing is one action, not a summary.
