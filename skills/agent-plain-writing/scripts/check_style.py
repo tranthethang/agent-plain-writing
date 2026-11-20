@@ -65,7 +65,7 @@ def clean(text):
     text = re.sub(r"\A---\n.*?\n---\n", "", text, flags=re.S)
     text = re.sub(r"```.*?```", "", text, flags=re.S)
     text = re.sub(r"`[^`]*`", "X", text)
-    text = re.sub(r"https?://\S+", "URL", text)
+    text = re.sub(r"https?://\S+?(?=[.,!?;:)\]]*(?:\s|$))", "URL", text)
     text = re.sub(r"<!--.*?-->", "", text, flags=re.S)
     text = re.sub(r"<[^>]+>", "", text)
     text = re.sub(r"\*{1,3}", "", text)
@@ -118,7 +118,11 @@ ABBREV_RE = re.compile(
 
 def split_sentences(s, pattern):
     # Protect dots in decimals, versions, URLs, and common abbreviations before splitting.
-    protected = re.sub(r"https?://\S+", lambda m: m.group(0).replace(".", "\x00"), s)
+    protected = re.sub(
+        r"https?://\S+?(?=[.,!?;:)\]]*(?:\s|$))",
+        lambda m: m.group(0).replace(".", "\x00"),
+        s,
+    )
     protected = re.sub(r"(?<=\d)\.(?=\d)", "\x00", protected)
     protected = ABBREV_RE.sub(lambda m: m.group(0).replace(".", "\x00"), protected)
     return [x.replace("\x00", ".").strip() for x in re.split(pattern, protected) if x.strip()]

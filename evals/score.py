@@ -49,7 +49,9 @@ def extract_numbers(text):
         s = re.sub(r"^\d+[.)．）]\s+", "", s)
         lines.append(s)
     joined = "\n".join(lines)
-    return set(re.findall(r"\b\d+(?:\.\d+)?\b", joined))
+    return set(
+        re.findall(r"(?<![A-Za-z0-9_])(?<!\d\.)\d+(?:\.\d+)?(?!(?:\.\d|[A-Za-z0-9_]))", joined)
+    )
 
 
 def parse_checker_output(stdout):
