@@ -6,7 +6,7 @@ Use for guides written for general users who are not technical.
 
 - Short sentences (see profile). Each step is one action.
 - At most 7 steps per procedure.
-- At most 3 jargon terms per guide. Replace each with an everyday word, or explain it in one sentence.
+- Jargon stays within `terms` in `profile.json`. Replace each term with an everyday word, or explain it in one sentence.
 - Address the reader directly ("you" or the language's equivalent).
 - Button and menu names use the exact label on the screen, in bold.
 

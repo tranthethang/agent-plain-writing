@@ -7,7 +7,6 @@ Use when filling a design template: API detail design, function descriptions, pr
 - Sentence limit is a little looser (see profile).
 - Jargon is allowed without limit, but **one concept gets one name**.
 - No long prose. Use tables, bullets and numbered steps.
-- When writing prose descriptions, use normal paragraphs—never split every sentence onto its own line with trailing spaces (`  \n`).
 - **Fill the template only.** Do not add sections, do not remove sections.
 
 ## Principles
@@ -22,7 +21,7 @@ Use when filling a design template: API detail design, function descriptions, pr
    - may: optional
 5. **Condition → result** is written "When <condition>, the system must <action>."
 6. **Every error has three parts**: the condition, the HTTP status, the error code.
-7. **No vague words**: "appropriate", "if necessary", "quickly", "etc." (see `banned-guide.md`).
+7. **No vague words**: no word that leaves a condition, an amount or a speed open. The words for each language are in `banned.txt`, section `[design]`, with replacements in `banned-guide.md`.
 8. **One concept, one name.** Pick "order" and never mix in "purchase" or "request" for the same thing.
 
 ## Brief the AI needs

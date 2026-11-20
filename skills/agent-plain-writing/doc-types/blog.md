@@ -6,17 +6,17 @@ Use for sharing posts, field notes and technical write-ups for peers.
 
 - Reader: peers in the same field. Technical terms are allowed. Define a term once if it is new or rare.
 - Outside readers: run the script with `--non-tech`.
-- Length: aim for `languages/<lang>/profile.json` (`600–800` words for `en` and `vi`, `1500–2000` chars for `ja`) only when the brief has enough material. When a brief is thin (e.g., 3 short points), a tight `150–300` word post is better than padding, repeating points, or adding recap paragraphs to hit the word count.
+- Length: the `length` range in `languages/<lang>/profile.json` applies only when the brief has enough material for it. When a brief is thin, write a shorter post that covers each point once. Do not pad, repeat points, or add a recap to reach the range.
 
 ## Voice
 
 - First person. Speak to the reader directly ("you").
 - Talk as if telling a colleague at the next desk. Direct, opinionated, no preaching.
 - Vary sentence length and keep natural narrative flow (context, mistake, tension, fix, lesson). Do not restate the brief as a flat, bullet-like report.
-- Write normal paragraphs of 2–3 flowing sentences—never split every sentence onto its own line with trailing spaces (`  \n`) like a social-media thread.
+- Write short paragraphs of flowing sentences, within the `paragraph` limit in `profile.json`.
 - Admit mistakes. A story about your own error is more convincing than a success story.
-- No emoji. No "hey everyone". No chains of rhetorical questions.
-- No meta-report openings ("I am writing this blog to...") or meta-report closings ("Lesson learned:", "Lesson:", "Note:"). Start directly in the event or conclusion.
+- No emoji. No greeting to the audience. No chains of rhetorical questions.
+- No meta-report openings (a sentence about why you write the post) and no label closings (a closing line that starts with a label such as a lesson or a note). Start directly in the event or conclusion. The phrases for each language are in `banned.txt`, section `[blog]`.
 - No throat-clearing lead-ins ("This is an important difference from the old approach:") and no references to the prompt ("The brief does not say..."). State what the system does in one concrete sentence instead of naming a pattern in one sentence and re-explaining it in the next. Keep one plain, consistent term for a mechanism.
 
 ## Structure
