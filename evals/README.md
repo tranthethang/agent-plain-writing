@@ -26,13 +26,20 @@ Each file in `cases/` (`<type>-<lang>.md`) has:
 
 ## Running the eval
 
-> **Cost warning:** Running `run_eval.py` calls a real AI CLI (`antigravity` or `claude`) twice per case (12 calls for all 6 cases) and uses API quota or credits. Always preview with `--dry-run` first.
+> **Cost warning:** Running `run_eval.py` makes real AI calls twice per case (12 calls for all 6 cases) and uses API quota or credits. Always preview with `--dry-run` first.
 
-1. Preview the planned calls without invoking an AI:
+1. By default, `run_eval.py` uses an OpenAI-compatible `/chat/completions` API (`--tool openai`), reading `.env` (in `evals/.env` or repo root `.env`) or environment variables:
+   ```env
+   OPENAI_API_URL=https://api.openai.com/v1
+   OPENAI_API_KEY=sk-...
+   OPENAI_API_MODEL=gpt-4o-mini
+   ```
+   You can also pass `--tool claude` or `--tool antigravity` to use a local CLI instead.
+2. Preview the planned calls without invoking an AI:
    ```bash
    python3 evals/run_eval.py --dry-run
    ```
-2. Run interactively (you will be asked to choose `antigravity` or `claude` and type `yes` to confirm):
+3. Run interactively (type `yes` to confirm):
    ```bash
    python3 evals/run_eval.py
    ```
