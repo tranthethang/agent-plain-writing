@@ -34,6 +34,15 @@ Details in the stories are made up to serve as models. In real work, use the aut
 **Bad:** While this solution may have certain limitations, overall it provides relatively good results.
 **Good:** This solution can't handle a network drop halfway through. I haven't found a simpler fix yet.
 
+### 7. Cutting the cause
+
+(The brief: the timeout grew from 30 to 120 seconds, the jam stayed, and each batch still read 50,000 records.)
+
+**Bad:** Raising the timeout did not fix the jam.
+**Good:** Raising the timeout did not fix the jam. Each batch still read 50,000 records, so a longer wait only gave the same slow read more time.
+**Fault:** The claim stands alone. The reader cannot see why the change failed.
+**Fix:** Keep the sentence that links cause, change and result.
+
 ## Complete sample post (about 620 words)
 
 ```markdown

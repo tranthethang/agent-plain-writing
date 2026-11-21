@@ -51,6 +51,15 @@ Ví dụ minh họa. Chi tiết trong câu chuyện là bịa để làm mẫu. 
 **Xấu:** Giải pháp này tuy có thể còn một số hạn chế nhất định nhưng nhìn chung vẫn mang lại hiệu quả tương đối tốt.
 **Tốt:** Giải pháp này chưa xử lý được trường hợp mất mạng giữa chừng. Tôi chưa tìm ra cách gọn hơn.
 
+### 10. Cắt mất câu nêu nguyên nhân
+
+(Brief: timeout tăng từ 30 lên 120 giây, hàng đợi vẫn nghẽn, mỗi batch vẫn đọc 50.000 bản ghi.)
+
+**Xấu:** Tăng timeout không làm hết nghẽn.
+**Tốt:** Tăng timeout không làm hết nghẽn. Mỗi batch vẫn đọc 50.000 bản ghi, nên chờ lâu hơn chỉ cho lần đọc chậm đó thêm thời gian.
+**Fault:** Câu kết luận đứng một mình. Người đọc không thấy vì sao thay đổi không có tác dụng.
+**Fix:** Giữ câu nối nguyên nhân, thay đổi và kết quả.
+
 ## Bài mẫu hoàn chỉnh (khoảng 610 từ)
 
 ```markdown

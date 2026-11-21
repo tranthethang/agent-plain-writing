@@ -15,6 +15,8 @@ Use for sharing posts, field notes and technical write-ups for peers.
 - Vary sentence length and keep natural narrative flow (context, mistake, tension, fix, lesson). Do not restate the brief as a flat, bullet-like report.
 - Write short paragraphs of flowing sentences, within the `paragraph` limit in `profile.json`.
 - Admit mistakes. A story about your own error is more convincing than a success story.
+- Stay in the person the brief asks for, from the first line to the last. Do not move from first person to third person, or the reverse, partway through.
+- When you cut a sentence, keep the one that explains why the change worked: the cause, the change and the result. Cut a sentence that only repeats the conclusion after the link is clear.
 - No emoji. No greeting to the audience. No chains of rhetorical questions.
 - No meta-report openings (a sentence about why you write the post) and no label closings (a closing line that starts with a label such as a lesson or a note). Start directly in the event or conclusion. The phrases for each language are in `banned.txt`, section `[tech-blog,essay]` (shared with `essay`).
 - No throat-clearing lead-ins ("This is an important difference from the old approach:") and no references to the prompt ("The brief does not say..."). State what the system does in one concrete sentence instead of naming a pattern in one sentence and re-explaining it in the next. Keep one plain, consistent term for a mechanism.
@@ -39,6 +41,8 @@ Give these five. Whatever is missing, the AI will guess.
 ## Checklist
 
 - [ ] The opening is a concrete event or conclusion, not a greeting or meta-report.
+- [ ] The narrator stays in the same person from the first line to the last.
+- [ ] The sentence that links cause, change and result is still there after every cut.
 - [ ] Sentence lengths vary naturally instead of reading like a telegram.
 - [ ] One example or story per section, and a section is one main point.
 - [ ] No repeated facts from the opening, no padded restatements, and no recap paragraph before the closing.
