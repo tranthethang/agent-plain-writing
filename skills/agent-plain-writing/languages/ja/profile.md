@@ -21,11 +21,10 @@ The register is a Japanese form, so it is listed here. Choose one register per d
 
 | Type | Register | Notes |
 |---|---|---|
-| blog | です・ます調 | Friendly but direct |
+| tech-blog | です・ます調 | Friendly but direct |
+| essay | だ・である調 | Plain form by default (no native review yet) |
 | guide | です・ます調 | Steps end in 「〜します」. Instructions use 「〜してください」 sparingly (one per section at most) |
 | design | である調 / 常体 | Plain form: 「〜する。」「〜しない。」. Table cells may end in a noun (体言止め) |
-| prose | 常体 (だ・た) | Past tense by default |
-| poetry | free | Follow the form |
 
 Teams differ. Before writing a design document or a manual for a Japanese team or customer, confirm their register convention and follow it.
 

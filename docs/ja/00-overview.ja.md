@@ -20,12 +20,12 @@ AI の下書きには、次の欠点がよく出ます。
 ## 含まれるもの
 
 - **基本ルールと手順**：`SKILL.md`（12 のルール、下書きのあとに推敲）。
-- **5 つの文書タイプ**：ブログ、散文、詩、API 設計、ユーザーガイド。各タイプに `doc-types/` のファイルがあり、文体、構成、長さを定めます。
+- **2 つの文体ファミリーに 4 つの文書タイプ**：`plain`（`tech-blog`、`api-design`、`guide`）と `creative`（`essay`）。各タイプに `doc-types/` のファイルがあり、文体、構成、長さを定めます。
 - **3 つの言語フォルダ**：カウント単位、数値の上限、禁止表現、専門用語リスト、例文を収めます。
 - **チェックスクリプト** `check_style.py`（Python 3.7 以上、標準ライブラリのみ）。
 - **評価キット**：`evals/`（[05-evals](05-evals.ja.md) を参照）。
 
-画面設計は仮のファイルだけで、未完成です。
+`prose`、`poetry`、`screen-design` は現時点では対象外です。(no native review yet)
 
 ## どのファイルがどのルールを持つか
 
@@ -52,7 +52,7 @@ AI の下書きには、次の欠点がよく出ます。
 ├── evals/                    # ケース、採点、審査プロンプト、実行スクリプト
 └── skills/agent-plain-writing/
     ├── SKILL.md
-    ├── doc-types/            # blog, prose, poetry, api-design, user-guide, screen-design（仮）
+    ├── doc-types/            # tech-blog, essay, api-design, user-guide
     ├── languages/{vi,en,ja}/ # profile.json, profile.md, banned.txt, banned-guide.md,
     │                         # terms.txt, examples/
     ├── templates/PLAIN-WRITING.example.md

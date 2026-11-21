@@ -1,6 +1,6 @@
 ---
 lang: en
-type: blog
+type: tech-blog
 non_tech: true
 ---
 

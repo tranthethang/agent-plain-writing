@@ -5,7 +5,7 @@ Ask in plain words and give a good brief:
 ```
 Use agent-plain-writing to write a user guide in Japanese from these notes: ...
 Rewrite this API design in English. Use the api-design template. Mark missing facts as TBD.
-Shorten this blog post. My own paragraph is attached as the model for rhythm.
+Shorten this tech blog post. My own paragraph is attached as the model for rhythm.
 ```
 
 Each file in `skills/agent-plain-writing/doc-types/` lists the brief the AI needs for that type: summary, main points, reader, a sample of your own writing, words to use or avoid. The less you give, the more the AI guesses.
@@ -22,14 +22,12 @@ Each file in `skills/agent-plain-writing/doc-types/` lists the brief the AI need
 
 ## Document types
 
-| Type | `--type` | Rules file |
-|---|---|---|
-| Blog post | `blog` | `doc-types/blog.md` |
-| Fiction, essay | `prose` | `doc-types/prose.md` |
-| Poetry | `poetry` | `doc-types/poetry.md` |
-| API design (one endpoint) | `api-design` | `doc-types/api-design.md` |
-| User guide | `guide` | `doc-types/user-guide.md` |
-| Screen design | none | stub, not done |
+| Type | Family | `--type` | Rules file |
+|---|---|---|---|
+| Tech blog | `plain` | `tech-blog` | `doc-types/tech-blog.md` |
+| Essay (personal, reflective) | `creative` | `essay` | `doc-types/essay.md` |
+| API design (one endpoint) | `plain` | `api-design` | `doc-types/api-design.md` |
+| User guide | `plain` | `guide` | `doc-types/user-guide.md` |
 
 For `api-design`, the AI uses a fixed template of seven sections. When the brief lacks a fact, it writes `TBD-n` only for a gap the brief names or one that blocks implementation. Each `TBD-n` has a question under Open items.
 

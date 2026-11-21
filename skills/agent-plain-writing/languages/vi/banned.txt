@@ -39,32 +39,18 @@ an toàn
 [guide]
 thực hiện
 cấu hình
-[poetry]
-tràn về
-lặng lẽ
-mênh mang
-nao nao
-bồi hồi
-thổn thức
-con tim
-nỗi nhớ
-tâm hồn
-cuộc đời
-[prose]
+[tech-blog]
 vô cùng
 mạnh mẽ
 tận dụng
 trong quá trình
 nhìn chung
 tóm lại
-trái tim loạn nhịp
-thời gian như ngừng trôi
-nước mắt lăn dài
-một cảm giác khó tả
-nỗi buồn bao trùm
-ánh mắt sâu thẳm
-tim như thắt lại
-[blog]
+tôi viết blog này để
+bài học rút ra:
+bài học:
+lưu ý:
+[essay]
 vô cùng
 mạnh mẽ
 tận dụng

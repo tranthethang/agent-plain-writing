@@ -11,8 +11,9 @@ It gives the AI limits it can count (sentence length, paragraph length, banned p
 
 ## Status
 
-- Five document types: blog, prose, poetry, API design, user guide. Screen design is a stub, not done.
-- The checker is mechanical. It counts. It does not judge voice, rhyme or meter.
+- Four document types in two voice families: `plain` (`tech-blog`, `api-design`, `guide`) and `creative` (`essay`). `prose`, `poetry`, and `screen-design` are out of scope for now.
+- **Breaking change:** `--type blog` is now `--type tech-blog` (also the new default).
+- The checker is mechanical. It counts. It does not judge voice.
 - The numeric limits are starting estimates, not verified standards.
 - The Japanese content has no native review yet.
 - The evidence is small: one eval run, 6 simulated cases, mechanical scores only. See [Evidence](#evidence).
@@ -30,10 +31,20 @@ npx skills add tranthethang/agent-plain-writing -g
 3. Check a draft (Python 3.7+, no packages):
 
 ```bash
-python3 skills/agent-plain-writing/scripts/check_style.py draft.md --lang en --type blog
+python3 skills/agent-plain-writing/scripts/check_style.py draft.md --lang en --type tech-blog
 ```
 
 Exit codes: `0` clean, `1` violations, `2` usage error.
+
+## Units
+
+Mirrors `sentence` / `paragraph` limits in `skills/agent-plain-writing/languages/<lang>/profile.json`:
+
+| Language | Unit | `tech-blog` | `essay` | `api-design` | `guide` |
+|---|---|---|---|---|---|
+| `vi` | syllables (*tiếng*) | 28 / 3 | 40 / 6 | 25 / 3 | 16 / 3 |
+| `en` | words | 20 / 3 | 30 / 6 | 18 / 3 | 12 / 3 |
+| `ja` | characters (字) | 60 / 3 | 80 / 6 | 55 / 3 | 40 / 3 |
 
 ## Evidence
 

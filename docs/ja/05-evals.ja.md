@@ -4,7 +4,7 @@
 
 | ファイル | 役割 |
 |---|---|
-| `cases/` | 6 ケース：`blog` と `api-design` を、それぞれ `vi`、`en`、`ja` で。データはすべて架空です |
+| `cases/` | 6 ケース：`tech-blog` と `api-design` を、それぞれ `vi`、`en`、`ja` で。データはすべて架空です |
 | `score.py` | 機械的な採点。ケースにない数字を数え、`api-design` では `tbd_ids`、`tbd_without_question`、`tbd_in_code`、`tbd_duplicate_questions` も報告する |
 | `judge-prompt.md` | AI 審査員用のプロンプト（明瞭さ、網羅性、`api-design` 向けの意味チェック 3 点） |
 | `run_eval.py` | 各ケースを 2 回（スキルあり・なし）実行する |
@@ -15,7 +15,7 @@
 
 ```bash
 python3 evals/run_eval.py --dry-run
-python3 evals/run_eval.py --type blog --lang vi --dry-run
+python3 evals/run_eval.py --type tech-blog --lang vi --dry-run
 ```
 
 そのあと実行します。スクリプトは `yes` の入力を求めます。
@@ -31,8 +31,8 @@ API 設定は `evals/.env` かリポジトリ直下の `.env` に置きます。
 1 つの出力を採点するには：
 
 ```bash
-python3 evals/score.py evals/cases/blog-en.md output.md
-python3 evals/score.py evals/cases/blog-en.md output.md --judge-prompt
+python3 evals/score.py evals/cases/tech-blog-en.md output.md
+python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
 ```
 
 ## 正直な限界

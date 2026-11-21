@@ -22,9 +22,8 @@ RUNS_DIR = Path(__file__).resolve().parent / "runs"
 SKILL_DIR = ROOT / "skills" / "agent-plain-writing"
 SKILL_FILE = SKILL_DIR / "SKILL.md"
 TYPE_FILES = {
-    "blog": "blog.md",
-    "prose": "prose.md",
-    "poetry": "poetry.md",
+    "tech-blog": "tech-blog.md",
+    "essay": "essay.md",
     "api-design": "api-design.md",
     "guide": "user-guide.md",
 }
@@ -119,7 +118,7 @@ def build_prompt(case_path, with_skill):
         meta = score.parse_case_meta(case_text)
         lang = meta["lang"]
         doc_type = meta["type"]
-        type_file = TYPE_FILES.get(doc_type, "blog.md")
+        type_file = TYPE_FILES.get(doc_type, "tech-blog.md")
 
         parts.append("\n## Skill instructions\n\n" + SKILL_FILE.read_text(encoding="utf-8"))
 
@@ -155,7 +154,7 @@ def main():
     ap.add_argument("--tool", choices=ALL_TOOLS, default="openai",
                     help="AI backend to run (default: openai)")
     ap.add_argument("--type", dest="doc_type",
-                    help="Run only cases matching this document type (e.g. blog, api-design)")
+                    help="Run only cases matching this document type (e.g. tech-blog, api-design)")
     ap.add_argument("--lang",
                     help="Run only cases matching this language (e.g. vi, en, ja)")
     ap.add_argument("--dry-run", action="store_true",

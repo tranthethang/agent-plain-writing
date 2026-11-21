@@ -47,29 +47,17 @@ carry out
 perform the
 perform a
 configure
-[poetry]
-tapestry
-whisper
-echoes of
-ethereal
-heart aflutter
-silent tears
-tears fell
-dark night of the soul
-[prose]
+[tech-blog]
 utilize
 leverage
 in conclusion
 to sum up
-heart pounded
-heart skipped a beat
-time stood still
-shiver ran
-breath she didn't know
-breath he didn't know
-eyes sparkled
-orbs
-[blog]
+i am writing this blog to
+i'm writing this blog to
+lesson learned:
+lesson:
+key takeaway:
+[essay]
 utilize
 leverage
 in conclusion

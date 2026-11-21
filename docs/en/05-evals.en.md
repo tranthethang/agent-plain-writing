@@ -4,7 +4,7 @@
 
 | File | Role |
 |---|---|
-| `cases/` | 6 cases: `blog` and `api-design`, each in `vi`, `en`, `ja`. All data is simulated |
+| `cases/` | 6 cases: `tech-blog` and `api-design`, each in `vi`, `en`, `ja`. All data is simulated |
 | `score.py` | Mechanical scorer. Counts numbers not found in the case, and for `api-design` also reports `tbd_ids`, `tbd_without_question`, `tbd_in_code`, and `tbd_duplicate_questions` |
 | `judge-prompt.md` | Prompt for an AI judge (clarity, coverage, and three semantic checks for `api-design`) |
 | `run_eval.py` | Runs each case twice (with and without the skill) |
@@ -15,7 +15,7 @@
 
 ```bash
 python3 evals/run_eval.py --dry-run
-python3 evals/run_eval.py --type blog --lang vi --dry-run
+python3 evals/run_eval.py --type tech-blog --lang vi --dry-run
 ```
 
 Then run it. The script asks you to type `yes`.
@@ -31,8 +31,8 @@ Put API settings in `evals/.env` or the repo root `.env`. Both are ignored by gi
 Score one output:
 
 ```bash
-python3 evals/score.py evals/cases/blog-en.md output.md
-python3 evals/score.py evals/cases/blog-en.md output.md --judge-prompt
+python3 evals/score.py evals/cases/tech-blog-en.md output.md
+python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
 ```
 
 ## Honest limits

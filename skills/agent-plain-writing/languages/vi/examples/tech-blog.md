@@ -1,4 +1,4 @@
-# Ví dụ tiếng Việt: blog chia sẻ
+# Ví dụ tiếng Việt: tech-blog
 
 Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng nằm trong `profile.json`.
 

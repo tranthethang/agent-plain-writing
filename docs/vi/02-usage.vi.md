@@ -5,7 +5,7 @@ Yêu cầu bằng lời thường và đưa một bản tóm tắt đầu vào t
 ```
 Dùng agent-plain-writing để viết hướng dẫn người dùng bằng tiếng Nhật từ ghi chú sau: ...
 Viết lại thiết kế API này bằng tiếng Anh. Dùng mẫu api-design. Ghi TBD cho phần còn thiếu.
-Rút gọn bài blog này. Đoạn văn của tôi đính kèm làm mẫu nhịp câu.
+Rút gọn bài tech-blog này. Đoạn văn của tôi đính kèm làm mẫu nhịp câu.
 ```
 
 Mỗi file trong `skills/agent-plain-writing/doc-types/` liệt kê thông tin AI cần cho loại đó: tóm tắt, ý chính, người đọc, một đoạn văn mẫu của bạn, từ nên dùng hoặc tránh. Bạn đưa càng ít, AI càng phải đoán nhiều.
@@ -22,14 +22,12 @@ Mỗi file trong `skills/agent-plain-writing/doc-types/` liệt kê thông tin A
 
 ## Loại văn bản
 
-| Loại | `--type` | File quy tắc |
-|---|---|---|
-| Bài blog | `blog` | `doc-types/blog.md` |
-| Truyện, tiểu luận | `prose` | `doc-types/prose.md` |
-| Thơ | `poetry` | `doc-types/poetry.md` |
-| Thiết kế API (một endpoint) | `api-design` | `doc-types/api-design.md` |
-| Hướng dẫn người dùng | `guide` | `doc-types/user-guide.md` |
-| Thiết kế màn hình | không có | giữ chỗ, chưa làm |
+| Loại | Nhóm | `--type` | File quy tắc |
+|---|---|---|---|
+| Tech blog | `plain` | `tech-blog` | `doc-types/tech-blog.md` |
+| Tản văn (`essay`) | `creative` | `essay` | `doc-types/essay.md` |
+| Thiết kế API (một endpoint) | `plain` | `api-design` | `doc-types/api-design.md` |
+| Hướng dẫn người dùng | `plain` | `guide` | `doc-types/user-guide.md` |
 
 Với `api-design`, AI dùng một mẫu cố định gồm bảy mục. Khi đề bài thiếu thông tin, AI chỉ ghi `TBD-n` cho chỗ trống mà đề bài nêu tên, hoặc chỗ trống chặn việc triển khai. Mỗi `TBD-n` có một câu hỏi ở mục Open items.
 

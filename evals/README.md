@@ -8,17 +8,17 @@ This directory holds simulated evaluation cases, a mechanical scorer, and an AI 
 
 Each file in `cases/` (`<type>-<lang>.md`) has:
 
-1. Frontmatter with `lang` (`vi`, `en`, `ja`), `type` (`blog`, `api-design`), and `non_tech` (`true` or `false`).
+1. Frontmatter with `lang` (`vi`, `en`, `ja`), `type` (`tech-blog`, `api-design`), and `non_tech` (`true` or `false`).
 2. `# SIMULATED DATA` header.
 3. `## Audience` describing the target reader.
 4. `## Brief`:
-   - For `blog`: `### Summary`, `### Main points`, `### Reader`, `### Voice`, `### Sample paragraph`, `### Words to use or avoid`.
+   - For `tech-blog`: `### Summary`, `### Main points`, `### Reader`, `### Voice`, `### Sample paragraph`, `### Words to use or avoid`.
    - For `api-design`: `### Idea`, `### Business rules`, `### Glossary`. The template is part of the skill, so the brief has no `### Template`.
 5. `## Facts` listing every number and proper name present in the source brief.
 
 ## Adding a case from a real brief
 
-1. Copy an existing case file with the matching type (`blog-*.md` or `api-design-*.md`).
+1. Copy an existing case file with the matching type (`tech-blog-*.md` or `api-design-*.md`).
 2. Remove or replace personal data and customer identifiers.
 3. Set `lang`, `type`, and `non_tech` in the frontmatter.
 4. Fill `## Audience`, `## Brief`, and `## Facts` with the exact numbers and names from your brief.
@@ -39,19 +39,19 @@ Each file in `cases/` (`<type>-<lang>.md`) has:
    ```bash
    python3 evals/run_eval.py --dry-run
    ```
-   Filter by document type and/or language with `--type` (`blog`, `api-design`) and `--lang` (`vi`, `en`, `ja`):
+   Filter by document type and/or language with `--type` (`tech-blog`, `api-design`) and `--lang` (`vi`, `en`, `ja`):
    ```bash
-   python3 evals/run_eval.py --type blog --lang vi --dry-run
+   python3 evals/run_eval.py --type tech-blog --lang vi --dry-run
    ```
 3. Run interactively (type `yes` to confirm):
    ```bash
    python3 evals/run_eval.py
-   python3 evals/run_eval.py --type blog --lang vi
+   python3 evals/run_eval.py --type tech-blog --lang vi
    ```
 3. Outputs and `results.json` are saved under `evals/runs/<timestamp>/` (ignored by git).
 4. To score a single output or print an AI judge prompt:
    ```bash
-   python3 evals/score.py evals/cases/blog-en.md output.md
-   python3 evals/score.py evals/cases/blog-en.md output.md --judge-prompt
+   python3 evals/score.py evals/cases/tech-blog-en.md output.md
+   python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
    ```
 5. `score.py` counts a number as sourced when it appears in the case or equals the item count of one list in the case. For `api-design` it also reports `tbd_ids`, `tbd_without_question` (ids with no `- TBD-n:` line), `tbd_in_code` (ids inside a fenced block), and `tbd_duplicate_questions` (groups of ids that ask the same normalized question). The judge prompt adds `invented_gaps`, `lost_rules` and `repeated_facts` for the semantic checks.

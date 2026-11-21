@@ -23,6 +23,7 @@ skills/agent-plain-writing/
 ### General
 
 - The supported scope for now is `vi`, `en` and `ja`, all in full. A change for one document type covers all three languages.
+- `prose`, `poetry`, and `screen-design` are out of scope; their plans live in `.agent-relay/`.
 - Keep changes small and focused. Do not reformat files you are not changing.
 - `SKILL.md` and everything in `doc-types/` are written in **English**.
 - Examples in `languages/<lang>/examples/` are written in that language. Labels (Bad, Good, Fault, Fix) stay in English.
@@ -33,7 +34,7 @@ skills/agent-plain-writing/
 ### The three language folders stay parallel
 
 - Every language folder has the **same file set**. If you add a file in one, add it in the others (or open a note saying why not).
-- Every `examples/` folder has the same six files: `common.md`, `blog.md`, `prose.md`, `poetry.md`, `api-design.md`, `user-guide.md`.
+- Every `examples/` folder has the same five files: `common.md`, `tech-blog.md`, `essay.md`, `api-design.md`, `user-guide.md`.
 - Each examples file ends with a "Your own samples" section. Keep it.
 
 ### Single sources of truth
@@ -99,7 +100,7 @@ Run these checks by hand for the rest.
    python3 skills/agent-plain-writing/scripts/check_style.py good.md --lang en --type api-design
    ```
 
-2. **Shipped samples.** Extract the last fenced block of each examples file and run the checker with the matching type (`blog`, `prose`, `api-design`, `guide`). Expect no violations.
+2. **Shipped samples.** Extract the last fenced block of each examples file and run the checker with the matching type (`tech-blog`, `essay`, `api-design`, `guide`). Expect no violations.
 3. **Parallel folders.** Compare the file lists of `languages/vi`, `languages/en` and `languages/ja`. They must match.
 4. **Mirrors.** If you changed `profile.json`, check the "Units" table in `README.md`. If you changed `banned.txt`, check that `banned-guide.md` lists the same phrases.
 

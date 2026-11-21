@@ -1,12 +1,11 @@
 ---
 name: agent-plain-writing
-description: "Plain-language writing standard with measurable limits, for Vietnamese (vi), English (en) and Japanese (ja). Use when writing, rewriting or shortening text such as blog posts, fiction and prose, poetry, API design and user guides. Also use when the user says AI writing is wordy, hard to understand or too technical. Viết, viết lại, rút gọn văn bản tiếng Việt, Anh, Nhật. 文章の作成・書き直し・簡潔化 (ブログ、設計書、マニュアル)."
+description: "Plain-language writing standard with measurable limits, for Vietnamese (vi), English (en) and Japanese (ja). Use when writing, rewriting or shortening text such as tech blogs, personal essays, API design and user guides. Also use when the user says AI writing is wordy, hard to understand or too technical. Viết, viết lại, rút gọn văn bản tiếng Việt, Anh, Nhật (blog kỹ thuật, tản văn, tài liệu API, hướng dẫn). 文章の作成・書き直し・簡潔化 (技術ブログ、エッセイ、設計書、マニュアル)."
 ---
 
 # Plain writing
 
-One voice: **short, concrete, understood on first read.**
-Works in Vietnamese (`vi`), English (`en`) and Japanese (`ja`).
+Works in Vietnamese (`vi`), English (`en`) and Japanese (`ja`), grouped into two voice families: `plain` and `creative`.
 
 ## Who owns what
 
@@ -39,38 +38,50 @@ Draft and edit are two passes. Do not try to get it right in the first pass.
 
 ## Choose the document type
 
-| Type | Structure file | `--type` | Typical reader |
-|---|---|---|---|
-| Blog post (sharing experience) | `doc-types/blog.md` | `blog` | Peers |
-| Fiction, essay, scene | `doc-types/prose.md` | `prose` | Readers of literature |
-| Poetry | `doc-types/poetry.md` | `poetry` | Readers of poetry |
-| API design (one endpoint) | `doc-types/api-design.md` | `api-design` | Developers, QA |
-| Screen design | `doc-types/screen-design.md` | none (not done) | Developers, QA |
-| User guide, manual | `doc-types/user-guide.md` | `guide` | General users |
-| Anything else | `languages/<lang>/examples/common.md` | `blog` | Varies |
+| Type | Family | Structure file | `--type` | Typical reader |
+|---|---|---|---|---|
+| Tech blog (sharing technical experience) | `plain` | `doc-types/tech-blog.md` | `tech-blog` | Peers |
+| Essay (personal, reflective) | `creative` | `doc-types/essay.md` | `essay` | General readers |
+| API design (one endpoint) | `plain` | `doc-types/api-design.md` | `api-design` | Developers, QA |
+| User guide, manual | `plain` | `doc-types/user-guide.md` | `guide` | General users |
+| Anything else | `plain` | `languages/<lang>/examples/common.md` | `tech-blog` | Varies |
 
 Always read `languages/<lang>/banned-guide.md` too (banned phrases and what replaces them).
 
-## Core rules (all languages)
+## Core rules (both families, all languages)
 
-Numeric limits are per language and type. They live only in `languages/<lang>/profile.json`.
+These rules hold for every document type:
 
 | # | Rule | Limit |
 |---|---|---|
-| 1 | Sentence length | `sentence` in `profile.json` |
-| 2 | Paragraph length | `paragraph` in `profile.json`, one idea |
-| 3 | One idea per sentence | Two subordinate clauses means split |
-| 4 | Concrete verbs, active voice | "send", not "perform the sending of" |
-| 5 | Banned phrases | Zero hits from `banned.txt` (`[all]` plus the type section) |
-| 6 | Jargon (reader outside the field) | `terms` or `non_tech_terms` in `profile.json`. Explain each term in one sentence, or replace it with an everyday word |
-| 7 | Examples and metaphors | One example or story per section, and a section is one main point |
-| 8 | Evaluative adjectives ("great", "powerful", "beautiful") | Replace with a number or a visible detail |
-| 9 | Opening and closing | Opening: at most 2 sentences, straight to the point. No recap, no empty thanks |
-| 10 | No invention | Add no number, technical spec, or outcome that is not in the source. In `blog` and `prose`, keep human context, reasoning, and reactions grounded in the brief; in specs and guides, write `TBD: <specific question>` or ask |
-| 11 | Consistency | One concept, one name. One register for the whole text |
-| 12 | Length | `length` in `profile.json`, under the type's length policy. Never more than 10% over |
+| 1 | One idea per sentence | Two subordinate clauses means split |
+| 2 | Concrete verbs, active voice | "send", not "perform the sending of" |
+| 3 | Banned phrases | Zero hits from `banned.txt` (`[all]` plus the type section) |
+| 4 | Opening and closing | Opening: at most 2 sentences, straight to the point. No recap, no empty thanks |
+| 5 | No invention | Add no number, technical spec, or outcome that is not in the source. In `tech-blog` and `essay`, keep human context, reasoning, and reactions grounded in the brief; in specs and guides, write `TBD: <specific question>` or ask |
+| 6 | Consistency | One concept, one name. One register for the whole text |
 
-A type file may relax or tighten a core rule (prose allows longer sentences, API design allows more jargon). See "Who owns what" for which file wins.
+## Voice families
+
+Numeric limits are per language and type. They live only in `languages/<lang>/profile.json`. A type file may relax or tighten a rule. See "Who owns what" for which file wins.
+
+### `plain` (`tech-blog`, `api-design`, `guide`)
+
+One voice: **short, concrete, understood on first read.**
+
+- **Sentence length**: `sentence` in `profile.json`.
+- **Paragraph length**: `paragraph` in `profile.json`, one idea.
+- **Jargon (reader outside the field)**: `terms` or `non_tech_terms` in `profile.json`. Explain each term in one sentence, or replace it with an everyday word.
+- **Examples and metaphors**: One example or story per section, and a section is one main point.
+- **Evaluative adjectives** ("great", "powerful", "beautiful"): Replace with a number or a visible detail.
+- **Length**: `length` in `profile.json`, under the type's length policy. Never more than 10% over.
+
+### `creative` (`essay`)
+
+- **Sentence length**: `sentence` in `profile.json`.
+- **Paragraph length**: `paragraph` in `profile.json`, one idea.
+- **Rhythm and imagery**: Owned by `doc-types/essay.md`.
+- **Evaluative adjectives**: None without a visible detail.
 
 **Paragraph form:** Write sentences continuously inside a paragraph—never split every sentence onto its own line (no trailing-space `  \n` line breaks). Sentence rhythm is set by the type file.
 
@@ -90,7 +101,7 @@ Common failure: the AI "translates" every technical detail into plain words. The
 4. Adjectives and adverbs.
 5. Empty opening and closing.
 
-For `blog` and `prose`, keep human context, reasoning, and tension instead of cutting down to a bare fact list.
+For `tech-blog` and `essay`, keep human context, reasoning, and tension instead of cutting down to a bare fact list.
 
 ## When editing existing text
 
@@ -112,16 +123,16 @@ For `blog` and `prose`, keep human context, reasoning, and tension instead of cu
 ## Check with the script
 
 ```
-python3 scripts/check_style.py draft.md --lang en --type blog
+python3 scripts/check_style.py draft.md --lang en --type tech-blog
 python3 scripts/check_style.py spec.md  --lang ja --type api-design
 python3 scripts/check_style.py guide.md --lang vi --type guide
-python3 scripts/check_style.py post.md  --lang en --type blog --non-tech
+python3 scripts/check_style.py post.md  --lang en --type tech-blog --non-tech
 ```
 
-- `--lang`: `vi`, `en`, `ja` (optional if `default_lang` is set in `PLAIN-WRITING.md`). `--type`: `blog`, `prose`, `poetry`, `api-design`, `guide` (`user-guide` also works; defaults to `default_type` in `PLAIN-WRITING.md` or `blog`).
+- `--lang`: `vi`, `en`, `ja` (optional if `default_lang` is set in `PLAIN-WRITING.md`). `--type`: `tech-blog`, `essay`, `api-design`, `guide` (`user-guide` also works; defaults to `default_type` in `PLAIN-WRITING.md` or `tech-blog`).
 - `--config <path>`: path to a `PLAIN-WRITING.md` config file. By default, the script reads `PLAIN-WRITING.md` from the current directory if present.
 - Units differ by language: Vietnamese counts syllables (tiếng), English counts words, Japanese counts characters (字). The unit is set in `profile.json`.
-- The script checks sentence length, paragraph length, banned phrases, jargon count and text length. Text length outside the range is a warning, not a violation. It does **not** judge whether the voice is good, and it does not check rhyme or meter.
+- The script checks sentence length, paragraph length, banned phrases, jargon count and text length. Text length outside the range is a warning, not a violation. It does **not** judge whether the voice is good.
 - Edit `banned.txt` and `terms.txt` in the language folder to fit your needs.
 
 ## Extend the skill

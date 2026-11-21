@@ -20,12 +20,12 @@ Words such as "clear" or "friendly" in a prompt do not fix this. The skill uses 
 ## What is in it
 
 - **Core rules and workflow** in `SKILL.md` (12 rules, draft then edit).
-- **Five document types:** blog, prose, poetry, API design, user guide. Each has a file in `doc-types/` for voice, structure and length.
+- **Four document types in two voice families:** `plain` (`tech-blog`, `api-design`, `guide`) and `creative` (`essay`). Each has a file in `doc-types/` for voice, structure and length.
 - **Three language folders** with the unit, numeric limits, banned phrases, jargon list and examples.
 - **A checker script**, `check_style.py` (Python 3.7+, standard library only).
 - **An eval kit** in `evals/` (see [05-evals](05-evals.en.md)).
 
-Screen design is a stub. It is not done.
+`prose`, `poetry`, and `screen-design` are out of scope for now.
 
 ## Who owns which rule
 
@@ -52,7 +52,7 @@ On limits and structure, `doc-types` wins over `SKILL.md`. On words and grammar,
 ├── evals/                    # cases, scorer, judge prompt, runner
 └── skills/agent-plain-writing/
     ├── SKILL.md
-    ├── doc-types/            # blog, prose, poetry, api-design, user-guide, screen-design (stub)
+    ├── doc-types/            # tech-blog, essay, api-design, user-guide
     ├── languages/{vi,en,ja}/ # profile.json, profile.md, banned.txt, banned-guide.md,
     │                         # terms.txt, examples/
     ├── templates/PLAIN-WRITING.example.md

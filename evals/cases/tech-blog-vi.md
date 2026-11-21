@@ -1,6 +1,6 @@
 ---
 lang: vi
-type: blog
+type: tech-blog
 non_tech: false
 ---
 

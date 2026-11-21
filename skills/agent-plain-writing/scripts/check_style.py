@@ -2,10 +2,10 @@
 """Plain-writing checker for Vietnamese (vi), English (en) and Japanese (ja).
 
 Usage:
-    python3 scripts/check_style.py draft.md --lang en --type blog
+    python3 scripts/check_style.py draft.md --lang en --type tech-blog
     python3 scripts/check_style.py spec.md  --lang ja --type api-design
     python3 scripts/check_style.py guide.md --lang vi --type guide
-    python3 scripts/check_style.py post.md  --lang en --type blog --non-tech
+    python3 scripts/check_style.py post.md  --lang en --type tech-blog --non-tech
 
 Limits, banned phrases and jargon lists come from languages/<lang>/.
 Exit code: 0 = clean, 1 = violations, 2 = usage error.
@@ -209,7 +209,7 @@ def main():
     ap.add_argument("file")
     ap.add_argument("--lang", default=None, choices=langs)
     ap.add_argument("--type", dest="doc_type", default=None,
-                    help="blog, prose, poetry, api-design, guide")
+                    help="tech-blog, essay, api-design, guide")
     ap.add_argument("--non-tech", action="store_true",
                     help="limit jargon (reader is outside the field)")
     ap.add_argument("--config", default=None,
@@ -228,7 +228,7 @@ def main():
         print(f"Unknown lang '{lang}'. Use: {', '.join(langs)}", file=sys.stderr)
         return 2
 
-    raw_type = args.doc_type or proj.get("default_type") or "blog"
+    raw_type = args.doc_type or proj.get("default_type") or "tech-blog"
     doc_type = TYPE_ALIASES.get(raw_type, raw_type)
     prof = load_profile(lang)
     if doc_type not in prof["types"]:

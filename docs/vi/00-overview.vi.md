@@ -20,12 +20,12 @@ Thêm chữ "rõ ràng" hay "thân thiện" vào prompt không sửa được. S
 ## Gồm những gì
 
 - **Quy tắc lõi và quy trình** trong `SKILL.md` (12 quy tắc, viết nháp rồi sửa).
-- **Năm loại văn bản:** blog, văn xuôi, thơ, thiết kế API, hướng dẫn người dùng. Mỗi loại có một file trong `doc-types/` về giọng văn, cấu trúc và độ dài.
+- **Bốn loại văn bản trong hai nhóm giọng văn:** `plain` (`tech-blog`, `api-design`, `guide`) và `creative` (`essay`). Mỗi loại có một file trong `doc-types/` về giọng văn, cấu trúc và độ dài.
 - **Ba thư mục ngôn ngữ** chứa đơn vị đếm, giới hạn số, cụm từ cấm, danh sách thuật ngữ và ví dụ.
 - **Một script kiểm tra**, `check_style.py` (Python 3.7+, chỉ dùng thư viện chuẩn).
 - **Bộ eval** trong `evals/` (xem [05-evals](05-evals.vi.md)).
 
-Thiết kế màn hình mới là file giữ chỗ. Chưa làm.
+`prose`, `poetry` và `screen-design` hiện nằm ngoài phạm vi.
 
 ## Ai sở hữu quy tắc nào
 
@@ -52,7 +52,7 @@ Về giới hạn và cấu trúc, `doc-types` thắng `SKILL.md`. Về từ ng�
 ├── evals/                    # ca thử, bộ chấm, prompt giám khảo, bộ chạy
 └── skills/agent-plain-writing/
     ├── SKILL.md
-    ├── doc-types/            # blog, prose, poetry, api-design, user-guide, screen-design (giữ chỗ)
+    ├── doc-types/            # tech-blog, essay, api-design, user-guide
     ├── languages/{vi,en,ja}/ # profile.json, profile.md, banned.txt, banned-guide.md,
     │                         # terms.txt, examples/
     ├── templates/PLAIN-WRITING.example.md

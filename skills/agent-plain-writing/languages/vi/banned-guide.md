@@ -42,7 +42,7 @@ Danh sách máy đọc nằm ở `banned.txt` cùng thư mục. File này giải
 | thực hiện, tiến hành | động từ cụ thể: bấm, chọn, nhập |
 | cấu hình | cài đặt, thiết lập |
 
-## Cụm của blog
+## Cụm của tech-blog và essay
 
 | Cụm | Thay bằng |
 |---|---|
@@ -54,24 +54,6 @@ Danh sách máy đọc nằm ở `banned.txt` cùng thư mục. File này giải
 | tận dụng | dùng |
 | trong quá trình | khi |
 | nhìn chung, tóm lại | (bỏ). Đừng tóm tắt lại điều vừa nói |
-
-## Cụm của prose
-
-| Cụm | Thay bằng |
-|---|---|
-| trái tim loạn nhịp, thời gian như ngừng trôi, nước mắt lăn dài, một cảm giác khó tả, nỗi buồn bao trùm, ánh mắt sâu thẳm, tim như thắt lại | một hành động hoặc chi tiết nhìn thấy được |
-| vô cùng | (bỏ) hoặc số liệu |
-| mạnh mẽ | số liệu hoặc việc nó làm được |
-| tận dụng | dùng |
-| trong quá trình | khi |
-| nhìn chung, tóm lại | (bỏ) |
-
-## Cụm của poetry
-
-| Cụm | Thay bằng |
-|---|---|
-| tràn về, lặng lẽ, mênh mang, nao nao, bồi hồi, thổn thức | một hình ảnh cụ thể: vật, tiếng động, cử chỉ |
-| con tim, nỗi nhớ, tâm hồn, cuộc đời | tên vật hoặc việc làm gợi ra cảm xúc đó |
 
 ## Nhãn báo cáo (3 dòng đầu hoặc 3 dòng cuối)
 

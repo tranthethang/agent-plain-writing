@@ -1,0 +1,49 @@
+# English examples: essay
+
+Details in the stories are made up to serve as models. In real work, use the author's own story.
+
+## Bad → good pairs
+
+### 1. Meta-report opening
+
+**Bad:** I am writing this blog to reflect on what moving to a new city taught me about patience.
+**Good:** My blue suitcase sat in the corner of the rented room, its broken zipper still tied with a piece of twine from home.
+**Fault:** Opens with a meta-report about why the author is writing.
+**Fix:** Start directly in the scene with a concrete object.
+
+### 2. Naming a feeling
+
+**Bad:** Standing on the empty platform, I felt an overwhelming sense of loneliness and anxiety.
+**Good:** Two plastic chairs remained on the platform. I held a cup of iced tea whose ice had melted, cold water dripping between my fingers.
+**Fault:** Names the feeling ("loneliness", "anxiety") instead of showing it.
+**Fix:** Replace the label with a physical, observable detail.
+
+### 3. Closing lesson
+
+**Bad:** Lesson learned: sometimes we have to let go of the past before we can move forward.
+**Good:** I untied the twine from the zipper, dropped it into the desk drawer, and pushed the window open to the rain.
+**Fault:** Uses a `Lesson learned:` label and explains the meaning.
+**Fix:** End on one concrete action or image.
+
+### 4. Empty evaluative adjective
+
+**Bad:** That morning was truly wonderful and unforgettable as my whole family sat down to eat together.
+**Good:** At seven in the morning, steam rose from a pot of sour fish soup in the center of the table. My father placed the best piece in my bowl before lifting his own chopsticks.
+**Fault:** Uses evaluative adjectives ("wonderful", "unforgettable") without visible detail.
+**Fix:** Show the moment through specific action and sensory detail.
+
+## Complete sample (`essay`)
+
+```markdown
+My blue suitcase sat in the corner of the rented room, its broken zipper still tied with a piece of twine from home. September rain blew through the wooden slats, dampening one edge of the new reed mat. I sat on the bed frame and listened to scooters splashing down the alley outside.
+
+Three days before the bus left, my father fixed our old desk fan and packed it into a cardboard box. He said nothing about tuition, only told me to swap the fuse if the motor ran hot. As the bus pulled out, I caught sight of him behind the station fence, an oily rag still in his hand.
+
+This afternoon, the only sound inside the room was a slow drip from the sink. I opened the cardboard box and plugged the fan into the wall. The blades turned twice, stalled, then spun steady, pushing the smell of warm dust and machine oil across the narrow floor.
+
+I untied the twine from the suitcase zipper, coiled it into the desk drawer, and pushed the window wide open.
+```
+
+## Your own samples
+
+Add your own Bad → good pairs here.

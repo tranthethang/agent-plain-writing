@@ -1,4 +1,4 @@
-# English examples: blog post
+# English examples: tech-blog
 
 Details in the stories are made up to serve as models. In real work, use the author's own story.
 

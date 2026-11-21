@@ -32,26 +32,13 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | 実施、〜を行う | a concrete verb: タップする、選ぶ、入力する |
 | 設定を行う | 設定する |
 
-## Phrases of blog
+## Phrases of tech-blog and essay
 
 | Phrase | Use instead |
 |---|---|
 | この記事を書いた | open with the event or conclusion directly |
 | 学んだこと：, 注意点： | weave the point into the paragraph, no label |
 | と言えるでしょう / と言えます / ではないでしょうか | state the claim, or state the evidence (「重要と言えるでしょう」→ say why it matters) |
-
-## Phrases of prose
-
-| Phrase | Use instead |
-|---|---|
-| 胸が高鳴、時が止まっ、言葉にできない、心が張り裂け、瞳が輝 | one visible action or detail |
-| と言えるでしょう / と言えます / ではないでしょうか | state the claim, or delete |
-
-## Phrases of poetry
-
-| Phrase | Use instead |
-|---|---|
-| 胸が締めつけ、胸が締め付け、涙があふれ、涙が溢れ、心の奥、永遠に | one concrete image: an object, a sound, a gesture |
 
 ## Report labels (first or last 3 lines)
 

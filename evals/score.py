@@ -2,8 +2,8 @@
 """Mechanical scorer and judge-prompt builder for agent-plain-writing evals.
 
 Usage:
-    python3 evals/score.py evals/cases/blog-en.md output.md
-    python3 evals/score.py evals/cases/blog-en.md output.md --judge-prompt
+    python3 evals/score.py evals/cases/tech-blog-en.md output.md
+    python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
 """
 import argparse
 import json
@@ -23,7 +23,7 @@ import check_style  # noqa: E402
 
 def parse_case_meta(case_text):
     """Extract lang, type, and non_tech from case frontmatter."""
-    meta = {"lang": "en", "type": "blog", "non_tech": False}
+    meta = {"lang": "en", "type": "tech-blog", "non_tech": False}
     m = re.match(r"\A---\s*\n(.*?)\n---\s*\n", case_text, flags=re.S)
     if not m:
         return meta

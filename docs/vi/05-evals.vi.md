@@ -4,7 +4,7 @@
 
 | File | Vai trò |
 |---|---|
-| `cases/` | 6 ca: `blog` và `api-design`, mỗi loại có `vi`, `en`, `ja`. Mọi dữ liệu đều là giả lập |
+| `cases/` | 6 ca: `tech-blog` và `api-design`, mỗi loại có `vi`, `en`, `ja`. Mọi dữ liệu đều là giả lập |
 | `score.py` | Bộ chấm cơ học. Đếm số không có trong ca, và với `api-design` còn báo `tbd_ids`, `tbd_without_question`, `tbd_in_code` và `tbd_duplicate_questions` |
 | `judge-prompt.md` | Prompt cho AI giám khảo (độ rõ, độ đủ ý, và ba kiểm tra ngữ nghĩa cho `api-design`) |
 | `run_eval.py` | Chạy mỗi ca hai lần (có skill và không có skill) |
@@ -15,7 +15,7 @@
 
 ```bash
 python3 evals/run_eval.py --dry-run
-python3 evals/run_eval.py --type blog --lang vi --dry-run
+python3 evals/run_eval.py --type tech-blog --lang vi --dry-run
 ```
 
 Sau đó chạy thật. Script yêu cầu bạn gõ `yes`.
@@ -31,8 +31,8 @@ python3 evals/run_eval.py --tool antigravity
 Chấm một đầu ra:
 
 ```bash
-python3 evals/score.py evals/cases/blog-en.md output.md
-python3 evals/score.py evals/cases/blog-en.md output.md --judge-prompt
+python3 evals/score.py evals/cases/tech-blog-en.md output.md
+python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
 ```
 
 ## Giới hạn trung thực

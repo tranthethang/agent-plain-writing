@@ -22,14 +22,12 @@ agent-plain-writing を使って、このメモから日本語のユーザーガ
 
 ## 文書タイプ
 
-| タイプ | `--type` | ルールファイル |
-|---|---|---|
-| ブログ記事 | `blog` | `doc-types/blog.md` |
-| 小説、エッセイ | `prose` | `doc-types/prose.md` |
-| 詩 | `poetry` | `doc-types/poetry.md` |
-| API 設計（1 エンドポイント） | `api-design` | `doc-types/api-design.md` |
-| ユーザーガイド | `guide` | `doc-types/user-guide.md` |
-| 画面設計 | なし | 仮のファイル、未完成 |
+| タイプ | ファミリー | `--type` | ルールファイル |
+|---|---|---|---|
+| 技術ブログ (`tech-blog`) | `plain` | `tech-blog` | `doc-types/tech-blog.md` |
+| エッセイ (`essay`) | `creative` | `essay` | `doc-types/essay.md` |
+| API 設計（1 エンドポイント） | `plain` | `api-design` | `doc-types/api-design.md` |
+| ユーザーガイド | `plain` | `guide` | `doc-types/user-guide.md` |
 
 `api-design` では、AI は 7 セクションの固定テンプレートを使います。ブリーフに事実が足りないとき、`TBD-n` を書くのは、ブリーフが名指しした空白か、実装を妨げる空白だけです。各 `TBD-n` には、Open items に質問が 1 つ対応します。
 

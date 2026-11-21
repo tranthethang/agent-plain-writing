@@ -8,10 +8,9 @@
   "boundary": true,
   "non_tech_terms": 3,
   "types": {
-    "blog":   {"sentence": 20,   "paragraph": 3,    "length": [600, 800], "terms": null},
-    "prose":  {"sentence": 30,   "paragraph": 6,    "length": null,       "terms": null},
-    "poetry": {"sentence": null, "paragraph": null, "length": null,       "terms": null},
+    "tech-blog":  {"sentence": 20,   "paragraph": 3,    "length": [600, 800], "terms": null},
+    "essay":      {"sentence": 30,   "paragraph": 6,    "length": null,       "terms": null},
     "api-design": {"sentence": 18,   "paragraph": 3,    "length": null,       "terms": null},
-    "guide":  {"sentence": 12,   "paragraph": 3,    "length": null,       "terms": 3}
+    "guide":      {"sentence": 12,   "paragraph": 3,    "length": null,       "terms": 3}
   }
 }

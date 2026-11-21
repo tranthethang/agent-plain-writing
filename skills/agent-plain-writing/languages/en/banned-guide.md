@@ -38,7 +38,7 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | carry out, perform the, perform a | a concrete verb: click, select, enter. "perform the validation" → "validate" |
 | configure | set up, change the settings |
 
-## Phrases of blog
+## Phrases of tech-blog and essay
 
 | Phrase | Use instead |
 |---|---|
@@ -46,21 +46,6 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | lesson learned:, lesson:, key takeaway: | weave the point into the narrative, no label |
 | utilize, leverage | use |
 | in conclusion, to sum up | (delete). Do not recap |
-
-## Phrases of prose
-
-| Phrase | Use instead |
-|---|---|
-| heart pounded, heart skipped a beat, time stood still, shiver ran, breath she didn't know, breath he didn't know, eyes sparkled, orbs | one visible action or detail |
-| utilize, leverage | use |
-| in conclusion, to sum up | (delete) |
-
-## Phrases of poetry
-
-| Phrase | Use instead |
-|---|---|
-| tapestry, whisper, echoes of, ethereal | one concrete image: an object, a sound, a gesture |
-| heart aflutter, silent tears, tears fell, dark night of the soul | the action or object that carries the feeling |
 
 ## Report labels (first or last 3 lines)
 
