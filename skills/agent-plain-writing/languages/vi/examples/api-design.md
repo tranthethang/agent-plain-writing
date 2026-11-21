@@ -46,11 +46,11 @@ Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng
 **Bad:** API nhận vào các thông tin cần thiết như mã giỏ hàng, phương thức thanh toán và ghi chú nếu có.
 **Good:**
 
-| Trường | Kiểu | Bắt buộc | Ràng buộc |
-|---|---|---|---|
-| `cart_id` | uuid | Có | Giỏ phải thuộc người gọi |
-| `payment_method` | enum | Có | `card`, `cod` |
-| `note` | string | Không | ≤ 200 ký tự |
+| Trường | Hướng | Kiểu | Bắt buộc | Ràng buộc |
+|---|---|---|---|---|
+| `cart_id` | Request | uuid | Có | Giỏ phải thuộc người gọi |
+| `payment_method` | Request | enum | Có | `card`, `cod` |
+| `note` | Request | string | Không | ≤ 200 ký tự |
 
 ### 8. "v.v."
 
@@ -71,16 +71,16 @@ Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng
 ### 11. Lỗi liệt kê hai lần
 
 **Bad:** Bước 2 của Xử lý ghi "trả 409 `ROOM_TAKEN` khi phòng đã có người đặt". Bảng Lỗi ghi lại điều đó bằng lời khác.
-**Good:** Bước 2 ghi "Nếu phòng đã có người đặt, dừng và trả lỗi `ROOM_TAKEN`." Chỉ bảng Lỗi nêu mã HTTP 409 và điều kiện.
+**Good:** Xử lý không nhắc đến phòng đã có người đặt. Bảng Lỗi có một dòng: 409, `ROOM_TAKEN`, "Một lượt đặt khác trùng khung giờ".
 **Fault:** Hai nơi giữ một sự thật sẽ lệch nhau.
-**Fix:** Xử lý chỉ gọi tên mã. Bảng Lỗi giữ mã HTTP và điều kiện.
+**Fix:** Bảng Lỗi giữ mọi phép kiểm tra: điều kiện, mã HTTP và mã lỗi. Xử lý không liệt kê phép kiểm tra nào.
 
 ### 12. Phân quyền ghi ba lần
 
-**Bad:** Danh tính ghi "chỉ staff". Bước 1 của Xử lý ghi "kiểm tra người gọi là staff". Bảng Lỗi ghi "403 khi người gọi không phải staff, như trên".
-**Good:** Danh tính ghi "Phân quyền: role `admin` và `staff`." Bảng Lỗi ghi `403 FORBIDDEN` với điều kiện "người gọi có role khác". Xử lý không nhắc đến role.
+**Bad:** Thông tin chung ghi "chỉ staff". Bước 1 của Xử lý ghi "kiểm tra người gọi là staff". Bảng Lỗi ghi "403 khi người gọi không phải staff, như trên".
+**Good:** Thông tin chung ghi "Phân quyền: role `admin` và `staff`." Bảng Lỗi ghi `403 FORBIDDEN` với điều kiện "người gọi có role khác". Xử lý không nhắc đến role.
 **Fault:** Ba nơi nêu một quy tắc.
-**Fix:** Danh tính giữ quy tắc. Bảng Lỗi giữ trường hợp thất bại.
+**Fix:** Thông tin chung giữ quy tắc. Bảng Lỗi giữ trường hợp thất bại.
 
 ### 13. "Giống các API cùng nhóm"
 
@@ -92,13 +92,9 @@ Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng
 ### 14. Quy tắc nghiệp vụ không có thứ tự bước
 
 **Bad:** Hệ thống kiểm tra trùng lịch, giờ mở cửa và hạn mức khi tạo lượt đặt.
-**Good:**
-1. Hệ thống kiểm tra khung giờ nằm trong giờ mở cửa.
-2. Hệ thống kiểm tra không có lượt đặt nào trùng khung giờ.
-3. Hệ thống kiểm tra người gọi chưa vượt hạn mức trong ngày.
-4. Hệ thống lưu lượt đặt.
+**Good:** Thứ tự kiểm tra: giờ mở cửa, trùng lịch, hạn mức trong ngày. Khi hai phép kiểm tra cùng thất bại, phép đầu tiên theo thứ tự này quyết định lỗi.
 **Fault:** Người đọc không biết lỗi nào trả trước khi hai bước cùng thất bại.
-**Fix:** Đánh số các bước khi brief nêu rõ thứ tự; nếu chưa rõ, dùng gạch đầu dòng và ghi thứ tự ưu tiên là `TBD-1`, kèm `- TBD-1: thứ tự ưu tiên khi hai bước cùng lỗi?` ở mục còn mở.
+**Fix:** Ghi một dòng thứ tự và một dòng ưu tiên lỗi trong Xử lý. Khi brief chưa nêu thứ tự, ghi `TBD-1` kèm `- TBD-1: thứ tự kiểm tra và lỗi ưu tiên khi hai bước cùng lỗi?` ở mục còn mở.
 
 ### 15. Danh sách rỗng không có quy tắc
 
@@ -113,20 +109,20 @@ Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng
 **Good:** Bước đánh số trước, rồi một khối Mermaid cho cùng thứ tự:
 
 ````markdown
-1. Hệ thống kiểm tra khung giờ nằm trong giờ mở cửa.
-2. Hệ thống kiểm tra không có lượt đặt nào trùng khung giờ.
-3. Hệ thống lưu lượt đặt.
+1. Hệ thống tạo `reservation_id`.
+2. Hệ thống tính `ends_at` từ `starts_at` và `minutes`.
+3. Hệ thống lưu lượt đặt với trạng thái `CONFIRMED`.
 
 ```mermaid
 sequenceDiagram
     Client->>API: POST /v1/reservations
-    API->>API: kiểm tra giờ mở cửa và trùng lịch
-    API->>API: lưu lượt đặt
-    API-->>Client: 201
+    API->>API: tạo id và tính giờ kết thúc
+    API->>DB: lưu lượt đặt
+    API-->>Client: phản hồi
 ```
 ````
 
-**Fault:** Sơ đồ chứa quy tắc mà các bước không nêu.
+**Fault:** Sơ đồ chứa hành vi mà các bước không nêu.
 **Fix:** Các bước giữ quy tắc. Sơ đồ chỉ cho thấy thứ tự.
 
 ### 17. Dùng TBD-n cho kiểu đã biết từ bảng thuật ngữ
@@ -135,25 +131,34 @@ sequenceDiagram
 
 **Bad:**
 
-| Trường | Kiểu | Bắt buộc | Ràng buộc |
-|---|---|---|---|
-| `title` | `TBD-1` | Có | — |
+| Trường | Hướng | Kiểu | Bắt buộc | Ràng buộc |
+|---|---|---|---|---|
+| `title` | Request | `TBD-1` | Có | — |
 
 **Good:**
 
-| Trường | Kiểu | Bắt buộc | Ràng buộc |
-|---|---|---|---|
-| `title` | string | Có | — |
+| Trường | Hướng | Kiểu | Bắt buộc | Ràng buộc |
+|---|---|---|---|---|
+| `title` | Request | string | Có | — |
 
 **Fault:** Mở `TBD-n` cho kiểu của trường mà bảng thuật ngữ đã mô tả là văn bản.
 **Fix:** Khi bảng thuật ngữ mô tả trường là văn bản (như tiêu đề, nội dung, tên, phần URL), ghi `string` và không mở `TBD-n`.
+
+### 18. TBD-n hỏi điều quy tắc đã nêu
+
+(Brief nêu: `date` phải là ngày ở tương lai, và thiếu `date` chưa có mã lỗi.)
+
+**Bad:** `- TBD-1: ngày có phải ở tương lai không?`
+**Good:** `- TBD-1: hệ thống trả mã HTTP và mã lỗi nào khi thiếu `date`?`
+**Fault:** Câu hỏi lặp lại quy tắc đã nêu và bỏ qua quyết định brief còn thiếu.
+**Fix:** `TBD-n` hỏi quyết định còn thiếu, ở đây là lỗi khi thiếu `date`.
 
 ## Mẫu API điền hoàn chỉnh
 
 Khuôn tham khảo. Cấu trúc nằm trong `doc-types/api-design.md`.
 
 ````markdown
-## Danh tính
+## Thông tin chung
 
 - Method và path: `POST /v1/reservations`
 - Mục đích: tạo lượt đặt cho một phòng họp.
@@ -163,14 +168,15 @@ Khuôn tham khảo. Cấu trúc nằm trong `doc-types/api-design.md`.
 
 ## DTO và ánh xạ trường
 
-| Trường | Kiểu | Bắt buộc | Ràng buộc |
-|---|---|---|---|
-| `room_id` | uuid | Có | Phòng phải tồn tại |
-| `starts_at` | datetime | Có | Giờ bắt đầu phải ở tương lai; đặt trước tối đa `TBD-1` ngày |
-| `minutes` | integer | Có | 30 đến 240, bước 30 |
-| `note` | string | Không | ≤ 200 ký tự |
-
-Trường trả về: `reservation_id` (uuid), `status` (string), `ends_at` (datetime).
+| Trường | Hướng | Kiểu | Bắt buộc | Ràng buộc |
+|---|---|---|---|---|
+| `room_id` | Request | uuid | Có | Phòng phải tồn tại |
+| `starts_at` | Request | datetime | Có | Giờ bắt đầu phải ở tương lai; đặt trước tối đa `TBD-1` ngày |
+| `minutes` | Request | integer | Có | 30 đến 240, bước 30 |
+| `note` | Request | string | Không | ≤ 200 ký tự |
+| `reservation_id` | Response | uuid | — | — |
+| `status` | Response | string | — | — |
+| `ends_at` | Response | datetime | — | — |
 
 ## Endpoint
 
@@ -184,17 +190,11 @@ Response, status 201:
 
 ## Xử lý
 
-1. Hệ thống kiểm tra khung giờ nằm trong giờ mở cửa.
-2. Hệ thống kiểm tra không có lượt đặt nào trùng khung giờ. Nếu có, dừng với `ROOM_TAKEN`.
+1. Hệ thống tạo `reservation_id`.
+2. Hệ thống tính `ends_at` từ `starts_at` và `minutes`.
 3. Hệ thống lưu lượt đặt với trạng thái `CONFIRMED`.
 
-```mermaid
-sequenceDiagram
-    Client->>API: POST /v1/reservations
-    API->>API: kiểm tra giờ mở cửa và trùng lịch
-    API->>API: lưu lượt đặt
-    API-->>Client: 201
-```
+Thứ tự kiểm tra: giờ mở cửa, rồi trùng lịch. Khi hai phép kiểm tra cùng thất bại, phép đầu tiên theo thứ tự này quyết định lỗi.
 
 ## Lỗi
 
@@ -204,7 +204,7 @@ sequenceDiagram
 | 403 | `FORBIDDEN` | Người gọi có role khác |
 | 409 | `ROOM_TAKEN` | Một lượt đặt khác trùng khung giờ |
 
-## Tác dụng phụ
+## Tác động kèm theo
 
 Hệ thống ghi một bản ghi audit cho mỗi lượt đặt được lưu.
 

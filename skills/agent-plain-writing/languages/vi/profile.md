@@ -37,6 +37,14 @@ Dùng trong bảng trường của API. Nhãn theo ngôn ngữ của tài liệu
 | Không bắt buộc | Không |
 | Theo điều kiện | Có điều kiện (<quy tắc>) |
 
+Nhãn cột Hướng: `Request`, `Response`.
+
+Nhãn cho mục Tác động kèm theo khi không có tác động: `Không có`.
+
+## Tên mục của mẫu API (tiếng Việt)
+
+Mục Identity là "Thông tin chung". Mục Side effects là "Tác động kèm theo".
+
 ## Thuật ngữ
 
 - Người đọc là dev: giữ nguyên tên kỹ thuật tiếng Anh (API, token, cache). Một khái niệm một tên.
