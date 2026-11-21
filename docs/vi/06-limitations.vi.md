@@ -5,7 +5,7 @@
 - **Tiếng Nhật chưa có người bản ngữ duyệt.** Phần `ja` do AI cải thiện. Văn phong (です・ます調, だ・である調, hoặc である調 / 常体 theo loại), từ chỉ mức bắt buộc và các cặp ví dụ cần người bản ngữ duyệt trước khi dùng thật.
 - **Ví dụ chỉ để minh họa.** Câu chuyện và con số trong `examples/` không phải sự thật. Khi làm việc thật, dùng dữ kiện của tác giả hoặc ghi `TBD`.
 - **Chưa có bằng chứng về hiệu quả.** Xem [05-evals](05-evals.vi.md). Bộ eval nhỏ. Bằng chứng hiện có là một lần chạy, xem [evidence/](../../evidence/README.md).
-- **Test tự động còn ít.** Test chỉ phủ phần thống kê `TBD-n` trong `evals/score.py` (`python3 -m unittest discover -s tests`). `AGENTS.md` liệt kê các bước kiểm tra thủ công cho phần còn lại.
+- **Test tự động còn ít.** Test phủ thống kê `TBD-n` trong `evals/score.py`, bộ loại tài liệu, loại mặc định của checker và bảng Units (`python3 -m unittest discover -s tests`). `AGENTS.md` liệt kê các bước kiểm tra thủ công cho phần còn lại.
 - **Các loại ngoài phạm vi.** `prose`, `poetry` và `screen-design` hiện nằm ngoài phạm vi.
 
 ## Đóng góp

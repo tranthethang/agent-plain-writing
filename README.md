@@ -17,7 +17,7 @@ It gives the AI limits it can count (sentence length, paragraph length, banned p
 - The numeric limits are starting estimates, not verified standards.
 - The Japanese content has no native review yet.
 - The evidence is small: one eval run, 6 simulated cases, mechanical scores only. See [Evidence](#evidence).
-- Automated tests cover only the `TBD-n` statistics in `evals/score.py`. Run them with `python3 -m unittest discover -s tests`. `AGENTS.md` lists the manual checks for the rest.
+- Automated tests cover the `TBD-n` statistics in `evals/score.py`, the document-type set, the checker default type and the Units table. Run them with `python3 -m unittest discover -s tests`. `AGENTS.md` lists the manual checks for the rest.
 
 ## Quick start
 

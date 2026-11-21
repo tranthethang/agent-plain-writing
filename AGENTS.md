@@ -85,7 +85,7 @@ Each fact has one owner. Other files point to the owner and do not restate the f
 
 ## Verify your change
 
-Automated tests live in `tests/` and use the standard library only. They cover the `TBD-n` statistics in `evals/score.py`. Run them from the repository root:
+Automated tests live in `tests/` and use the standard library only. They cover the `TBD-n` statistics in `evals/score.py`, the document-type set, the checker default type, and the "Units" table in `README.md`. Run them from the repository root:
 
 ```bash
 python3 -m unittest discover -s tests
