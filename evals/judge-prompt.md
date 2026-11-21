@@ -19,9 +19,25 @@ You are an impartial writing evaluator. Score the candidate output against the s
 
 For an `api-design` output, list each hit in the matching key. Leave the list empty when there is none.
 
-- **invented_gaps**: a `TBD-n` question about a gap the brief does not name and that does not block implementation.
+- **invented_gaps**: a `TBD-n` question about a case that no brief rule touches and that does not block implementation. A `TBD-n` for two conflicting rules, or for a rule that lacks its input, is not an invented gap.
 - **lost_rules**: a business rule from the brief that appears nowhere outside the Errors table.
 - **repeated_facts**: the same fact written in two sections.
+- **misframed_tbd**: a `TBD-n` that asks a question a stated rule already implies, or that misses the real decision.
+- **template_violations**: a section out of order, a DTO table without the columns Field, Direction, Type, Required, Constraint, a Processing step that restates a check, or Side effects text other than the `None` label when the brief states no side effect.
+
+## Semantic checks (tech-blog)
+
+For a `tech-blog` output, list each hit in the matching key. Leave the list empty when there is none.
+
+- **narrator_shift**: the narrator changes person (for example, first to third) partway through.
+- **lost_causal_link**: a claim that lost the sentence explaining cause, change and result.
+- **mismatched_comparison**: two numbers with different units or time periods placed next to each other as a comparison.
+
+## Semantic checks (essay)
+
+For an `essay` output, list each hit in the matching key. Leave the list empty when there is none.
+
+- **explained_ending**: a closing sentence that names the feeling after the action already showed it.
 
 ## Output format
 
@@ -35,6 +51,12 @@ Return JSON only. Do not include markdown fences or extra text.
   "invented_gaps": [],
   "lost_rules": [],
   "repeated_facts": [],
+  "misframed_tbd": [],
+  "template_violations": [],
+  "narrator_shift": [],
+  "lost_causal_link": [],
+  "mismatched_comparison": [],
+  "explained_ending": [],
   "notes": "one-sentence reason"
 }
 ```
