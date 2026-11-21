@@ -19,7 +19,7 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | furthermore, moreover *(warn)* | (delete), or use a heading | |
 | very, really | (delete), or give a number | |
 
-## Vague words in detail design
+## Vague words in API design
 
 | Word | Use instead |
 |---|---|

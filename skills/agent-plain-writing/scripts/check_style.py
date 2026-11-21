@@ -3,7 +3,7 @@
 
 Usage:
     python3 scripts/check_style.py draft.md --lang en --type blog
-    python3 scripts/check_style.py spec.md  --lang ja --type design
+    python3 scripts/check_style.py spec.md  --lang ja --type api-design
     python3 scripts/check_style.py guide.md --lang vi --type guide
     python3 scripts/check_style.py post.md  --lang en --type blog --non-tech
 
@@ -22,7 +22,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 LANG_DIR = ROOT / "languages"
-TYPE_ALIASES = {"detail-design": "design", "user-guide": "guide"}
+TYPE_ALIASES = {"user-guide": "guide"}
 
 
 def available_langs():
@@ -40,7 +40,7 @@ def load_banned(lang, doc_type):
         line = line.strip()
         if not line or line.startswith("#"):
             continue
-        m = re.fullmatch(r"\[(\w+)\]", line)
+        m = re.fullmatch(r"\[([\w-]+)\]", line)
         if m:
             section = m.group(1)
             continue
@@ -58,7 +58,7 @@ def load_report_labels(lang):
         line = line.strip()
         if not line or line.startswith("#"):
             continue
-        m = re.fullmatch(r"\[(\w+)\]", line)
+        m = re.fullmatch(r"\[([\w-]+)\]", line)
         if m:
             section = m.group(1)
             continue
@@ -209,7 +209,7 @@ def main():
     ap.add_argument("file")
     ap.add_argument("--lang", default=None, choices=langs)
     ap.add_argument("--type", dest="doc_type", default=None,
-                    help="blog, prose, poetry, design, guide")
+                    help="blog, prose, poetry, api-design, guide")
     ap.add_argument("--non-tech", action="store_true",
                     help="limit jargon (reader is outside the field)")
     ap.add_argument("--config", default=None,

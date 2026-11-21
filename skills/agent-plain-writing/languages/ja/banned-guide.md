@@ -14,7 +14,7 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | 非常に、大変 *(warn: 大変)* | delete, or give a number | |
 | 画期的、革新的、包括的、強力な、シームレス | say what it does, with a number | 「強力なツール」→「1秒に1万行を処理できるツール」 |
 
-## Vague words in detail design
+## Vague words in API design
 
 | Word | Use instead |
 |---|---|
@@ -63,4 +63,4 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 
 - A banned phrase may stay when it is a **direct quote**, a proper name or a fixed label on a screen.
 - Banning a phrase does not ban the idea. 「システムは速い」is still needed, with a number.
-- 「など」 is legitimate in casual text. It is flagged only in detail design, where it hides an incomplete list.
+- 「など」 is legitimate in casual text. It is flagged only in API design, where it hides an incomplete list.

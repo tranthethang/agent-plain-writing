@@ -24,7 +24,7 @@ Danh sách máy đọc nằm ở `banned.txt` cùng thư mục. File này giải
 | bên cạnh đó, ngoài ra *(warn)* | (bỏ) hoặc dùng tiêu đề mục | Tránh mở đầu câu liên tục |
 | hạng mục | việc, mục | |
 
-## Từ mơ hồ trong detail design
+## Từ mơ hồ trong API design
 
 | Từ | Thay bằng |
 |---|---|
