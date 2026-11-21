@@ -38,7 +38,7 @@ python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
 ## Giới hạn trung thực
 
 - Đầu ra các lần chạy bị git bỏ qua. Một lần chạy được giữ làm bằng chứng trong [evidence/](../../evidence/README.md). Đó chỉ là một lần chạy, chỉ có điểm cơ học, nên chưa chứng minh skill làm văn bản tốt hơn.
-- Chín ca phủ ba loại, và chưa ca nào được chạy trong lần chứng cứ đã lưu. `guide` chưa có ca.
+- Chín ca phủ ba loại (`api-design`, `essay`, `tech-blog`), và cả chín ca đều đã chạy trong lần chứng cứ đã lưu. `guide` chưa có ca.
 - Giám khảo là AI. Điểm của nó chưa được đối chiếu với người đọc thật.
 - Các ca dùng dữ liệu giả lập. Muốn thêm ca từ đề bài thật, xem `evals/README.md`.
 

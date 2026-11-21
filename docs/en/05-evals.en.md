@@ -38,7 +38,7 @@ python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
 ## Honest limits
 
 - Run outputs are ignored by git. One run is kept as evidence in [evidence/](../../evidence/README.md). It is a single run with mechanical scores only, so it does not prove that the skill improves writing.
-- Nine cases cover three types, and none of them ran in the kept evidence run. `guide` has no case.
+- Nine cases cover three types (`api-design`, `essay`, `tech-blog`), and all nine ran in the kept evidence run. `guide` has no case.
 - The judge is an AI. Its scores are not verified against human readers.
 - Cases use simulated data. To add a case from a real brief, see `evals/README.md`.
 

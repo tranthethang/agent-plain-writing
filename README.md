@@ -19,7 +19,7 @@ It gives the AI limits it can count (sentence length, paragraph length, banned p
 - The checker is mechanical. It counts. It does not judge voice. Text length outside the range prints a warning and does not fail the check.
 - The numeric limits are starting estimates, not verified standards.
 - The Japanese content has no native review yet.
-- The evidence is small: one eval run, 6 simulated cases, mechanical scores only. See [Evidence](#evidence).
+- The evidence is small: one eval run, 9 simulated cases, mechanical scores only. See [Evidence](#evidence).
 - Automated tests cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type and the Units table. Run them with `python3 -m unittest discover -s tests`. `AGENTS.md` lists the manual checks for the rest.
 
 ## Quick start
@@ -53,12 +53,13 @@ Mirrors `sentence` / `paragraph` limits in `skills/agent-plain-writing/languages
 
 ## Evidence
 
-One eval run (`evidence/20261121-171734/`) compared the same AI with and without the skill on 6 simulated cases (`blog` and `api-design`, in `vi`, `en`, `ja`). Checker results only, no AI judge or human review:
+One eval run (`evidence/20261121-235628/`) compared the same AI with and without the skill on 9 simulated cases (`api-design`, `essay`, and `tech-blog`, in `vi`, `en`, `ja`). Checker results only, no AI judge or human review:
 
-- 3 of 6 outputs with the skill pass the checker, against 2 of 6 without it.
-- The average sentence is shorter with the skill in all 6 cases (by 0.1 only for `blog-ja`).
-- For `api-design`, the skill outputs are longer and carry 10 to 11 `TBD-n` markers. The checker cannot say if that is better.
-- For `blog`, all three skill outputs still fail the checker. For `vi` and `ja` the only failure is length (before length became a warning). `blog-en` has more violations (7) than without the skill (3).
+- 7 of 9 outputs with the skill pass the checker, against 6 of 9 without it.
+- The average sentence is shorter with the skill in 8 of 9 cases (the exception is `tech-blog en`, 14.7 against 12.4 words).
+- For `api-design`, all 3 skill outputs pass (`api-design vi` fails without the skill), cut jargon from 2 terms to 1, and carry 8 to 9 `TBD-n` markers tied to questions. The checker cannot say if that is better.
+- For `essay`, all 6 outputs pass with 0 violations; the skill outputs are shorter overall.
+- For `tech-blog`, `tech-blog vi` passes in both modes, `tech-blog ja` has 2 paragraph violations in both modes, and `tech-blog en` has more violations with the skill (7) than without (3). All 6 are shorter than the length target (printed as a warning).
 - No invented numbers in any output.
 
 This is a small sample, not proof. Details, table and limits: [evidence/README.md](evidence/README.md).
