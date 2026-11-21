@@ -1,5 +1,6 @@
 """Tests for the document-type set, the checker default and banned-guide parity (standard library only)."""
 
+import importlib.util
 import json
 import re
 import subprocess
@@ -11,6 +12,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SKILL = ROOT / "skills" / "agent-plain-writing"
 CHECKER = SKILL / "scripts" / "check_style.py"
+_spec = importlib.util.spec_from_file_location("check_style", CHECKER)
+checker = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(checker)
 LANGS = ["vi", "en", "ja"]
 TYPES = {"tech-blog", "essay", "api-design", "guide"}
 UNITS_ROW = {"vi": "vi", "en": "en", "ja": "ja"}
@@ -47,9 +51,17 @@ class TypeSetTests(unittest.TestCase):
     def test_banned_sections_have_no_old_types(self):
         for lang in LANGS:
             text = (SKILL / "languages" / lang / "banned.txt").read_text(encoding="utf-8")
-            sections = set(re.findall(r"^\[([^\]]+)\]", text, re.M))
-            self.assertTrue({"tech-blog", "essay"} <= sections, lang)
-            self.assertFalse(sections & {"blog", "prose", "poetry"}, lang)
+            names = set()
+            for header in re.findall(r"^\[([^\]]+)\]", text, re.M):
+                names |= {n.strip() for n in header.split(",")}
+            self.assertTrue({"tech-blog", "essay"} <= names, lang)
+            self.assertFalse(names & {"blog", "prose", "poetry"}, lang)
+
+    def test_shared_header_applies_to_both_types(self):
+        for lang in LANGS:
+            tech, essay, api = (set(checker.load_banned(lang, t)[0]) for t in ("tech-blog", "essay", "api-design"))
+            self.assertEqual(tech, essay, lang)
+            self.assertTrue(tech - api, lang)
 
     def test_language_folders_match(self):
         sets = [
@@ -97,13 +109,9 @@ class ParityTests(unittest.TestCase):
         for lang in LANGS:
             d = SKILL / "languages" / lang
             guide = (d / "banned-guide.md").read_text(encoding="utf-8")
-            text = (d / "banned.txt").read_text(encoding="utf-8")
             for sec in ("tech-blog", "essay"):
-                m = re.search(r"^\[" + sec + r"\]\n(.*?)(?=^\[|\Z)", text, re.S | re.M)
-                for line in m.group(1).splitlines():
-                    p = line.strip()
-                    if p and not p.startswith("#"):
-                        self.assertIn(p.split("|")[0].strip(), guide, f"{lang} {sec} {p}")
+                for p in checker.load_banned(lang, sec)[0]:
+                    self.assertIn(p.split("|")[0].strip(), guide.lower(), f"{lang} {sec} {p}")
 
 
 if __name__ == "__main__":

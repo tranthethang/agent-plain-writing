@@ -39,18 +39,7 @@ an toàn
 [guide]
 thực hiện
 cấu hình
-[tech-blog]
-vô cùng
-mạnh mẽ
-tận dụng
-trong quá trình
-nhìn chung
-tóm lại
-tôi viết blog này để
-bài học rút ra:
-bài học:
-lưu ý:
-[essay]
+[tech-blog,essay]
 vô cùng
 mạnh mẽ
 tận dụng

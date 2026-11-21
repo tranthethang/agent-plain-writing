@@ -35,34 +35,34 @@ def load_profile(lang):
 
 
 def load_banned(lang, doc_type):
-    section, out, warns = "all", [], []
+    section, out, warns = ["all"], [], []
     for line in (LANG_DIR / lang / "banned.txt").read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if not line or line.startswith("#"):
             continue
-        m = re.fullmatch(r"\[([\w-]+)\]", line)
+        m = re.fullmatch(r"\[([\w-]+(?:\s*,\s*[\w-]+)*)\]", line)
         if m:
-            section = m.group(1)
+            section = [s.strip() for s in m.group(1).split(",")]
             continue
-        if section in ("all", doc_type):
+        if "all" in section or doc_type in section:
             out.append(line.lower())
-        elif section == "warn":
+        elif "warn" in section:
             warns.append(line.lower())
     return out, warns
 
 
 def load_report_labels(lang):
     """Labels in the [report] section of banned.txt."""
-    section, out = "all", []
+    section, out = ["all"], []
     for line in (LANG_DIR / lang / "banned.txt").read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if not line or line.startswith("#"):
             continue
-        m = re.fullmatch(r"\[([\w-]+)\]", line)
+        m = re.fullmatch(r"\[([\w-]+(?:\s*,\s*[\w-]+)*)\]", line)
         if m:
-            section = m.group(1)
+            section = [s.strip() for s in m.group(1).split(",")]
             continue
-        if section == "report":
+        if "report" in section:
             out.append(line.lower())
     return out
 

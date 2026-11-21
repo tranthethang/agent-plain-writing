@@ -47,17 +47,7 @@ carry out
 perform the
 perform a
 configure
-[tech-blog]
-utilize
-leverage
-in conclusion
-to sum up
-i am writing this blog to
-i'm writing this blog to
-lesson learned:
-lesson:
-key takeaway:
-[essay]
+[tech-blog,essay]
 utilize
 leverage
 in conclusion

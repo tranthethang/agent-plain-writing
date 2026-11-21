@@ -4,14 +4,14 @@
 
 | File | Role |
 |---|---|
-| `cases/` | 6 cases: `tech-blog` and `api-design`, each in `vi`, `en`, `ja`. All data is simulated |
+| `cases/` | 9 cases: `tech-blog`, `essay` and `api-design`, each in `vi`, `en`, `ja`. All data is simulated |
 | `score.py` | Mechanical scorer. Counts numbers not found in the case, and for `api-design` also reports `tbd_ids`, `tbd_without_question`, `tbd_in_code`, and `tbd_duplicate_questions` |
 | `judge-prompt.md` | Prompt for an AI judge (clarity, coverage, and three semantic checks for `api-design`) |
 | `run_eval.py` | Runs each case twice (with and without the skill) |
 
 ## Cost
 
-`run_eval.py` makes 2 AI calls per case. All 6 cases mean 12 calls and use quota or credits. Always preview first:
+`run_eval.py` makes 2 AI calls per case. All 9 cases mean 18 calls and use quota or credits. Always preview first:
 
 ```bash
 python3 evals/run_eval.py --dry-run
@@ -38,7 +38,7 @@ python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
 ## Honest limits
 
 - Run outputs are ignored by git. One run is kept as evidence in [evidence/](../../evidence/README.md). It is a single run with mechanical scores only, so it does not prove that the skill improves writing.
-- Six cases cover two types. The other types have no case.
+- Nine cases cover three types, and none of them ran in the kept evidence run. `guide` has no case.
 - The judge is an AI. Its scores are not verified against human readers.
 - Cases use simulated data. To add a case from a real brief, see `evals/README.md`.
 

@@ -4,14 +4,14 @@
 
 | File | Vai trò |
 |---|---|
-| `cases/` | 6 ca: `tech-blog` và `api-design`, mỗi loại có `vi`, `en`, `ja`. Mọi dữ liệu đều là giả lập |
+| `cases/` | 9 ca: `tech-blog`, `essay` và `api-design`, mỗi loại có `vi`, `en`, `ja`. Mọi dữ liệu đều là giả lập |
 | `score.py` | Bộ chấm cơ học. Đếm số không có trong ca, và với `api-design` còn báo `tbd_ids`, `tbd_without_question`, `tbd_in_code` và `tbd_duplicate_questions` |
 | `judge-prompt.md` | Prompt cho AI giám khảo (độ rõ, độ đủ ý, và ba kiểm tra ngữ nghĩa cho `api-design`) |
 | `run_eval.py` | Chạy mỗi ca hai lần (có skill và không có skill) |
 
 ## Chi phí
 
-`run_eval.py` gọi AI 2 lần cho mỗi ca. Chạy cả 6 ca là 12 lần gọi và tốn hạn mức hoặc tiền. Luôn xem trước:
+`run_eval.py` gọi AI 2 lần cho mỗi ca. Chạy cả 9 ca là 18 lần gọi và tốn hạn mức hoặc tiền. Luôn xem trước:
 
 ```bash
 python3 evals/run_eval.py --dry-run
@@ -38,7 +38,7 @@ python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
 ## Giới hạn trung thực
 
 - Đầu ra các lần chạy bị git bỏ qua. Một lần chạy được giữ làm bằng chứng trong [evidence/](../../evidence/README.md). Đó chỉ là một lần chạy, chỉ có điểm cơ học, nên chưa chứng minh skill làm văn bản tốt hơn.
-- Sáu ca chỉ phủ hai loại. Các loại còn lại chưa có ca.
+- Chín ca phủ ba loại, và chưa ca nào được chạy trong lần chứng cứ đã lưu. `guide` chưa có ca.
 - Giám khảo là AI. Điểm của nó chưa được đối chiếu với người đọc thật.
 - Các ca dùng dữ liệu giả lập. Muốn thêm ca từ đề bài thật, xem `evals/README.md`.
 

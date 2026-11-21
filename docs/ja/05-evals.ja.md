@@ -4,14 +4,14 @@
 
 | ファイル | 役割 |
 |---|---|
-| `cases/` | 6 ケース：`tech-blog` と `api-design` を、それぞれ `vi`、`en`、`ja` で。データはすべて架空です |
+| `cases/` | 9 ケース：`tech-blog`、`essay`、`api-design` を、それぞれ `vi`、`en`、`ja` で。データはすべて架空です |
 | `score.py` | 機械的な採点。ケースにない数字を数え、`api-design` では `tbd_ids`、`tbd_without_question`、`tbd_in_code`、`tbd_duplicate_questions` も報告する |
 | `judge-prompt.md` | AI 審査員用のプロンプト（明瞭さ、網羅性、`api-design` 向けの意味チェック 3 点） |
 | `run_eval.py` | 各ケースを 2 回（スキルあり・なし）実行する |
 
 ## コスト
 
-`run_eval.py` は 1 ケースにつき AI を 2 回呼びます。6 ケースすべてで 12 回となり、利用枠や料金を消費します。必ず先にプレビューしてください。
+`run_eval.py` は 1 ケースにつき AI を 2 回呼びます。9 ケースすべてで 18 回となり、利用枠や料金を消費します。必ず先にプレビューしてください。
 
 ```bash
 python3 evals/run_eval.py --dry-run
@@ -38,7 +38,7 @@ python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
 ## 正直な限界
 
 - 実行結果は git の対象外です。1 回分の実行を [evidence/](../../evidence/README.md) に証拠として残しています。1 回の実行で、機械的なスコアだけなので、スキルが文章を改善する証明にはなりません。
-- 6 ケースは 2 タイプだけです。ほかのタイプにはケースがありません。
+- 9 ケースは 3 タイプを対象にし、保存した証拠の実行では使っていません。`guide` にはケースがありません。
 - 審査員は AI です。そのスコアを人間の読者と照らし合わせて検証していません。
 - ケースは架空のデータです。実際のブリーフからケースを足す方法は `evals/README.md` を参照してください。
 
