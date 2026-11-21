@@ -25,7 +25,7 @@ TYPE_FILES = {
     "blog": "blog.md",
     "prose": "prose.md",
     "poetry": "poetry.md",
-    "design": "detail-design.md",
+    "api-design": "api-design.md",
     "guide": "user-guide.md",
 }
 
@@ -155,7 +155,7 @@ def main():
     ap.add_argument("--tool", choices=ALL_TOOLS, default="openai",
                     help="AI backend to run (default: openai)")
     ap.add_argument("--type", dest="doc_type",
-                    help="Run only cases matching this document type (e.g. blog, design)")
+                    help="Run only cases matching this document type (e.g. blog, api-design)")
     ap.add_argument("--lang",
                     help="Run only cases matching this language (e.g. vi, en, ja)")
     ap.add_argument("--dry-run", action="store_true",

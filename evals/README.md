@@ -8,17 +8,17 @@ This directory holds simulated evaluation cases, a mechanical scorer, and an AI 
 
 Each file in `cases/` (`<type>-<lang>.md`) has:
 
-1. Frontmatter with `lang` (`vi`, `en`, `ja`), `type` (`blog`, `design`), and `non_tech` (`true` or `false`).
+1. Frontmatter with `lang` (`vi`, `en`, `ja`), `type` (`blog`, `api-design`), and `non_tech` (`true` or `false`).
 2. `# SIMULATED DATA` header.
 3. `## Audience` describing the target reader.
 4. `## Brief`:
    - For `blog`: `### Summary`, `### Main points`, `### Reader`, `### Voice`, `### Sample paragraph`, `### Words to use or avoid`.
-   - For `design`: `### Template`, `### Idea`, `### Business rules`, `### Glossary`.
+   - For `api-design`: `### Idea`, `### Business rules`, `### Glossary`. The template is part of the skill, so the brief has no `### Template`.
 5. `## Facts` listing every number and proper name present in the source brief.
 
 ## Adding a case from a real brief
 
-1. Copy an existing case file with the matching type (`blog-*.md` or `design-*.md`).
+1. Copy an existing case file with the matching type (`blog-*.md` or `api-design-*.md`).
 2. Remove or replace personal data and customer identifiers.
 3. Set `lang`, `type`, and `non_tech` in the frontmatter.
 4. Fill `## Audience`, `## Brief`, and `## Facts` with the exact numbers and names from your brief.
@@ -39,7 +39,7 @@ Each file in `cases/` (`<type>-<lang>.md`) has:
    ```bash
    python3 evals/run_eval.py --dry-run
    ```
-   Filter by document type and/or language with `--type` (`blog`, `design`) and `--lang` (`vi`, `en`, `ja`):
+   Filter by document type and/or language with `--type` (`blog`, `api-design`) and `--lang` (`vi`, `en`, `ja`):
    ```bash
    python3 evals/run_eval.py --type blog --lang vi --dry-run
    ```
