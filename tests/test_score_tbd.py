@@ -55,5 +55,18 @@ class DuplicateQuestionTests(unittest.TestCase):
         self.assertEqual(in_code, ["TBD-1", "TBD-2"])
 
 
+
+class TbdWithoutInlineTests(unittest.TestCase):
+    def test_question_only_id_is_reported(self):
+        text = "| `title` | Request | string | `TBD-1` | — |\n\n- TBD-1: max length?\n- TBD-2: what if both are missing?\n"
+        self.assertEqual(score.tbd_without_inline(text), ["TBD-2"])
+
+    def test_inline_use_in_code_does_not_count(self):
+        text = "```\nTBD-1\n```\n- TBD-1: max length?\n"
+        self.assertEqual(score.tbd_without_inline(text), ["TBD-1"])
+
+    def test_no_tbd_gives_empty_list(self):
+        self.assertEqual(score.tbd_without_inline("No open items.\n"), [])
+
 if __name__ == "__main__":
     unittest.main()

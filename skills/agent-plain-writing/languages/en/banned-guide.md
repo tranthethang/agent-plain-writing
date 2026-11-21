@@ -18,6 +18,7 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | at the end of the day, needless to say, as we all know | (delete) | |
 | furthermore, moreover *(warn)* | (delete), or use a heading | |
 | very, really | (delete), or give a number | |
+| the brief does not, the brief doesn't, the brief says, in the brief | state the fact; in a spec, write `TBD-n` with its question; otherwise leave the point out. The reader never saw the brief | "The brief does not say whether flour ran out again" → (delete) |
 
 ## Vague words in API design
 

@@ -126,6 +126,24 @@ def tbd_stats(text):
     )
 
 
+def tbd_without_inline(text):
+    """Return TBD-n ids that have an Open items question but appear nowhere else outside code blocks."""
+    asked, inline = set(), set()
+    fenced = False
+    for line in text.splitlines():
+        if re.match(r"\s*(```|~~~)", line):
+            fenced = not fenced
+            continue
+        if fenced:
+            continue
+        m = re.match(r"\s*[-*]\s*`?(TBD-\d+)`?\s*[:：]", line)
+        if m:
+            asked.add(m.group(1))
+            continue
+        inline.update(re.findall(r"TBD-\d+", line))
+    return sorted(asked - inline, key=lambda x: int(x.split("-")[1]))
+
+
 def parse_checker_output(stdout):
     """Extract violation and warning lines from check_style.py stdout."""
     violations, warnings = [], []
@@ -232,6 +250,7 @@ def score_case(case_path, output_path):
         "tbd_without_question": tbd_without_question,
         "tbd_in_code": tbd_in_code,
         "tbd_duplicate_questions": tbd_duplicate_questions,
+        "tbd_without_inline": tbd_without_inline(output_text),
         "checker_exit_code": proc.returncode,
     }
 

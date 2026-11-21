@@ -21,6 +21,10 @@ cần lưu ý rằng
 thông qua việc
 như chúng ta đã biết
 hạng mục
+brief không
+brief chưa
+trong brief
+theo brief
 [warn]
 không chỉ
 một cách

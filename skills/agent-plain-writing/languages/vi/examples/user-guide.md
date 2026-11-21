@@ -26,8 +26,8 @@ Nếu một thuật ngữ **xuất hiện trên màn hình** (ví dụ nút "Tok
 
 ### 1. Bước dồn nhiều hành động
 
-**Xấu:** Bạn hãy truy cập vào phần cài đặt, sau đó tìm đến mục tài khoản và tiến hành thay đổi mật khẩu bằng cách nhập mật khẩu cũ và mật khẩu mới.
-**Tốt:**
+**Bad:** Bạn hãy truy cập vào phần cài đặt, sau đó tìm đến mục tài khoản và tiến hành thay đổi mật khẩu bằng cách nhập mật khẩu cũ và mật khẩu mới.
+**Good:**
 1. Bấm **Cài đặt**.
 2. Chọn **Tài khoản**.
 3. Bấm **Đổi mật khẩu**.
@@ -36,23 +36,23 @@ Nếu một thuật ngữ **xuất hiện trên màn hình** (ví dụ nút "Tok
 
 ### 2. Cơ chế → kết quả
 
-**Xấu:** Ứng dụng sử dụng cơ chế đồng bộ nền để tự động cập nhật dữ liệu giữa các thiết bị thông qua máy chủ đám mây.
-**Tốt:** Bạn sửa trên điện thoại, máy tính tự cập nhật theo. Bạn không cần làm gì thêm.
+**Bad:** Ứng dụng sử dụng cơ chế đồng bộ nền để tự động cập nhật dữ liệu giữa các thiết bị thông qua máy chủ đám mây.
+**Good:** Bạn sửa trên điện thoại, máy tính tự cập nhật theo. Bạn không cần làm gì thêm.
 
 ### 3. Thuật ngữ
 
-**Xấu:** Nếu token hết hạn, bạn cần xác thực lại.
-**Tốt:** Nếu app báo phiên đăng nhập hết hạn, hãy đăng nhập lại.
+**Bad:** Nếu token hết hạn, bạn cần xác thực lại.
+**Good:** Nếu app báo phiên đăng nhập hết hạn, hãy đăng nhập lại.
 
 ### 4. Cảnh báo
 
-**Xấu:** Lưu ý rằng việc xóa dữ liệu có thể dẫn đến tình trạng không thể khôi phục được trong một số trường hợp.
-**Tốt:** **Chú ý:** Dữ liệu đã xóa không lấy lại được.
+**Bad:** Lưu ý rằng việc xóa dữ liệu có thể dẫn đến tình trạng không thể khôi phục được trong một số trường hợp.
+**Good:** **Chú ý:** Dữ liệu đã xóa không lấy lại được.
 
 ### 5. Xử lý lỗi
 
-**Xấu:** Trong trường hợp xảy ra lỗi, vui lòng kiểm tra kết nối mạng hoặc liên hệ bộ phận hỗ trợ kỹ thuật để được trợ giúp.
-**Tốt:**
+**Bad:** Trong trường hợp xảy ra lỗi, vui lòng kiểm tra kết nối mạng hoặc liên hệ bộ phận hỗ trợ kỹ thuật để được trợ giúp.
+**Good:**
 
 | Bạn thấy | Làm gì |
 |---|---|
@@ -61,29 +61,29 @@ Nếu một thuật ngữ **xuất hiện trên màn hình** (ví dụ nút "Tok
 
 ### 6. Mô tả tính năng bằng tính từ
 
-**Xấu:** Tính năng báo cáo cung cấp nhiều tùy chọn đa dạng giúp người dùng phân tích dữ liệu một cách toàn diện.
-**Tốt:** Dùng **Báo cáo** để xem tháng này bạn bán được bao nhiêu.
+**Bad:** Tính năng báo cáo cung cấp nhiều tùy chọn đa dạng giúp người dùng phân tích dữ liệu một cách toàn diện.
+**Good:** Dùng **Báo cáo** để xem tháng này bạn bán được bao nhiêu.
 
 ### 7. Dịch toàn bộ cơ chế (lỗi hay gặp)
 
-**Xấu:** Khi bạn bấm Gửi, yêu cầu sẽ được đưa vào hàng đợi xử lý. Một tiến trình nền sẽ lấy yêu cầu ra, kiểm tra dữ liệu, rồi ghi vào cơ sở dữ liệu. Sau đó hệ thống thông báo kết quả cho bạn qua email.
-**Tốt:** Bấm **Gửi**. Vài phút sau, bạn nhận được email báo kết quả.
+**Bad:** Khi bạn bấm Gửi, yêu cầu sẽ được đưa vào hàng đợi xử lý. Một tiến trình nền sẽ lấy yêu cầu ra, kiểm tra dữ liệu, rồi ghi vào cơ sở dữ liệu. Sau đó hệ thống thông báo kết quả cho bạn qua email.
+**Good:** Bấm **Gửi**. Vài phút sau, bạn nhận được email báo kết quả.
 **Quy tắc:** Hỏi "người dùng cần biết điều này để làm gì?". Nếu không để làm gì, bỏ.
 
 ### 8. Tên nút sai
 
-**Xấu:** Bấm nút xác nhận để lưu thay đổi.
-**Tốt:** Bấm **Lưu**.
+**Bad:** Bấm nút xác nhận để lưu thay đổi.
+**Good:** Bấm **Lưu**.
 
 ### 9. Điều kiện trước
 
-**Xấu:** Trước khi tiến hành thao tác, bạn cần đảm bảo rằng mình đã được cấp các quyền hạn cần thiết.
-**Tốt:** Bạn cần là **Quản trị viên**. Nếu không thấy nút **Thêm**, hãy nhờ quản trị viên cấp quyền.
+**Bad:** Trước khi tiến hành thao tác, bạn cần đảm bảo rằng mình đã được cấp các quyền hạn cần thiết.
+**Good:** Bạn cần là **Quản trị viên**. Nếu không thấy nút **Thêm**, hãy nhờ quản trị viên cấp quyền.
 
 ### 10. Mục tiêu
 
-**Xấu:** Hướng dẫn này nhằm cung cấp cho người dùng những thông tin cần thiết để có thể sử dụng chức năng xuất báo cáo.
-**Tốt:** Hướng dẫn này giúp bạn xuất báo cáo ra file Excel.
+**Bad:** Hướng dẫn này nhằm cung cấp cho người dùng những thông tin cần thiết để có thể sử dụng chức năng xuất báo cáo.
+**Good:** Hướng dẫn này giúp bạn xuất báo cáo ra file Excel.
 
 ## Mẫu hướng dẫn hoàn chỉnh
 

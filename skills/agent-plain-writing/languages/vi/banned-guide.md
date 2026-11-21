@@ -23,6 +23,7 @@ Danh sách máy đọc nằm ở `banned.txt` cùng thư mục. File này giải
 | như chúng ta đã biết | (bỏ) | |
 | bên cạnh đó, ngoài ra *(warn)* | (bỏ) hoặc dùng tiêu đề mục | Tránh mở đầu câu liên tục |
 | hạng mục | việc, mục | |
+| brief không, brief chưa, trong brief, theo brief | nói thẳng sự việc; trong spec thì ghi `TBD-n` kèm câu hỏi; nếu không thì bỏ ý đó. Người đọc chưa từng thấy brief | "Chưa nêu trong brief." ở mục Tác động kèm theo → `Không có` |
 
 ## Từ mơ hồ trong API design
 
