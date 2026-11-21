@@ -86,9 +86,9 @@ Requirement words in this document: **must**, **must not**, **should**, **may**.
 ### 13. "Same as siblings"
 
 **Bad:** Errors: same as the other room endpoints.
-**Good:** List every error of this endpoint in its own table. If the source is missing, write `TBD: which errors does this endpoint return?`
+**Good:** List every error of this endpoint in its own table. If the source is missing, put `TBD` in the table and add the question to Open items.
 **Fault:** The reader cannot check the endpoint alone.
-**Fix:** Write the rule here, or write `TBD` with a question.
+**Fix:** Write the rule here, or mark `TBD` and list the question in Open items.
 
 ### 14. A business rule with no step order
 
@@ -99,7 +99,7 @@ Requirement words in this document: **must**, **must not**, **should**, **may**.
 3. The system checks that the caller is under the daily quota.
 4. The system saves the reservation.
 **Fault:** The reader cannot tell which error wins when two checks fail.
-**Fix:** Number the steps in execution order.
+**Fix:** Number the steps when the brief gives the execution order; otherwise use unnumbered bullets and mark precedence `TBD`.
 
 ### 15. An empty-list case with no rule
 
@@ -121,9 +121,8 @@ Requirement words in this document: **must**, **must not**, **should**, **may**.
 ```mermaid
 sequenceDiagram
     Client->>API: POST /v1/reservations
-    API->>DB: find overlapping reservations
-    DB-->>API: none
-    API->>DB: insert reservation
+    API->>API: check opening hours and overlap
+    API->>API: save reservation
     API-->>Client: 201
 ```
 ````
@@ -172,9 +171,8 @@ Response, status 201:
 ```mermaid
 sequenceDiagram
     Client->>API: POST /v1/reservations
-    API->>DB: find overlapping reservations
-    DB-->>API: none
-    API->>DB: insert reservation
+    API->>API: check opening hours and overlap
+    API->>API: save reservation
     API-->>Client: 201
 ```
 

@@ -85,9 +85,9 @@ Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng
 ### 13. "Giống các API cùng nhóm"
 
 **Bad:** Lỗi: giống các endpoint phòng họp khác.
-**Good:** Liệt kê mọi lỗi của endpoint này trong bảng riêng. Nếu nguồn thiếu, ghi `TBD: endpoint này trả những lỗi nào?`
+**Good:** Liệt kê mọi lỗi của endpoint này trong bảng riêng. Nếu nguồn thiếu, ghi `TBD` trong bảng và đưa câu hỏi vào mục còn mở.
 **Fault:** Người đọc không thể kiểm tra endpoint một mình.
-**Fix:** Ghi quy tắc ngay tại đây, hoặc ghi `TBD` kèm câu hỏi.
+**Fix:** Ghi quy tắc ngay tại đây, hoặc ghi `TBD` rồi đưa câu hỏi vào mục còn mở.
 
 ### 14. Quy tắc nghiệp vụ không có thứ tự bước
 
@@ -98,7 +98,7 @@ Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng
 3. Hệ thống kiểm tra người gọi chưa vượt hạn mức trong ngày.
 4. Hệ thống lưu lượt đặt.
 **Fault:** Người đọc không biết lỗi nào trả trước khi hai bước cùng thất bại.
-**Fix:** Đánh số các bước theo thứ tự chạy.
+**Fix:** Đánh số các bước khi brief nêu rõ thứ tự; nếu chưa rõ, dùng gạch đầu dòng và ghi thứ tự ưu tiên là `TBD`.
 
 ### 15. Danh sách rỗng không có quy tắc
 
@@ -120,9 +120,8 @@ Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng
 ```mermaid
 sequenceDiagram
     Client->>API: POST /v1/reservations
-    API->>DB: tìm lượt đặt trùng
-    DB-->>API: không có
-    API->>DB: thêm lượt đặt
+    API->>API: kiểm tra giờ mở cửa và trùng lịch
+    API->>API: lưu lượt đặt
     API-->>Client: 201
 ```
 ````
@@ -173,9 +172,8 @@ Response, status 201:
 ```mermaid
 sequenceDiagram
     Client->>API: POST /v1/reservations
-    API->>DB: tìm lượt đặt trùng
-    DB-->>API: không có
-    API->>DB: thêm lượt đặt
+    API->>API: kiểm tra giờ mở cửa và trùng lịch
+    API->>API: lưu lượt đặt
     API-->>Client: 201
 ```
 
