@@ -19,7 +19,7 @@ Adjectives such as "clear" or "friendly" in a prompt do not fix this. Limits tha
 - **One owner per rule:** `SKILL.md` owns the workflow and core rules. `doc-types/<type>.md` owns voice, structure, length policy and rhythm. `languages/<lang>/` owns the unit, numeric limits, banned phrases, grammar and examples. On limits and structure, `doc-types` wins over `SKILL.md`. On words and grammar, `languages` wins over `doc-types`.
 
 - **One skill, three languages:** Vietnamese (`vi`), English (`en`), Japanese (`ja`). The language of the output text selects the language folder.
-- **Five document types:** blog post, prose, poetry, detail design (API specs), user guide.
+- **Five document types:** blog post, prose, poetry, API design, user guide. Screen design is not done.
 - **Measurable rules:** sentence length, paragraph length, banned phrases, jargon count, text length. Limits are set per language and per document type.
 - **Few-shot examples:** bad → good pairs and one complete sample for each language and type.
 - **A two-pass workflow:** draft first, then edit against a checklist and the checker script.
@@ -40,7 +40,7 @@ Adjectives such as "clear" or "friendly" in a prompt do not fix this. Limits tha
 ├── AGENTS.md                         # instructions for AI agents that edit this repo
 ├── evals/
 │   ├── README.md                     # eval structure and cost warning
-│   ├── cases/                        # 6 simulated cases (blog and design x vi, en, ja)
+│   ├── cases/                        # 6 simulated cases (blog and api-design x vi, en, ja)
 │   ├── judge-prompt.md               # AI judge prompt (clarity and coverage)
 │   ├── score.py                      # mechanical scorer and judge-prompt builder
 │   └── run_eval.py                   # user-confirmed runner (antigravity or claude)
@@ -51,7 +51,8 @@ Adjectives such as "clear" or "friendly" in a prompt do not fix this. Limits tha
         │   ├── blog.md
         │   ├── prose.md
         │   ├── poetry.md
-        │   ├── detail-design.md
+        │   ├── api-design.md
+        │   ├── screen-design.md  # stub, not done
         │   └── user-guide.md
         ├── languages/
         │   ├── vi/  en/  ja/         # the same file set in each language folder:
@@ -60,7 +61,7 @@ Adjectives such as "clear" or "friendly" in a prompt do not fix this. Limits tha
         │   │   ├── banned.txt        #   the actual banned phrases (machine-readable)
         │   │   ├── banned-guide.md   #   the same phrases with replacements
         │   │   ├── terms.txt         #   jargon list for the jargon count
-        │   │   └── examples/         #   common, blog, prose, poetry, detail-design, user-guide
+        │   │   └── examples/         #   common, blog, prose, poetry, api-design, user-guide
         ├── templates/
         │   └── PLAIN-WRITING.example.md
         └── scripts/
@@ -83,7 +84,7 @@ Ask for the task in plain words and give the AI a good brief. Examples:
 
 ```
 Use agent-plain-writing to write a user guide in Japanese from these notes: ...
-Rewrite this API detail design in English. Fill the template only. Mark missing facts as TBD.
+Rewrite this API design in English. Use the api-design template. Mark missing facts as TBD.
 Shorten this blog post. My own paragraph is attached as the model for rhythm.
 ```
 
@@ -103,7 +104,7 @@ Each file in `doc-types/` lists the **brief** the AI needs for that document typ
 
 ```bash
 python3 skills/agent-plain-writing/scripts/check_style.py draft.md --lang en --type blog
-python3 skills/agent-plain-writing/scripts/check_style.py spec.md  --lang ja --type design
+python3 skills/agent-plain-writing/scripts/check_style.py spec.md  --lang ja --type api-design
 python3 skills/agent-plain-writing/scripts/check_style.py guide.md --lang vi --type guide
 python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --type blog --non-tech
 ```
@@ -111,7 +112,7 @@ python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --t
 | Option | Values |
 |---|---|
 | `--lang` | `vi`, `en`, `ja` (optional if `default_lang` is in `PLAIN-WRITING.md`) |
-| `--type` | `blog`, `prose`, `poetry`, `design`, `guide` (`detail-design` and `user-guide` also work) |
+| `--type` | `blog`, `prose`, `poetry`, `api-design`, `guide` (`user-guide` also works) |
 | `--non-tech` | Limit jargon to 3 terms (for readers outside the field). The `guide` type always applies this limit. |
 | `--config` | Path to a `PLAIN-WRITING.md` file (default: `./PLAIN-WRITING.md` if present). |
 

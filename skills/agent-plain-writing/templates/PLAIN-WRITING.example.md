@@ -18,7 +18,7 @@ The AI reads the Markdown sections for voice and terms. `check_style.py` reads t
 ```plain-writing
 {
   "default_lang": "en",
-  "default_type": "design",
+  "default_type": "api-design",
   "terms": [
     "rate limit",
     "idempotency key"
@@ -28,7 +28,7 @@ The AI reads the Markdown sections for voice and terms. `check_style.py` reads t
     "best-in-class"
   ],
   "limits": {
-    "design": {
+    "api-design": {
       "sentence": 22,
       "paragraph": 3,
       "terms": 5

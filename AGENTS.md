@@ -22,6 +22,7 @@ skills/agent-plain-writing/
 
 ### General
 
+- The supported scope for now is `vi`, `en` and `ja`, all in full. A change for one document type covers all three languages.
 - Keep changes small and focused. Do not reformat files you are not changing.
 - `SKILL.md` and everything in `doc-types/` are written in **English**.
 - Examples in `languages/<lang>/examples/` are written in that language. Labels (Bad, Good, Fault, Fix) stay in English.
@@ -32,7 +33,7 @@ skills/agent-plain-writing/
 ### The three language folders stay parallel
 
 - Every language folder has the **same file set**. If you add a file in one, add it in the others (or open a note saying why not).
-- Every `examples/` folder has the same six files: `common.md`, `blog.md`, `prose.md`, `poetry.md`, `detail-design.md`, `user-guide.md`.
+- Every `examples/` folder has the same six files: `common.md`, `blog.md`, `prose.md`, `poetry.md`, `api-design.md`, `user-guide.md`.
 - Each examples file ends with a "Your own samples" section. Keep it.
 
 ### Single sources of truth
@@ -88,11 +89,11 @@ There is no automated test suite yet. Run these checks by hand.
 1. **Bad and good samples.** For each language you touched, write one bad paragraph (long sentence, banned phrases) and one good paragraph. The bad one must exit with `1`, the good one with `0`:
 
    ```bash
-   python3 skills/agent-plain-writing/scripts/check_style.py bad.md  --lang en --type design
-   python3 skills/agent-plain-writing/scripts/check_style.py good.md --lang en --type design
+   python3 skills/agent-plain-writing/scripts/check_style.py bad.md  --lang en --type api-design
+   python3 skills/agent-plain-writing/scripts/check_style.py good.md --lang en --type api-design
    ```
 
-2. **Shipped samples.** Extract the last fenced block of each examples file and run the checker with the matching type (`blog`, `prose`, `design`, `guide`). Expect no violations, except length for `blog`.
+2. **Shipped samples.** Extract the last fenced block of each examples file and run the checker with the matching type (`blog`, `prose`, `api-design`, `guide`). Expect no violations, except length for `blog`.
 3. **Parallel folders.** Compare the file lists of `languages/vi`, `languages/en` and `languages/ja`. They must match.
 4. **Mirrors.** If you changed `profile.json`, check the "Units" table in `README.md`. If you changed `banned.txt`, check that `banned-guide.md` lists the same phrases.
 

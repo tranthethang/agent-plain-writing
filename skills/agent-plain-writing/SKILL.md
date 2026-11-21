@@ -1,6 +1,6 @@
 ---
 name: agent-plain-writing
-description: "Plain-language writing standard with measurable limits, for Vietnamese (vi), English (en) and Japanese (ja). Use when writing, rewriting or shortening text such as blog posts, fiction and prose, poetry, detail design (API specs) and user guides. Also use when the user says AI writing is wordy, hard to understand or too technical. Viết, viết lại, rút gọn văn bản tiếng Việt, Anh, Nhật. 文章の作成・書き直し・簡潔化 (ブログ、設計書、マニュアル)."
+description: "Plain-language writing standard with measurable limits, for Vietnamese (vi), English (en) and Japanese (ja). Use when writing, rewriting or shortening text such as blog posts, fiction and prose, poetry, API design and user guides. Also use when the user says AI writing is wordy, hard to understand or too technical. Viết, viết lại, rút gọn văn bản tiếng Việt, Anh, Nhật. 文章の作成・書き直し・簡潔化 (ブログ、設計書、マニュアル)."
 ---
 
 # Plain writing
@@ -44,7 +44,8 @@ Draft and edit are two passes. Do not try to get it right in the first pass.
 | Blog post (sharing experience) | `doc-types/blog.md` | `blog` | Peers |
 | Fiction, essay, scene | `doc-types/prose.md` | `prose` | Readers of literature |
 | Poetry | `doc-types/poetry.md` | `poetry` | Readers of poetry |
-| Detail design (API, function specs) | `doc-types/detail-design.md` | `design` | Developers, QA |
+| API design (one endpoint) | `doc-types/api-design.md` | `api-design` | Developers, QA |
+| Screen design | `doc-types/screen-design.md` | none (not done) | Developers, QA |
 | User guide, manual | `doc-types/user-guide.md` | `guide` | General users |
 | Anything else | `languages/<lang>/examples/common.md` | `blog` | Varies |
 
@@ -69,7 +70,7 @@ Numeric limits are per language and type. They live only in `languages/<lang>/pr
 | 11 | Consistency | One concept, one name. One register for the whole text |
 | 12 | Length | `length` in `profile.json`, under the type's length policy. Never more than 10% over |
 
-A type file may relax or tighten a core rule (prose allows longer sentences, detail design allows more jargon). See "Who owns what" for which file wins.
+A type file may relax or tighten a core rule (prose allows longer sentences, API design allows more jargon). See "Who owns what" for which file wins.
 
 **Paragraph form:** Write sentences continuously inside a paragraph—never split every sentence onto its own line (no trailing-space `  \n` line breaks). Sentence rhythm is set by the type file.
 
@@ -112,12 +113,12 @@ For `blog` and `prose`, keep human context, reasoning, and tension instead of cu
 
 ```
 python3 scripts/check_style.py draft.md --lang en --type blog
-python3 scripts/check_style.py spec.md  --lang ja --type design
+python3 scripts/check_style.py spec.md  --lang ja --type api-design
 python3 scripts/check_style.py guide.md --lang vi --type guide
 python3 scripts/check_style.py post.md  --lang en --type blog --non-tech
 ```
 
-- `--lang`: `vi`, `en`, `ja` (optional if `default_lang` is set in `PLAIN-WRITING.md`). `--type`: `blog`, `prose`, `poetry`, `design`, `guide` (`detail-design` and `user-guide` also work; defaults to `default_type` in `PLAIN-WRITING.md` or `blog`).
+- `--lang`: `vi`, `en`, `ja` (optional if `default_lang` is set in `PLAIN-WRITING.md`). `--type`: `blog`, `prose`, `poetry`, `api-design`, `guide` (`user-guide` also works; defaults to `default_type` in `PLAIN-WRITING.md` or `blog`).
 - `--config <path>`: path to a `PLAIN-WRITING.md` config file. By default, the script reads `PLAIN-WRITING.md` from the current directory if present.
 - Units differ by language: Vietnamese counts syllables (tiếng), English counts words, Japanese counts characters (字). The unit is set in `profile.json`.
 - The script checks sentence length, paragraph length, banned phrases, jargon count and text length. It does **not** judge whether the voice is good, and it does not check rhyme or meter.
