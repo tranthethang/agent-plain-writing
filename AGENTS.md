@@ -84,7 +84,13 @@ Each fact has one owner. Other files point to the owner and do not restate the f
 
 ## Verify your change
 
-There is no automated test suite yet. Run these checks by hand.
+Automated tests live in `tests/` and use the standard library only. They cover the `TBD-n` statistics in `evals/score.py`. Run them from the repository root:
+
+```bash
+python3 -m unittest discover -s tests
+```
+
+Run these checks by hand for the rest.
 
 1. **Bad and good samples.** For each language you touched, write one bad paragraph (long sentence, banned phrases) and one good paragraph. The bad one must exit with `1`, the good one with `0`:
 
@@ -97,7 +103,7 @@ There is no automated test suite yet. Run these checks by hand.
 3. **Parallel folders.** Compare the file lists of `languages/vi`, `languages/en` and `languages/ja`. They must match.
 4. **Mirrors.** If you changed `profile.json`, check the "Units" table in `README.md`. If you changed `banned.txt`, check that `banned-guide.md` lists the same phrases.
 
-If you add automated tests, put them under `tests/` and document how to run them here and in `README.md`.
+If you add more automated tests, put them under `tests/` and update this section and `README.md` when the run command changes.
 
 ## Do not
 

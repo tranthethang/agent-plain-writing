@@ -31,12 +31,12 @@ Use when you write the design of one API endpoint: purpose, fields, processing a
 Write these sections in this order.
 
 1. **Identity.** Method, path, purpose, and every role rule (here only). Add caller and idempotency only when the brief states them or when the developer cannot implement without them.
-2. **DTO and field mapping.** Request and response fields in a table with type, required (use the labels in `profile.md`, or `TBD-n`), and constraint. Write a known field type (from the brief, the glossary, a list of allowed values, or a list of ids that the glossary calls integers) directly in the table with no `TBD-n`; a glossary entry describing text (a title, a body, a name, or a part of a URL) is a `string`. Use `TBD-n` for a field type only when none of those sources gives one and the type blocks implementation. Write `—` in a cell that has no value. Do not leave a cell empty.
+2. **DTO and field mapping.** Request and response fields in a table with type, required (use the labels in `profile.md`, or `TBD-n`), and constraint. Write a known field type (Principle 3) directly in the table with no `TBD-n`. Use `TBD-n` for a field type only when the type is not known and it blocks implementation. Write `—` in a cell that has no value. Do not leave a cell empty.
 3. **Endpoint.** One request example and one success response example with its status. Write the success status here only. An example holds no `TBD-n`. Use only fields whose type the brief or the glossary gives. When no such field is known, leave out that example and write nothing in its place.
 4. **Processing.** Number the steps in execution order only when the brief states the order; otherwise list unnumbered rules and mark execution order or error precedence `TBD-n`. List each role check as a step that names its error code, and do not restate the rule; it lives in Identity. Name the error code of each failed check. Skip the Mermaid diagram when the execution order is `TBD-n` or fewer than three nodes carry meaning, and write nothing in its place. Otherwise add one Mermaid sequence diagram or flowchart in a fenced code block using only actors and components named in the brief. Give each rule that has an empty or edge case its own step.
 5. **Errors.** One table with condition, HTTP status and code. Errors appear nowhere else.
 6. **Side effects.** Audit, events, cache, async jobs. Write `None` for a read-only call, and when the brief states no side effect. Add other effects only when the brief states them or when the developer cannot implement without them. Never repeat the main action of the API.
-7. **Open items.** Every `TBD-n` with its question (write each question here once; keep inline cells to `TBD-n`). Two `TBD-n` must not ask the same question. Open items hold spec questions only: do not ask for an example, ask one thing per question (the HTTP status and the code of one error row are one question), and do not ask what the brief already answers.
+7. **Open items.** Every `TBD-n` with its question (write each question here once; keep inline cells to `TBD-n`; no duplicate question, see Principle 1). Open items hold spec questions only: do not ask for an example, ask one thing per question (the HTTP status and the code of one error row are one question), and do not ask what the brief already answers.
 
 The template excludes tech stack, convention, error contract, changelog and test links. The project convention lives outside the API file.
 
@@ -64,7 +64,7 @@ If item 1 or 2 is missing, ask. Do not infer business rules.
 - [ ] Processing is numbered only when the brief gives the order; otherwise unnumbered with precedence `TBD-n`.
 - [ ] Mermaid diagram is skipped when execution order is `TBD-n` or fewer than three nodes carry meaning; otherwise it uses only actors and components named in the brief.
 - [ ] No two `TBD-n` ask the same question.
-- [ ] No number, field type, required flag, or component invented by the AI (a field type from the brief, the glossary, a list of allowed values, or a list of ids that the glossary calls integers is known).
+- [ ] No number, field type, required flag, or component invented by the AI. A known field type (Principle 3) is written, not opened as `TBD-n`.
 - [ ] No vague word.
 - [ ] One concept, one name.
 - [ ] `python3 scripts/check_style.py spec.md --lang <lang> --type api-design`
