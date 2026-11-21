@@ -42,7 +42,7 @@ One eval run (`evidence/20261121-171734/`) compared the same AI with and without
 - 3 of 6 outputs with the skill pass the checker, against 2 of 6 without it.
 - The average sentence is shorter with the skill in all 6 cases (by 0.1 only for `blog-ja`).
 - For `api-design`, the skill outputs are longer and carry 10 to 11 `TBD-n` markers. The checker cannot say if that is better.
-- For `blog`, all three skill outputs still fail the checker. For `vi` and `ja` the only failure is length. `blog-en` has more violations (7) than without the skill (3).
+- For `blog`, all three skill outputs still fail the checker. For `vi` and `ja` the only failure is length (before length became a warning). `blog-en` has more violations (7) than without the skill (3).
 - No invented numbers in any output.
 
 This is a small sample, not proof. Details, table and limits: [evidence/README.md](evidence/README.md).
