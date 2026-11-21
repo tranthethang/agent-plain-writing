@@ -10,7 +10,7 @@ A single agent skill, `agent-plain-writing`, that makes AI write short, concrete
 
 ```
 skills/agent-plain-writing/
-├── SKILL.md              # workflow, 12 core rules, routing (English)
+├── SKILL.md              # workflow, core rules, voice families, routing (English)
 ├── doc-types/            # voice, structure, length policy per type, language-neutral (English)
 ├── languages/<lang>/     # profile.json, profile.md, banned.txt, banned-guide.md,
 │                         # terms.txt, examples/

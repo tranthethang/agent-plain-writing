@@ -16,7 +16,7 @@ Use for sharing posts, field notes and technical write-ups for peers.
 - Write short paragraphs of flowing sentences, within the `paragraph` limit in `profile.json`.
 - Admit mistakes. A story about your own error is more convincing than a success story.
 - No emoji. No greeting to the audience. No chains of rhetorical questions.
-- No meta-report openings (a sentence about why you write the post) and no label closings (a closing line that starts with a label such as a lesson or a note). Start directly in the event or conclusion. The phrases for each language are in `banned.txt`, section `[tech-blog]`.
+- No meta-report openings (a sentence about why you write the post) and no label closings (a closing line that starts with a label such as a lesson or a note). Start directly in the event or conclusion. The phrases for each language are in `banned.txt`, section `[tech-blog,essay]` (shared with `essay`).
 - No throat-clearing lead-ins ("This is an important difference from the old approach:") and no references to the prompt ("The brief does not say..."). State what the system does in one concrete sentence instead of naming a pattern in one sentence and re-explaining it in the next. Keep one plain, consistent term for a mechanism.
 
 ## Structure

@@ -25,7 +25,7 @@ Use for personal essays, reflections, and short narrative pieces for general rea
 - **Do not explain the meaning.** Do not close a paragraph with "I realized that...". Let the reader realize it.
 - **Vary the rhythm.** Long sentences describe; short sentences land.
 - No emoji. No greeting to the audience. No chains of rhetorical questions.
-- No meta-report openings (a sentence about why you write the essay) and no label closings (a closing line that starts with a label such as a lesson or a note). The phrases for each language are in `banned.txt`, section `[essay]`.
+- No meta-report openings (a sentence about why you write the essay) and no label closings (a closing line that starts with a label such as a lesson or a note). The phrases for each language are in `banned.txt`, section `[tech-blog,essay]` (shared with `tech-blog`).
 
 ## Structure
 
@@ -47,6 +47,6 @@ Use for personal essays, reflections, and short narrative pieces for general rea
 - [ ] Every paragraph has at least one sensory detail.
 - [ ] Short sentences are mixed in to vary the rhythm.
 - [ ] No paragraph ends with a sentence that explains the meaning.
-- [ ] No meta-report opening, no label closing, and no banned phrase from `[all]` or `[essay]`.
+- [ ] No meta-report opening, no label closing, and no banned phrase from `[all]` or `[tech-blog,essay]`.
 - [ ] No fixed section headings; the closing is one image or one action, not a lesson.
 - [ ] `python3 scripts/check_style.py essay.md --lang <lang> --type essay`
