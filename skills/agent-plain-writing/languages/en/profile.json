@@ -8,7 +8,7 @@
   "boundary": true,
   "non_tech_terms": 3,
   "types": {
-    "tech-blog":  {"sentence": 20,   "paragraph": 3,    "length": [600, 800], "terms": null},
+    "tech-blog":  {"sentence": 20,   "paragraph": 3,    "length": [600, 800], "length_short": [300, 500], "terms": null},
     "essay":      {"sentence": 30,   "paragraph": 6,    "length": null,       "terms": null},
     "api-design": {"sentence": 18,   "paragraph": 3,    "length": null,       "terms": null},
     "guide":      {"sentence": 12,   "paragraph": 3,    "length": null,       "terms": 3}

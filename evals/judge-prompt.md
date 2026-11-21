@@ -38,6 +38,7 @@ For a `tech-blog` output, list each hit in the matching key. Leave the list empt
 For an `essay` output, list each hit in the matching key. Leave the list empty when there is none.
 
 - **explained_ending**: a closing sentence that names the feeling after the action already showed it.
+- **flat_restatement**: a main point retold as one summary sentence instead of a scene with an action and a sensory detail, or a paragraph with no sensory detail.
 
 ## Output format
 
@@ -57,6 +58,7 @@ Return JSON only. Do not include markdown fences or extra text.
   "lost_causal_link": [],
   "mismatched_comparison": [],
   "explained_ending": [],
+  "flat_restatement": [],
   "notes": "one-sentence reason"
 }
 ```

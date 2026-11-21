@@ -32,6 +32,15 @@ Details in the stories are made up to serve as models. In real work, use the aut
 **Fault:** Uses evaluative adjectives ("wonderful", "unforgettable") without visible detail.
 **Fix:** Show the moment through specific action and sensory detail.
 
+### 5. Retelling the brief instead of showing the scene
+
+(The brief: the fan turning on was the moment the room felt like home.)
+
+**Bad:** On the third afternoon, I plugged in the fan. It turned, and the bare room felt lived in for the first time.
+**Good:** On the third afternoon, I cut the tape on the cardboard box. The fan smelled of machine oil. I pushed the plug into the wall, and the blades turned slowly, then steadily, stirring the loose end of the twine on my suitcase.
+**Fault:** The main point becomes one summary sentence, and the closing names the feeling the brief gives.
+**Fix:** Turn the main point into a scene with an action and a sensory detail the scene implies. Let the moving air show the change.
+
 ## Complete sample (`essay`)
 
 ```markdown

@@ -22,8 +22,8 @@ import check_style  # noqa: E402
 
 
 def parse_case_meta(case_text):
-    """Extract lang, type, and non_tech from case frontmatter."""
-    meta = {"lang": "en", "type": "tech-blog", "non_tech": False}
+    """Extract lang, type, non_tech, and short_brief from case frontmatter."""
+    meta = {"lang": "en", "type": "tech-blog", "non_tech": False, "short_brief": False}
     m = re.match(r"\A---\s*\n(.*?)\n---\s*\n", case_text, flags=re.S)
     if not m:
         return meta
@@ -37,6 +37,8 @@ def parse_case_meta(case_text):
             meta["type"] = check_style.TYPE_ALIASES.get(v, v)
         elif k == "non_tech":
             meta["non_tech"] = v.lower() in ("true", "1", "yes")
+        elif k == "short_brief":
+            meta["short_brief"] = v.lower() in ("true", "1", "yes")
     return meta
 
 
@@ -187,6 +189,15 @@ def score_case(case_path, output_path):
         total_units += check_style.count_units(body, unit)
     avg_sentence = round(total_units / n_sent, 1) if n_sent else 0.0
 
+    if meta["short_brief"]:
+        # The checker always uses `length`; a short brief uses `length_short` instead.
+        cfg = prof["types"].get(doc_type, {})
+        length = round(total_units / prof["length_divisor"])
+        warnings = [w for w in warnings if not w.startswith("Length about ")]
+        lw = check_style.length_warning(prof, check_style.length_range(cfg, True), length)
+        if lw:
+            warnings.append(lw)
+
     lower = cleaned.lower()
     found_terms = [
         t for t in check_style.load_terms(lang)
@@ -205,6 +216,7 @@ def score_case(case_path, output_path):
         "lang": lang,
         "type": doc_type,
         "non_tech": non_tech,
+        "short_brief": meta["short_brief"],
         "unit": unit,
         "total_units": total_units,
         "sentences": n_sent,

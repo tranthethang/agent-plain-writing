@@ -149,9 +149,18 @@ sequenceDiagram
 (Brief nêu: `date` phải là ngày ở tương lai, và thiếu `date` chưa có mã lỗi.)
 
 **Bad:** `- TBD-1: ngày có phải ở tương lai không?`
-**Good:** `- TBD-1: hệ thống trả mã HTTP và mã lỗi nào khi thiếu `date`?`
+**Good:** ``- TBD-1: hệ thống trả mã HTTP và mã lỗi nào khi thiếu `date`?``
 **Fault:** Câu hỏi lặp lại quy tắc đã nêu và bỏ qua quyết định brief còn thiếu.
 **Fix:** `TBD-n` hỏi quyết định còn thiếu, ở đây là lỗi khi thiếu `date`.
+
+### 19. Tác động kèm theo viết thành câu thay vì nhãn
+
+(Brief không nêu tác động kèm theo nào.)
+
+**Bad:** "Chưa nêu trong brief."
+**Good:** `Không có`
+**Fault:** Câu quanh nhãn đọc như một câu hỏi còn mở và không phải nhãn trong `profile.md`.
+**Fix:** Mục chỉ ghi đúng nhãn `Không có`.
 
 ## Mẫu API điền hoàn chỉnh
 

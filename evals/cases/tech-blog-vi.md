@@ -13,7 +13,7 @@ Lập trình viên backend có 2–5 năm kinh nghiệm, đang vận hành dịc
 ## Brief
 
 ### Summary
-Nhóm của bạn từng đặt cache 15 phút cho trang danh sách sản phẩm để giảm tải database. Sau một đợt giảm giá, khách vẫn thấy giá cũ trong 12 phút và đặt nhầm 40 đơn. Nhóm đã sửa bằng cách xóa cache theo sự kiện cập nhật giá và đặt TTL dự phòng 60 giây.
+Nhóm của bạn từng đặt cache 15 phút cho trang danh sách sản phẩm để giảm tải database. Sau một đợt giảm giá, khách vẫn thấy giá cũ trong 12 phút và đặt nhầm 40 đơn. Nhóm thử giảm TTL xuống 1 phút trước, nhưng tải database tăng gấp đôi nên bỏ cách đó. Nhóm đã sửa bằng cách xóa cache theo sự kiện cập nhật giá và đặt TTL dự phòng 60 giây. Trên staging, sự kiện xóa cache chạy trước khi transaction ghi giá commit, nên cache nạp lại giá cũ; nhóm chuyển việc phát sự kiện sang sau commit.
 
 ### Main points
 1. Cache theo thời gian cố định dễ gây lệch dữ liệu khi giá đổi đột ngột.
@@ -29,6 +29,8 @@ Ngôi thứ nhất ("tôi", "bạn"), thẳng thắn như kể lại cho đồng
 ### Sample paragraph
 Tôi từng nghĩ tăng TTL lên 15 phút là cách nhanh nhất để cứu database. Mọi thứ êm đẹp suốt 2 tháng, cho tới sáng thứ Sáu khi bảng giá đổi lúc 9 giờ.
 
+Bản sửa đầu tiên của tôi còn sai. Sự kiện xóa cache bắn ra trước khi transaction commit, và request kế tiếp nạp lại đúng cái giá cũ vào cache.
+
 ### Words to use or avoid
 - Dùng: `cache`, `TTL`, `database`.
 - Tránh: `tối ưu hóa`, `mạnh mẽ`, `đóng vai trò quan trọng`.
@@ -42,3 +44,11 @@ Tôi từng nghĩ tăng TTL lên 15 phút là cách nhanh nhất để cứu dat
 - TTL dự phòng: 60 giây
 - Thời điểm đổi giá: 9 giờ sáng thứ Sáu
 - Thời gian chạy ổn trước sự cố: 2 tháng
+- TTL thử trước khi sửa: 1 phút (tải database tăng gấp 2 lần, nên bỏ)
+- Lỗi trên staging: sự kiện xóa cache chạy trước khi transaction commit, cache nạp lại giá cũ
+- Cách sửa lỗi staging: phát sự kiện sau khi transaction commit
+- Kênh phát sự kiện: Redis pub/sub
+- Số trang đọc cache giá: 2 (trang danh sách và trang chi tiết sản phẩm)
+- Tỉ lệ cache hit: 97% trước khi sửa, 92% sau khi sửa
+- Xử lý 40 đơn đặt nhầm: nhóm gọi lại cho từng khách trong 1 buổi chiều
+- Thời gian triển khai bản sửa: 3 ngày

@@ -5,13 +5,14 @@ Use for personal essays, reflections, and short narrative pieces for general rea
 ## Purpose and reader
 
 - Reader: general readers who do not need specialized background.
-- Length: open (`length` in `profile.json` is `null`). Stop when the piece lands; do not pad to hit a word count.
+- Length: open (`length` in `profile.json` is `null`). Stop when the piece lands; do not pad to hit a word count. A piece that only retells the brief summary has not landed yet: each main point needs its own scene (see Structure).
 
 ## Overrides to the core rules
 
 - Sentences may be longer (`sentence` in `profile.json`), but **at least one third of sentences must be short** to set the rhythm.
 - Paragraphs follow `paragraph` in `profile.json`.
 - At least one sensory detail per paragraph (sight, sound, smell, touch, taste).
+- Core rule 5 (No invention), essay reading: a small sensory detail that the scene already implies is allowed, for example the hum of a fan that the brief turns on, the light in a room the brief names, or the tape on a box the brief packs. Do not add an event, a person, a place, a number or an outcome that is not in the brief.
 - Zero sentences that explain an emotion after the action already showed it.
 - Evaluative adjectives are allowed only when paired with a visible detail.
 
@@ -32,7 +33,8 @@ Use for personal essays, reflections, and short narrative pieces for general rea
 - **Title**: concrete and specific. Not "Reflections on X".
 - **No fixed headings**: write continuous prose with natural paragraph breaks.
 - **Opening** (at most 2 sentences): start in a scene, a moment, or a concrete detail.
-- **Closing** (1 or 2 sentences): close on one image or one action, not a lesson or summary.
+- **Body**: give each main point of the brief its own scene, with at least one action and one sensory detail. Do not compress a main point into one summary sentence. Before the shift, let the reader feel the tension through a brief fact (the empty days, the box not yet opened), not through a named feeling.
+- **Closing** (1 or 2 sentences): close on one image or one action, not a lesson or summary. Do not restate the feeling that a main point names (for example, "the room felt like home"); show the action that makes the reader feel it.
 
 ## Brief the AI needs
 
@@ -45,6 +47,9 @@ Use for personal essays, reflections, and short narrative pieces for general rea
 
 - [ ] No sentence names a feeling without an action or detail next to it.
 - [ ] Every paragraph has at least one sensory detail.
+- [ ] Each main point of the brief has its own scene with an action and a sensory detail, not one summary sentence.
+- [ ] Every added sensory detail is one the scene implies; no new event, person, place, number or outcome.
+- [ ] The closing does not restate the feeling a main point names.
 - [ ] Short sentences are mixed in to vary the rhythm.
 - [ ] No paragraph ends with a sentence that explains the meaning.
 - [ ] No meta-report opening, no label closing, and no banned phrase from `[all]` or `[tech-blog,essay]`.

@@ -150,9 +150,18 @@ sequenceDiagram
 (The brief says: `date` must be a date in the future, and a missing `date` has no error code.)
 
 **Bad:** `- TBD-1: must the date be in the future?`
-**Good:** `- TBD-1: which HTTP status and code does the system return when `date` is missing?`
+**Good:** ``- TBD-1: which HTTP status and code does the system return when `date` is missing?``
 **Fault:** The question repeats a stated rule and skips the decision the brief lacks.
 **Fix:** A `TBD-n` asks for the missing decision, here the error for a missing `date`.
+
+### 19. Side effects with a sentence instead of the label
+
+(The brief states no side effect.)
+
+**Bad:** "No additional side effects are specified."
+**Good:** `None`
+**Fault:** A sentence around the label reads like an open question and is not the label in `profile.md`.
+**Fix:** Write only the label `None` as the section text.
 
 ## Complete filled API (reference shape)
 

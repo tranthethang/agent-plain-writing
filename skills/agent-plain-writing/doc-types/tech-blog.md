@@ -6,7 +6,7 @@ Use for sharing posts, field notes and technical write-ups for peers.
 
 - Reader: peers in the same field. Technical terms are allowed. Define a term once if it is new or rare.
 - Outside readers: run the script with `--non-tech`.
-- Length: the `length` range in `languages/<lang>/profile.json` applies only when the brief has enough material for it. When a brief is thin, write a shorter post that covers each point once. Do not pad, repeat points, or add a recap to reach the range.
+- Length: the `length` range in `languages/<lang>/profile.json` applies when the brief has enough material for it. When the brief is short (it says `short_brief: true`, or its facts cannot fill `length` without padding), the `length_short` range applies instead. Do not pad, repeat points, or add a recap to reach either range.
 
 ## Voice
 

@@ -32,6 +32,15 @@ Ví dụ minh họa. Chi tiết trong câu chuyện là bịa để làm mẫu. 
 **Fault:** Dùng tính từ đánh giá ("tuyệt vời", "đáng nhớ") không kèm chi tiết nhìn thấy.
 **Fix:** Kể hành động cụ thể trong bữa cơm.
 
+### 5. Kể lại brief thay vì dựng cảnh
+
+(Brief: lúc quạt quay là lúc căn phòng giống một mái nhà.)
+
+**Bad:** Chiều ngày thứ ba, tôi cắm quạt vào ổ điện. Cánh quạt quay trong căn phòng trống. Lần đầu tiên, căn phòng giống một mái nhà.
+**Good:** Chiều ngày thứ ba, tôi rạch lớp băng keo trên thùng các tông. Chiếc quạt còn mùi dầu máy. Tôi cắm phích vào ổ điện. Cánh quạt quay chậm, rồi đều dần, thổi lay đầu sợi dây ni lông buộc trên khóa kéo chiếc vali.
+**Fault:** Ý chính bị nén thành một câu tóm tắt, và câu kết gọi thẳng cảm giác mà brief đã nêu.
+**Fix:** Biến ý chính thành một cảnh có hành động và chi tiết giác quan mà cảnh đã gợi sẵn. Để làn gió cho thấy sự thay đổi.
+
 ## Bài mẫu hoàn chỉnh (`essay`)
 
 ```markdown

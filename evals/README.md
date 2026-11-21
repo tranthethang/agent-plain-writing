@@ -8,7 +8,7 @@ This directory holds simulated evaluation cases, a mechanical scorer, and an AI 
 
 Each file in `cases/` (`<type>-<lang>.md`) has:
 
-1. Frontmatter with `lang` (`vi`, `en`, `ja`), `type` (`tech-blog`, `essay`, `api-design`), and `non_tech` (`true` or `false`).
+1. Frontmatter with `lang` (`vi`, `en`, `ja`), `type` (`tech-blog`, `essay`, `api-design`), and `non_tech` (`true` or `false`). Optional `short_brief: true` marks a brief whose facts cannot fill the `length` range; `score.py` then checks length against `length_short` in `profile.json` and reports `short_brief` in its JSON.
 2. `# SIMULATED DATA` header.
 3. `## Audience` describing the target reader.
 4. `## Brief`:
@@ -54,4 +54,4 @@ Each file in `cases/` (`<type>-<lang>.md`) has:
    python3 evals/score.py evals/cases/tech-blog-en.md output.md
    python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
    ```
-5. `score.py` counts a number as sourced when it appears in the case or equals the item count of one list in the case. For `api-design` it also reports `tbd_ids`, `tbd_without_question` (ids with no `- TBD-n:` line), `tbd_in_code` (ids inside a fenced block), and `tbd_duplicate_questions` (groups of ids that ask the same normalized question). The judge prompt adds semantic keys by type. For `api-design`: `invented_gaps`, `lost_rules`, `repeated_facts`, `misframed_tbd` and `template_violations`. For `tech-blog`: `narrator_shift`, `lost_causal_link` and `mismatched_comparison`. For `essay`: `explained_ending`.
+5. `score.py` counts a number as sourced when it appears in the case or equals the item count of one list in the case. For `api-design` it also reports `tbd_ids`, `tbd_without_question` (ids with no `- TBD-n:` line), `tbd_in_code` (ids inside a fenced block), and `tbd_duplicate_questions` (groups of ids that ask the same normalized question). The judge prompt adds semantic keys by type. For `api-design`: `invented_gaps`, `lost_rules`, `repeated_facts`, `misframed_tbd` and `template_violations`. For `tech-blog`: `narrator_shift`, `lost_causal_link` and `mismatched_comparison`. For `essay`: `explained_ending` and `flat_restatement`.

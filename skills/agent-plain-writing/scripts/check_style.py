@@ -203,6 +203,23 @@ def load_project_config(config_path):
     return data, False
 
 
+def length_range(cfg, short_brief=False):
+    """Return the (lo, hi) length range, or None. A short brief uses `length_short` when the profile has it."""
+    if short_brief and cfg.get("length_short"):
+        return cfg["length_short"]
+    return cfg.get("length")
+
+
+def length_warning(prof, rng, length):
+    """Return a warning when the length is outside the range, else None."""
+    if not rng:
+        return None
+    lo, hi = rng
+    if lo <= length <= hi:
+        return None
+    return f'Length about {length} {prof["length_label"]} (allowed {lo}-{hi})'
+
+
 def main():
     langs = available_langs()
     ap = argparse.ArgumentParser(description="Plain-writing checker")
@@ -298,10 +315,9 @@ def main():
             issues.append(f'Jargon: {len(found)} terms (max {cfg["terms"]}): {", ".join(found)}')
 
     length = round(total / prof["length_divisor"])
-    if cfg["length"]:
-        lo, hi = cfg["length"]
-        if not lo <= length <= hi:
-            warnings.append(f'Length about {length} {prof["length_label"]} (allowed {lo}-{hi})')
+    lw = length_warning(prof, length_range(cfg), length)
+    if lw:
+        warnings.append(lw)
 
     avg = total / n_sent if n_sent else 0
     print(f"lang={lang} type={doc_type} | {total} {label} "

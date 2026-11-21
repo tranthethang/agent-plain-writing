@@ -17,7 +17,7 @@ It gives the AI limits it can count (sentence length, paragraph length, banned p
 - The numeric limits are starting estimates, not verified standards.
 - The Japanese content has no native review yet.
 - The evidence is small: one eval run, 6 simulated cases, mechanical scores only. See [Evidence](#evidence).
-- Automated tests cover the `TBD-n` statistics in `evals/score.py`, the document-type set, the checker default type and the Units table. Run them with `python3 -m unittest discover -s tests`. `AGENTS.md` lists the manual checks for the rest.
+- Automated tests cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type and the Units table. Run them with `python3 -m unittest discover -s tests`. `AGENTS.md` lists the manual checks for the rest.
 
 ## Quick start
 
@@ -45,6 +45,8 @@ Mirrors `sentence` / `paragraph` limits in `skills/agent-plain-writing/languages
 | `vi` | syllables (*tiếng*) | 28 / 3 | 40 / 6 | 25 / 3 | 16 / 3 |
 | `en` | words | 20 / 3 | 30 / 6 | 18 / 3 | 12 / 3 |
 | `ja` | characters (字) | 60 / 3 | 80 / 6 | 55 / 3 | 40 / 3 |
+
+`tech-blog` text length (`length` / `length_short` for a short brief): `vi` 600–800 / 300–500 words, `en` 600–800 / 300–500 words, `ja` 1500–2000 / 750–1250 字. Other types have no length range.
 
 ## Evidence
 
