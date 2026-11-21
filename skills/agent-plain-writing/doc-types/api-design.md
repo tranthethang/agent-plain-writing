@@ -11,9 +11,9 @@ Use when you write the design of one API endpoint: purpose, fields, processing a
 
 ## Principles
 
-1. **The template owns the structure.** Write `TBD-n` (for example `TBD-1`, `TBD-2`) inline in a section or cell when information is missing. A bare `TBD` is not allowed, including in an example value. Each `TBD-n` matches one question under Open items.
-2. **One owner for each fact.** Authorization is written in Identity only. Processing points to Identity and does not restate the role rule. Errors are written in the Errors table only. Other sections point to them and do not repeat them.
-3. **Never guess a number, field type, required flag, or component.** Timeout, limit, size, type, required rule: write it if the source has it, otherwise `TBD-n`.
+1. **The template owns the structure.** Write `TBD-n` (for example `TBD-1`, `TBD-2`) inline in a section or cell only for an open fact that the brief names, or for a fact without which a developer cannot implement the endpoint. Leave out a slot that the brief does not mention and that does not block implementation. A bare `TBD` is not allowed. Each `TBD-n` matches one question under Open items.
+2. **One owner for each fact.** Identity owns every role rule, including a role rule on a field value (for example, only one role may set a field to a given value). Processing does not restate it. Errors are written in the Errors table only. Other sections point to them and do not repeat them.
+3. **Never guess a number, field type, required flag, or component.** Timeout, limit, size, type, required rule: write it if the source has it. When the source lacks it, write `TBD-n` only if the brief names the gap or the developer cannot implement without it; otherwise leave it out.
 4. **Name the actor.** "The system checks...", "The client sends...". Avoid the passive voice.
 5. **Use requirement words consistently** (RFC 2119 style). One word per level, the same all through the document. The words for each language are in `profile.md`:
    - must: mandatory
@@ -21,7 +21,7 @@ Use when you write the design of one API endpoint: purpose, fields, processing a
    - should: recommended
    - may: optional
 6. **Condition → result** is written "When <condition>, the system must <action>."
-7. **Every error has three parts**: the condition, the HTTP status, the error code. Every validation check in Processing must match one row in Errors, or mark its error status or code as `TBD-n`.
+7. **Every error has three parts**: the condition, the HTTP status, the error code. Every validation check in Processing names the error code of its failure and matches one row in Errors. The Errors table owns the HTTP status and the condition. When the code is an open fact, mark it `TBD-n`. No sentence only points to the Errors table.
 8. **No vague words**: no word that leaves a condition, an amount or a speed open. The words for each language are in `banned.txt`, section `[api-design]`, with replacements in `banned-guide.md`.
 9. **One concept, one name.** Pick "order" and never mix in "purchase" or "request" for the same thing.
 10. **No pointer to another API.** Do not write "same as the other endpoints". Write the rule here.
@@ -30,12 +30,12 @@ Use when you write the design of one API endpoint: purpose, fields, processing a
 
 Write these sections in this order.
 
-1. **Identity.** Method, path, purpose, caller, authorization (here only), idempotency.
-2. **DTO and field mapping.** Request and response fields in a table with type, required (`Yes`, `No`, `Conditional (<rule>)`, or `TBD-n`), and constraint. Keep the labels `Yes`, `No`, and `Conditional` in English in every language.
-3. **Endpoint.** One request example and one success response example with its status. Use `TBD-n` (never bare `TBD`) for any unknown example value.
-4. **Processing.** Number the steps in execution order only when the brief states the order; otherwise list unnumbered rules and mark execution order or error precedence `TBD-n`. Point to Identity for authorization instead of restating role rules. Skip the Mermaid diagram when the execution order is `TBD-n` or fewer than three nodes carry meaning; write `TBD-n` in its place. Otherwise add one Mermaid sequence diagram or flowchart in a fenced code block using only actors and components named in the brief. Give each rule that has an empty or edge case its own step.
+1. **Identity.** Method, path, purpose, and every role rule (here only). Add caller and idempotency only when the brief states them or when the developer cannot implement without them.
+2. **DTO and field mapping.** Request and response fields in a table with type, required (`Yes`, `No`, `Conditional (<rule>)`, or `TBD-n`), and constraint. A field type is `TBD-n` only when neither the brief nor the glossary gives one. Use the required-flag labels from `profile.md`.
+3. **Endpoint.** One request example and one success response example with its status. An example holds no `TBD-n`. Use only known fields. When no field is known, leave out that example.
+4. **Processing.** Number the steps in execution order only when the brief states the order; otherwise list unnumbered rules and mark execution order or error precedence `TBD-n`. Do not restate role rules; they live in Identity. Name the error code of each failed check. Skip the Mermaid diagram when the execution order is `TBD-n` or fewer than three nodes carry meaning, and write nothing in its place. Otherwise add one Mermaid sequence diagram or flowchart in a fenced code block using only actors and components named in the brief. Give each rule that has an empty or edge case its own step.
 5. **Errors.** One table with condition, HTTP status and code. Errors appear nowhere else.
-6. **Side effects.** Audit, events, cache, async jobs. Write `None` for a read-only call, or `TBD-n` when the brief is silent. Never repeat the main action of the API.
+6. **Side effects.** Audit, events, cache, async jobs. Write `None` for a read-only call. Add other effects only when the brief states them or when the developer cannot implement without them. Never repeat the main action of the API.
 7. **Open items.** Every `TBD-n` with its question (write each question here once; keep inline cells to `TBD-n`). Open items hold spec questions only: do not ask for an example, ask one thing per question, and do not ask what the brief already answers.
 
 The template excludes tech stack, convention, error contract, changelog and test links. The project convention lives outside the API file.
@@ -49,30 +49,18 @@ The template excludes tech stack, convention, error contract, changelog and test
 
 If item 1 or 2 is missing, ask. Do not infer business rules.
 
-## Coverage checklist
-
-Check that the spec covers or marks `TBD-n` for each of these gaps:
-
-- Missing field of a conditional rule
-- Empty array
-- Field used to derive another field
-- Value outside an enum
-- Response body
-- Error body
-
 ## Checklist
 
-- [ ] Every template section has content or `TBD-n`, in the template order.
-- [ ] Missing facts use `TBD-n` inline (no bare `TBD`, including in example values), with each `TBD-n` matched to one question in Open items.
+- [ ] Every template section is present in the template order.
+- [ ] `TBD-n` appears only for a gap the brief names or that blocks implementation, with each `TBD-n` matched to one question in Open items. No bare `TBD`. No `TBD-n` in an example.
 - [ ] Open items hold spec questions only, one question per item, with no request for an example and no question the brief already answers.
 - [ ] No section was added outside the template.
-- [ ] Authorization appears in Identity only; Processing points to Identity.
-- [ ] `Yes`, `No`, and `Conditional` stay in English.
+- [ ] Every role rule, including one on a field value, appears in Identity only.
+- [ ] Required-flag labels follow `profile.md`.
 - [ ] Every error is in the Errors table with an HTTP status, a code and a condition.
-- [ ] Every validation check in Processing matches a row in Errors, or marks its error status or code as `TBD-n`.
+- [ ] Every validation check in Processing names its error code and matches a row in Errors.
 - [ ] Processing is numbered only when the brief gives the order; otherwise unnumbered with precedence `TBD-n`.
 - [ ] Mermaid diagram is skipped when execution order is `TBD-n` or fewer than three nodes carry meaning; otherwise it uses only actors and components named in the brief.
-- [ ] All six coverage checklist gaps are addressed or marked `TBD-n`.
 - [ ] No number, field type, required flag, or component invented by the AI.
 - [ ] No vague word.
 - [ ] One concept, one name.
