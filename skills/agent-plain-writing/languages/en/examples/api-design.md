@@ -47,11 +47,11 @@ Requirement words in this document: **must**, **must not**, **should**, **may**.
 **Bad:** The API accepts the necessary information such as the cart ID, the payment method and an optional note.
 **Good:**
 
-| Field | Type | Required | Constraint |
-|---|---|---|---|
-| `cart_id` | uuid | Yes | The cart must belong to the caller |
-| `payment_method` | enum | Yes | `card`, `cod` |
-| `note` | string | No | at most 200 characters |
+| Field | Direction | Type | Required | Constraint |
+|---|---|---|---|---|
+| `cart_id` | Request | uuid | Yes | The cart must belong to the caller |
+| `payment_method` | Request | enum | Yes | `card`, `cod` |
+| `note` | Request | string | No | at most 200 characters |
 
 ### 8. "etc."
 
@@ -72,9 +72,9 @@ Requirement words in this document: **must**, **must not**, **should**, **may**.
 ### 11. Errors listed twice
 
 **Bad:** Processing step 2 says "return 409 `ROOM_TAKEN` when the room is booked". The Errors table says the same again with different wording.
-**Good:** Processing step 2 says "If the room is booked, stop with the error `ROOM_TAKEN`." The Errors table is the only place that gives the status 409 and the condition.
+**Good:** Processing does not mention the booked room. The Errors table has one row: 409, `ROOM_TAKEN`, "Another reservation overlaps the slot".
 **Fault:** Two owners for one fact drift apart.
-**Fix:** Processing names the code. The Errors table owns the status and the condition.
+**Fix:** The Errors table owns every check: condition, status and code. Processing lists no check.
 
 ### 12. Authorization listed three times
 
@@ -93,13 +93,9 @@ Requirement words in this document: **must**, **must not**, **should**, **may**.
 ### 14. A business rule with no step order
 
 **Bad:** The system checks the overlap, the opening hours and the quota when it creates a reservation.
-**Good:**
-1. The system checks that the slot lies inside opening hours.
-2. The system checks that no reservation overlaps the slot.
-3. The system checks that the caller is under the daily quota.
-4. The system saves the reservation.
+**Good:** Execution order: opening hours, overlap, daily quota. When two checks fail, the first failed check in this order decides the error.
 **Fault:** The reader cannot tell which error wins when two checks fail.
-**Fix:** Number the steps when the brief gives the execution order; otherwise use unnumbered bullets, mark precedence `TBD-1`, and add `- TBD-1: execution order and error precedence?` under Open items.
+**Fix:** Write one order line and one precedence line in Processing. When the brief gives no order, mark it `TBD-1` and add `- TBD-1: execution order and error precedence?` under Open items.
 
 ### 15. An empty-list case with no rule
 
@@ -114,20 +110,20 @@ Requirement words in this document: **must**, **must not**, **should**, **may**.
 **Good:** Numbered steps first, then one Mermaid block that shows the same order:
 
 ````markdown
-1. The system checks that the slot lies inside opening hours.
-2. The system checks that no reservation overlaps the slot.
-3. The system saves the reservation.
+1. The system generates `reservation_id`.
+2. The system computes `ends_at` from `starts_at` and `minutes`.
+3. The system saves the reservation with status `CONFIRMED`.
 
 ```mermaid
 sequenceDiagram
     Client->>API: POST /v1/reservations
-    API->>API: check opening hours and overlap
-    API->>API: save reservation
-    API-->>Client: 201
+    API->>API: generate id and compute end
+    API->>DB: save reservation
+    API-->>Client: response
 ```
 ````
 
-**Fault:** The diagram holds rules that the steps do not state.
+**Fault:** The diagram holds behavior that the steps do not state.
 **Fix:** The steps own the rules. The diagram shows the order only.
 
 ### 17. Using TBD-n for a type given by the glossary
@@ -136,18 +132,27 @@ sequenceDiagram
 
 **Bad:**
 
-| Field | Type | Required | Constraint |
-|---|---|---|---|
-| `title` | `TBD-1` | Yes | — |
+| Field | Direction | Type | Required | Constraint |
+|---|---|---|---|---|
+| `title` | Request | `TBD-1` | Yes | — |
 
 **Good:**
 
-| Field | Type | Required | Constraint |
-|---|---|---|---|
-| `title` | string | Yes | — |
+| Field | Direction | Type | Required | Constraint |
+|---|---|---|---|---|
+| `title` | Request | string | Yes | — |
 
 **Fault:** Opening a `TBD-n` for a field type that the glossary already describes as text.
 **Fix:** When the glossary describes a field as text (a title, a body, a name, or a part of a URL), write `string` and do not open a `TBD-n`.
+
+### 18. A TBD-n that asks what the rule already says
+
+(The brief says: `date` must be a date in the future, and a missing `date` has no error code.)
+
+**Bad:** `- TBD-1: must the date be in the future?`
+**Good:** `- TBD-1: which HTTP status and code does the system return when `date` is missing?`
+**Fault:** The question repeats a stated rule and skips the decision the brief lacks.
+**Fix:** A `TBD-n` asks for the missing decision, here the error for a missing `date`.
 
 ## Complete filled API (reference shape)
 
@@ -162,14 +167,15 @@ sequenceDiagram
 
 ## DTO and field mapping
 
-| Field | Type | Required | Constraint |
-|---|---|---|---|
-| `room_id` | uuid | Yes | The room must exist |
-| `starts_at` | datetime | Yes | The start must be in the future; at most `TBD-1` days ahead |
-| `minutes` | integer | Yes | 30 to 240, in steps of 30 |
-| `note` | string | No | at most 200 characters |
-
-Response fields: `reservation_id` (uuid), `status` (string), `ends_at` (datetime).
+| Field | Direction | Type | Required | Constraint |
+|---|---|---|---|---|
+| `room_id` | Request | uuid | Yes | The room must exist |
+| `starts_at` | Request | datetime | Yes | The start must be in the future; at most `TBD-1` days ahead |
+| `minutes` | Request | integer | Yes | 30 to 240, in steps of 30 |
+| `note` | Request | string | No | at most 200 characters |
+| `reservation_id` | Response | uuid | — | — |
+| `status` | Response | string | — | — |
+| `ends_at` | Response | datetime | — | — |
 
 ## Endpoint
 
@@ -183,17 +189,11 @@ Response, status 201:
 
 ## Processing
 
-1. The system checks that the slot lies inside opening hours.
-2. The system checks that no reservation overlaps the slot. If one does, it stops with `ROOM_TAKEN`.
+1. The system generates `reservation_id`.
+2. The system computes `ends_at` from `starts_at` and `minutes`.
 3. The system saves the reservation with status `CONFIRMED`.
 
-```mermaid
-sequenceDiagram
-    Client->>API: POST /v1/reservations
-    API->>API: check opening hours and overlap
-    API->>API: save reservation
-    API-->>Client: 201
-```
+Execution order of the checks: opening hours, then overlap. When two checks fail, the first in this order decides the error.
 
 ## Errors
 

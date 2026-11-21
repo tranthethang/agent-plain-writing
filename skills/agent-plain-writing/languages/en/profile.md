@@ -36,6 +36,10 @@ Use in the field table of an API. The labels follow the document language.
 | Not required | No |
 | Depends on a rule | Conditional (<rule>) |
 
+Direction labels (the Direction column): `Request`, `Response`.
+
+Label for an empty Side effects section: `None`.
+
 ## Jargon
 
 - Reader is a developer: keep the technical name (API, token, cache). One concept, one name.
