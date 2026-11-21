@@ -29,7 +29,7 @@ The register is a Japanese form, so it is listed here. Choose one register per d
 
 Teams differ. Before writing a design document or a manual for a Japanese team or customer, confirm their register convention and follow it.
 
-## Requirement words (detail design)
+## Requirement words (API design)
 
 | Level | Use |
 |---|---|
