@@ -16,7 +16,7 @@ Giọng, người xưng và cấu trúc do `doc-types/<loại>.md` quyết đị
 - Ngôi thứ nhất: "tôi". Gọi người đọc: "bạn".
 - Tên nút in đậm, đúng nhãn trên màn hình.
 
-## Từ chỉ mức bắt buộc (detail design)
+## Từ chỉ mức bắt buộc (API design)
 
 | Mức | Dùng từ |
 |---|---|
