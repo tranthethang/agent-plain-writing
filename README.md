@@ -13,7 +13,7 @@ It gives the AI limits it can count (sentence length, paragraph length, banned p
 
 - Four document types in two voice families: `plain` (`tech-blog`, `api-design`, `guide`) and `creative` (`essay`). `prose`, `poetry`, and `screen-design` are out of scope for now.
 - **Breaking change:** `--type blog` is now `--type tech-blog` (also the new default).
-- The checker is mechanical. It counts. It does not judge voice.
+- The checker is mechanical. It counts. It does not judge voice. Text length outside the range prints a warning and does not fail the check.
 - The numeric limits are starting estimates, not verified standards.
 - The Japanese content has no native review yet.
 - The evidence is small: one eval run, 6 simulated cases, mechanical scores only. See [Evidence](#evidence).

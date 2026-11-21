@@ -29,6 +29,8 @@ Mỗi file trong `skills/agent-plain-writing/doc-types/` liệt kê thông tin A
 | Thiết kế API (một endpoint) | `plain` | `api-design` | `doc-types/api-design.md` |
 | Hướng dẫn người dùng | `plain` | `guide` | `doc-types/user-guide.md` |
 
-Với `api-design`, AI dùng một mẫu cố định gồm bảy mục. Khi đề bài thiếu thông tin, AI chỉ ghi `TBD-n` cho chỗ trống mà đề bài nêu tên, hoặc chỗ trống chặn việc triển khai. Mỗi `TBD-n` có một câu hỏi ở mục Open items.
+Các loại khác dùng mặc định `tech-blog` (nhóm `plain`, `languages/<lang>/examples/common.md`).
+
+Với `api-design`, AI dùng một mẫu cố định gồm bảy mục. Khi đề bài thiếu thông tin, AI chỉ ghi `TBD-n` cho chỗ trống mà đề bài nêu tên, hoặc chỗ trống chặn việc triển khai. Kiểu trường đã biết (từ đề bài, bảng thuật ngữ, danh sách giá trị hợp lệ, hoặc danh sách id) được ghi thẳng, không mở `TBD-n`. Mỗi `TBD-n` có một câu hỏi ở mục Open items, và hai `TBD-n` không hỏi cùng một câu.
 
 Tiếp theo: [03-checker](03-checker.vi.md).

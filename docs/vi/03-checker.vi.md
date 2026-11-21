@@ -14,7 +14,7 @@ python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --t
 | `--non-tech` | Giới hạn thuật ngữ còn 3. Loại `guide` luôn áp dụng giới hạn thuật ngữ |
 | `--config` | Đường dẫn tới file `PLAIN-WRITING.md`. Mặc định: `./PLAIN-WRITING.md` nếu có |
 
-Mã thoát: `0` sạch, `1` có vi phạm, `2` sai cách dùng.
+Mã thoát: `0` sạch, `1` có vi phạm, `2` sai cách dùng. `--type blog` đã bị bỏ và trả về mã thoát `2`; hãy dùng `--type tech-blog`.
 
 ## Script kiểm tra gì
 

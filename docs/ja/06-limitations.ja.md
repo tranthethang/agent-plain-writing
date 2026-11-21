@@ -5,7 +5,7 @@
 - **日本語はネイティブのレビューを受けていません。** `ja` の内容は AI が改善しました。文体（タイプ別の です・ます調 / だ・である調 / である調・常体）、要件を表す語、例文のペアは、実際に使う前にネイティブによる確認が必要です。
 - **例文は説明用です。** `examples/` の話や数字は事実ではありません。実務では、書き手の事実を使うか、`TBD` と書いてください。
 - **効果の証拠はまだありません。** [05-evals](05-evals.ja.md) を参照。評価は小さく、手元の証拠は 1 回分の実行です（[evidence/](../../evidence/README.md)）。
-- **自動テストはわずかです。** テストは `evals/score.py` の `TBD-n` 集計、文書タイプの一覧、チェッカーの既定タイプ、Units 表を対象にします(no native review yet)(`python3 -m unittest discover -s tests`)。それ以外の手動の確認手順は `AGENTS.md` にあります。
+- **自動テストはわずかです。** テストは `evals/score.py` の `TBD-n` 集計、文書タイプの一覧、チェッカーの既定タイプ、Units 表を対象にします（`python3 -m unittest discover -s tests`）(no native review yet)。それ以外の手動の確認手順は `AGENTS.md` にあります。
 - **対象外のタイプ。** `prose`、`poetry`、`screen-design` は現時点では対象外です。(no native review yet)
 
 ## 貢献

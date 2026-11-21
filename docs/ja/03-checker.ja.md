@@ -14,7 +14,7 @@ python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --t
 | `--non-tech` | 専門用語を 3 語までに制限する。`guide` タイプは常に用語の上限を適用する |
 | `--config` | `PLAIN-WRITING.md` へのパス。既定は、あれば `./PLAIN-WRITING.md` |
 
-終了コード：`0` 問題なし、`1` 違反あり、`2` 使い方の誤り。
+終了コード：`0` 問題なし、`1` 違反あり、`2` 使い方の誤り。`--type blog` は廃止され終了コード `2` を返します。代わりに `--type tech-blog` を使ってください。(no native review yet)
 
 ## チェックする内容
 

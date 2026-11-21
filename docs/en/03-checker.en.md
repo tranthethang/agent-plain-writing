@@ -14,7 +14,7 @@ python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --t
 | `--non-tech` | Limit jargon to 3 terms. The `guide` type always applies a jargon limit |
 | `--config` | Path to a `PLAIN-WRITING.md` file. Default: `./PLAIN-WRITING.md` if present |
 
-Exit codes: `0` clean, `1` violations, `2` usage error.
+Exit codes: `0` clean, `1` violations, `2` usage error. `--type blog` was removed and exits `2`; use `--type tech-blog` instead.
 
 ## What it checks
 
