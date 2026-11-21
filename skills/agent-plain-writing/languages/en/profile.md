@@ -15,7 +15,7 @@ Voice, speaker and structure are set by `doc-types/<type>.md`. The language adds
 - Pronouns: "I" and "you". Contractions ("don't", "it's") are a register choice that the type file makes.
 - Plain imperative verbs for steps ("Click", "Select", "Enter"). Button names in bold, exactly as on screen.
 
-## Requirement words (detail design)
+## Requirement words (API design)
 
 | Level | Use |
 |---|---|
