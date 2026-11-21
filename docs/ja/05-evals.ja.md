@@ -5,7 +5,7 @@
 | ファイル | 役割 |
 |---|---|
 | `cases/` | 6 ケース：`blog` と `api-design` を、それぞれ `vi`、`en`、`ja` で。データはすべて架空です |
-| `score.py` | 機械的な採点。ケースにない数字を数え、`api-design` では `TBD-n` の問題も調べる |
+| `score.py` | 機械的な採点。ケースにない数字を数え、`api-design` では `tbd_ids`、`tbd_without_question`、`tbd_in_code`、`tbd_duplicate_questions` も報告する |
 | `judge-prompt.md` | AI 審査員用のプロンプト（明瞭さ、網羅性、`api-design` 向けの意味チェック 3 点） |
 | `run_eval.py` | 各ケースを 2 回（スキルあり・なし）実行する |
 

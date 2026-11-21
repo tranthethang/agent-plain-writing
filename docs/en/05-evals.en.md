@@ -5,7 +5,7 @@
 | File | Role |
 |---|---|
 | `cases/` | 6 cases: `blog` and `api-design`, each in `vi`, `en`, `ja`. All data is simulated |
-| `score.py` | Mechanical scorer. Counts numbers not found in the case, and for `api-design` also `TBD-n` problems |
+| `score.py` | Mechanical scorer. Counts numbers not found in the case, and for `api-design` also reports `tbd_ids`, `tbd_without_question`, `tbd_in_code`, and `tbd_duplicate_questions` |
 | `judge-prompt.md` | Prompt for an AI judge (clarity, coverage, and three semantic checks for `api-design`) |
 | `run_eval.py` | Runs each case twice (with and without the skill) |
 

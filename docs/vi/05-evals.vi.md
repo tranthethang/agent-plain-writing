@@ -5,7 +5,7 @@
 | File | Vai trò |
 |---|---|
 | `cases/` | 6 ca: `blog` và `api-design`, mỗi loại có `vi`, `en`, `ja`. Mọi dữ liệu đều là giả lập |
-| `score.py` | Bộ chấm cơ học. Đếm số không có trong ca, và với `api-design` còn kiểm tra lỗi `TBD-n` |
+| `score.py` | Bộ chấm cơ học. Đếm số không có trong ca, và với `api-design` còn báo `tbd_ids`, `tbd_without_question`, `tbd_in_code` và `tbd_duplicate_questions` |
 | `judge-prompt.md` | Prompt cho AI giám khảo (độ rõ, độ đủ ý, và ba kiểm tra ngữ nghĩa cho `api-design`) |
 | `run_eval.py` | Chạy mỗi ca hai lần (có skill và không có skill) |
 

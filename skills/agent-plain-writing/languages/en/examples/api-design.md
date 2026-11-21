@@ -10,7 +10,7 @@ Requirement words in this document: **must**, **must not**, **should**, **may**.
 
 **Bad:** The API returns results quickly.
 **Good:** The API must respond within 500 ms at P95.
-(If no figure is known: `TBD: P95 target for this API?`)
+(If no figure is known: mark `TBD-1` inline and add `- TBD-1: P95 target for this API?` under Open items.)
 
 ### 2. Vague error handling
 
@@ -40,7 +40,7 @@ Requirement words in this document: **must**, **must not**, **should**, **may**.
 
 **Bad:** If necessary, the system retries.
 **Good:** When a call to the payment service fails, the system retries up to 3 times, 2 seconds apart. After the third failure, it returns 503.
-(If the source gives no figure: `TBD: number of retries and delay?`)
+(If the source gives no figure: mark `TBD-1` inline and add `- TBD-1: number of retries and delay?` under Open items.)
 
 ### 7. Input written as prose
 
@@ -56,7 +56,7 @@ Requirement words in this document: **must**, **must not**, **should**, **may**.
 ### 8. "etc."
 
 **Bad:** Order status can be PENDING, PAID, etc.
-**Good:** Order status is one of `PENDING`, `PAID`, `SHIPPED`, `CANCELLED`. If the source is incomplete: `TBD: full list of statuses?`
+**Good:** Order status is one of `PENDING`, `PAID`, `SHIPPED`, `CANCELLED`. If the source is incomplete: mark `TBD-1` inline and add `- TBD-1: full list of statuses?` under Open items.
 
 ### 9. Inconsistent terms
 
@@ -86,9 +86,9 @@ Requirement words in this document: **must**, **must not**, **should**, **may**.
 ### 13. "Same as siblings"
 
 **Bad:** Errors: same as the other room endpoints.
-**Good:** List every error of this endpoint in its own table. If the source is missing, put `TBD` in the table and add the question to Open items.
+**Good:** List every error of this endpoint in its own table. If the source is missing, put `TBD-1` in the table and add `- TBD-1: <question>` to Open items.
 **Fault:** The reader cannot check the endpoint alone.
-**Fix:** Write the rule here, or mark `TBD` and list the question in Open items.
+**Fix:** Write the rule here, or mark `TBD-1` and list `- TBD-1: <question>` in Open items.
 
 ### 14. A business rule with no step order
 
@@ -99,7 +99,7 @@ Requirement words in this document: **must**, **must not**, **should**, **may**.
 3. The system checks that the caller is under the daily quota.
 4. The system saves the reservation.
 **Fault:** The reader cannot tell which error wins when two checks fail.
-**Fix:** Number the steps when the brief gives the execution order; otherwise use unnumbered bullets and mark precedence `TBD`.
+**Fix:** Number the steps when the brief gives the execution order; otherwise use unnumbered bullets, mark precedence `TBD-1`, and add `- TBD-1: execution order and error precedence?` under Open items.
 
 ### 15. An empty-list case with no rule
 
@@ -130,6 +130,25 @@ sequenceDiagram
 **Fault:** The diagram holds rules that the steps do not state.
 **Fix:** The steps own the rules. The diagram shows the order only.
 
+### 17. Using TBD-n for a type given by the glossary
+
+(The glossary defines `title` as "the title of the post".)
+
+**Bad:**
+
+| Field | Type | Required | Constraint |
+|---|---|---|---|
+| `title` | `TBD-1` | Yes | — |
+
+**Good:**
+
+| Field | Type | Required | Constraint |
+|---|---|---|---|
+| `title` | string | Yes | — |
+
+**Fault:** Opening a `TBD-n` for a field type that the glossary already describes as text.
+**Fix:** When the glossary describes a field as text (a title, a body, a name, or a part of a URL), write `string` and do not open a `TBD-n`.
+
 ## Complete filled API (reference shape)
 
 ````markdown
@@ -146,7 +165,7 @@ sequenceDiagram
 | Field | Type | Required | Constraint |
 |---|---|---|---|
 | `room_id` | uuid | Yes | The room must exist |
-| `starts_at` | datetime | Yes | The start must be in the future |
+| `starts_at` | datetime | Yes | The start must be in the future; at most `TBD-1` days ahead |
 | `minutes` | integer | Yes | 30 to 240, in steps of 30 |
 | `note` | string | No | at most 200 characters |
 
@@ -190,7 +209,7 @@ The system writes one audit record for each saved reservation.
 
 ## Open items
 
-- `TBD`: how many days ahead may a caller reserve?
+- `TBD-1`: how many days ahead may a caller reserve?
 ````
 
 ## Your own samples

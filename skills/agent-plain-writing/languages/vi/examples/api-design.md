@@ -9,7 +9,7 @@ Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng
 ### 1. Hiệu năng mơ hồ
 
 **Bad:** API trả kết quả một cách nhanh chóng.
-**Good:** API phải trả lời trong ≤ 500 ms ở P95. (Nếu chưa có số: `TBD: ngưỡng P95 cho API này?`)
+**Good:** API phải trả lời trong ≤ 500 ms ở P95. (Nếu chưa có số: ghi `TBD-1` và thêm `- TBD-1: ngưỡng P95 cho API này?` vào mục còn mở)
 
 ### 2. Xử lý lỗi mơ hồ
 
@@ -39,7 +39,7 @@ Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng
 
 **Bad:** Nếu cần thì hệ thống sẽ thử lại.
 **Good:** Khi gọi dịch vụ thanh toán thất bại, hệ thống thử lại tối đa 3 lần, cách nhau 2 giây. Quá 3 lần, hệ thống trả 503.
-(Nếu nguồn không nêu số lần: `TBD: số lần và khoảng cách thử lại?`)
+(Nếu nguồn không nêu số lần: ghi `TBD-1` và thêm `- TBD-1: số lần và khoảng cách thử lại?` vào mục còn mở)
 
 ### 7. Đầu vào bằng văn xuôi
 
@@ -55,7 +55,7 @@ Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng
 ### 8. "v.v."
 
 **Bad:** Trạng thái đơn hàng gồm PENDING, PAID, v.v.
-**Good:** Trạng thái đơn hàng gồm `PENDING`, `PAID`, `SHIPPED`, `CANCELLED`. Nếu nguồn chưa đủ: `TBD: danh sách đầy đủ trạng thái?`
+**Good:** Trạng thái đơn hàng gồm `PENDING`, `PAID`, `SHIPPED`, `CANCELLED`. Nếu nguồn chưa đủ: ghi `TBD-1` và thêm `- TBD-1: danh sách đầy đủ trạng thái?` vào mục còn mở.
 
 ### 9. Thuật ngữ không nhất quán
 
@@ -85,9 +85,9 @@ Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng
 ### 13. "Giống các API cùng nhóm"
 
 **Bad:** Lỗi: giống các endpoint phòng họp khác.
-**Good:** Liệt kê mọi lỗi của endpoint này trong bảng riêng. Nếu nguồn thiếu, ghi `TBD` trong bảng và đưa câu hỏi vào mục còn mở.
+**Good:** Liệt kê mọi lỗi của endpoint này trong bảng riêng. Nếu nguồn thiếu, ghi `TBD-1` trong bảng và đưa `- TBD-1: <câu hỏi>` vào mục còn mở.
 **Fault:** Người đọc không thể kiểm tra endpoint một mình.
-**Fix:** Ghi quy tắc ngay tại đây, hoặc ghi `TBD` rồi đưa câu hỏi vào mục còn mở.
+**Fix:** Ghi quy tắc ngay tại đây, hoặc ghi `TBD-1` rồi đưa `- TBD-1: <câu hỏi>` vào mục còn mở.
 
 ### 14. Quy tắc nghiệp vụ không có thứ tự bước
 
@@ -98,7 +98,7 @@ Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng
 3. Hệ thống kiểm tra người gọi chưa vượt hạn mức trong ngày.
 4. Hệ thống lưu lượt đặt.
 **Fault:** Người đọc không biết lỗi nào trả trước khi hai bước cùng thất bại.
-**Fix:** Đánh số các bước khi brief nêu rõ thứ tự; nếu chưa rõ, dùng gạch đầu dòng và ghi thứ tự ưu tiên là `TBD`.
+**Fix:** Đánh số các bước khi brief nêu rõ thứ tự; nếu chưa rõ, dùng gạch đầu dòng và ghi thứ tự ưu tiên là `TBD-1`, kèm `- TBD-1: thứ tự ưu tiên khi hai bước cùng lỗi?` ở mục còn mở.
 
 ### 15. Danh sách rỗng không có quy tắc
 
@@ -129,6 +129,25 @@ sequenceDiagram
 **Fault:** Sơ đồ chứa quy tắc mà các bước không nêu.
 **Fix:** Các bước giữ quy tắc. Sơ đồ chỉ cho thấy thứ tự.
 
+### 17. Dùng TBD-n cho kiểu đã biết từ bảng thuật ngữ
+
+(Bảng thuật ngữ nêu `title` là "tiêu đề bài viết".)
+
+**Bad:**
+
+| Trường | Kiểu | Bắt buộc | Ràng buộc |
+|---|---|---|---|
+| `title` | `TBD-1` | Có | — |
+
+**Good:**
+
+| Trường | Kiểu | Bắt buộc | Ràng buộc |
+|---|---|---|---|
+| `title` | string | Có | — |
+
+**Fault:** Mở `TBD-n` cho kiểu của trường mà bảng thuật ngữ đã mô tả là văn bản.
+**Fix:** Khi bảng thuật ngữ mô tả trường là văn bản (như tiêu đề, nội dung, tên, phần URL), ghi `string` và không mở `TBD-n`.
+
 ## Mẫu API điền hoàn chỉnh
 
 Khuôn tham khảo. Cấu trúc nằm trong `doc-types/api-design.md`.
@@ -147,7 +166,7 @@ Khuôn tham khảo. Cấu trúc nằm trong `doc-types/api-design.md`.
 | Trường | Kiểu | Bắt buộc | Ràng buộc |
 |---|---|---|---|
 | `room_id` | uuid | Có | Phòng phải tồn tại |
-| `starts_at` | datetime | Có | Giờ bắt đầu phải ở tương lai |
+| `starts_at` | datetime | Có | Giờ bắt đầu phải ở tương lai; đặt trước tối đa `TBD-1` ngày |
 | `minutes` | integer | Có | 30 đến 240, bước 30 |
 | `note` | string | Không | ≤ 200 ký tự |
 
@@ -191,7 +210,7 @@ Hệ thống ghi một bản ghi audit cho mỗi lượt đặt được lưu.
 
 ## Mục còn mở
 
-- `TBD`: người gọi được đặt trước tối đa bao nhiêu ngày?
+- `TBD-1`: người gọi được đặt trước tối đa bao nhiêu ngày?
 ````
 
 ## Mẫu của bạn (thêm vào đây)

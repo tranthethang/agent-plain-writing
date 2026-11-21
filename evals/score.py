@@ -10,6 +10,7 @@ import json
 import re
 import subprocess
 import sys
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -78,9 +79,19 @@ def list_counts(text):
     return {str(n) for n in counts}
 
 
+def _normalize_question(text):
+    """Normalize a TBD-n question by lowercasing, removing punctuation, and collapsing spaces."""
+    no_punct = "".join(
+        " " if unicodedata.category(ch).startswith("P") else ch
+        for ch in text.lower()
+    )
+    return " ".join(no_punct.split())
+
+
 def tbd_stats(text):
-    """Return TBD-n ids, ids without an Open items question, and ids in code blocks."""
+    """Return TBD-n ids, ids without an Open items question, ids in code blocks, and duplicate question groups."""
     ids, in_code, asked = set(), set(), set()
+    by_question = {}
     fenced = False
     for line in text.splitlines():
         if re.match(r"\s*(```|~~~)", line):
@@ -91,11 +102,26 @@ def tbd_stats(text):
         if fenced:
             in_code.update(found)
             continue
-        m = re.match(r"\s*[-*]\s*`?(TBD-\d+)`?\s*[:：]", line)
+        m = re.match(r"\s*[-*]\s*`?(TBD-\d+)`?\s*[:：]\s*(.*)", line)
         if m:
-            asked.add(m.group(1))
+            tbd_id = m.group(1)
+            asked.add(tbd_id)
+            norm = _normalize_question(m.group(2))
+            if norm:
+                by_question.setdefault(norm, []).append(tbd_id)
     key = lambda x: int(x.split("-")[1])
-    return (sorted(ids, key=key), sorted(ids - asked, key=key), sorted(in_code, key=key))
+    duplicates = [
+        sorted(set(group), key=key)
+        for group in by_question.values()
+        if len(set(group)) >= 2
+    ]
+    duplicates.sort(key=lambda g: key(g[0]))
+    return (
+        sorted(ids, key=key),
+        sorted(ids - asked, key=key),
+        sorted(in_code, key=key),
+        duplicates,
+    )
 
 
 def parse_checker_output(stdout):
@@ -171,7 +197,7 @@ def score_case(case_path, output_path):
     out_nums = extract_numbers(output_text)
     sourced = case_nums | list_counts(case_text)
     invented = sorted(out_nums - sourced, key=lambda x: (float(x), x))
-    tbd_ids, tbd_without_question, tbd_in_code = tbd_stats(output_text)
+    tbd_ids, tbd_without_question, tbd_in_code, tbd_duplicate_questions = tbd_stats(output_text)
 
     return {
         "case": str(case_path),
@@ -193,6 +219,7 @@ def score_case(case_path, output_path):
         "tbd_ids": tbd_ids,
         "tbd_without_question": tbd_without_question,
         "tbd_in_code": tbd_in_code,
+        "tbd_duplicate_questions": tbd_duplicate_questions,
         "checker_exit_code": proc.returncode,
     }
 
