@@ -49,6 +49,10 @@ Use in the field table of an API. The labels follow the document language. (no n
 | Not required | 任意 |
 | Depends on a rule | 条件付き（<条件>） |
 
+Direction labels (the Direction column): `リクエスト`, `レスポンス`. (no native review yet)
+
+Label for an empty Side effects section: `なし`. (no native review yet)
+
 
 ## Jargon
 
