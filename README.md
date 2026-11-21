@@ -9,6 +9,9 @@ It gives the AI limits it can count (sentence length, paragraph length, banned p
 | Bad | The system utilizes a caching mechanism in order to optimize data retrieval performance. |
 | Good | The system saves results it has already computed. Next time, it answers faster. |
 
+![agent-plain-writing banner](assets/screenshot.png)
+
+
 ## Status
 
 - Four document types in two voice families: `plain` (`tech-blog`, `api-design`, `guide`) and `creative` (`essay`). `prose`, `poetry`, and `screen-design` are out of scope for now.
