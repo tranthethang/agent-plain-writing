@@ -41,12 +41,21 @@ Details in the stories are made up to serve as models. In real work, use the aut
 **Fault:** The main point becomes one summary sentence, and the closing names the feeling the brief gives.
 **Fix:** Turn the main point into a scene with an action and a sensory detail the scene implies. Let the moving air show the change.
 
+### 6. A scene with objects but no narrator
+
+(The brief gives no thought of the writer's own.)
+
+**Bad:** My father packed the fan in a cardboard box. He said nothing about money. He told me only to change the fuse if the motor ran hot.
+**Good:** My father packed the fan in a cardboard box. He said nothing about money, only told me to change the fuse if the motor ran hot. I still do not know if that was all he had to say, or all he could say.
+**Fault:** The reader sees the objects and the actions but not the person who remembers them.
+**Fix:** Add one open thought that the scene prompts: a doubt or a memory, not a lesson. Report it outside the text as an added thought.
+
 ## Complete sample (`essay`)
 
 ```markdown
 My blue suitcase sat in the corner of the rented room, its broken zipper still tied with a piece of twine from home. September rain blew through the wooden slats, dampening one edge of the new reed mat. I sat on the bed frame and listened to scooters splashing down the alley outside.
 
-Three days before the bus left, my father fixed our old desk fan and packed it into a cardboard box. He said nothing about tuition, only told me to swap the fuse if the motor ran hot. As the bus pulled out, I caught sight of him behind the station fence, an oily rag still in his hand.
+Three days before the bus left, my father fixed our old desk fan and packed it into a cardboard box. He said nothing about tuition, only told me to swap the fuse if the motor ran hot. As the bus pulled out, I caught sight of him behind the station fence, an oily rag still in his hand. I have never asked him if the fuse was the whole message.
 
 This afternoon, the only sound inside the room was a slow drip from the sink. I opened the cardboard box and plugged the fan into the wall. The blades turned twice, stalled, then spun steady, pushing the smell of warm dust and machine oil across the narrow floor.
 

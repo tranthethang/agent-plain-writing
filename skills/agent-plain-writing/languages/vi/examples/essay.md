@@ -41,12 +41,21 @@ Ví dụ minh họa. Chi tiết trong câu chuyện là bịa để làm mẫu. 
 **Fault:** Ý chính bị nén thành một câu tóm tắt, và câu kết gọi thẳng cảm giác mà brief đã nêu.
 **Fix:** Biến ý chính thành một cảnh có hành động và chi tiết giác quan mà cảnh đã gợi sẵn. Để làn gió cho thấy sự thay đổi.
 
+### 6. Cảnh chỉ có đồ vật, không có người kể
+
+(Brief không nêu suy nghĩ riêng nào của người viết.)
+
+**Bad:** Bố gói chiếc quạt vào thùng các tông. Bố không nhắc chuyện tiền. Bố chỉ dặn tôi thay cầu chì nếu động cơ nóng.
+**Good:** Bố gói chiếc quạt vào thùng các tông. Bố không nhắc chuyện tiền, chỉ dặn tôi thay cầu chì nếu động cơ nóng. Đến giờ tôi vẫn không biết đó là tất cả những gì bố muốn nói, hay tất cả những gì bố nói được.
+**Fault:** Người đọc thấy đồ vật và hành động, nhưng không thấy người đang nhớ lại chúng.
+**Fix:** Thêm một ý nghĩ mở mà cảnh gợi ra: một băn khoăn hay một ký ức, không phải bài học. Báo ý nghĩ đó bên ngoài bài như một phần được thêm vào.
+
 ## Bài mẫu hoàn chỉnh (`essay`)
 
 ```markdown
 Cái va li nhựa màu xanh đứng ở góc phòng trọ, khóa kéo vẫn kẹt đúng chỗ mẹ tôi buộc thêm sợi dây dù. Mưa tháng chín tạt qua khe cửa chớp, làm ướt một góc tấm chiếu mới trải. Tôi ngồi xuống mép giường, nghe tiếng xe máy chạy rào rào ngoài hẻm.
 
-Ba ngày trước khi lên xe, ba tôi sửa lại cái quạt bàn cũ rồi nhét vào thùng các-tông. Ông không nói gì về chuyện tiền học, chỉ dặn tôi nhớ thay cầu chì nếu quạt chạy nóng. Lúc xe lăn bánh, tôi thấy ông đứng sau hàng rào bến xe, tay vẫn cầm chiếc khăn lau dầu mỡ.
+Ba ngày trước khi lên xe, ba tôi sửa lại cái quạt bàn cũ rồi nhét vào thùng các-tông. Ông không nói gì về chuyện tiền học, chỉ dặn tôi nhớ thay cầu chì nếu quạt chạy nóng. Lúc xe lăn bánh, tôi thấy ông đứng sau hàng rào bến xe, tay vẫn cầm chiếc khăn lau dầu mỡ. Tôi chưa bao giờ hỏi ông lời dặn về cầu chì có phải là tất cả không.
 
 Chiều nay, phòng trọ chỉ có tiếng nước nhỏ giọt từ vòi rửa chén. Tôi mở thùng các-tông, cắm phích quạt vào ổ điện. Cánh quạt quay chậm hai vòng rồi chạy đều, thổi mùi nhựa mới và mùi dầu máy ra khắp căn phòng chật.
 

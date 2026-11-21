@@ -12,8 +12,10 @@ Use for personal essays, reflections, and short narrative pieces for general rea
 - Sentences may be longer (`sentence` in `profile.json`), but **at least one third of sentences must be short** to set the rhythm.
 - Paragraphs follow `paragraph` in `profile.json`.
 - At least one sensory detail per paragraph (sight, sound, smell, touch, taste).
-- Core rule 5 (No invention), essay reading: a small sensory detail that the scene already implies is allowed, for example the hum of a fan that the brief turns on, the light in a room the brief names, or the tape on a box the brief packs. Do not add an event, a person, a place, a number or an outcome that is not in the brief.
-- Zero sentences that explain an emotion after the action already showed it.
+- Core rule 5 (No invention), essay reading. The facts stay fixed: do not add an event, a person, a place, a number or an outcome that is not in the brief. The texture may grow:
+  - A small sensory detail that the scene already implies, for example the hum of a fan that the brief turns on, the light in a room the brief names, or the tape on a box the brief packs.
+  - The narrator's inner voice. Use the thoughts, memories and doubts that the brief gives first. When the brief gives none, add at most two sentences of thought that the scene prompts. Write each as an open thought or a doubt (for example, "I still do not know if that was all he had to say."), never as a lesson or a conclusion. Report each added thought outside the text (Workflow step 7 in `SKILL.md`).
+- Zero sentences that explain an emotion after the action already showed it. An open thought is not an explanation: it asks or remembers, and it does not conclude.
 - Evaluative adjectives are allowed only when paired with a visible detail.
 
 ## Voice
@@ -42,6 +44,7 @@ Use for personal essays, reflections, and short narrative pieces for general rea
 2. Tone (warm, quiet, ironic, sharp).
 3. One or two passages you like, marked "imitate this rhythm and word choice".
 4. What must not happen or must not be said.
+5. Inner material: what you thought, remembered or doubted at the time. Without it, the AI adds at most two open thoughts and reports them outside the text.
 
 ## Checklist
 
@@ -50,6 +53,8 @@ Use for personal essays, reflections, and short narrative pieces for general rea
 - [ ] Each main point of the brief has its own scene with an action and a sensory detail, not one summary sentence.
 - [ ] Every added sensory detail is one the scene implies; no new event, person, place, number or outcome.
 - [ ] The closing does not restate the feeling a main point names.
+- [ ] The narrator has an inner voice: the thoughts the brief gives, or at most two added open thoughts, each reported outside the text.
+- [ ] No inner thought states a lesson or a conclusion.
 - [ ] Short sentences are mixed in to vary the rhythm.
 - [ ] No paragraph ends with a sentence that explains the meaning.
 - [ ] No meta-report opening, no label closing, and no banned phrase from `[all]` or `[tech-blog,essay]`.

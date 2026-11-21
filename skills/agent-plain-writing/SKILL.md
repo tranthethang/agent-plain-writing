@@ -21,6 +21,7 @@ Each rule has one owner. Read a rule in its owner file, not in a copy.
 
 - On limits and structure, `doc-types/<type>.md` wins over `SKILL.md`.
 - On words and grammar, `languages/<lang>/` wins over `doc-types/<type>.md`.
+- On how much a text may add beyond the source (reasoning, reactions, inner thoughts), the voice family below and `doc-types/<type>.md` win over the core rules. The facts in core rule 5 never change.
 - Every limit that has a key in `profile.json` comes from `profile.json`. No other file repeats it.
 
 ## Workflow
@@ -29,7 +30,7 @@ Each rule has one owner. Read a rule in its owner file, not in a copy.
 1. **Pick the output language** (`vi`, `en` or `ja`). It is the language of the text you produce, not the language of the prompt. A Vietnamese brief that asks for a Japanese manual means `ja`. If unclear, ask one question. Then read `languages/<lang>/profile.json` (the limits for your type) and `languages/<lang>/profile.md`.
 2. **Pick the document type** (table below). Read `doc-types/<type>.md` and `languages/<lang>/examples/<type>.md`. Read only these.
 3. **Know the reader**: who they are, what they already know, what they must do after reading. If missing, ask one question. If you cannot ask, state your assumption outside the document (or mark `TBD:` inline in specs).
-4. **Outline** (one line per idea) for any text longer than about 400 words. Write only ideas that are in the outline.
+4. **Outline** (one line per idea) for any text longer than about 400 words. Write only ideas that are in the outline. In the `creative` family, the outline fixes the scenes, not every sentence.
 5. **Draft** with the core rules and the type's voice, structure and rhythm. Write normal paragraphs—never put every sentence on its own line.
 6. **Edit** in a separate pass: cut, run the checklist, run the script. Fix until clean.
 7. **Report** two things outside the generated text: the result, and what you had to guess. Never prepend or append `Result:`, `Guesses:`, `---`, or `**推測したこと:**` lines inside the document. When your reply is the document itself and you have no other place for a note, leave the report out. In specs, mark missing details inline with `TBD:`. The script flags the labels in `banned.txt`, section `[report]`, on the first or last 3 lines.
@@ -54,11 +55,11 @@ These rules hold for every document type:
 
 | # | Rule | Limit |
 |---|---|---|
-| 1 | One idea per sentence | Two subordinate clauses means split |
+| 1 | One idea per sentence | In `plain`, two subordinate clauses means split. In `creative`, the type file sets sentence rhythm |
 | 2 | Concrete verbs, active voice | "send", not "perform the sending of" |
 | 3 | Banned phrases | Zero hits from `banned.txt` (`[all]` plus the type section) |
 | 4 | Opening and closing | Opening: at most 2 sentences, straight to the point. No recap, no empty thanks |
-| 5 | No invention | Add no number, technical spec, or outcome that is not in the source. In `tech-blog` and `essay`, keep human context, reasoning, and reactions grounded in the brief; in specs and guides, write `TBD: <specific question>` or ask. Do not place two numbers with different units or time periods next to each other as a comparison; keep both numbers and narrow the claim to what they support |
+| 5 | No invention | Add no number, event, person, place, technical spec, or outcome that is not in the source. Do not place two numbers with different units or time periods next to each other as a comparison; keep both numbers and narrow the claim to what they support. How much else a text may add (reasoning, reactions, inner thoughts) is set by its voice family |
 | 6 | Consistency | One concept, one name. One register for the whole text |
 
 ## Voice families
@@ -75,6 +76,7 @@ One voice: **short, concrete, understood on first read.**
 - **Examples and metaphors**: One example or story per section, and a section is one main point.
 - **Evaluative adjectives** ("great", "powerful", "beautiful"): Replace with a number or a visible detail.
 - **Length**: `length` in `profile.json`, under the type's length policy. Never more than 10% over.
+- **Nothing added beyond the source**: keep human context, reasoning, and reactions grounded in the brief. In specs and guides, write `TBD: <specific question>` or ask.
 
 ### `creative` (`essay`)
 
@@ -82,6 +84,7 @@ One voice: **short, concrete, understood on first read.**
 - **Paragraph length**: `paragraph` in `profile.json`, one idea.
 - **Rhythm and imagery**: Owned by `doc-types/essay.md`.
 - **Evaluative adjectives**: None without a visible detail.
+- **Inner voice**: the facts stay fixed (core rule 5), but the narrator may think, remember and doubt. Use the inner material the brief gives first. When the brief gives none, `doc-types/essay.md` sets how much you may add. Report each added thought outside the text (Workflow step 7).
 
 **Paragraph form:** Write sentences continuously inside a paragraph—never split every sentence onto its own line (no trailing-space `  \n` line breaks). Sentence rhythm is set by the type file.
 
@@ -101,7 +104,7 @@ Common failure: the AI "translates" every technical detail into plain words. The
 4. Adjectives and adverbs.
 5. Empty opening and closing.
 
-For `tech-blog` and `essay`, keep human context, reasoning, and tension instead of cutting down to a bare fact list.
+For `tech-blog` and `essay`, keep human context, reasoning, and tension instead of cutting down to a bare fact list. In `essay`, also keep the narrator's inner thoughts and the sensory detail each scene needs.
 
 ## When editing existing text
 
@@ -116,7 +119,7 @@ For `tech-blog` and `essay`, keep human context, reasoning, and tension instead 
 - [ ] No banned phrase. No empty adjective.
 - [ ] Jargon is within the limit. Each term is explained or replaced.
 - [ ] The type file's checklist passes.
-- [ ] Every number and claim appears in the user's source.
+- [ ] Every number, event and outcome appears in the user's source. In `essay`, every inner thought that the brief does not give is reported outside the text.
 - [ ] Register is consistent.
 - [ ] Guesses are reported outside the generated document (or marked `TBD:` inline in specs).
 

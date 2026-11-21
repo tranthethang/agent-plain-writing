@@ -40,7 +40,7 @@ AI の下書きには、次の欠点がよく出ます。
 | 文法の落とし穴、人称と程度の語 | `languages/<lang>/profile.md` |
 | 専門用語リスト | `languages/<lang>/terms.txt` |
 
-上限と構成では `doc-types` が `SKILL.md` に優先します。語句と文法では `languages` が `doc-types` に優先します。完全な表は `AGENTS.md` にあります。
+上限と構成では `doc-types` が `SKILL.md` に優先します。語句と文法では `languages` が `doc-types` に優先します。素材の外に何をどこまで足せるかでは、文体ファミリーと `doc-types` がコアルールに優先します。ただし、コアルール 5 の事実は変わりません（no native review yet）。完全な表は `AGENTS.md` にあります。
 
 ## リポジトリの構成
 

@@ -40,7 +40,7 @@ Mỗi thông tin có một file chủ. File khác chỉ trỏ tới file đó.
 | Bẫy ngữ pháp, đại từ, từ chỉ mức độ | `languages/<lang>/profile.md` |
 | Danh sách thuật ngữ | `languages/<lang>/terms.txt` |
 
-Về giới hạn và cấu trúc, `doc-types` thắng `SKILL.md`. Về từ ngữ và ngữ pháp, `languages` thắng `doc-types`. Bảng đầy đủ nằm trong `AGENTS.md`.
+Về giới hạn và cấu trúc, `doc-types` thắng `SKILL.md`. Về từ ngữ và ngữ pháp, `languages` thắng `doc-types`. Về mức được thêm ngoài nguồn, họ văn và `doc-types` thắng core rules; các dữ kiện trong core rule 5 thì không bao giờ đổi. Bảng đầy đủ nằm trong `AGENTS.md`.
 
 ## Cấu trúc repo
 

@@ -40,7 +40,7 @@ Each fact has one owner file. Other files point to it.
 | Grammar traps, pronoun and level words | `languages/<lang>/profile.md` |
 | Jargon list | `languages/<lang>/terms.txt` |
 
-On limits and structure, `doc-types` wins over `SKILL.md`. On words and grammar, `languages` wins over `doc-types`. The full table is in `AGENTS.md`.
+On limits and structure, `doc-types` wins over `SKILL.md`. On words and grammar, `languages` wins over `doc-types`. On how much a text may add beyond the source, the voice family and `doc-types` win over the core rules; the facts in core rule 5 never change. The full table is in `AGENTS.md`.
 
 ## Repository layout
 

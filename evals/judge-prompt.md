@@ -39,6 +39,7 @@ For an `essay` output, list each hit in the matching key. Leave the list empty w
 
 - **explained_ending**: a closing sentence that names the feeling after the action already showed it.
 - **flat_restatement**: a main point retold as one summary sentence instead of a scene with an action and a sensory detail, or a paragraph with no sensory detail.
+- **no_inner_voice**: a text with objects and actions but no thought, memory or doubt from the narrator, or an added thought that states a lesson or a conclusion.
 
 ## Output format
 
@@ -59,6 +60,7 @@ Return JSON only. Do not include markdown fences or extra text.
   "mismatched_comparison": [],
   "explained_ending": [],
   "flat_restatement": [],
+  "no_inner_voice": [],
   "notes": "one-sentence reason"
 }
 ```

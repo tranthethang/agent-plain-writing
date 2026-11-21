@@ -112,7 +112,7 @@ def build_prompt(case_path, with_skill):
     case_text = case_path.read_text(encoding="utf-8")
     parts = [
         "Write the requested document using only the facts in the brief below.",
-        "Do not invent numbers or details. Follow the requested language, type, and audience.",
+        "Do not invent numbers, events, people or outcomes. Follow the requested language, type, and audience.",
     ]
     if with_skill:
         meta = score.parse_case_meta(case_text)
