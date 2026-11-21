@@ -40,6 +40,17 @@ Teams differ. Before writing a design document or a manual for a Japanese team o
 
 Many Japanese design documents state default behaviour with plain 「〜する」. Use the requirement words only where the strength of the requirement matters, and keep one form per level. Confirm the team convention.
 
+## Required-flag labels (API design)
+
+Use in the field table of an API. The labels follow the document language. (no native review yet)
+
+| Level | Label |
+|---|---|
+| Required | 必須 |
+| Not required | 任意 |
+| Depends on a rule | 条件付き（<条件>） |
+
+
 ## Jargon
 
 - Reader is a developer: use the term the team already uses (for example サーバー or サーバ, never both). One concept, one term.

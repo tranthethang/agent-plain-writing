@@ -27,6 +27,16 @@ Giọng, người xưng và cấu trúc do `doc-types/<loại>.md` quyết đị
 
 Mỗi mức một từ. Dùng nhất quán cả tài liệu.
 
+## Nhãn cột bắt buộc (API design)
+
+Dùng trong bảng trường của API. Nhãn theo ngôn ngữ của tài liệu.
+
+| Mức | Nhãn |
+|---|---|
+| Bắt buộc | Có |
+| Không bắt buộc | Không |
+| Theo điều kiện | Có điều kiện (<quy tắc>) |
+
 ## Thuật ngữ
 
 - Người đọc là dev: giữ nguyên tên kỹ thuật tiếng Anh (API, token, cache). Một khái niệm một tên.

@@ -31,7 +31,7 @@ Use when you write the design of one API endpoint: purpose, fields, processing a
 Write these sections in this order.
 
 1. **Identity.** Method, path, purpose, and every role rule (here only). Add caller and idempotency only when the brief states them or when the developer cannot implement without them.
-2. **DTO and field mapping.** Request and response fields in a table with type, required (`Yes`, `No`, `Conditional (<rule>)`, or `TBD-n`), and constraint. A field type is `TBD-n` only when neither the brief nor the glossary gives one. Use the required-flag labels from `profile.md`.
+2. **DTO and field mapping.** Request and response fields in a table with type, required (use the labels in `profile.md`, or `TBD-n`), and constraint. A field type is `TBD-n` only when neither the brief nor the glossary gives one.
 3. **Endpoint.** One request example and one success response example with its status. An example holds no `TBD-n`. Use only known fields. When no field is known, leave out that example.
 4. **Processing.** Number the steps in execution order only when the brief states the order; otherwise list unnumbered rules and mark execution order or error precedence `TBD-n`. Do not restate role rules; they live in Identity. Name the error code of each failed check. Skip the Mermaid diagram when the execution order is `TBD-n` or fewer than three nodes carry meaning, and write nothing in its place. Otherwise add one Mermaid sequence diagram or flowchart in a fenced code block using only actors and components named in the brief. Give each rule that has an empty or edge case its own step.
 5. **Errors.** One table with condition, HTTP status and code. Errors appear nowhere else.

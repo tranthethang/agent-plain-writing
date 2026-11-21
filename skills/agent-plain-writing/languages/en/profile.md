@@ -26,6 +26,16 @@ Voice, speaker and structure are set by `doc-types/<type>.md`. The language adds
 
 One word per level, all through the document. Do not use "shall", "needs to", "is required to" for the same level.
 
+## Required-flag labels (API design)
+
+Use in the field table of an API. The labels follow the document language.
+
+| Level | Label |
+|---|---|
+| Required | Yes |
+| Not required | No |
+| Depends on a rule | Conditional (<rule>) |
+
 ## Jargon
 
 - Reader is a developer: keep the technical name (API, token, cache). One concept, one name.
