@@ -49,6 +49,7 @@ def extract_numbers(text):
         s = re.sub(r"^\d+[.)．）]\s+", "", s)
         lines.append(s)
     joined = "\n".join(lines)
+    joined = re.sub(r"`?TBD-\d+`?", "", joined)
     return set(
         re.findall(r"(?<![A-Za-z0-9_])(?<!\d\.)\d+(?:\.\d+)?(?!(?:\.\d|[A-Za-z0-9_]))", joined)
     )
