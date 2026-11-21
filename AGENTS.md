@@ -60,7 +60,7 @@ Each fact has one owner. Other files point to the owner and do not restate the f
 
 - Format: `**Bad:**`, `**Good:**`, then `**Fault:**` and `**Fix:**` where useful.
 - A "Good" example must pass the rules of the skill. In particular, it must contain no banned phrase for its language and type.
-- Complete samples (the fenced blocks near the end of each examples file) must pass the checker for their type, except for the length of `blog` samples, which are short on purpose.
+- Complete samples (the fenced blocks near the end of each examples file) must pass the checker for their type.
 - Prefer adding a pair that came from a real failure over inventing a new one.
 
 ### Japanese content
@@ -93,7 +93,7 @@ There is no automated test suite yet. Run these checks by hand.
    python3 skills/agent-plain-writing/scripts/check_style.py good.md --lang en --type api-design
    ```
 
-2. **Shipped samples.** Extract the last fenced block of each examples file and run the checker with the matching type (`blog`, `prose`, `api-design`, `guide`). Expect no violations, except length for `blog`.
+2. **Shipped samples.** Extract the last fenced block of each examples file and run the checker with the matching type (`blog`, `prose`, `api-design`, `guide`). Expect no violations.
 3. **Parallel folders.** Compare the file lists of `languages/vi`, `languages/en` and `languages/ja`. They must match.
 4. **Mirrors.** If you changed `profile.json`, check the "Units" table in `README.md`. If you changed `banned.txt`, check that `banned-guide.md` lists the same phrases.
 

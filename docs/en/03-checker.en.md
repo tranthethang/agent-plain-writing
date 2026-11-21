@@ -18,7 +18,7 @@ Exit codes: `0` clean, `1` violations, `2` usage error.
 
 ## What it checks
 
-- Sentence length, paragraph length, banned phrases, jargon count, text length.
+- Sentence length, paragraph length, banned phrases, jargon count, text length. A text length outside the range prints a warning and does not change the exit code.
 - Report labels (such as `Result:`) on the first or last 3 non-empty lines.
 - Line breaks made with trailing spaces.
 

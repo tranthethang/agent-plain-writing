@@ -18,7 +18,7 @@ Mã thoát: `0` sạch, `1` có vi phạm, `2` sai cách dùng.
 
 ## Script kiểm tra gì
 
-- Độ dài câu, độ dài đoạn, cụm từ cấm, số thuật ngữ, độ dài văn bản.
+- Độ dài câu, độ dài đoạn, cụm từ cấm, số thuật ngữ, độ dài văn bản. Độ dài văn bản ngoài khoảng cho phép sẽ in cảnh báo và không làm đổi mã thoát.
 - Nhãn báo cáo (như `Result:`) ở 3 dòng không rỗng đầu hoặc cuối.
 - Xuống dòng bằng dấu cách cuối dòng.
 

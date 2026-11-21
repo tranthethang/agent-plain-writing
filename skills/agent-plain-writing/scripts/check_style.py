@@ -301,7 +301,7 @@ def main():
     if cfg["length"]:
         lo, hi = cfg["length"]
         if not lo <= length <= hi:
-            issues.append(f'Length about {length} {prof["length_label"]} (allowed {lo}-{hi})')
+            warnings.append(f'Length about {length} {prof["length_label"]} (allowed {lo}-{hi})')
 
     avg = total / n_sent if n_sent else 0
     print(f"lang={lang} type={doc_type} | {total} {label} "

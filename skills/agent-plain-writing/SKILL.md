@@ -121,7 +121,7 @@ python3 scripts/check_style.py post.md  --lang en --type blog --non-tech
 - `--lang`: `vi`, `en`, `ja` (optional if `default_lang` is set in `PLAIN-WRITING.md`). `--type`: `blog`, `prose`, `poetry`, `api-design`, `guide` (`user-guide` also works; defaults to `default_type` in `PLAIN-WRITING.md` or `blog`).
 - `--config <path>`: path to a `PLAIN-WRITING.md` config file. By default, the script reads `PLAIN-WRITING.md` from the current directory if present.
 - Units differ by language: Vietnamese counts syllables (tiếng), English counts words, Japanese counts characters (字). The unit is set in `profile.json`.
-- The script checks sentence length, paragraph length, banned phrases, jargon count and text length. It does **not** judge whether the voice is good, and it does not check rhyme or meter.
+- The script checks sentence length, paragraph length, banned phrases, jargon count and text length. Text length outside the range is a warning, not a violation. It does **not** judge whether the voice is good, and it does not check rhyme or meter.
 - Edit `banned.txt` and `terms.txt` in the language folder to fit your needs.
 
 ## Extend the skill
