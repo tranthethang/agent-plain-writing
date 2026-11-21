@@ -58,7 +58,7 @@ These rules hold for every document type:
 | 2 | Concrete verbs, active voice | "send", not "perform the sending of" |
 | 3 | Banned phrases | Zero hits from `banned.txt` (`[all]` plus the type section) |
 | 4 | Opening and closing | Opening: at most 2 sentences, straight to the point. No recap, no empty thanks |
-| 5 | No invention | Add no number, technical spec, or outcome that is not in the source. In `tech-blog` and `essay`, keep human context, reasoning, and reactions grounded in the brief; in specs and guides, write `TBD: <specific question>` or ask |
+| 5 | No invention | Add no number, technical spec, or outcome that is not in the source. In `tech-blog` and `essay`, keep human context, reasoning, and reactions grounded in the brief; in specs and guides, write `TBD: <specific question>` or ask. Do not place two numbers with different units or time periods next to each other as a comparison; keep both numbers and narrow the claim to what they support |
 | 6 | Consistency | One concept, one name. One register for the whole text |
 
 ## Voice families

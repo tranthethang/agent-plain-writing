@@ -13,7 +13,7 @@ Independent bakery and cafe owners who manage daily stock on spreadsheets and ar
 ## Brief
 
 ### Summary
-Last month a small bakery switched from paper order slips to a shared online sheet with automatic low-stock alerts. Before the switch, the shop ran out of flour twice in 3 weeks and threw away 18 kg of unsold dough. After setting a 20 kg reorder alert, waste dropped to 4 kg per week.
+Last month a small bakery switched from paper order slips to a shared online sheet with automatic low-stock alerts. Before the switch, the shop ran out of flour twice in 3 weeks and threw away 18 kg of unsold dough in those 3 weeks. After setting a 20 kg reorder alert, waste dropped to 4 kg per week.
 
 ### Main points
 1. Paper slips hide what is running low until the shelf is empty.
@@ -35,7 +35,7 @@ I used to count flour bags by hand every Sunday night. Twice in three weeks, we 
 
 ## Facts
 - Flour stockouts before switch: 2 times in 3 weeks
-- Unsold dough wasted before switch: 18 kg
+- Unsold dough wasted before switch: 18 kg in those 3 weeks
 - Reorder alert threshold: 20 kg
 - Waste after switch: 4 kg per week
 - Daily check time: 5 minutes at closing time
