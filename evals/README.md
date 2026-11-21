@@ -54,3 +54,4 @@ Each file in `cases/` (`<type>-<lang>.md`) has:
    python3 evals/score.py evals/cases/blog-en.md output.md
    python3 evals/score.py evals/cases/blog-en.md output.md --judge-prompt
    ```
+5. `score.py` counts a number as sourced when it appears in the case or equals the item count of one list in the case. For `api-design` it also reports `tbd_ids`, `tbd_without_question` (ids with no `- TBD-n:` line) and `tbd_in_code` (ids inside a fenced block). The judge prompt adds `invented_gaps`, `lost_rules` and `repeated_facts` for the semantic checks.

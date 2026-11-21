@@ -55,6 +55,49 @@ def extract_numbers(text):
     )
 
 
+def list_counts(text):
+    """Return item counts of lists in text.
+
+    A list is a line with two or more backticked tokens separated by commas,
+    or a group of consecutive markdown bullet lines.
+    """
+    counts = set()
+    group = 0
+    for line in text.splitlines():
+        if re.match(r"\s*[-*+]\s+\S", line):
+            group += 1
+        else:
+            if group >= 2:
+                counts.add(group)
+            group = 0
+        tokens = re.findall(r"`[^`]+`", line)
+        if len(tokens) >= 2 and re.search(r"`\s*[,、，]\s*(?:and\s+|or\s+)?`", line):
+            counts.add(len(tokens))
+    if group >= 2:
+        counts.add(group)
+    return {str(n) for n in counts}
+
+
+def tbd_stats(text):
+    """Return TBD-n ids, ids without an Open items question, and ids in code blocks."""
+    ids, in_code, asked = set(), set(), set()
+    fenced = False
+    for line in text.splitlines():
+        if re.match(r"\s*(```|~~~)", line):
+            fenced = not fenced
+            continue
+        found = re.findall(r"TBD-\d+", line)
+        ids.update(found)
+        if fenced:
+            in_code.update(found)
+            continue
+        m = re.match(r"\s*[-*]\s*`?(TBD-\d+)`?\s*[:：]", line)
+        if m:
+            asked.add(m.group(1))
+    key = lambda x: int(x.split("-")[1])
+    return (sorted(ids, key=key), sorted(ids - asked, key=key), sorted(in_code, key=key))
+
+
 def parse_checker_output(stdout):
     """Extract violation and warning lines from check_style.py stdout."""
     violations, warnings = [], []
@@ -126,7 +169,9 @@ def score_case(case_path, output_path):
 
     case_nums = extract_numbers(case_text)
     out_nums = extract_numbers(output_text)
-    invented = sorted(out_nums - case_nums, key=lambda x: (float(x), x))
+    sourced = case_nums | list_counts(case_text)
+    invented = sorted(out_nums - sourced, key=lambda x: (float(x), x))
+    tbd_ids, tbd_without_question, tbd_in_code = tbd_stats(output_text)
 
     return {
         "case": str(case_path),
@@ -145,6 +190,9 @@ def score_case(case_path, output_path):
         "warning_count": len(warnings),
         "warnings": warnings,
         "invented_numbers": invented,
+        "tbd_ids": tbd_ids,
+        "tbd_without_question": tbd_without_question,
+        "tbd_in_code": tbd_in_code,
         "checker_exit_code": proc.returncode,
     }
 
