@@ -13,7 +13,7 @@ Lập trình viên backend có 2–5 năm kinh nghiệm, đang vận hành dịc
 ## Brief
 
 ### Summary
-Nhóm của bạn từng đặt cache 15 phút cho trang danh sách sản phẩm để giảm tải database. Sau một đợt giảm giá, khách vẫn thấy giá cũ trong 12 phút và đặt nhầm 40 đơn. Nhóm thử giảm TTL xuống 1 phút trước, nhưng tải database tăng gấp đôi nên bỏ cách đó. Nhóm đã sửa bằng cách xóa cache theo sự kiện cập nhật giá và đặt TTL dự phòng 60 giây. Trên staging, sự kiện xóa cache chạy trước khi transaction ghi giá commit, nên cache nạp lại giá cũ; nhóm chuyển việc phát sự kiện sang sau commit.
+Nhóm của bạn từng đặt cache 15 phút cho trang danh sách sản phẩm để giảm tải database. Sau một đợt giảm giá, khách vẫn thấy giá cũ trong 12 phút và đặt nhầm 40 đơn. Nhóm thử giảm TTL xuống 15 giây trước, nhưng tải database tăng gấp đôi nên bỏ cách đó. Nhóm đã sửa bằng cách xóa cache theo sự kiện cập nhật giá và đặt TTL dự phòng 60 giây. Trên staging, sự kiện xóa cache chạy trước khi transaction ghi giá commit, nên cache nạp lại giá cũ; nhóm chuyển việc phát sự kiện sang sau commit.
 
 ### Main points
 1. Cache theo thời gian cố định dễ gây lệch dữ liệu khi giá đổi đột ngột.
@@ -44,7 +44,7 @@ Bản sửa đầu tiên của tôi còn sai. Sự kiện xóa cache bắn ra tr
 - TTL dự phòng: 60 giây
 - Thời điểm đổi giá: 9 giờ sáng thứ Sáu
 - Thời gian chạy ổn trước sự cố: 2 tháng
-- TTL thử trước khi sửa: 1 phút (tải database tăng gấp 2 lần, nên bỏ)
+- TTL thử trước khi sửa: 15 giây (tải database tăng gấp 2 lần, nên bỏ)
 - Lỗi trên staging: sự kiện xóa cache chạy trước khi transaction commit, cache nạp lại giá cũ
 - Cách sửa lỗi staging: phát sự kiện sau khi transaction commit
 - Kênh phát sự kiện: Redis pub/sub

@@ -2,7 +2,6 @@
 
 import importlib.util
 import json
-import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -60,6 +59,21 @@ class ShortBriefTests(unittest.TestCase):
         r = run("short_brief: true\n", self.short[0] - 50)
         self.assertEqual(len(length_warnings(r)), 1)
         self.assertIn(f"allowed {self.short[0]}-{self.short[1]}", length_warnings(r)[0])
+
+    def test_short_brief_warns_above_short_range(self):
+        r = run("short_brief: true\n", self.short[1] + 50)
+        self.assertEqual(len(length_warnings(r)), 1)
+        self.assertIn(f"allowed {self.short[0]}-{self.short[1]}", length_warnings(r)[0])
+
+    def test_short_brief_on_type_without_length_range(self):
+        with tempfile.TemporaryDirectory() as d:
+            case = Path(d) / "case.md"
+            out = Path(d) / "out.md"
+            case.write_text("---\nlang: en\ntype: essay\nnon_tech: false\nshort_brief: true\n---\n\n# SIMULATED DATA\n", encoding="utf-8")
+            out.write_text("Short essay sentence.\n", encoding="utf-8")
+            r = score.score_case(case, out)
+        self.assertTrue(r["short_brief"])
+        self.assertEqual(length_warnings(r), [])
 
 
 if __name__ == "__main__":
