@@ -1,0 +1,41 @@
+# Checker script
+
+```bash
+python3 skills/agent-plain-writing/scripts/check_style.py draft.md --lang en --type blog
+python3 skills/agent-plain-writing/scripts/check_style.py spec.md  --lang ja --type api-design
+python3 skills/agent-plain-writing/scripts/check_style.py guide.md --lang vi --type guide
+python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --type blog --non-tech
+```
+
+| Option | Values |
+|---|---|
+| `--lang` | `vi`, `en`, `ja`. Optional if `default_lang` is set in `PLAIN-WRITING.md` |
+| `--type` | `blog`, `prose`, `poetry`, `api-design`, `guide` (`user-guide` also works). Default: `default_type` or `blog` |
+| `--non-tech` | Limit jargon to 3 terms. The `guide` type always applies a jargon limit |
+| `--config` | Path to a `PLAIN-WRITING.md` file. Default: `./PLAIN-WRITING.md` if present |
+
+Exit codes: `0` clean, `1` violations, `2` usage error.
+
+## What it checks
+
+- Sentence length, paragraph length, banned phrases, jargon count, text length.
+- Report labels (such as `Result:`) on the first or last 3 non-empty lines.
+- Line breaks made with trailing spaces.
+
+It skips code blocks, tables and headings. It checks list items for sentence length, but not for paragraph length.
+
+## What it does not check
+
+Voice, rhyme, meter, facts, and whether a sentence is natural. It is mechanical. A clean result means the counts pass, not that the text is good.
+
+## Units
+
+| Language | Unit | `blog` sentence limit |
+|---|---|---|
+| `vi` | syllables (*tiếng*) | 28 (about 20 words) |
+| `en` | words | 20 |
+| `ja` | characters (字), punctuation and spaces excluded | 60 |
+
+Limits for every type are only in each language's `profile.json`. The table above mirrors the `blog` row.
+
+Next: [04-customize](04-customize.en.md).

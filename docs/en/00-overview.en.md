@@ -1,0 +1,62 @@
+# Overview
+
+`agent-plain-writing` is one agent skill. It tells an AI to write short, concrete text in Vietnamese (`vi`), English (`en`) or Japanese (`ja`).
+
+## The problem
+
+AI drafts often share the same faults:
+
+- Long sentences that are hard to follow.
+- Technical terms the reader does not know.
+- For a non-technical reader, the AI explains every technical detail. The text gets longer, not clearer.
+
+Words such as "clear" or "friendly" in a prompt do not fix this. The skill uses limits that can be counted, examples that can be copied, and a separate edit pass.
+
+| | |
+|---|---|
+| Bad | The system utilizes a caching mechanism in order to optimize data retrieval performance. |
+| Good | The system saves results it has already computed. Next time, it answers faster. |
+
+## What is in it
+
+- **Core rules and workflow** in `SKILL.md` (12 rules, draft then edit).
+- **Five document types:** blog, prose, poetry, API design, user guide. Each has a file in `doc-types/` for voice, structure and length.
+- **Three language folders** with the unit, numeric limits, banned phrases, jargon list and examples.
+- **A checker script**, `check_style.py` (Python 3.7+, standard library only).
+- **An eval kit** in `evals/` (see [05-evals](05-evals.en.md)).
+
+Screen design is a stub. It is not done.
+
+## Who owns which rule
+
+Each fact has one owner file. Other files point to it.
+
+| Fact | Owner |
+|---|---|
+| Workflow and core rules | `SKILL.md` |
+| Voice, structure, length policy, rhythm | `doc-types/<type>.md` |
+| Unit and numeric limits | `languages/<lang>/profile.json` |
+| Banned phrases | `languages/<lang>/banned.txt` |
+| Grammar traps, pronoun and level words | `languages/<lang>/profile.md` |
+| Jargon list | `languages/<lang>/terms.txt` |
+
+On limits and structure, `doc-types` wins over `SKILL.md`. On words and grammar, `languages` wins over `doc-types`. The full table is in `AGENTS.md`.
+
+## Repository layout
+
+```
+.
+├── README.md
+├── AGENTS.md                 # rules for editing this repo
+├── docs/{en,vi,ja}/          # this documentation
+├── evals/                    # cases, scorer, judge prompt, runner
+└── skills/agent-plain-writing/
+    ├── SKILL.md
+    ├── doc-types/            # blog, prose, poetry, api-design, user-guide, screen-design (stub)
+    ├── languages/{vi,en,ja}/ # profile.json, profile.md, banned.txt, banned-guide.md,
+    │                         # terms.txt, examples/
+    ├── templates/PLAIN-WRITING.example.md
+    └── scripts/check_style.py
+```
+
+Next: [01-install](01-install.en.md).

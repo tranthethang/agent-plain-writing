@@ -1,0 +1,41 @@
+# チェックスクリプト
+
+```bash
+python3 skills/agent-plain-writing/scripts/check_style.py draft.md --lang en --type blog
+python3 skills/agent-plain-writing/scripts/check_style.py spec.md  --lang ja --type api-design
+python3 skills/agent-plain-writing/scripts/check_style.py guide.md --lang vi --type guide
+python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --type blog --non-tech
+```
+
+| オプション | 値 |
+|---|---|
+| `--lang` | `vi`、`en`、`ja`。`PLAIN-WRITING.md` に `default_lang` があれば省略可 |
+| `--type` | `blog`、`prose`、`poetry`、`api-design`、`guide`（`user-guide` も可）。既定は `default_type`、なければ `blog` |
+| `--non-tech` | 専門用語を 3 語までに制限する。`guide` タイプは常に用語の上限を適用する |
+| `--config` | `PLAIN-WRITING.md` へのパス。既定は、あれば `./PLAIN-WRITING.md` |
+
+終了コード：`0` 問題なし、`1` 違反あり、`2` 使い方の誤り。
+
+## チェックする内容
+
+- 文の長さ、段落の長さ、禁止表現、専門用語の数、文章全体の長さ。
+- 最初または最後の 3 つの空でない行にある報告ラベル（`Result:` など）。
+- 行末の空白による改行。
+
+コードブロック、表、見出しは対象外です。リスト項目は文の長さだけを調べ、段落の長さは調べません。
+
+## チェックしない内容
+
+文体、韻、拍、事実、文が自然かどうか。スクリプトは機械的に数えるだけです。違反なしは、数の条件を満たしたという意味で、文章がよいという意味ではありません。
+
+## カウント単位
+
+| 言語 | 単位 | `blog` の文の上限 |
+|---|---|---|
+| `vi` | 音節（*tiếng*） | 28（約 20 語） |
+| `en` | 語 | 20 |
+| `ja` | 文字（字）。句読点と空白は除く | 60 |
+
+全タイプの上限は、各言語の `profile.json` だけにあります。上の表は `blog` の行の写しです。
+
+次へ：[04-customize](04-customize.ja.md)。
