@@ -1,9 +1,8 @@
-# One phrase per line (case-insensitive). [name] = applies only to that document type. [all] = every type.
+# One phrase per line (case-insensitive). [name] = applies only to that document type. [all] = every type. [warn] = warning only.
 # Keep in sync with banned-guide.md. Phrases match from the start of a word.
+# [report] = report labels that must not start any of the first or last 3 lines of the document.
 [all]
 in order to
-utilize
-leverage
 delve
 it is important to note
 it's important to note
@@ -22,18 +21,17 @@ empower
 a wide range of
 plays a crucial role
 plays a vital role
-not only
 in the realm of
 at the end of the day
 needless to say
 as we all know
-furthermore
-moreover
-in conclusion
-to sum up
 very
 really
-[design]
+[warn]
+not only
+furthermore
+moreover
+[api-design]
 appropriate
 as needed
 if necessary
@@ -59,6 +57,10 @@ silent tears
 tears fell
 dark night of the soul
 [prose]
+utilize
+leverage
+in conclusion
+to sum up
 heart pounded
 heart skipped a beat
 time stood still
@@ -67,3 +69,17 @@ breath she didn't know
 breath he didn't know
 eyes sparkled
 orbs
+[blog]
+utilize
+leverage
+in conclusion
+to sum up
+i am writing this blog to
+i'm writing this blog to
+lesson learned:
+lesson:
+key takeaway:
+[report]
+result:
+guesses:
+assumptions:

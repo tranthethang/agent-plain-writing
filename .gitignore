@@ -221,3 +221,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Eval outputs
+evals/runs/
+evals/.env.example

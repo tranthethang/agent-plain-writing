@@ -11,9 +11,10 @@ A single agent skill, `agent-plain-writing`, that makes AI write short, concrete
 ```
 skills/agent-plain-writing/
 ├── SKILL.md              # workflow, 12 core rules, routing (English)
-├── doc-types/            # structure per document type, language-neutral (English)
+├── doc-types/            # voice, structure, length policy per type, language-neutral (English)
 ├── languages/<lang>/     # profile.json, profile.md, banned.txt, banned-guide.md,
 │                         # terms.txt, examples/
+├── templates/            # PLAIN-WRITING.example.md
 └── scripts/check_style.py
 ```
 
@@ -21,6 +22,7 @@ skills/agent-plain-writing/
 
 ### General
 
+- The supported scope for now is `vi`, `en` and `ja`, all in full. A change for one document type covers all three languages.
 - Keep changes small and focused. Do not reformat files you are not changing.
 - `SKILL.md` and everything in `doc-types/` are written in **English**.
 - Examples in `languages/<lang>/examples/` are written in that language. Labels (Bad, Good, Fault, Fix) stay in English.
@@ -31,18 +33,28 @@ skills/agent-plain-writing/
 ### The three language folders stay parallel
 
 - Every language folder has the **same file set**. If you add a file in one, add it in the others (or open a note saying why not).
-- Every `examples/` folder has the same six files: `common.md`, `blog.md`, `prose.md`, `poetry.md`, `detail-design.md`, `user-guide.md`.
+- Every `examples/` folder has the same six files: `common.md`, `blog.md`, `prose.md`, `poetry.md`, `api-design.md`, `user-guide.md`.
 - Each examples file ends with a "Your own samples" section. Keep it.
 
 ### Single sources of truth
 
-| Fact | Source | Mirror (update both) |
+Each fact has one owner. Other files point to the owner and do not restate the fact. This table matches the "Who owns what" section of `SKILL.md`.
+
+| Fact | Owner | Mirror (update both) |
 |---|---|---|
-| Units and numeric limits | `languages/<lang>/profile.json` | the table in `profile.md`, and the "Units" table in `README.md` |
-| Banned phrases | `languages/<lang>/banned.txt` | `banned-guide.md` (phrases and replacements) |
+| Workflow and core rules for every type and language | `SKILL.md` | none |
+| Voice, structure, length policy, sentence rhythm | `doc-types/<type>.md` | none |
+| Kinds of phrases to ban for a type (for example meta-report openings) | `doc-types/<type>.md` | none |
+| Units and numeric limits | `languages/<lang>/profile.json` | the "Units" table in `README.md` only. `profile.md` and `doc-types/` point to the key and do not repeat the number |
+| Actual banned phrases | `languages/<lang>/banned.txt` | `banned-guide.md` (the same phrases with their replacements, no rule prose) |
+| Grammar traps, pronoun and level words | `languages/<lang>/profile.md` | none |
 | Jargon list | `languages/<lang>/terms.txt` | none |
-| Core rules | `SKILL.md` | `doc-types/*.md` only where a type overrides a rule |
 | CLI options | `scripts/check_style.py` | `SKILL.md` and `README.md` |
+
+**Precedence when two owners disagree:**
+
+- On limits and structure, `doc-types/<type>.md` wins over `SKILL.md`.
+- On words and grammar, `languages/<lang>/` wins over `doc-types/<type>.md`.
 
 ### Example pairs
 
@@ -53,7 +65,7 @@ skills/agent-plain-writing/
 
 ### Japanese content
 
-- Do not change register (です・ます調 / である調 / 常体) conventions, requirement words or example pairs on your own judgement. Ask for a review by a native or fluent Japanese reader.
+- The agent may change `ja` content, but must state that it changed `ja` and record "no native review yet".
 - If you are not sure a Japanese sentence is natural, say so in your reply instead of guessing.
 - Do not count Japanese text by words. The unit is characters (`char`).
 
@@ -77,13 +89,13 @@ There is no automated test suite yet. Run these checks by hand.
 1. **Bad and good samples.** For each language you touched, write one bad paragraph (long sentence, banned phrases) and one good paragraph. The bad one must exit with `1`, the good one with `0`:
 
    ```bash
-   python3 skills/agent-plain-writing/scripts/check_style.py bad.md  --lang en --type design
-   python3 skills/agent-plain-writing/scripts/check_style.py good.md --lang en --type design
+   python3 skills/agent-plain-writing/scripts/check_style.py bad.md  --lang en --type api-design
+   python3 skills/agent-plain-writing/scripts/check_style.py good.md --lang en --type api-design
    ```
 
-2. **Shipped samples.** Extract the last fenced block of each examples file and run the checker with the matching type (`blog`, `prose`, `design`, `guide`). Expect no violations, except length for `blog`.
+2. **Shipped samples.** Extract the last fenced block of each examples file and run the checker with the matching type (`blog`, `prose`, `api-design`, `guide`). Expect no violations, except length for `blog`.
 3. **Parallel folders.** Compare the file lists of `languages/vi`, `languages/en` and `languages/ja`. They must match.
-4. **Mirrors.** If you changed `profile.json` or `banned.txt`, check that `profile.md` and `banned-guide.md` say the same thing.
+4. **Mirrors.** If you changed `profile.json`, check the "Units" table in `README.md`. If you changed `banned.txt`, check that `banned-guide.md` lists the same phrases.
 
 If you add automated tests, put them under `tests/` and document how to run them here and in `README.md`.
 

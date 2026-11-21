@@ -8,21 +8,16 @@ The numbers live in `profile.json`. This file explains how to use them.
 
 - The script counts **characters (字)**: every character except punctuation, spaces and control characters.
 - Sentences are split at `。` `！` `？`.
-- Blog length is counted in characters (about 1,500–2,000 字, the rough equivalent of 600–800 English words).
+- `length` in `profile.json` is counted in characters.
 
-## Limits by document type
+## Limits and voice
 
-| Type | Max sentence (字) | Max paragraph (sentences) | Length | Jargon |
-|---|---|---|---|---|
-| blog | 60 | 3 | 1,500–2,000 字 | unlimited (3 with `--non-tech`) |
-| prose | 80 | 6 | any | unlimited |
-| poetry | n/a | n/a | any | unlimited |
-| design | 55 | 3 | per template | unlimited |
-| guide | 40 | 3 | any | at most 3 |
+Every number (sentence, paragraph, length, jargon) lives in `profile.json`. This file does not repeat them.
+Voice, speaker and structure are set by `doc-types/<type>.md`. This file adds only the Japanese forms below.
 
 ## Register (文体)
 
-Choose one register per document and never mix them. Mixing is the most visible mistake in Japanese text.
+The register is a Japanese form, so it is listed here. Choose one register per document and never mix them. Mixing is the most visible mistake in Japanese text.
 
 | Type | Register | Notes |
 |---|---|---|
@@ -34,7 +29,7 @@ Choose one register per document and never mix them. Mixing is the most visible 
 
 Teams differ. Before writing a design document or a manual for a Japanese team or customer, confirm their register convention and follow it.
 
-## Requirement words (detail design)
+## Requirement words (API design)
 
 | Level | Use |
 |---|---|
@@ -44,6 +39,17 @@ Teams differ. Before writing a design document or a manual for a Japanese team o
 | Optional | 〜してもよい |
 
 Many Japanese design documents state default behaviour with plain 「〜する」. Use the requirement words only where the strength of the requirement matters, and keep one form per level. Confirm the team convention.
+
+## Required-flag labels (API design)
+
+Use in the field table of an API. The labels follow the document language. (no native review yet)
+
+| Level | Label |
+|---|---|
+| Required | 必須 |
+| Not required | 任意 |
+| Depends on a rule | 条件付き（<条件>） |
+
 
 ## Jargon
 

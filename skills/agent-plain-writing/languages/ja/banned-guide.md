@@ -7,15 +7,14 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | Phrase | Use instead | Example |
 |---|---|---|
 | することができる / することができます | 〜できる / 〜できます | 「送信することができます」→「送信できます」 |
-| 〜を行う / 〜を行います | the verb itself | 「確認を行う」→「確認する」 |
-| 〜において | 〜で | 「本システムにおいて」→「本システムで」 |
-| 〜に関して | 〜について | |
+| 〜を行う / 〜を行います / を行った | the verb itself | 「確認を行う」→「確認する」 |
+| 〜において *(warn)* | 〜で | 「本システムにおいて」→「本システムで」 |
+| 〜に関して *(warn)* | 〜について | |
 | させていただ(く) | 〜します (use it only when the situation truly needs humility) | 「報告させていただきます」→「報告します」 |
-| 非常に、大変 | delete, or give a number | |
-| と言えるでしょう / と言えます / ではないでしょうか | state the claim, or state the evidence | 「重要と言えるでしょう」→ say why it matters |
+| 非常に、大変 *(warn: 大変)* | delete, or give a number | |
 | 画期的、革新的、包括的、強力な、シームレス | say what it does, with a number | 「強力なツール」→「1秒に1万行を処理できるツール」 |
 
-## Vague words in detail design
+## Vague words in API design
 
 | Word | Use instead |
 |---|---|
@@ -33,8 +32,35 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | 実施、〜を行う | a concrete verb: タップする、選ぶ、入力する |
 | 設定を行う | 設定する |
 
+## Phrases of blog
+
+| Phrase | Use instead |
+|---|---|
+| この記事を書いた | open with the event or conclusion directly |
+| 学んだこと：, 注意点： | weave the point into the paragraph, no label |
+| と言えるでしょう / と言えます / ではないでしょうか | state the claim, or state the evidence (「重要と言えるでしょう」→ say why it matters) |
+
+## Phrases of prose
+
+| Phrase | Use instead |
+|---|---|
+| 胸が高鳴、時が止まっ、言葉にできない、心が張り裂け、瞳が輝 | one visible action or detail |
+| と言えるでしょう / と言えます / ではないでしょうか | state the claim, or delete |
+
+## Phrases of poetry
+
+| Phrase | Use instead |
+|---|---|
+| 胸が締めつけ、胸が締め付け、涙があふれ、涙が溢れ、心の奥、永遠に | one concrete image: an object, a sound, a gesture |
+
+## Report labels (first or last 3 lines)
+
+| Label | Use instead |
+|---|---|
+| 結果:, 結果：, 推測したこと:, 推測したこと：, 仮定:, 仮定： | (delete from the document). Put the report outside it, or leave it out when there is no other place |
+
 ## General rules
 
 - A banned phrase may stay when it is a **direct quote**, a proper name or a fixed label on a screen.
 - Banning a phrase does not ban the idea. 「システムは速い」is still needed, with a number.
-- 「など」 is legitimate in casual text. It is flagged only in detail design, where it hides an incomplete list.
+- 「など」 is legitimate in casual text. It is flagged only in API design, where it hides an incomplete list.

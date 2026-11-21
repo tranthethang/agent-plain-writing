@@ -7,20 +7,19 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | Phrase | Use instead | Example |
 |---|---|---|
 | in order to | to | "in order to speed up" → "to speed up" |
-| utilize, leverage | use | |
 | delve into | look at | |
-| it is important to note that | (delete), or bold "Note:" | |
+| it is important to note that, it's important to note, it is worth noting | (delete), or bold "Note:" | |
 | in today's fast-paced world | (delete). Open with a concrete event | |
-| seamless, robust, comprehensive, cutting-edge, game-changer | say what it does, with a number | "robust tool" → "tool that handles 10,000 rows a second" |
-| not only … but also | two sentences | "Not only fast but cheap" → "It is fast. It is also cheap." |
-| plays a crucial role | say the role | "Caching plays a crucial role" → "Caching keeps page loads under 1 second" |
+| seamless, robust, comprehensive, cutting-edge, state-of-the-art, game-changer, revolutionize, unlock the, empower | say what it does, with a number | "robust tool" → "tool that handles 10,000 rows a second" |
+| not only … but also *(warn)* | two sentences | "Not only fast but cheap" → "It is fast. It is also cheap." |
+| plays a crucial role, plays a vital role | say the role | "Caching plays a crucial role" → "Caching keeps page loads under 1 second" |
 | a wide range of | name them, or "many" | |
-| furthermore, moreover | (delete), or use a heading | |
-| in conclusion, to sum up | (delete). Do not recap | |
+| in the realm of | in | "in the realm of security" → "in security" |
+| at the end of the day, needless to say, as we all know | (delete) | |
+| furthermore, moreover *(warn)* | (delete), or use a heading | |
 | very, really | (delete), or give a number | |
-| perform / carry out + noun | the verb itself | "perform validation" → "validate" |
 
-## Vague words in detail design
+## Vague words in API design
 
 | Word | Use instead |
 |---|---|
@@ -36,8 +35,38 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 
 | Word | Use instead |
 |---|---|
-| carry out, perform | a concrete verb: click, select, enter |
+| carry out, perform the, perform a | a concrete verb: click, select, enter. "perform the validation" → "validate" |
 | configure | set up, change the settings |
+
+## Phrases of blog
+
+| Phrase | Use instead |
+|---|---|
+| i am writing this blog to, i'm writing this blog to | open with the event or conclusion directly |
+| lesson learned:, lesson:, key takeaway: | weave the point into the narrative, no label |
+| utilize, leverage | use |
+| in conclusion, to sum up | (delete). Do not recap |
+
+## Phrases of prose
+
+| Phrase | Use instead |
+|---|---|
+| heart pounded, heart skipped a beat, time stood still, shiver ran, breath she didn't know, breath he didn't know, eyes sparkled, orbs | one visible action or detail |
+| utilize, leverage | use |
+| in conclusion, to sum up | (delete) |
+
+## Phrases of poetry
+
+| Phrase | Use instead |
+|---|---|
+| tapestry, whisper, echoes of, ethereal | one concrete image: an object, a sound, a gesture |
+| heart aflutter, silent tears, tears fell, dark night of the soul | the action or object that carries the feeling |
+
+## Report labels (first or last 3 lines)
+
+| Label | Use instead |
+|---|---|
+| result:, guesses:, assumptions: | (delete from the document). Put the report outside it, or leave it out when there is no other place |
 
 ## General rules
 

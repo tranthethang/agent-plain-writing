@@ -1,6 +1,7 @@
 # Mỗi dòng một cụm (không phân biệt hoa thường).
-# [tên] = chỉ áp dụng cho profile đó. [all] = mọi profile.
+# [tên] = chỉ áp dụng cho profile đó. [all] = mọi profile. [warn] = cảnh báo, không tính lỗi.
 # Giữ đồng bộ với banned-guide.md. Cụm khớp từ đầu từ.
+# [report] = nhãn báo cáo không được nằm ở 3 dòng đầu hoặc 3 dòng cuối của văn bản.
 [all]
 nhằm mục đích
 có thể nói rằng
@@ -9,28 +10,23 @@ có thể nói rằng
 hãy cùng
 trong thế giới ngày nay
 trong thời đại
-không chỉ
 toàn diện
 tối ưu hóa
-mạnh mẽ
 tiến hành
 thực hiện việc
-một cách
 cho phép người dùng có thể
 đảm bảo rằng
-tận dụng
 điều quan trọng cần lưu ý
 cần lưu ý rằng
 thông qua việc
-trong quá trình
 như chúng ta đã biết
-nhìn chung
-tóm lại
+hạng mục
+[warn]
+không chỉ
+một cách
 bên cạnh đó
 ngoài ra
-vô cùng
-hạng mục
-[design]
+[api-design]
 phù hợp
 thích hợp
 nếu cần
@@ -55,6 +51,12 @@ nỗi nhớ
 tâm hồn
 cuộc đời
 [prose]
+vô cùng
+mạnh mẽ
+tận dụng
+trong quá trình
+nhìn chung
+tóm lại
 trái tim loạn nhịp
 thời gian như ngừng trôi
 nước mắt lăn dài
@@ -62,3 +64,18 @@ một cảm giác khó tả
 nỗi buồn bao trùm
 ánh mắt sâu thẳm
 tim như thắt lại
+[blog]
+vô cùng
+mạnh mẽ
+tận dụng
+trong quá trình
+nhìn chung
+tóm lại
+tôi viết blog này để
+bài học rút ra:
+bài học:
+lưu ý:
+[report]
+kết quả:
+giả định:
+phỏng đoán:

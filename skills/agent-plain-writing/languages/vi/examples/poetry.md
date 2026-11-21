@@ -73,25 +73,12 @@ Mưa chiều rả rích
 tôi ngồi bên cửa
 đếm giọt nào rơi trúng hiên.
 
-### 5. Kết bằng bài học
-
-**Xấu:**
-Hoa rơi trên lối đi
-Để lại bao nuối tiếc
-Hãy trân trọng hiện tại
-Kẻo mai này hối hận
-
-**Tốt:**
-Hoa rơi trên lối đi
-Không ai cúi nhặt
-Sáng mai, chổi quét qua.
-
-### 6. Tính từ sáo
+### 5. Tính từ sáo
 
 **Xấu:** Ánh trăng mênh mang, lặng lẽ soi bóng người cô đơn.
 **Tốt:** Trăng treo đúng chỗ cũ. Cái ghế bên hiên vẫn còn một người ngồi ít hơn.
 
-### 7. Hô hào
+### 6. Hô hào
 
 **Xấu:** Hỡi những trái tim non trẻ, hãy vươn lên mạnh mẽ!
 **Tốt:**
