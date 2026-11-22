@@ -79,10 +79,6 @@ class ShortBriefTests(unittest.TestCase):
         self.assertEqual(length_warnings(r), [])
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class StripTrailingReportTest(unittest.TestCase):
     def test_strips_after_marker(self):
         self.assertEqual(score.strip_trailing_report("Body.\n\n<!-- report -->\nGuesses: none.\n"), "Body.\n")
@@ -97,3 +93,7 @@ class StripTrailingReportTest(unittest.TestCase):
 
     def test_no_rule_keeps_text(self):
         self.assertEqual(score.strip_trailing_report("Body.\n"), "Body.\n")
+
+
+if __name__ == "__main__":
+    unittest.main()

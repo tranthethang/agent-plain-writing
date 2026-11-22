@@ -173,10 +173,6 @@ class ParityTests(unittest.TestCase):
                     self.assertIn(p.split("|")[0].strip(), guide.lower(), f"{lang} {sec} {p}")
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class TimeDateUnitTests(unittest.TestCase):
     def test_en_counts_time_and_date_as_one_word(self):
         self.assertEqual(checker.count_units("On 2026-12-03 at 04:00 UTC the cluster restarts.", "word"), 8)
@@ -210,3 +206,7 @@ class ConfigSearchTests(unittest.TestCase):
             )
         self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
         self.assertIn("zorblax", r.stdout)
+
+
+if __name__ == "__main__":
+    unittest.main()
