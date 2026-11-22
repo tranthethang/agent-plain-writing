@@ -18,6 +18,6 @@ evidence/<run>/
 ## Runs
 
 - [`20261122-201235/`](20261122-201235/README.md): 15 cases (`api-design`, `common`, `essay`, `guide`, `tech-blog`), model `gpt-6-luna`. With the skill, 12 of 15 outputs pass the checker; without it, 9 of 15.
-- [`20261122-181452/`](20261122-181452/): partial run, 6 `api-design` outputs. No summary and no `results.json`.
+- [`20261122-181452/`](20261122-181452/): 15 cases, model `gpt-6-luna`, commit `3246fef`. No summary yet; read `results.json`.
 - [`20261122-154249/`](20261122-154249/README.md): 9 cases (`api-design`, `essay`, `tech-blog`). History.
 - `20261121-235628/`: 9 cases, the earliest run. No `run-meta.json`, so the model is not recorded. With the skill, 7 of 9 outputs passed the checker, against 6 of 9 without it. History only; it used an older checker and an older baseline prompt.
