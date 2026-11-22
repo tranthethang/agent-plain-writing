@@ -67,16 +67,13 @@ def load_report_labels(lang):
     return out
 
 
-EDGE_LINES = 3
-
-
 def report_issues(text, labels):
-    """Flag report labels on the first or last EDGE_LINES non-empty lines."""
+    """Flag report labels on any non-empty line outside fenced code blocks."""
+    text = re.sub(r"```.*?```", "", text, flags=re.S)
     lines = [l.strip().lstrip("-*> ").strip().lower() for l in text.splitlines()
              if l.strip() and not l.lstrip().startswith("#")]
-    edge = lines[:EDGE_LINES] + lines[EDGE_LINES:][-EDGE_LINES:]
     issues = []
-    for line in edge:
+    for line in lines:
         for label in labels:
             if line.startswith(label):
                 issues.append(f'Report line inside the document: "{line[:50]}"')
@@ -115,8 +112,18 @@ def clean(text):
 ITEM = re.compile(r"(?:[-+]\s+|・\s*|\d+[.)．）]\s+)(.*)")
 
 
-def split_blocks(text):
-    """Return (kind, text) pairs. kind is 'para' or 'item'."""
+def table_cells(line):
+    """Return the non-empty cells of a table row. A separator row gives none."""
+    cells = [c.strip() for c in line.strip().strip("|").split("|")]
+    if all(re.fullmatch(r":?-{2,}:?", c) for c in cells if c):
+        return []
+    return [c for c in cells if c]
+
+
+def split_blocks(text, doc_type=None):
+    """Return (kind, text) pairs. kind is 'para' or 'item'.
+
+    Table rows are skipped, except in `api-design`, where each cell is an item."""
     blocks, cur = [], []
 
     def flush():
@@ -128,6 +135,10 @@ def split_blocks(text):
         line = raw.strip()
         if not line:
             flush()
+            continue
+        if line.startswith("|") and doc_type == "api-design":
+            flush()
+            blocks.extend(("item", c) for c in table_cells(line))
             continue
         if line.startswith("#") or line.startswith("|") or re.fullmatch(r"[-=_ ]{3,}", line):
             flush()
@@ -226,11 +237,13 @@ def main():
     ap.add_argument("file")
     ap.add_argument("--lang", default=None, choices=langs)
     ap.add_argument("--type", dest="doc_type", default=None,
-                    help="tech-blog, essay, api-design, guide")
+                    help="tech-blog, essay, api-design, guide, common")
     ap.add_argument("--non-tech", action="store_true",
                     help="limit jargon (reader is outside the field)")
     ap.add_argument("--config", default=None,
                     help="path to PLAIN-WRITING.md (default: ./PLAIN-WRITING.md)")
+    ap.add_argument("--short-brief", action="store_true",
+                    help="use length_short when the type has it")
     args = ap.parse_args()
 
     proj, err = load_project_config(args.config)
@@ -276,7 +289,7 @@ def main():
         return 2
     raw = unicodedata.normalize("NFC", Path(args.file).read_text(encoding="utf-8"))
     text = clean(raw)
-    blocks = split_blocks(text)
+    blocks = split_blocks(text, doc_type)
 
     issues, total, n_sent = [], 0, 0
     issues += report_issues(text, load_report_labels(lang))
@@ -315,7 +328,7 @@ def main():
             issues.append(f'Jargon: {len(found)} terms (max {cfg["terms"]}): {", ".join(found)}')
 
     length = round(total / prof["length_divisor"])
-    lw = length_warning(prof, length_range(cfg), length)
+    lw = length_warning(prof, length_range(cfg, args.short_brief), length)
     if lw:
         warnings.append(lw)
 
