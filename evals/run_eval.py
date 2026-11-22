@@ -112,7 +112,7 @@ def build_prompt(case_path, with_skill):
     case_text = case_path.read_text(encoding="utf-8")
     parts = [
         "Write the requested document using only the facts in the brief below.",
-        "Do not invent numbers, events, people or outcomes. Follow the requested language, type, and audience.",
+        "Follow the requested language, type, and audience.",
     ]
     if with_skill:
         meta = score.parse_case_meta(case_text)
@@ -231,6 +231,19 @@ def main():
     ts = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     out_dir = RUNS_DIR / ts
     out_dir.mkdir(parents=True, exist_ok=True)
+
+    try:
+        commit = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True,
+                                text=True, check=True).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        commit = None
+    meta = {
+        "tool": tool,
+        "model": openai_cfg["model"] if tool == "openai" else None,
+        "commit": commit,
+        "started_at": datetime.datetime.now().isoformat(timespec="seconds"),
+    }
+    (out_dir / "run-meta.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
 
     rows = []
     for case, mode in planned:
