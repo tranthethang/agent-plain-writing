@@ -12,7 +12,7 @@ python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --t
 | `--lang` | `vi`, `en`, `ja`. Có thể bỏ nếu `PLAIN-WRITING.md` có `default_lang` |
 | `--type` | `tech-blog`, `essay`, `api-design`, `guide`, `common` (`user-guide` cũng được). Mặc định: `default_type` hoặc `common` |
 | `--non-tech` | Giới hạn thuật ngữ còn 3. Loại `guide` luôn áp dụng giới hạn thuật ngữ |
-| `--config` | Đường dẫn tới file `PLAIN-WRITING.md`. Mặc định: `./PLAIN-WRITING.md` nếu có |
+| `--config` | Đường dẫn tới file `PLAIN-WRITING.md`. Mặc định: tìm ở thư mục hiện tại rồi các thư mục cha (dừng ở `.git`) |
 | `--short-brief` | Dùng `length_short` cho loại có khoảng này (ví dụ `tech-blog`) |
 
 Mã thoát: `0` sạch, `1` có vi phạm, `2` sai cách dùng. `--type blog` đã bị bỏ và trả về mã thoát `2`; hãy dùng `--type tech-blog`.

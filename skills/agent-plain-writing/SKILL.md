@@ -137,7 +137,7 @@ python3 <skill-dir>/scripts/check_style.py post.md  --lang en --type tech-blog -
 
 - `--lang`: `vi`, `en`, `ja` (optional if `default_lang` is set in `PLAIN-WRITING.md`). `--type`: `tech-blog`, `essay`, `api-design`, `guide`, `common` (`user-guide` also works; defaults to `default_type` in `PLAIN-WRITING.md` or `common`).
 - `--short-brief`: use `length_short` (a lower ceiling) for a type that has it (for example `tech-blog`).
-- `--config <path>`: path to a `PLAIN-WRITING.md` config file. By default, the script reads `PLAIN-WRITING.md` from the current directory if present.
+- `--config <path>`: path to a `PLAIN-WRITING.md` config file. By default, the script searches the current folder and then its parents (stopping at `.git`).
 - Units differ by language: Vietnamese counts syllables (tiếng), English counts words, Japanese counts characters (字). The unit is set in `profile.json`.
 - The script checks sentence length, paragraph length, banned phrases, jargon count and text length. The checker warns on text length only when the text is longer than the upper limit; a shorter text is fine, so never pad. That warning is not a violation. It does **not** judge whether the voice is good.
 - Edit `banned.txt` and `terms.txt` in the language folder to fit your needs.

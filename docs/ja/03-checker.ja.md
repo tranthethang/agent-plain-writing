@@ -12,7 +12,7 @@ python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --t
 | `--lang` | `vi`、`en`、`ja`。`PLAIN-WRITING.md` に `default_lang` があれば省略可 |
 | `--type` | `tech-blog`、`essay`、`api-design`、`guide`、`common`（`user-guide` も可）。既定は `default_type`、なければ `common` |
 | `--non-tech` | 専門用語を 3 語までに制限する。`guide` タイプは常に用語の上限を適用する |
-| `--config` | `PLAIN-WRITING.md` へのパス。既定は、あれば `./PLAIN-WRITING.md` |
+| `--config` | `PLAIN-WRITING.md` へのパス。既定は現在のフォルダから親フォルダへ順に探す（`.git` で停止） |
 | `--short-brief` | `length_short` を持つタイプ（たとえば `tech-blog`）で、その範囲を使う |
 
 終了コード：`0` 問題なし、`1` 違反あり、`2` 使い方の誤り。`--type blog` は廃止され終了コード `2` を返します。代わりに `--type tech-blog` を使ってください。
