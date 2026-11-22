@@ -56,7 +56,7 @@ Danh sách máy đọc nằm ở `banned.txt` cùng thư mục. File này giải
 | trong quá trình | khi |
 | nhìn chung, tóm lại | (bỏ). Đừng tóm tắt lại điều vừa nói |
 
-## Nhãn báo cáo (3 dòng đầu hoặc 3 dòng cuối)
+## Nhãn báo cáo (mọi dòng ngoài khối code)
 
 | Nhãn | Thay bằng |
 |---|---|

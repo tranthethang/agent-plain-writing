@@ -13,16 +13,17 @@ python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --t
 | `--type` | `tech-blog`、`essay`、`api-design`、`guide`、`common`（`user-guide` も可）。既定は `default_type`、なければ `tech-blog` |
 | `--non-tech` | 専門用語を 3 語までに制限する。`guide` タイプは常に用語の上限を適用する |
 | `--config` | `PLAIN-WRITING.md` へのパス。既定は、あれば `./PLAIN-WRITING.md` |
+| `--short-brief` | `length_short` を持つタイプ（たとえば `tech-blog`）で、その範囲を使う |
 
 終了コード：`0` 問題なし、`1` 違反あり、`2` 使い方の誤り。`--type blog` は廃止され終了コード `2` を返します。代わりに `--type tech-blog` を使ってください。
 
 ## チェックする内容
 
 - 文の長さ、段落の長さ、禁止表現、専門用語の数、文章全体の長さ。文章全体の長さが範囲外の場合は警告を出力し、終了コードは変わりません。
-- 最初または最後の 3 つの空でない行にある報告ラベル（`Result:` など）。
+- コードブロックの外で、行頭にある報告ラベル（`Result:` など）。
 - 行末の空白による改行。
 
-コードブロック、表、見出しは対象外です。リスト項目は文の長さだけを調べ、段落の長さは調べません。
+コードブロック、表、見出しは対象外です。ただし `api-design` では、表の各セルの文の長さを調べます。リスト項目は文の長さだけを調べ、段落の長さは調べません。
 
 ## チェックしない内容
 

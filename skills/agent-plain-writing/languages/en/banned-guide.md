@@ -48,7 +48,7 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | utilize, leverage | use |
 | in conclusion, to sum up | (delete). Do not recap |
 
-## Report labels (first or last 3 lines)
+## Report labels (any line outside code blocks)
 
 | Label | Use instead |
 |---|---|

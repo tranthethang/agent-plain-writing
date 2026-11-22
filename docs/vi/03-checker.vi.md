@@ -13,16 +13,17 @@ python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --t
 | `--type` | `tech-blog`, `essay`, `api-design`, `guide`, `common` (`user-guide` cũng được). Mặc định: `default_type` hoặc `tech-blog` |
 | `--non-tech` | Giới hạn thuật ngữ còn 3. Loại `guide` luôn áp dụng giới hạn thuật ngữ |
 | `--config` | Đường dẫn tới file `PLAIN-WRITING.md`. Mặc định: `./PLAIN-WRITING.md` nếu có |
+| `--short-brief` | Dùng `length_short` cho loại có khoảng này (ví dụ `tech-blog`) |
 
 Mã thoát: `0` sạch, `1` có vi phạm, `2` sai cách dùng. `--type blog` đã bị bỏ và trả về mã thoát `2`; hãy dùng `--type tech-blog`.
 
 ## Script kiểm tra gì
 
 - Độ dài câu, độ dài đoạn, cụm từ cấm, số thuật ngữ, độ dài văn bản. Độ dài văn bản ngoài khoảng cho phép sẽ in cảnh báo và không làm đổi mã thoát.
-- Nhãn báo cáo (như `Result:`) ở 3 dòng không rỗng đầu hoặc cuối.
+- Nhãn báo cáo (như `Result:`) ở đầu bất kỳ dòng nào ngoài khối code.
 - Xuống dòng bằng dấu cách cuối dòng.
 
-Script bỏ qua khối code, bảng và tiêu đề. Với mục danh sách, script kiểm tra độ dài câu nhưng không kiểm tra độ dài đoạn.
+Script bỏ qua khối code, bảng và tiêu đề. Với `api-design`, script kiểm tra độ dài câu trong từng ô bảng. Với mục danh sách, script kiểm tra độ dài câu nhưng không kiểm tra độ dài đoạn.
 
 ## Script không kiểm tra gì
 

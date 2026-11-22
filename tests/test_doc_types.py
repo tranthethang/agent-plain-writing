@@ -91,6 +91,51 @@ class CheckerTypeTests(unittest.TestCase):
             r = run_checker("Short text.\n", "--lang", "en", "--type", t)
             self.assertIn(r.returncode, (0, 1), t)
 
+    def test_common_type_is_accepted(self):
+        for lang in LANGS:
+            r = run_checker("Short text.\n", "--lang", lang, "--type", "common")
+            self.assertIn(r.returncode, (0, 1), lang)
+            self.assertIn("type=common", r.stdout)
+
+
+LONG_CELL = ("This field holds the identifier of the customer account that the request "
+             "will update when the server accepts the call today.")
+TABLE = f"| Field | Notes |\n|---|---|\n| id | {LONG_CELL} |\n"
+
+
+class CheckerFeatureTests(unittest.TestCase):
+    def test_api_design_checks_table_cells(self):
+        r = run_checker(TABLE, "--lang", "en", "--type", "api-design")
+        self.assertEqual(r.returncode, 1)
+        self.assertIn("Sentence has", r.stdout)
+
+    def test_other_types_skip_tables(self):
+        r = run_checker(TABLE, "--lang", "en", "--type", "tech-blog")
+        self.assertEqual(r.returncode, 0)
+
+    def test_separator_row_gives_no_cells(self):
+        self.assertEqual(checker.table_cells("|:---|---:|"), [])
+        self.assertEqual(checker.table_cells("| a | b |"), ["a", "b"])
+
+    def test_report_label_in_middle_is_flagged(self):
+        text = "One.\n\nTwo.\n\nThree.\n\nResult: done.\n\nFour.\n\nFive.\n\nSix.\n\nSeven.\n"
+        r = run_checker(text, "--lang", "en", "--type", "tech-blog")
+        self.assertEqual(r.returncode, 1)
+        self.assertIn("Report line", r.stdout)
+
+    def test_report_label_in_fence_is_ignored(self):
+        r = run_checker("One.\n\n```\nResult: ok\n```\n\nTwo.\n", "--lang", "en", "--type", "tech-blog")
+        self.assertEqual(r.returncode, 0)
+
+    def test_short_brief_uses_length_short(self):
+        lo, hi = profile("en")["types"]["tech-blog"]["length_short"]
+        text = " ".join(["Word"] * ((lo + hi) // 2)) + ".\n"
+        full = run_checker(text, "--lang", "en", "--type", "tech-blog").stdout
+        short = run_checker(text, "--lang", "en", "--type", "tech-blog", "--short-brief")
+        self.assertIn(short.returncode, (0, 1))
+        self.assertIn("Length about", full)
+        self.assertNotIn("Length about", short.stdout)
+
 
 class ParityTests(unittest.TestCase):
     def test_readme_units_match_profiles(self):

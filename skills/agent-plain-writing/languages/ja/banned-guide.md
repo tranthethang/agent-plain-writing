@@ -41,7 +41,7 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | 学んだこと：, 注意点： | weave the point into the paragraph, no label |
 | と言えるでしょう / と言えます / ではないでしょうか | state the claim, or state the evidence (「重要と言えるでしょう」→ say why it matters) |
 
-## Report labels (first or last 3 lines)
+## Report labels (any line outside code blocks)
 
 | Label | Use instead |
 |---|---|

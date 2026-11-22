@@ -1,7 +1,7 @@
 # Mỗi dòng một cụm (không phân biệt hoa thường).
 # [tên] = chỉ áp dụng cho profile đó. [all] = mọi profile. [warn] = cảnh báo, không tính lỗi.
 # Giữ đồng bộ với banned-guide.md. Cụm khớp từ đầu từ.
-# [report] = nhãn báo cáo không được nằm ở 3 dòng đầu hoặc 3 dòng cuối của văn bản.
+# [report] = nhãn báo cáo không được mở đầu bất kỳ dòng nào của văn bản, trừ dòng trong khối code.
 [all]
 nhằm mục đích
 có thể nói rằng

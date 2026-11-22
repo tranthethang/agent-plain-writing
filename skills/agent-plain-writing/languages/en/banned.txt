@@ -1,6 +1,6 @@
 # One phrase per line (case-insensitive). [name] = applies only to that document type. [all] = every type. [warn] = warning only.
 # Keep in sync with banned-guide.md. Phrases match from the start of a word.
-# [report] = report labels that must not start any of the first or last 3 lines of the document.
+# [report] = report labels that must not start any line of the document outside code blocks.
 [all]
 in order to
 delve

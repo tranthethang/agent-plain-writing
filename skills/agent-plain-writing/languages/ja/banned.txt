@@ -1,6 +1,6 @@
 # One phrase per line. [name] = applies only to that document type. [all] = every type. [warn] = warning only.
 # Keep in sync with banned-guide.md. Japanese phrases match anywhere in the text.
-# [report] = report labels that must not start any of the first or last 3 lines of the document.
+# [report] = report labels that must not start any line of the document outside code blocks.
 [all]
 することができます
 することができる
