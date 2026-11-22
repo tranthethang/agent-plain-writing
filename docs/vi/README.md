@@ -59,16 +59,18 @@ Các loại khác không có khoảng độ dài.
 
 ## Bằng chứng
 
-Một lần chạy eval (`evidence/20261121-235628/`) so sánh cùng một AI khi có và không có skill.
+Lần chạy eval mới nhất (`evidence/20261122-154249/`, model `gpt-6-luna`) so sánh cùng một AI khi có và không có skill.
 
 Eval gồm 9 ca mô phỏng: `api-design`, `essay` và `tech-blog`, mỗi loại bằng `vi`, `en`, `ja`. Kết quả chỉ lấy từ script. Không có AI chấm và không có người duyệt.
 
-- Có skill, 7 trên 9 bản pass script. Không có skill, chỉ 6 trên 9 bản pass.
-- Có skill, câu trung bình ngắn hơn ở 8 trên 9 ca. Ngoại lệ là `tech-blog en`, với 14,7 so với 12,4 từ.
-- Với `api-design`, cả 3 bản có skill đều pass. Bản `api-design vi` không có skill thì không pass. Số thuật ngữ giảm từ 2 xuống 1. Mỗi bản có 8 đến 9 dấu `TBD-n` gắn với câu hỏi. Script không cho biết như vậy có tốt hơn không.
+- Có skill, 6 trên 9 bản pass script. Không có skill, 5 trên 9 bản pass.
+- Có skill, câu trung bình ngắn hơn ở 8 trên 9 ca. `tech-blog en` hòa: 12,3 so với 12,2 từ.
+- Với `api-design`, mỗi bản có skill có 8 dấu `TBD-n` gắn với câu hỏi, và số thuật ngữ giảm 1. Hai bản không pass (`en`: một câu dài; `ja`: một đoạn dài và khoảng trắng cuối dòng), nên chỉ `api-design vi` pass. Script không cho biết các dấu có tốt hơn không.
 - Với `essay`, cả 6 bản pass và không có lỗi. Các bản có skill ngắn hơn.
-- Với `tech-blog`, bản `vi` pass ở cả hai chế độ. Bản `ja` có 2 lỗi đoạn ở cả hai chế độ. Bản `en` có nhiều lỗi hơn khi dùng skill (7 so với 3). Cả 6 bản ngắn hơn mức mục tiêu. Script chỉ in cảnh báo.
-- Không bản nào bịa số.
+- Với `tech-blog`, bản có skill có 2, 0 và 0 lỗi (`en`, `ja`, `vi`), còn bản không có skill có 5, 1 và 1. Cả 6 bản ngắn hơn mức mục tiêu. Script chỉ in cảnh báo.
+- Một số bịa khi không có skill (`tech-blog en`). Có skill thì không có.
+
+Lần chạy trước (`20261121-235628`) không so sánh được: script kiểm tra và prompt baseline đã đổi.
 
 Mẫu này nhỏ, chưa đủ để chứng minh. Chi tiết, bảng số liệu và giới hạn: [evidence/README.md](../../evidence/README.md).
 
