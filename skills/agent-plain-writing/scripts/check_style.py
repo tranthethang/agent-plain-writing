@@ -153,9 +153,13 @@ def split_blocks(text, doc_type=None):
     return blocks
 
 
+TIME_DATE_RE = re.compile(r"(?<![\d:-])(?:\d{1,2}:\d{2}|\d{4}-\d{2}-\d{2})(?![\d:-])")
+
+
 def count_units(s, unit):
     if unit == "char":
         return sum(1 for ch in s if unicodedata.category(ch)[0] not in "PZC")
+    s = TIME_DATE_RE.sub("x", s)  # `hh:mm` and `YYYY-MM-DD` count as one unit
     if unit == "word":
         return len(re.findall(r"\w[\w'-]*", s))
     return len(re.findall(r"\w+", s))  # syllable (Vietnamese)
@@ -188,16 +192,27 @@ def phrase_pattern(phrase, boundary, end_boundary=False):
     return p
 
 
+def find_project_config(start):
+    """Look for PLAIN-WRITING.md in `start`, then each parent. Stop after a folder that holds `.git`."""
+    for folder in [start, *start.parents]:
+        candidate = folder / "PLAIN-WRITING.md"
+        if candidate.exists():
+            return candidate
+        if (folder / ".git").exists():
+            return None
+    return None
+
+
 def load_project_config(config_path):
-    """Load optional PLAIN-WRITING.md config from --config or cwd."""
+    """Load optional PLAIN-WRITING.md config from --config, or by searching up from cwd."""
     if config_path is not None:
         path = Path(config_path)
         if not path.exists():
             print(f"Config file not found: {path}", file=sys.stderr)
             return None, True
     else:
-        path = Path.cwd() / "PLAIN-WRITING.md"
-        if not path.exists():
+        path = find_project_config(Path.cwd())
+        if path is None:
             return {}, False
     text = path.read_text(encoding="utf-8")
     m = re.search(r"```plain-writing\s*\n(.*?)\n```", text, flags=re.S)
@@ -241,7 +256,7 @@ def main():
     ap.add_argument("--non-tech", action="store_true",
                     help="limit jargon (reader is outside the field)")
     ap.add_argument("--config", default=None,
-                    help="path to PLAIN-WRITING.md (default: ./PLAIN-WRITING.md)")
+                    help="path to PLAIN-WRITING.md (default: search the current folder, then its parents)")
     ap.add_argument("--short-brief", action="store_true",
                     help="use length_short when the type has it")
     args = ap.parse_args()

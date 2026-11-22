@@ -164,3 +164,38 @@ class ParityTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TimeDateUnitTests(unittest.TestCase):
+    def test_en_counts_time_and_date_as_one_word(self):
+        self.assertEqual(checker.count_units("On 2026-12-03 at 04:00 UTC the cluster restarts.", "word"), 8)
+
+    def test_vi_counts_time_and_date_as_one_syllable(self):
+        self.assertEqual(checker.count_units("Lúc 04:00 ngày 2026-12-03 hệ thống khởi động lại.", "syllable"), 9)
+
+    def test_ja_count_is_unchanged(self):
+        text = "04:00に再起動します。"
+        self.assertEqual(checker.count_units(text, "char"), sum(1 for ch in text if ch not in ":。"))
+
+    def test_colon_does_not_split_sentence(self):
+        text = "The job runs at 04:00 UTC daily."
+        self.assertEqual(len(checker.split_sentences(text, profile("en")["sentence_split"])), 1)
+
+
+class ConfigSearchTests(unittest.TestCase):
+    def test_config_found_from_subfolder(self):
+        cfg = "```plain-writing\n{\"banned\": [\"zorblax\"]}\n```\n"
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            (root / ".git").mkdir()
+            (root / "PLAIN-WRITING.md").write_text(cfg, encoding="utf-8")
+            sub = root / "a" / "b"
+            sub.mkdir(parents=True)
+            doc = sub / "t.md"
+            doc.write_text("The zorblax restarts.\n", encoding="utf-8")
+            r = subprocess.run(
+                [sys.executable, str(CHECKER), "t.md", "--lang", "en", "--type", "common"],
+                capture_output=True, text=True, cwd=sub,
+            )
+        self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+        self.assertIn("zorblax", r.stdout)
