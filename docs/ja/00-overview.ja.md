@@ -19,13 +19,13 @@ AI の下書きには、次の欠点がよく出ます。
 
 ## 含まれるもの
 
-- **基本ルールと手順**：`SKILL.md`（共通ルール 6 つと文体ファミリーごとのルール、下書きのあとに推敲）。(no native review yet)
-- **2 つの文体ファミリーに 4 つの文書タイプ**：`plain`（`tech-blog`、`api-design`、`guide`）と `creative`（`essay`）。各タイプに `doc-types/` のファイルがあり、文体、構成、長さを定めます。
+- **基本ルールと手順**：`SKILL.md`（共通ルール 6 つと文体ファミリーごとのルール、下書きのあとに推敲）。
+- **2 つの文体ファミリーに 5 つの文書タイプ**：`plain`（`tech-blog`、`api-design`、`guide`、`common`）と `creative`（`essay`）。`common` を除く各タイプに `doc-types/` のファイルがあり、文体、構成、長さを定めます。
 - **3 つの言語フォルダ**：カウント単位、数値の上限、禁止表現、専門用語リスト、例文を収めます。
 - **チェックスクリプト** `check_style.py`（Python 3.7 以上、標準ライブラリのみ）。
 - **評価キット**：`evals/`（[05-evals](05-evals.ja.md) を参照）。
 
-`prose`、`poetry`、`screen-design` は現時点では対象外です。(no native review yet)
+`prose`、`poetry`、`screen-design` は現時点では対象外です。
 
 ## どのファイルがどのルールを持つか
 
@@ -40,7 +40,7 @@ AI の下書きには、次の欠点がよく出ます。
 | 文法の落とし穴、人称と程度の語 | `languages/<lang>/profile.md` |
 | 専門用語リスト | `languages/<lang>/terms.txt` |
 
-上限と構成では `doc-types` が `SKILL.md` に優先します。語句と文法では `languages` が `doc-types` に優先します。素材の外に何をどこまで足せるかでは、文体ファミリーと `doc-types` がコアルールに優先します。ただし、コアルール 5 の事実は変わりません（no native review yet）。完全な表は `AGENTS.md` にあります。
+上限と構成では `doc-types` が `SKILL.md` に優先します。語句と文法では `languages` が `doc-types` に優先します。素材の外に何をどこまで足せるかでは、文体ファミリーと `doc-types` がコアルールに優先します。ただし、コアルール 5 の事実は変わりません。完全な表は `AGENTS.md` にあります。
 
 ## リポジトリの構成
 

@@ -13,7 +13,7 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | させていただ(く) | 〜します (use it only when the situation truly needs humility) | 「報告させていただきます」→「報告します」 |
 | 非常に、大変 *(warn: 大変)* | delete, or give a number | |
 | 画期的、革新的、包括的、強力な、シームレス | say what it does, with a number | 「強力なツール」→「1秒に1万行を処理できるツール」 |
-| ブリーフ、依頼文、素材には書かれて、素材に記載 | state the fact; in a spec, write `TBD-n` with its question; otherwise delete the point. The reader never saw the brief (no native review yet) | 「素材には書かれていないが」→ (delete) |
+| ブリーフ、依頼文、素材には書かれて、素材に記載 | state the fact; in a spec, write `TBD-n` with its question; otherwise delete the point. The reader never saw the brief | 「素材には書かれていないが」→ (delete) |
 
 ## Vague words in API design
 

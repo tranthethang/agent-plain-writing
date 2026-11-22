@@ -67,7 +67,7 @@ Each fact has one owner. Other files point to the owner and do not restate the f
 
 ### Japanese content
 
-- The agent may change `ja` content, but must state that it changed `ja` and record "no native review yet".
+- The agent may change `ja` content, but must state in its reply that it changed `ja`. A native speaker must review `ja` content before a release.
 - If you are not sure a Japanese sentence is natural, say so in your reply instead of guessing.
 - Do not count Japanese text by words. The unit is characters (`char`).
 

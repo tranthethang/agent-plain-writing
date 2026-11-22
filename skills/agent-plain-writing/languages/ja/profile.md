@@ -22,7 +22,7 @@ The register is a Japanese form, so it is listed here. Choose one register per d
 | Type | Register | Notes |
 |---|---|---|
 | tech-blog | です・ます調 | Friendly but direct |
-| essay | だ・である調 | Plain form by default (no native review yet) |
+| essay | だ・である調 | Plain form by default |
 | guide | です・ます調 | Steps end in 「〜します」. Instructions use 「〜してください」 sparingly (one per section at most) |
 | design | である調 / 常体 | Plain form: 「〜する。」「〜しない。」. Table cells may end in a noun (体言止め) |
 
@@ -41,7 +41,7 @@ Many Japanese design documents state default behaviour with plain 「〜する�
 
 ## Required-flag labels (API design)
 
-Use in the field table of an API. The labels follow the document language. (no native review yet)
+Use in the field table of an API. The labels follow the document language.
 
 | Level | Label |
 |---|---|
@@ -49,9 +49,9 @@ Use in the field table of an API. The labels follow the document language. (no n
 | Not required | 任意 |
 | Depends on a rule | 条件付き（<条件>） |
 
-Direction labels (the Direction column): `リクエスト`, `レスポンス`. (no native review yet)
+Direction labels (the Direction column): `リクエスト`, `レスポンス`.
 
-Label for an empty Side effects section: `なし`. (no native review yet)
+Label for an empty Side effects section: `なし`.
 
 
 ## Jargon
