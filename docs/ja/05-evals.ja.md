@@ -4,14 +4,14 @@
 
 | ファイル | 役割 |
 |---|---|
-| `cases/` | 9 ケース：`tech-blog`、`essay`、`api-design` を、それぞれ `vi`、`en`、`ja` で。データはすべて架空です |
+| `cases/` | 15 ケース：`tech-blog`、`essay`、`api-design`、`guide`、`common` を、それぞれ `vi`、`en`、`ja` で。データはすべて架空です |
 | `score.py` | 機械的な採点。ケースにない数字を数え、`api-design` では `tbd_ids`、`tbd_without_question`、`tbd_in_code`、`tbd_duplicate_questions`、`tbd_without_inline` も報告する |
-| `judge-prompt.md` | AI 審査員用のプロンプト（明瞭さ、網羅性、`api-design`・`tech-blog`・`essay` ごとの意味チェック） |
+| `judge-prompt.md` | AI 審査員用のプロンプト（明瞭さ、網羅性、`api-design`・`tech-blog`・`essay`・`guide`・`common` ごとの意味チェック） |
 | `run_eval.py` | 各ケースを 2 回（スキルあり・なし）実行する |
 
 ## コスト
 
-`run_eval.py` は 1 ケースにつき AI を 2 回呼びます。9 ケースすべてで 18 回となり、利用枠や料金を消費します。必ず先にプレビューしてください。
+`run_eval.py` は 1 ケースにつき AI を 2 回呼びます。15 ケースすべてで 30 回となり、利用枠や料金を消費します。必ず先にプレビューしてください。
 
 ```bash
 python3 evals/run_eval.py --dry-run

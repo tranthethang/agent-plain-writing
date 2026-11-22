@@ -4,14 +4,14 @@
 
 | File | Vai trò |
 |---|---|
-| `cases/` | 9 ca: `tech-blog`, `essay` và `api-design`, mỗi loại có `vi`, `en`, `ja`. Mọi dữ liệu đều là giả lập |
+| `cases/` | 15 ca: `tech-blog`, `essay`, `api-design`, `guide` và `common`, mỗi loại có `vi`, `en`, `ja`. Mọi dữ liệu đều là giả lập |
 | `score.py` | Bộ chấm cơ học. Đếm số không có trong ca, và với `api-design` còn báo `tbd_ids`, `tbd_without_question`, `tbd_in_code`, `tbd_duplicate_questions` và `tbd_without_inline` |
-| `judge-prompt.md` | Prompt cho AI giám khảo (độ rõ, độ đủ ý, và các kiểm tra ngữ nghĩa theo loại cho `api-design`, `tech-blog` và `essay`) |
+| `judge-prompt.md` | Prompt cho AI giám khảo (độ rõ, độ đủ ý, và các kiểm tra ngữ nghĩa theo loại cho `api-design`, `tech-blog`, `essay`, `guide` và `common`) |
 | `run_eval.py` | Chạy mỗi ca hai lần (có skill và không có skill) |
 
 ## Chi phí
 
-`run_eval.py` gọi AI 2 lần cho mỗi ca. Chạy cả 9 ca là 18 lần gọi và tốn hạn mức hoặc tiền. Luôn xem trước:
+`run_eval.py` gọi AI 2 lần cho mỗi ca. Chạy cả 15 ca là 30 lần gọi và tốn hạn mức hoặc tiền. Luôn xem trước:
 
 ```bash
 python3 evals/run_eval.py --dry-run

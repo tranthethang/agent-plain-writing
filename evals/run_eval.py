@@ -26,6 +26,7 @@ TYPE_FILES = {
     "essay": "essay.md",
     "api-design": "api-design.md",
     "guide": "user-guide.md",
+    "common": None,
 }
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -118,17 +119,25 @@ def build_prompt(case_path, with_skill):
         meta = score.parse_case_meta(case_text)
         lang = meta["lang"]
         doc_type = meta["type"]
-        type_file = TYPE_FILES.get(doc_type, "tech-blog.md")
+        if doc_type not in TYPE_FILES:
+            raise ValueError(f"Unknown document type '{doc_type}' in {case_path}")
+        type_file = TYPE_FILES[doc_type]
+        example_file = "common.md" if doc_type == "common" else type_file
 
         parts.append("\n## Skill instructions\n\n" + SKILL_FILE.read_text(encoding="utf-8"))
 
-        extra_files = [
-            ("Document type guide", SKILL_DIR / "doc-types" / type_file),
+        extra_files = []
+        if type_file is not None:
+            extra_files.append(("Document type guide", SKILL_DIR / "doc-types" / type_file))
+        extra_files.extend([
             ("Language limits", SKILL_DIR / "languages" / lang / "profile.json"),
             ("Language profile", SKILL_DIR / "languages" / lang / "profile.md"),
+            ("Banned phrases", SKILL_DIR / "languages" / lang / "banned.txt"),
             ("Banned phrases guide", SKILL_DIR / "languages" / lang / "banned-guide.md"),
-            ("Examples", SKILL_DIR / "languages" / lang / "examples" / type_file),
-        ]
+        ])
+        if doc_type == "guide" or meta.get("non_tech"):
+            extra_files.append(("Terms", SKILL_DIR / "languages" / lang / "terms.txt"))
+        extra_files.append(("Examples", SKILL_DIR / "languages" / lang / "examples" / example_file))
         for label, path in extra_files:
             if path.is_file():
                 parts.append(f"\n## {label} ({path.relative_to(SKILL_DIR)})\n\n" + path.read_text(encoding="utf-8"))

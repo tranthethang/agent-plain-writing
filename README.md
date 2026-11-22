@@ -17,11 +17,11 @@ It gives the AI limits it can count (sentence length, paragraph length, banned p
 ## Status
 
 - Five document types in two voice families: `plain` (`tech-blog`, `api-design`, `guide`, `common`) and `creative` (`essay`). `prose`, `poetry`, and `screen-design` are out of scope for now.
-- **Breaking change:** `--type blog` is now `--type tech-blog` (also the new default).
+- **Breaking change:** `--type blog` is now `--type tech-blog`. The default `--type` is `common`.
 - The checker is mechanical. It counts. It does not judge voice. Text length outside the range prints a warning and does not fail the check.
 - The numeric limits are starting estimates, not verified standards.
 - The evidence is small: one eval run per version, 9 simulated cases, mechanical scores only. See [Evidence](#evidence).
-- Automated tests cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type, the checker's table-cell, report-label and `--short-brief` checks, and the Units tables. Run them with `python3 -m unittest discover -s tests`. `AGENTS.md` lists the manual checks for the rest.
+- Automated tests cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type, the checker's table-cell, report-label and `--short-brief` checks, the Units tables, and the shipped samples in `examples/`. Run them with `python3 -m unittest discover -s tests`. `AGENTS.md` lists the manual checks for the rest.
 
 ## Quick start
 

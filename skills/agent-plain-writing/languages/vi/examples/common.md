@@ -80,6 +80,18 @@ Số liệu trong ví dụ chỉ để minh họa. Khi viết thật, dùng số
 **Good:** Sau khi sửa, thời gian xử lý giảm từ 3 giây xuống 200 ms.
 **Nếu không có số:** "Chưa đo. Cần đo thời gian xử lý trước và sau khi sửa." Đừng bịa số.
 
+## Mẫu hoàn chỉnh
+
+```markdown
+## Lịch sao lưu hằng đêm
+
+Cơ sở dữ liệu thanh toán sao lưu toàn bộ lúc 02:00 UTC mỗi ngày. Bản sao lưu được giữ 30 ngày trên kho mã hóa rồi tự xóa.
+
+Khôi phục một ổ 40 GB từ bản sao lưu mất khoảng 12 phút. Trong lúc khôi phục, dữ liệu mới tạm dừng ghi cho tới khi ổ gắn xong.
+
+Nhóm cần bản sao ngoài giờ này có thể tạo bản sao thủ công trong bảng điều khiển quản trị. Bản sao thủ công dùng chung hạn mức 500 GB.
+```
+
 ## Mẫu của bạn (thêm vào đây)
 
 <!-- Dán các câu AI viết dở và bản bạn đã sửa. Dùng định dạng Bad / Good / Fault / Fix. -->

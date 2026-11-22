@@ -258,7 +258,7 @@ def main():
         print(f"Unknown lang '{lang}'. Use: {', '.join(langs)}", file=sys.stderr)
         return 2
 
-    raw_type = args.doc_type or proj.get("default_type") or "tech-blog"
+    raw_type = args.doc_type or proj.get("default_type") or "common"
     doc_type = TYPE_ALIASES.get(raw_type, raw_type)
     prof = load_profile(lang)
     if doc_type not in prof["types"]:

@@ -41,6 +41,22 @@ For an `essay` output, list each hit in the matching key. Leave the list empty w
 - **flat_restatement**: a main point retold as one summary sentence instead of a scene with an action and a sensory detail, or a paragraph with no sensory detail.
 - **no_inner_voice**: a text with objects and actions but no thought, memory or doubt from the narrator, or an added thought that states a lesson or a conclusion.
 
+## Semantic checks (guide)
+
+For a `guide` output, list each hit in the matching key. Leave the list empty when there is none.
+
+- **invented_steps**: a step, screen, or button label that does not appear in the brief.
+- **internal_mechanism**: an explanation of how the backend or software works internally instead of what the user sees or clicks.
+- **missing_error_table**: common errors from the brief are omitted or not presented in a quick-lookup table or list.
+
+## Semantic checks (common)
+
+For a `common` output, list each hit in the matching key. Leave the list empty when there is none.
+
+- **first_person**: first-person pronouns ("I", "we", "tôi", "chúng tôi", "私") used in the text.
+- **opening_recap**: an introductory sentence that announces or recaps the topic instead of starting straight with the content.
+- **closing_summary**: a concluding summary or thanks at the end instead of stopping when the content ends.
+
 ## Output format
 
 Return JSON only. Do not include markdown fences or extra text.
@@ -61,6 +77,12 @@ Return JSON only. Do not include markdown fences or extra text.
   "explained_ending": [],
   "flat_restatement": [],
   "no_inner_voice": [],
+  "invented_steps": [],
+  "internal_mechanism": [],
+  "missing_error_table": [],
+  "first_person": [],
+  "opening_recap": [],
+  "closing_summary": [],
   "notes": "one-sentence reason"
 }
 ```

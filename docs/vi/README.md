@@ -16,11 +16,11 @@ Một script kiểm tra bản nháp theo các giới hạn đó.
 ## Trạng thái
 
 - Có năm loại văn bản, chia thành hai nhóm giọng. Nhóm `plain` gồm `tech-blog`, `api-design`, `guide`, `common`. Nhóm `creative` gồm `essay`. Hiện chưa hỗ trợ `prose`, `poetry` và `screen-design`.
-- **Thay đổi không tương thích:** `--type blog` nay là `--type tech-blog`. Đây cũng là giá trị mặc định mới.
+- **Thay đổi không tương thích:** `--type blog` nay là `--type tech-blog`. Giá trị mặc định là `common`.
 - Script chỉ đếm, không đánh giá giọng văn. Độ dài ngoài khoảng cho phép chỉ in cảnh báo. Script không báo lỗi.
 - Các giới hạn số là ước lượng ban đầu. Chúng chưa được kiểm chứng.
 - Bằng chứng còn ít. Mới có một lần chạy eval, 9 ca mô phỏng, chỉ có điểm tự động. Xem [Bằng chứng](#bằng-chứng).
-- Test tự động kiểm tra các điểm sau. Thống kê `TBD-n` và khoảng độ dài cho brief ngắn trong `evals/score.py`. Tập loại văn bản. Loại mặc định của script. Phép kiểm tra ô bảng, nhãn báo cáo và `--short-brief` của script. Các bảng Đơn vị. Chạy test bằng `python3 -m unittest discover -s tests`. `AGENTS.md` liệt kê các bước kiểm tra tay còn lại.
+- Test tự động kiểm tra các điểm sau. Thống kê `TBD-n` và khoảng độ dài cho brief ngắn trong `evals/score.py`. Tập loại văn bản. Loại mặc định của script. Phép kiểm tra ô bảng, nhãn báo cáo và `--short-brief` của script. Các bảng Đơn vị. Các mẫu hoàn chỉnh trong `examples/`. Chạy test bằng `python3 -m unittest discover -s tests`. `AGENTS.md` liệt kê các bước kiểm tra tay còn lại.
 
 ## Bắt đầu nhanh
 

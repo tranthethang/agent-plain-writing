@@ -24,7 +24,8 @@ The register is a Japanese form, so it is listed here. Choose one register per d
 | tech-blog | です・ます調 | Friendly but direct |
 | essay | だ・である調 | Plain form by default |
 | guide | です・ます調 | Steps end in 「〜します」. Instructions use 「〜してください」 sparingly (one per section at most) |
-| design | である調 / 常体 | Plain form: 「〜する。」「〜しない。」. Table cells may end in a noun (体言止め) |
+| api-design | である調 / 常体 | Plain form: 「〜する。」「〜しない。」. Table cells may end in a noun (体言止め) |
+| common | です・ます調 | Plain, direct form for general text |
 
 Teams differ. Before writing a design document or a manual for a Japanese team or customer, confirm their register convention and follow it.
 
@@ -52,6 +53,18 @@ Use in the field table of an API. The labels follow the document language.
 Direction labels (the Direction column): `リクエスト`, `レスポンス`.
 
 Label for an empty Side effects section: `なし`.
+
+## Section titles (API design)
+
+| Section | Title |
+|---|---|
+| Identity | 識別情報 |
+| DTO and field mapping | DTOとフィールド対応 |
+| Endpoint | エンドポイント |
+| Processing | 処理 |
+| Errors | エラー |
+| Side effects | 副作用 |
+| Open items | 未決事項 |
 
 
 ## Jargon

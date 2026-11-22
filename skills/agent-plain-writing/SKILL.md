@@ -1,6 +1,6 @@
 ---
 name: agent-plain-writing
-description: "Plain-language writing standard with measurable limits, for Vietnamese (vi), English (en) and Japanese (ja). Use when writing, rewriting or shortening text such as tech blogs, personal essays, API design and user guides. Also use when the user says AI writing is wordy, hard to understand or too technical. Viết, viết lại, rút gọn văn bản tiếng Việt, Anh, Nhật (blog kỹ thuật, tản văn, tài liệu API, hướng dẫn). 文章の作成・書き直し・簡潔化 (技術ブログ、エッセイ、設計書、マニュアル)."
+description: "Plain-language writing standard with measurable limits, for Vietnamese (vi), English (en) and Japanese (ja). Use when writing, rewriting or shortening text such as tech blogs, personal essays, API design and user guides. Also use when the user says AI writing is wordy, hard to understand or too technical. Do not use for prose, poetry or screen-design. Viết, viết lại, rút gọn văn bản tiếng Việt, Anh, Nhật (blog kỹ thuật, tản văn, tài liệu API, hướng dẫn). 文章の作成・書き直し・簡潔化 (技術ブログ、エッセイ、設計書、マニュアル)."
 ---
 
 # Plain writing
@@ -28,12 +28,12 @@ Each rule has one owner. Read a rule in its owner file, not in a copy.
 
 0. **Check for `PLAIN-WRITING.md`** in the project root (template: `templates/PLAIN-WRITING.example.md`). If `PLAIN-WRITING.md` exists, read it and let it win on voice and terms. Use `default_lang` and `default_type` to skip the questions in steps 1 and 2.
 1. **Pick the output language** (`vi`, `en` or `ja`). It is the language of the text you produce, not the language of the prompt. A Vietnamese brief that asks for a Japanese manual means `ja`. If unclear, ask one question. Then read `languages/<lang>/profile.json` (the limits for your type) and `languages/<lang>/profile.md`.
-2. **Pick the document type** (table below). Read the structure file from the type table (`doc-types/<type>.md`; `common` has none) and `languages/<lang>/examples/<type>.md`. Also read `languages/<lang>/banned.txt`, `banned-guide.md` and `terms.txt`. Read only these.
-3. **Know the reader**: who they are, what they already know, what they must do after reading. If missing, ask one question. If you cannot ask, state your assumption outside the document (or mark `TBD:` inline in specs).
+2. **Pick the document type** (table below). Read the structure file from the type table (`doc-types/<type>.md`; `common` has none) and `languages/<lang>/examples/<type>.md` (`guide` uses `examples/user-guide.md`). Also read `languages/<lang>/banned.txt` and `banned-guide.md`. Read `languages/<lang>/terms.txt` only when the type is `guide` or `--non-tech` applies. Read only these.
+3. **Know the reader**: who they are, what they already know, what they must do after reading. If missing, ask one question. If you cannot ask, state your assumption outside the document (or mark `TBD-n` inline in specs).
 4. **Outline** (one line per idea) for any text longer than about 400 words. Write only ideas that are in the outline. In the `creative` family, the outline fixes the scenes, not every sentence.
 5. **Draft** with the core rules and the type's voice, structure and rhythm. Write normal paragraphs—never put every sentence on its own line.
 6. **Edit** in a separate pass: cut, run the checklist, run the script. Fix until clean.
-7. **Report** two things outside the generated text: the result, and what you had to guess. Never prepend or append `Result:`, `Guesses:`, `---`, or `**推測したこと:**` lines inside the document. Put the report in a separate message. When your reply is the document itself, put the report after the document, below a horizontal rule, and keep it out of the file that the checker reads. Leave the report out only when you guessed nothing and added nothing. In specs, mark missing details inline with `TBD:`. The script flags the labels in `banned.txt`, section `[report]`, on any line outside code blocks.
+7. **Report** two things outside the generated text: the result, and what you had to guess. Never prepend or append `Result:`, `Guesses:`, or `**推測したこと:**` lines inside the document. Send the report as a second message when you can. Otherwise end the document, add one `---` line, then the report, and keep it out of the file that the checker reads. Leave the report out only when you guessed nothing and added nothing; never write a report that only says nothing was assumed. In specs, mark missing details inline with `TBD-n`. The script flags the labels in `banned.txt`, section `[report]`, on any line outside code blocks.
 
 Draft and edit are two passes. Do not try to get it right in the first pass.
 
@@ -76,7 +76,7 @@ One voice: **short, concrete, understood on first read.**
 - **Examples and metaphors**: One example or story per section, and a section is one main point.
 - **Evaluative adjectives** ("great", "powerful", "beautiful"): Replace with a number or a visible detail.
 - **Length**: `length` in `profile.json` is a ceiling, under the type's length policy. Do not pad to reach it. Never more than 10% over.
-- **Nothing added beyond the source**: keep human context, reasoning, and reactions grounded in the brief. In specs and guides, write `TBD: <specific question>` or ask.
+- **Nothing added beyond the source**: keep human context, reasoning, and reactions grounded in the brief. In specs and guides, write `TBD-n <specific question>` or ask.
 - **`common` voice, no first person**: write about the subject, not about yourself.
 - **`common` voice, no opening recap**: start with the content.
 - **`common` voice, no closing summary**: end when the content ends.
@@ -124,7 +124,7 @@ For `tech-blog` and `essay`, keep human context, reasoning, and tension instead 
 - [ ] The type file's checklist passes.
 - [ ] Every number, event and outcome appears in the user's source. In `essay`, every inner thought that the brief does not give is reported outside the text.
 - [ ] Register is consistent.
-- [ ] Guesses are reported outside the generated document (or marked `TBD:` inline in specs).
+- [ ] Guesses are reported outside the generated document (or marked `TBD-n` inline in specs).
 
 ## Check with the script
 
@@ -137,7 +137,7 @@ python3 <skill-dir>/scripts/check_style.py guide.md --lang vi --type guide
 python3 <skill-dir>/scripts/check_style.py post.md  --lang en --type tech-blog --non-tech
 ```
 
-- `--lang`: `vi`, `en`, `ja` (optional if `default_lang` is set in `PLAIN-WRITING.md`). `--type`: `tech-blog`, `essay`, `api-design`, `guide`, `common` (`user-guide` also works; defaults to `default_type` in `PLAIN-WRITING.md` or `tech-blog`).
+- `--lang`: `vi`, `en`, `ja` (optional if `default_lang` is set in `PLAIN-WRITING.md`). `--type`: `tech-blog`, `essay`, `api-design`, `guide`, `common` (`user-guide` also works; defaults to `default_type` in `PLAIN-WRITING.md` or `common`).
 - `--short-brief`: use `length_short` for a type that has it (for example `tech-blog`).
 - `--config <path>`: path to a `PLAIN-WRITING.md` config file. By default, the script reads `PLAIN-WRITING.md` from the current directory if present.
 - Units differ by language: Vietnamese counts syllables (tiếng), English counts words, Japanese counts characters (字). The unit is set in `profile.json`.

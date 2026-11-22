@@ -10,7 +10,7 @@ python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --t
 | Option | Values |
 |---|---|
 | `--lang` | `vi`, `en`, `ja`. Optional if `default_lang` is set in `PLAIN-WRITING.md` |
-| `--type` | `tech-blog`, `essay`, `api-design`, `guide`, `common` (`user-guide` also works). Default: `default_type` or `tech-blog` |
+| `--type` | `tech-blog`, `essay`, `api-design`, `guide`, `common` (`user-guide` also works). Default: `default_type` or `common` |
 | `--non-tech` | Limit jargon to 3 terms. The `guide` type always applies a jargon limit |
 | `--config` | Path to a `PLAIN-WRITING.md` file. Default: `./PLAIN-WRITING.md` if present |
 | `--short-brief` | Use `length_short` for a type that has it (for example `tech-blog`) |

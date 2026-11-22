@@ -67,7 +67,6 @@ Each fact has one owner. Other files point to the owner and do not restate the f
 
 ### Japanese content
 
-- The agent may change `ja` content, but must state in its reply that it changed `ja`. A native speaker must review `ja` content before a release.
 - If you are not sure a Japanese sentence is natural, say so in your reply instead of guessing.
 - Do not count Japanese text by words. The unit is characters (`char`).
 
@@ -86,7 +85,7 @@ Each fact has one owner. Other files point to the owner and do not restate the f
 
 ## Verify your change
 
-Automated tests live in `tests/` and use the standard library only. They cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type, the checker's table-cell, report-label and `--short-brief` checks, and the "Units" tables in `README.md` and `docs/vi/README.md`. Run them from the repository root:
+Automated tests live in `tests/` and use the standard library only. They cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type, the checker's table-cell, report-label and `--short-brief` checks, the "Units" tables in `README.md` and `docs/vi/README.md`, and the shipped samples in `examples/` (`tests/test_examples_samples.py`). Run them from the repository root:
 
 ```bash
 python3 -m unittest discover -s tests
@@ -101,7 +100,7 @@ Run these checks by hand for the rest.
    python3 skills/agent-plain-writing/scripts/check_style.py good.md --lang en --type api-design
    ```
 
-2. **Shipped samples.** Extract the last fenced block of each examples file and run the checker with the matching type (`tech-blog`, `essay`, `api-design`, `guide`). Expect no violations.
+2. **Shipped samples.** Covered by `tests/test_examples_samples.py`. As a manual fallback, extract the last fenced block of each examples file and run the checker with the matching type (`tech-blog`, `essay`, `api-design`, `guide`, `common`). Expect no violations.
 3. **Parallel folders.** Compare the file lists of `languages/vi`, `languages/en` and `languages/ja`. They must match.
 4. **Mirrors.** If you changed `profile.json`, check the "Units" table in `README.md`. If you changed `banned.txt`, check that `banned-guide.md` lists the same phrases.
 

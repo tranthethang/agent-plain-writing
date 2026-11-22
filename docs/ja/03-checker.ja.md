@@ -10,7 +10,7 @@ python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --t
 | オプション | 値 |
 |---|---|
 | `--lang` | `vi`、`en`、`ja`。`PLAIN-WRITING.md` に `default_lang` があれば省略可 |
-| `--type` | `tech-blog`、`essay`、`api-design`、`guide`、`common`（`user-guide` も可）。既定は `default_type`、なければ `tech-blog` |
+| `--type` | `tech-blog`、`essay`、`api-design`、`guide`、`common`（`user-guide` も可）。既定は `default_type`、なければ `common` |
 | `--non-tech` | 専門用語を 3 語までに制限する。`guide` タイプは常に用語の上限を適用する |
 | `--config` | `PLAIN-WRITING.md` へのパス。既定は、あれば `./PLAIN-WRITING.md` |
 | `--short-brief` | `length_short` を持つタイプ（たとえば `tech-blog`）で、その範囲を使う |

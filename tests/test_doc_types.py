@@ -77,9 +77,9 @@ class TypeSetTests(unittest.TestCase):
 
 
 class CheckerTypeTests(unittest.TestCase):
-    def test_default_type_is_tech_blog(self):
+    def test_default_type_is_common(self):
         r = run_checker("Short text.\n", "--lang", "en")
-        self.assertIn("type=tech-blog", r.stdout + r.stderr)
+        self.assertIn("type=common", r.stdout + r.stderr)
 
     def test_blog_is_rejected(self):
         r = run_checker("Short text.\n", "--lang", "en", "--type", "blog")

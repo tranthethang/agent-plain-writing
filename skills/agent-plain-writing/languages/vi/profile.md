@@ -37,13 +37,21 @@ Dùng trong bảng trường của API. Nhãn theo ngôn ngữ của tài liệu
 | Không bắt buộc | Không |
 | Theo điều kiện | Có điều kiện (<quy tắc>) |
 
-Nhãn cột Hướng: `Request`, `Response`.
+Nhãn cột Hướng: `Yêu cầu`, `Phản hồi`.
 
 Nhãn cho mục Tác động kèm theo khi không có tác động: `Không có`.
 
 ## Tên mục của mẫu API (tiếng Việt)
 
-Mục Identity là "Thông tin chung". Mục Side effects là "Tác động kèm theo".
+| Mục | Tiêu đề |
+|---|---|
+| Identity | Thông tin chung |
+| DTO and field mapping | DTO và ánh xạ trường |
+| Endpoint | Endpoint |
+| Processing | Xử lý |
+| Errors | Lỗi |
+| Side effects | Tác động kèm theo |
+| Open items | Mục còn mở |
 
 ## Thuật ngữ
 

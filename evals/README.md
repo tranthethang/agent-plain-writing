@@ -8,17 +8,19 @@ This directory holds simulated evaluation cases, a mechanical scorer, and an AI 
 
 Each file in `cases/` (`<type>-<lang>.md`) has:
 
-1. Frontmatter with `lang` (`vi`, `en`, `ja`), `type` (`tech-blog`, `essay`, `api-design`), and `non_tech` (`true` or `false`). Optional `short_brief: true` marks a brief whose facts cannot fill the `length` range; `score.py` then checks length against `length_short` in `profile.json` and reports `short_brief` in its JSON.
+1. Frontmatter with `lang` (`vi`, `en`, `ja`), `type` (`tech-blog`, `essay`, `api-design`, `guide`, `common`), and `non_tech` (`true` or `false`). Optional `short_brief: true` marks a brief whose facts cannot fill the `length` range; `score.py` then checks length against `length_short` in `profile.json` and reports `short_brief` in its JSON.
 2. `# SIMULATED DATA` header.
 3. `## Audience` describing the target reader.
 4. `## Brief`:
    - For `tech-blog` and `essay`: `### Summary`, `### Main points`, `### Reader`, `### Voice`, `### Sample paragraph`, `### Words to use or avoid`.
    - For `api-design`: `### Idea`, `### Business rules`, `### Glossary`. The template is part of the skill, so the brief has no `### Template`.
+   - For `guide`: `### Feature`, `### Steps` (with exact button labels), `### Reader`, `### Common errors`.
+   - For `common`: `### Summary`, `### Reader`, `### Words to use or avoid`.
 5. `## Facts` listing every number and proper name present in the source brief.
 
 ## Adding a case from a real brief
 
-1. Copy an existing case file with the matching type (`tech-blog-*.md`, `essay-*.md` or `api-design-*.md`).
+1. Copy an existing case file with the matching type (`tech-blog-*.md`, `essay-*.md`, `api-design-*.md`, `guide-*.md` or `common-*.md`).
 2. Remove or replace personal data and customer identifiers.
 3. Set `lang`, `type`, and `non_tech` in the frontmatter.
 4. Fill `## Audience`, `## Brief`, and `## Facts` with the exact numbers and names from your brief.
@@ -26,7 +28,7 @@ Each file in `cases/` (`<type>-<lang>.md`) has:
 
 ## Running the eval
 
-> **Cost warning:** Running `run_eval.py` makes real AI calls twice per case (18 calls for all 9 cases) and uses API quota or credits. Always preview with `--dry-run` first.
+> **Cost warning:** Running `run_eval.py` makes real AI calls twice per case (30 calls for all 15 cases) and uses API quota or credits. Always preview with `--dry-run` first.
 
 1. By default, `run_eval.py` uses an OpenAI-compatible `/chat/completions` API (`--tool openai`), reading `.env` (in `evals/.env` or repo root `.env`) or environment variables:
    ```env
@@ -39,7 +41,7 @@ Each file in `cases/` (`<type>-<lang>.md`) has:
    ```bash
    python3 evals/run_eval.py --dry-run
    ```
-   Filter by document type and/or language with `--type` (`tech-blog`, `essay`, `api-design`) and `--lang` (`vi`, `en`, `ja`):
+   Filter by document type and/or language with `--type` (`tech-blog`, `essay`, `api-design`, `guide`, `common`) and `--lang` (`vi`, `en`, `ja`):
    ```bash
    python3 evals/run_eval.py --type tech-blog --lang vi --dry-run
    ```

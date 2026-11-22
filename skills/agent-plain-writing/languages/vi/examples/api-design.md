@@ -48,9 +48,9 @@ Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng
 
 | Trường | Hướng | Kiểu | Bắt buộc | Ràng buộc |
 |---|---|---|---|---|
-| `cart_id` | Request | uuid | Có | Giỏ phải thuộc người gọi |
-| `payment_method` | Request | enum | Có | `card`, `cod` |
-| `note` | Request | string | Không | ≤ 200 ký tự |
+| `cart_id` | Yêu cầu | uuid | Có | Giỏ phải thuộc người gọi |
+| `payment_method` | Yêu cầu | enum | Có | `card`, `cod` |
+| `note` | Yêu cầu | string | Không | ≤ 200 ký tự |
 
 ### 8. "v.v."
 
@@ -133,13 +133,13 @@ sequenceDiagram
 
 | Trường | Hướng | Kiểu | Bắt buộc | Ràng buộc |
 |---|---|---|---|---|
-| `title` | Request | `TBD-1` | Có | — |
+| `title` | Yêu cầu | `TBD-1` | Có | — |
 
 **Good:**
 
 | Trường | Hướng | Kiểu | Bắt buộc | Ràng buộc |
 |---|---|---|---|---|
-| `title` | Request | string | Có | — |
+| `title` | Yêu cầu | string | Có | — |
 
 **Fault:** Mở `TBD-n` cho kiểu của trường mà bảng thuật ngữ đã mô tả là văn bản.
 **Fix:** Khi bảng thuật ngữ mô tả trường là văn bản (như tiêu đề, nội dung, tên, phần URL), ghi `string` và không mở `TBD-n`.
@@ -179,21 +179,21 @@ Khuôn tham khảo. Cấu trúc nằm trong `doc-types/api-design.md`.
 
 | Trường | Hướng | Kiểu | Bắt buộc | Ràng buộc |
 |---|---|---|---|---|
-| `room_id` | Request | uuid | Có | Phòng phải tồn tại |
-| `starts_at` | Request | datetime | Có | Giờ bắt đầu phải ở tương lai; đặt trước tối đa `TBD-1` ngày |
-| `minutes` | Request | integer | Có | 30 đến 240, bước 30 |
-| `note` | Request | string | Không | ≤ 200 ký tự |
-| `reservation_id` | Response | uuid | — | — |
-| `status` | Response | string | — | — |
-| `ends_at` | Response | datetime | — | — |
+| `room_id` | Yêu cầu | uuid | Có | Phòng phải tồn tại |
+| `starts_at` | Yêu cầu | datetime | Có | Giờ bắt đầu phải ở tương lai; đặt trước tối đa `TBD-1` ngày |
+| `minutes` | Yêu cầu | integer | Có | 30 đến 240, bước 30 |
+| `note` | Yêu cầu | string | Không | ≤ 200 ký tự |
+| `reservation_id` | Phản hồi | uuid | — | — |
+| `status` | Phản hồi | string | — | — |
+| `ends_at` | Phản hồi | datetime | — | — |
 
 ## Endpoint
 
-Request:
+Yêu cầu:
 
     {"room_id": "r-12", "starts_at": "2026-12-01T09:00:00Z", "minutes": 60}
 
-Response, status 201:
+Phản hồi, status 201:
 
     {"reservation_id": "rv-88", "status": "CONFIRMED", "ends_at": "2026-12-01T10:00:00Z"}
 
