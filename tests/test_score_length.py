@@ -81,8 +81,16 @@ if __name__ == "__main__":
 
 
 class StripTrailingReportTest(unittest.TestCase):
-    def test_strips_after_last_rule(self):
-        self.assertEqual(score.strip_trailing_report("Body.\n\n---\nGuesses: none.\n"), "Body.\n")
+    def test_strips_after_marker(self):
+        self.assertEqual(score.strip_trailing_report("Body.\n\n<!-- report -->\nGuesses: none.\n"), "Body.\n")
+
+    def test_rule_in_body_stays(self):
+        text = "A\n\n---\n\nB\n"
+        self.assertIn("B", score.strip_trailing_report(text))
+
+    def test_marker_inside_fence_cuts_nothing(self):
+        text = "A\n\n```\n<!-- report -->\nR\n```\n\nB\n"
+        self.assertEqual(score.strip_trailing_report(text), text)
 
     def test_no_rule_keeps_text(self):
         self.assertEqual(score.strip_trailing_report("Body.\n"), "Body.\n")

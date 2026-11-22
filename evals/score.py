@@ -169,7 +169,10 @@ def parse_checker_output(stdout):
 
 
 def strip_trailing_report(text):
-    """Drop the report after the last horizontal rule (SKILL.md step 7), so only the document is scored."""
+    """Drop the report after the last `<!-- report -->` line outside code fences (SKILL.md step 7).
+
+    A `---` line cuts nothing, so a horizontal rule in the body stays.
+    """
     lines = text.split("\n")
     in_fence = False
     last = None
@@ -177,7 +180,7 @@ def strip_trailing_report(text):
         st = line.strip()
         if st.startswith("```"):
             in_fence = not in_fence
-        elif not in_fence and st in ("---", "***", "___"):
+        elif not in_fence and st == "<!-- report -->":
             last = i
     if last is None:
         return text
