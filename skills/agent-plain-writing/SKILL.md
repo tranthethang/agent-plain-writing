@@ -33,7 +33,7 @@ Each rule has one owner. Read a rule in its owner file, not in a copy.
 4. **Outline** (one line per idea) for any text longer than about 400 words. Write only ideas that are in the outline. In the `creative` family, the outline fixes the scenes, not every sentence.
 5. **Draft** with the core rules and the type's voice, structure and rhythm. Write normal paragraphs—never put every sentence on its own line.
 6. **Edit** in a separate pass: cut, run the checklist, run the script. Fix until clean.
-7. **Report** two things outside the generated text: the result, and what you had to guess. Never prepend or append `Result:`, `Guesses:`, `---`, or `**推測したこと:**` lines inside the document. When your reply is the document itself and you have no other place for a note, leave the report out. In specs, mark missing details inline with `TBD:`. The script flags the labels in `banned.txt`, section `[report]`, on the first or last 3 lines.
+7. **Report** two things outside the generated text: the result, and what you had to guess. Never prepend or append `Result:`, `Guesses:`, `---`, or `**推測したこと:**` lines inside the document. Put the report in a separate message. When your reply is the document itself, put the report after the document, below a horizontal rule, and keep it out of the file that the checker reads. Leave the report out only when you guessed nothing and added nothing. In specs, mark missing details inline with `TBD:`. The script flags the labels in `banned.txt`, section `[report]`, on any line outside code blocks.
 
 Draft and edit are two passes. Do not try to get it right in the first pass.
 
@@ -66,7 +66,7 @@ These rules hold for every document type:
 
 Numeric limits are per language and type. They live only in `languages/<lang>/profile.json`. A type file may relax or tighten a rule. See "Who owns what" for which file wins.
 
-### `plain` (`tech-blog`, `api-design`, `guide`)
+### `plain` (`tech-blog`, `api-design`, `guide`, `common`)
 
 One voice: **short, concrete, understood on first read.**
 
@@ -75,8 +75,11 @@ One voice: **short, concrete, understood on first read.**
 - **Jargon (reader outside the field)**: `terms` or `non_tech_terms` in `profile.json`. Explain each term in one sentence, or replace it with an everyday word.
 - **Examples and metaphors**: One example or story per section, and a section is one main point.
 - **Evaluative adjectives** ("great", "powerful", "beautiful"): Replace with a number or a visible detail.
-- **Length**: `length` in `profile.json`, under the type's length policy. Never more than 10% over.
+- **Length**: `length` in `profile.json` is a ceiling, under the type's length policy. Do not pad to reach it. Never more than 10% over.
 - **Nothing added beyond the source**: keep human context, reasoning, and reactions grounded in the brief. In specs and guides, write `TBD: <specific question>` or ask.
+- **`common` voice, no first person**: write about the subject, not about yourself.
+- **`common` voice, no opening recap**: start with the content.
+- **`common` voice, no closing summary**: end when the content ends.
 
 ### `creative` (`essay`)
 
@@ -125,14 +128,17 @@ For `tech-blog` and `essay`, keep human context, reasoning, and tension instead 
 
 ## Check with the script
 
+`<skill-dir>` is the folder that holds `SKILL.md`.
+
 ```
-python3 scripts/check_style.py draft.md --lang en --type tech-blog
-python3 scripts/check_style.py spec.md  --lang ja --type api-design
-python3 scripts/check_style.py guide.md --lang vi --type guide
-python3 scripts/check_style.py post.md  --lang en --type tech-blog --non-tech
+python3 <skill-dir>/scripts/check_style.py draft.md --lang en --type tech-blog
+python3 <skill-dir>/scripts/check_style.py spec.md  --lang ja --type api-design
+python3 <skill-dir>/scripts/check_style.py guide.md --lang vi --type guide
+python3 <skill-dir>/scripts/check_style.py post.md  --lang en --type tech-blog --non-tech
 ```
 
 - `--lang`: `vi`, `en`, `ja` (optional if `default_lang` is set in `PLAIN-WRITING.md`). `--type`: `tech-blog`, `essay`, `api-design`, `guide`, `common` (`user-guide` also works; defaults to `default_type` in `PLAIN-WRITING.md` or `tech-blog`).
+- `--short-brief`: use `length_short` for a type that has it (for example `tech-blog`).
 - `--config <path>`: path to a `PLAIN-WRITING.md` config file. By default, the script reads `PLAIN-WRITING.md` from the current directory if present.
 - Units differ by language: Vietnamese counts syllables (tiếng), English counts words, Japanese counts characters (字). The unit is set in `profile.json`.
 - The script checks sentence length, paragraph length, banned phrases, jargon count and text length. Text length outside the range is a warning, not a violation. It does **not** judge whether the voice is good.
