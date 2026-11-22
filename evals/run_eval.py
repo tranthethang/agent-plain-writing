@@ -133,7 +133,6 @@ def build_prompt(case_path, with_skill):
         extra_files.extend([
             ("Language limits", SKILL_DIR / "languages" / lang / "profile.json"),
             ("Language profile", SKILL_DIR / "languages" / lang / "profile.md"),
-            ("Banned phrases", SKILL_DIR / "languages" / lang / "banned.txt"),
             ("Banned phrases guide", SKILL_DIR / "languages" / lang / "banned-guide.md"),
         ])
         if doc_type == "guide" or meta.get("non_tech"):

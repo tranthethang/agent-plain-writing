@@ -62,6 +62,7 @@ Each fact has one owner. Other files point to the owner and do not restate the f
 - On limits and structure, `doc-types/<type>.md` wins over `SKILL.md`.
 - On words and grammar, `languages/<lang>/` wins over `doc-types/<type>.md`.
 - On how much a text may add beyond the source (reasoning, reactions, inner thoughts), the voice family in `SKILL.md` and `doc-types/<type>.md` win over the core rules. The facts in core rule 5 never change.
+- `limits` in `PLAIN-WRITING.md` override `profile.json` for that project. The checker warns above 1.5 times the profile value.
 
 ### Example pairs
 

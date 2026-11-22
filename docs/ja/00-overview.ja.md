@@ -36,7 +36,7 @@ AI の下書きには、次の欠点がよく出ます。
 | 手順と基本ルール | `SKILL.md` |
 | 文体、構成、長さの方針、文のリズム | `doc-types/<type>.md` |
 | カウント単位と数値の上限 | `languages/<lang>/profile.json` |
-| 禁止表現 | `languages/<lang>/banned.txt` |
+| 禁止表現 | `languages/<lang>/banned.txt`（チェッカー用の一覧）、`banned-guide.md`（AI が読むファイル） |
 | 文法の落とし穴、人称と程度の語 | `languages/<lang>/profile.md` |
 | 専門用語リスト | `languages/<lang>/terms.txt` |
 

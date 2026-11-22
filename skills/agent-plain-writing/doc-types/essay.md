@@ -28,7 +28,7 @@ Use for personal essays, reflections, and short narrative pieces for general rea
 - **Do not explain the meaning.** Do not close a paragraph with "I realized that...". Let the reader realize it.
 - **Vary the rhythm.** Long sentences describe; short sentences land.
 - No emoji. No greeting to the audience. No chains of rhetorical questions.
-- No meta-report openings (a sentence about why you write the essay) and no label closings (a closing line that starts with a label such as a lesson or a note). The phrases for each language are in `banned.txt`, section `[tech-blog,essay]` (shared with `tech-blog`).
+- No meta-report openings (a sentence about why you write the essay) and no label closings (a closing line that starts with a label such as a lesson or a note). The phrases for each language are in `banned-guide.md`, section "Phrases of tech-blog and essay" (shared with `tech-blog`).
 
 ## Structure
 

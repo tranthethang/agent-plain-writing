@@ -36,7 +36,7 @@ Each fact has one owner file. Other files point to it.
 | Workflow and core rules | `SKILL.md` |
 | Voice, structure, length policy, rhythm | `doc-types/<type>.md` |
 | Unit and numeric limits | `languages/<lang>/profile.json` |
-| Banned phrases | `languages/<lang>/banned.txt` |
+| Banned phrases | `languages/<lang>/banned.txt` (checker list), `banned-guide.md` (what the agent reads) |
 | Grammar traps, pronoun and level words | `languages/<lang>/profile.md` |
 | Jargon list | `languages/<lang>/terms.txt` |
 

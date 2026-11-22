@@ -2,6 +2,8 @@
 
 Danh sách máy đọc nằm ở `banned.txt` cùng thư mục. File này giải thích cách thay. Khi thêm cụm vào một nơi, thêm vào cả hai.
 
+AI đọc file này, không đọc `banned.txt`. Tiêu đề mỗi bảng cho biết loại văn bản áp dụng. *(warn)* đánh dấu cụm mà script chỉ báo cảnh báo, không tính lỗi.
+
 ## Cụm "văn AI" (áp dụng mọi loại)
 
 | Cụm | Thay bằng | Ví dụ |

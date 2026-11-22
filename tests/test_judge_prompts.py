@@ -70,3 +70,12 @@ class JudgePromptsCliTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class BuildPromptTests(unittest.TestCase):
+    def test_with_skill_prompt_has_guide_not_banned_txt(self):
+        case = ROOT / "evals" / "cases" / "api-design-en.md"
+        prompt = run_eval.build_prompt(case, True)
+        self.assertIn("languages/en/banned-guide.md", prompt)
+        self.assertNotIn("languages/en/banned.txt)", prompt)
+        self.assertNotIn("## Banned phrases (", prompt)

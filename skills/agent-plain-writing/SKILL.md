@@ -1,6 +1,6 @@
 ---
 name: agent-plain-writing
-description: "Plain-language writing standard with measurable limits, for Vietnamese (vi), English (en) and Japanese (ja). Use when writing, rewriting or shortening text such as tech blogs, personal essays, API design and user guides. Also use when the user says AI writing is wordy, hard to understand or too technical. Do not use for prose, poetry or screen-design. Viết, viết lại, rút gọn văn bản tiếng Việt, Anh, Nhật (blog kỹ thuật, tản văn, tài liệu API, hướng dẫn). 文章の作成・書き直し・簡潔化 (技術ブログ、エッセイ、設計書、マニュアル)."
+description: "Plain-language standard with countable limits for Vietnamese (vi), English (en) and Japanese (ja). Use when drafting, rewriting or shortening a tech blog post, a personal essay, a single-endpoint API spec, a step-by-step user guide or a short notice or announcement, or when the user says text is wordy, vague or too technical. Do not use for pure translation, fiction or short stories, poetry, marketing copy, UI strings or code comments. Viết, viết lại, rút gọn văn bản tiếng Việt, Anh, Nhật (blog kỹ thuật, tản văn, tài liệu API, hướng dẫn, thông báo ngắn); không dùng cho dịch thuần, truyện, thơ, quảng cáo, chuỗi giao diện, comment code. 文章の作成・書き直し・簡潔化 (技術ブログ、エッセイ、設計書、マニュアル、短いお知らせ)。純粋な翻訳、小説、詩、広告コピー、UI文言、コードコメントには使わない。"
 ---
 
 # Plain writing
@@ -23,17 +23,18 @@ Each rule has one owner. Read a rule in its owner file, not in a copy.
 - On words and grammar, `languages/<lang>/` wins over `doc-types/<type>.md`.
 - On how much a text may add beyond the source (reasoning, reactions, inner thoughts), the voice family below and `doc-types/<type>.md` win over the core rules. The facts in core rule 5 never change.
 - Every limit that has a key in `profile.json` comes from `profile.json`. No other file repeats it.
+- `limits` in `PLAIN-WRITING.md` override `profile.json` for that project. The checker warns when a project limit is above 1.5 times the profile value.
 
 ## Workflow
 
 0. **Check for `PLAIN-WRITING.md`** in the project root (template: `templates/PLAIN-WRITING.example.md`). If `PLAIN-WRITING.md` exists, read it and let it win on voice and terms. Use `default_lang` and `default_type` to skip the questions in steps 1 and 2.
 1. **Pick the output language** (`vi`, `en` or `ja`). It is the language of the text you produce, not the language of the prompt. A Vietnamese brief that asks for a Japanese manual means `ja`. If unclear, ask one question. Then read `languages/<lang>/profile.json` (the limits for your type) and `languages/<lang>/profile.md`.
-2. **Pick the document type** (table below). Read the structure file from the type table (`doc-types/<type>.md`) and `languages/<lang>/examples/<type>.md` (`guide` uses `examples/user-guide.md`). Also read `languages/<lang>/banned.txt` and `banned-guide.md`. Read `languages/<lang>/terms.txt` only when the type is `guide` or `--non-tech` applies. Read only these.
+2. **Pick the document type** (table below). Read the structure file from the type table (`doc-types/<type>.md`) and `languages/<lang>/examples/<type>.md` (`guide` uses `examples/user-guide.md`). Also read `languages/<lang>/banned-guide.md`. It is the banned list for the agent. `banned.txt` is the checker's machine list; do not read it. Read `languages/<lang>/terms.txt` only when the type is `guide` or `--non-tech` applies. Read only these.
 3. **Know the reader**: who they are, what they already know, what they must do after reading. If missing, ask one question. If you cannot ask, state your assumption outside the document (or mark `TBD-n` inline in specs).
 4. **Outline** (one line per idea) for any text longer than about 400 words. Write only ideas that are in the outline. In the `creative` family, the outline fixes the scenes, not every sentence.
 5. **Draft** with the core rules and the type's voice, structure and rhythm. Write normal paragraphs—never put every sentence on its own line.
 6. **Edit** in a separate pass: cut, run the checklist, run the script. Fix until clean. When Python cannot run, apply the final checklist by hand and say in the report that the script did not run.
-7. **Report** two things outside the generated text: the result, and what you had to guess. Never prepend or append `Result:`, `Guesses:`, or `**推測したこと:**` lines inside the document. Send the report as a second message when you can. Otherwise end the document, add one line `<!-- report -->`, then the report, and keep it out of the file that the checker reads. When you guessed nothing and added nothing, write no report and no marker. Never write a report that only says so, such as "I did not add facts beyond the brief." In specs, mark missing details inline with `TBD-n`. The script flags the labels in `banned.txt`, section `[report]`, on any line outside code blocks.
+7. **Report** two things outside the generated text: the result, and what you had to guess. Never prepend or append `Result:`, `Guesses:`, or `**推測したこと:**` lines inside the document. Send the report as a second message when you can. Otherwise end the document, add one line `<!-- report -->`, then the report, and keep it out of the file that the checker reads. When you guessed nothing and added nothing, write no report and no marker. Never write a report that only says so, such as "I did not add facts beyond the brief." In specs, mark missing details inline with `TBD-n`. The script flags those labels (see "Report labels" in `banned-guide.md`) on any line outside code blocks.
 
 Draft and edit are two passes. Do not try to get it right in the first pass.
 
@@ -47,7 +48,7 @@ Draft and edit are two passes. Do not try to get it right in the first pass.
 | User guide, manual | `plain` | `doc-types/user-guide.md` | `guide` | General users |
 | Anything else (short notice, announcement) | `plain` | `doc-types/common.md` | `common` | Varies |
 
-Always read `languages/<lang>/banned-guide.md` too (banned phrases and what replaces them).
+Always read `languages/<lang>/banned-guide.md` too (banned phrases and what replaces them). It lists each phrase with its type section and its warn status.
 
 ## Core rules (both families, all languages)
 
@@ -57,7 +58,7 @@ These rules hold for every document type:
 |---|---|---|
 | 1 | One idea per sentence | In `plain`, two subordinate clauses means split. In `creative`, the type file sets sentence rhythm |
 | 2 | Concrete verbs, active voice | "send", not "perform the sending of" |
-| 3 | Banned phrases | Zero hits from `banned.txt` (`[all]` plus the type section) |
+| 3 | Banned phrases | Zero hits from `banned-guide.md` (the all-types section plus the section for the type) |
 | 4 | Opening and closing | Opening: at most 2 sentences, straight to the point. No recap, no empty thanks |
 | 5 | No invention | Add no number, event, person, place, technical spec, or outcome that is not in the source. Do not place two numbers with different units or time periods next to each other as a comparison; keep both numbers and narrow the claim to what they support. How much else a text may add (reasoning, reactions, inner thoughts) is set by its voice family |
 | 6 | Consistency | One concept, one name. One register for the whole text |
@@ -116,7 +117,7 @@ For `tech-blog` and `essay`, keep human context, reasoning, and tension instead 
 
 - [ ] The script reports no violations.
 - [ ] One idea per paragraph, one idea per sentence.
-- [ ] No banned phrase. No empty adjective.
+- [ ] No banned phrase from `banned-guide.md`. No empty adjective.
 - [ ] Jargon is within the limit. Each term is explained or replaced.
 - [ ] The type file's checklist passes.
 - [ ] Every number, event and outcome appears in the user's source. In `essay`, every inner thought that the brief does not give is reported outside the text.

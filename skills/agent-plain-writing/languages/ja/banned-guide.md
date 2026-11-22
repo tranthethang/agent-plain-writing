@@ -2,6 +2,8 @@
 
 The machine-readable list is `banned.txt` in this folder. This file explains the replacements. When you add a phrase in one place, add it in the other.
 
+The agent reads this file, not `banned.txt`. Each table heading names the document types it covers. *(warn)* marks a phrase that the checker reports as a warning, not a violation.
+
 ## Padding and "AI voice" (all types)
 
 | Phrase | Use instead | Example |

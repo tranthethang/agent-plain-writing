@@ -22,7 +22,7 @@ Use when you write the design of one API endpoint: purpose, fields, processing a
    - may: optional
 6. **Condition → result** is written "When <condition>, the system must <action>."
 7. **Every error has three parts**: the condition, the HTTP status, the error code. Every validation check and every role check is one row in Errors. The Errors table owns the HTTP status and the condition. When the code is an open fact, mark it `TBD-n`. No sentence only points to the Errors table.
-8. **No vague words**: no word that leaves a condition, an amount or a speed open. The words for each language are in `banned.txt`, section `[api-design]`, with replacements in `banned-guide.md`.
+8. **No vague words**: no word that leaves a condition, an amount or a speed open. The words for each language are in `banned-guide.md`, section "Vague words in API design", with their replacements.
 9. **One concept, one name.** Pick "order" and never mix in "purchase" or "request" for the same thing.
 10. **No pointer to another API.** Do not write "same as the other endpoints". Write the rule here.
 

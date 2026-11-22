@@ -36,7 +36,7 @@ Mỗi thông tin có một file chủ. File khác chỉ trỏ tới file đó.
 | Quy trình và quy tắc lõi | `SKILL.md` |
 | Giọng văn, cấu trúc, độ dài, nhịp câu | `doc-types/<type>.md` |
 | Đơn vị đếm và giới hạn số | `languages/<lang>/profile.json` |
-| Cụm từ cấm | `languages/<lang>/banned.txt` |
+| Cụm từ cấm | `languages/<lang>/banned.txt` (danh sách cho checker), `banned-guide.md` (AI đọc file này) |
 | Bẫy ngữ pháp, đại từ, từ chỉ mức độ | `languages/<lang>/profile.md` |
 | Danh sách thuật ngữ | `languages/<lang>/terms.txt` |
 
