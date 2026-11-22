@@ -56,4 +56,9 @@ Each file in `cases/` (`<type>-<lang>.md`) has:
    python3 evals/score.py evals/cases/tech-blog-en.md output.md
    python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
    ```
+   To render the judge prompt for every `with_skill` output of a run, use `--judge-prompts`. With a run id it makes no AI call and writes `judge-prompts/<run>/<case>.judge.md`. With no value it does the same after a new run. `--type` and `--lang` still filter:
+   ```bash
+   python3 evals/run_eval.py --judge-prompts 20261122-181452
+   python3 evals/run_eval.py --judge-prompts
+   ```
 5. `score.py` counts a number as sourced when it appears in the case or equals the item count of one list in the case. For `api-design` it also reports `tbd_ids`, `tbd_without_question` (ids with no `- TBD-n:` line), `tbd_in_code` (ids inside a fenced block), `tbd_duplicate_questions` (groups of ids that ask the same normalized question), and `tbd_without_inline` (ids that have an Open items question but appear in no section). The judge prompt adds semantic keys by type. For `api-design`: `invented_gaps`, `lost_rules`, `repeated_facts`, `misframed_tbd` and `template_violations`. For `tech-blog`: `narrator_shift`, `lost_causal_link` and `mismatched_comparison`. For `essay`: `explained_ending`, `flat_restatement` and `no_inner_voice`.

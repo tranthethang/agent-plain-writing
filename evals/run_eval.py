@@ -19,6 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CASES_DIR = Path(__file__).resolve().parent / "cases"
 RUNS_DIR = ROOT / "evidence"
+JUDGE_DIR = ROOT / "judge-prompts"
 SKILL_DIR = ROOT / "skills" / "agent-plain-writing"
 SKILL_FILE = SKILL_DIR / "SKILL.md"
 TYPE_FILES = {
@@ -158,6 +159,23 @@ def print_summary_table(rows):
         )
 
 
+def write_judge_prompts(run_dir, cases):
+    """Write one rendered judge prompt per with_skill output to judge-prompts/<run>/."""
+    target = JUDGE_DIR / run_dir.name
+    count = 0
+    for case in cases:
+        output = run_dir / f"{case.stem}.with_skill.md"
+        if not output.is_file():
+            print(f"  Skipped {case.stem}: no {output.name} in {run_dir}", file=sys.stderr)
+            continue
+        target.mkdir(parents=True, exist_ok=True)
+        (target / f"{case.stem}.judge.md").write_text(
+            score.build_judge_prompt(case, output), encoding="utf-8")
+        count += 1
+    print(f"Wrote {count} judge prompts to {target}")
+    return count
+
+
 def main():
     ap = argparse.ArgumentParser(description="Run agent-plain-writing evals")
     ap.add_argument("--tool", choices=ALL_TOOLS, default="openai",
@@ -168,6 +186,10 @@ def main():
                     help="Run only cases matching this language (e.g. vi, en, ja)")
     ap.add_argument("--dry-run", action="store_true",
                     help="Print planned commands without calling any AI tool")
+    ap.add_argument("--judge-prompts", nargs="?", const="", default=None, metavar="RUN",
+                    help="Write judge prompts for with_skill outputs to judge-prompts/<run>/. "
+                         "With a run id (a folder in evidence/) it makes no AI call and exits; "
+                         "with no value it does so after a new run")
     args = ap.parse_args()
 
     cases = sorted(CASES_DIR.glob("*.md"))
@@ -184,6 +206,13 @@ def main():
     if not cases:
         print(f"No matching case files found in {CASES_DIR}", file=sys.stderr)
         return 2
+
+    if args.judge_prompts:
+        run_dir = RUNS_DIR / args.judge_prompts
+        if not run_dir.is_dir():
+            print(f"No run folder {run_dir}", file=sys.stderr)
+            return 2
+        return 0 if write_judge_prompts(run_dir, cases) else 2
 
     tool = args.tool
     openai_cfg = resolve_openai_config() if tool == "openai" else None
@@ -287,6 +316,8 @@ def main():
     )
     print_summary_table(rows)
     print(f"\nSaved outputs to {out_dir}")
+    if args.judge_prompts == "":
+        write_judge_prompts(out_dir, cases)
     return 0
 
 

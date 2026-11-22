@@ -33,11 +33,14 @@ Chấm một đầu ra:
 ```bash
 python3 evals/score.py evals/cases/tech-blog-en.md output.md
 python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
+python3 evals/run_eval.py --judge-prompts 20261122-181452
 ```
+
+`--judge-prompts <run>` tạo prompt giám khảo cho mọi đầu ra `with_skill` của một thư mục trong `evidence/`. Kết quả nằm ở `judge-prompts/<run>/<case>.judge.md` và không gọi AI. Nếu không đưa giá trị, lệnh làm việc đó sau một lượt chạy mới.
 
 ## Giới hạn trung thực
 
-- Đầu ra các lần chạy bị git bỏ qua. Lần chạy mới nhất và một lần chạy trước được giữ làm bằng chứng trong [evidence/](../../evidence/README.md). Mỗi lần chỉ là một lần chạy, chỉ có điểm cơ học, nên chưa chứng minh skill làm văn bản tốt hơn.
+- Đầu ra các lần chạy được lưu trong `evidence/` và git theo dõi. Lần chạy mới nhất và một lần chạy trước được giữ làm bằng chứng trong [evidence/](../../evidence/README.md). Mỗi lần chỉ là một lần chạy, chỉ có điểm cơ học, nên chưa chứng minh skill làm văn bản tốt hơn.
 - Chín ca phủ ba loại (`api-design`, `essay`, `tech-blog`), và cả chín ca đều đã chạy trong lần chứng cứ đã lưu. `guide` chưa có ca.
 - Giám khảo là AI. Điểm của nó chưa được đối chiếu với người đọc thật.
 - Các ca dùng dữ liệu giả lập. Muốn thêm ca từ đề bài thật, xem `evals/README.md`.

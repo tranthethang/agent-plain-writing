@@ -33,11 +33,14 @@ API 設定は `evals/.env` かリポジトリ直下の `.env` に置きます。
 ```bash
 python3 evals/score.py evals/cases/tech-blog-en.md output.md
 python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
+python3 evals/run_eval.py --judge-prompts 20261122-181452
 ```
+
+`--judge-prompts <run>` は `evidence/` 内の実行フォルダにある `with_skill` 出力すべてについて、審査員プロンプトを作ります。出力先は `judge-prompts/<run>/<case>.judge.md` で、AI は呼びません。値を省略すると、新しい実行の後に同じ処理をします。
 
 ## 正直な限界
 
-- 実行結果は git の対象外です。最新の実行と、その前の 1 回分を [evidence/](../../evidence/README.md) に証拠として残しています。どちらも 1 回の実行で、機械的なスコアだけなので、スキルが文章を改善する証明にはなりません。
+- 実行結果は `evidence/` に保存され、git で管理されます。最新の実行と、その前の 1 回分を [evidence/](../../evidence/README.md) に証拠として残しています。どちらも 1 回の実行で、機械的なスコアだけなので、スキルが文章を改善する証明にはなりません。
 - 9 ケースは 3 タイプ（`api-design`、`essay`、`tech-blog`）を対象にし、保存した証拠の実行では 9 ケースすべてを実行しました。`guide` にはケースがありません。
 - 審査員は AI です。そのスコアを人間の読者と照らし合わせて検証していません。
 - ケースは架空のデータです。実際のブリーフからケースを足す方法は `evals/README.md` を参照してください。

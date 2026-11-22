@@ -33,11 +33,14 @@ Score one output:
 ```bash
 python3 evals/score.py evals/cases/tech-blog-en.md output.md
 python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
+python3 evals/run_eval.py --judge-prompts 20261122-181452
 ```
+
+`--judge-prompts <run>` renders the judge prompt for every `with_skill` output of a folder in `evidence/`. It writes `judge-prompts/<run>/<case>.judge.md` and makes no AI call. With no value, it does the same after a new run.
 
 ## Honest limits
 
-- Run outputs are ignored by git. The latest run and one earlier run are kept as evidence in [evidence/](../../evidence/README.md). Each is a single run with mechanical scores only, so it does not prove that the skill improves writing.
+- Run outputs are saved in `evidence/` and tracked by git. The latest run and one earlier run are kept as evidence in [evidence/](../../evidence/README.md). Each is a single run with mechanical scores only, so it does not prove that the skill improves writing.
 - Nine cases cover three types (`api-design`, `essay`, `tech-blog`), and all nine ran in the kept evidence run. `guide` has no case.
 - The judge is an AI. Its scores are not verified against human readers.
 - Cases use simulated data. To add a case from a real brief, see `evals/README.md`.
