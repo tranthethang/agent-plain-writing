@@ -197,7 +197,7 @@ def score_case(case_path, output_path):
     unit = prof["unit"]
     boundary = prof["boundary"]
     cleaned = check_style.clean(output_text)
-    blocks = check_style.split_blocks(cleaned)
+    blocks = check_style.split_blocks(cleaned, doc_type)
 
     total_units = 0
     n_sent = 0
@@ -208,7 +208,7 @@ def score_case(case_path, output_path):
     avg_sentence = round(total_units / n_sent, 1) if n_sent else 0.0
 
     if meta["short_brief"]:
-        # The checker always uses `length`; a short brief uses `length_short` instead.
+        # The checker run above has no `--short-brief`, so recompute the range with `length_short`.
         cfg = prof["types"].get(doc_type, {})
         length = round(total_units / prof["length_divisor"])
         warnings = [w for w in warnings if not w.startswith("Length about ")]

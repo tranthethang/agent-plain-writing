@@ -21,7 +21,7 @@ It gives the AI limits it can count (sentence length, paragraph length, banned p
 - The checker is mechanical. It counts. It does not judge voice. Text length outside the range prints a warning and does not fail the check.
 - The numeric limits are starting estimates, not verified standards.
 - The evidence is small: one eval run, 9 simulated cases, mechanical scores only. See [Evidence](#evidence).
-- Automated tests cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type and the Units table. Run them with `python3 -m unittest discover -s tests`. `AGENTS.md` lists the manual checks for the rest.
+- Automated tests cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type, the checker's table-cell, report-label and `--short-brief` checks, and the Units tables. Run them with `python3 -m unittest discover -s tests`. `AGENTS.md` lists the manual checks for the rest.
 
 ## Quick start
 

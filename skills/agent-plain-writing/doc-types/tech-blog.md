@@ -6,7 +6,7 @@ Use for sharing posts, field notes and technical write-ups for peers.
 
 - Reader: peers in the same field. Technical terms are allowed. Define a term once if it is new or rare.
 - Outside readers: run the script with `--non-tech`.
-- Length: the `length` range in `languages/<lang>/profile.json` is a ceiling. When the source holds few facts, use `length_short` instead. A brief whose facts fill fewer than about 150 words counts as few. Do not pad, repeat a fact, or add a motive that the brief does not give. Give each fact its context (cause, change, result) from the brief only.
+- Length: the `length` range in `languages/<lang>/profile.json` is a ceiling. When the source holds few facts, use `length_short` instead, and run the script with `--short-brief`. A brief whose facts fill fewer than about 150 words counts as few. Do not pad, repeat a fact, or add a motive that the brief does not give. Give each fact its context (cause, change, result) from the brief only.
 
 ## Voice
 
