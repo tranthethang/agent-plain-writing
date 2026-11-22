@@ -19,7 +19,7 @@ Mã thoát: `0` sạch, `1` có vi phạm, `2` sai cách dùng. `--type blog` đ
 
 ## Script kiểm tra gì
 
-- Độ dài câu, độ dài đoạn, cụm từ cấm, số thuật ngữ, độ dài văn bản. Độ dài văn bản ngoài khoảng cho phép sẽ in cảnh báo và không làm đổi mã thoát.
+- Độ dài câu, độ dài đoạn, cụm từ cấm, số thuật ngữ, độ dài văn bản. Văn bản dài hơn giới hạn trên sẽ in cảnh báo và không làm đổi mã thoát. Văn bản ngắn hơn là bình thường, không cần kéo dài.
 - Nhãn báo cáo (như `Result:`) ở đầu bất kỳ dòng nào ngoài khối code.
 - Xuống dòng bằng dấu cách cuối dòng.
 

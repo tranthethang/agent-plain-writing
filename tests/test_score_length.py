@@ -44,9 +44,13 @@ class ShortBriefTests(unittest.TestCase):
         self.assertTrue(score.parse_case_meta(CASE.format(extra="short_brief: true\n"))["short_brief"])
         self.assertFalse(score.parse_case_meta(CASE.format(extra=""))["short_brief"])
 
-    def test_default_case_uses_full_range(self):
+    def test_default_case_no_warning_below_range(self):
         r = run("", self.short[0])
         self.assertFalse(r["short_brief"])
+        self.assertEqual(length_warnings(r), [])
+
+    def test_default_case_warns_above_range(self):
+        r = run("", self.full[1] + 100)
         self.assertEqual(len(length_warnings(r)), 1)
         self.assertIn(f"allowed {self.full[0]}-{self.full[1]}", length_warnings(r)[0])
 
@@ -55,10 +59,9 @@ class ShortBriefTests(unittest.TestCase):
         self.assertTrue(r["short_brief"])
         self.assertEqual(length_warnings(r), [])
 
-    def test_short_brief_still_warns_below_short_range(self):
+    def test_short_brief_no_warning_below_short_range(self):
         r = run("short_brief: true\n", self.short[0] - 50)
-        self.assertEqual(len(length_warnings(r)), 1)
-        self.assertIn(f"allowed {self.short[0]}-{self.short[1]}", length_warnings(r)[0])
+        self.assertEqual(length_warnings(r), [])
 
     def test_short_brief_warns_above_short_range(self):
         r = run("short_brief: true\n", self.short[1] + 50)

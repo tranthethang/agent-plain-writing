@@ -75,7 +75,7 @@ One voice: **short, concrete, understood on first read.**
 - **Jargon (reader outside the field)**: `terms` or `non_tech_terms` in `profile.json`. Explain each term in one sentence, or replace it with an everyday word.
 - **Examples and metaphors**: One example or story per section, and a section is one main point.
 - **Evaluative adjectives** ("great", "powerful", "beautiful"): Replace with a number or a visible detail.
-- **Length**: `length` in `profile.json` is a ceiling, under the type's length policy. Do not pad to reach it. Never more than 10% over.
+- **Length**: `length` in `profile.json` is a ceiling, under the type's length policy. The checker warns only above it; a shorter text is fine. Never pad to reach it. Never more than 10% over.
 - **Nothing added beyond the source**: keep human context, reasoning, and reactions grounded in the brief. In specs and guides, write `TBD-n <specific question>` or ask.
 - **`common` voice, no first person**: write about the subject, not about yourself.
 - **`common` voice, no opening recap**: start with the content.
@@ -138,10 +138,10 @@ python3 <skill-dir>/scripts/check_style.py post.md  --lang en --type tech-blog -
 ```
 
 - `--lang`: `vi`, `en`, `ja` (optional if `default_lang` is set in `PLAIN-WRITING.md`). `--type`: `tech-blog`, `essay`, `api-design`, `guide`, `common` (`user-guide` also works; defaults to `default_type` in `PLAIN-WRITING.md` or `common`).
-- `--short-brief`: use `length_short` for a type that has it (for example `tech-blog`).
+- `--short-brief`: use `length_short` (a lower ceiling) for a type that has it (for example `tech-blog`).
 - `--config <path>`: path to a `PLAIN-WRITING.md` config file. By default, the script reads `PLAIN-WRITING.md` from the current directory if present.
 - Units differ by language: Vietnamese counts syllables (tiếng), English counts words, Japanese counts characters (字). The unit is set in `profile.json`.
-- The script checks sentence length, paragraph length, banned phrases, jargon count and text length. Text length outside the range is a warning, not a violation. It does **not** judge whether the voice is good.
+- The script checks sentence length, paragraph length, banned phrases, jargon count and text length. The checker warns on text length only when the text is longer than the upper limit; a shorter text is fine, so never pad. That warning is not a violation. It does **not** judge whether the voice is good.
 - Edit `banned.txt` and `terms.txt` in the language folder to fit your needs.
 
 ## Extend the skill

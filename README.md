@@ -18,7 +18,7 @@ It gives the AI limits it can count (sentence length, paragraph length, banned p
 
 - Five document types in two voice families: `plain` (`tech-blog`, `api-design`, `guide`, `common`) and `creative` (`essay`). `prose`, `poetry`, and `screen-design` are out of scope for now.
 - **Breaking change:** `--type blog` is now `--type tech-blog`. The default `--type` is `common`.
-- The checker is mechanical. It counts. It does not judge voice. Text length outside the range prints a warning and does not fail the check.
+- The checker is mechanical. It counts. It does not judge voice. The checker warns only when the text is longer than the upper length limit; a shorter text is fine, and it never asks for padding. The warning does not fail the check.
 - The numeric limits are starting estimates, not verified standards.
 - The evidence is small: one eval run per version, 9 simulated cases, mechanical scores only. See [Evidence](#evidence).
 - Automated tests cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type, the checker's table-cell, report-label and `--short-brief` checks, the Units tables, the shipped samples in `examples/`, and the `--judge-prompts` option of `evals/run_eval.py`. Run them with `python3 -m unittest discover -s tests`. `AGENTS.md` lists the manual checks for the rest.
@@ -50,7 +50,7 @@ Mirrors `sentence` / `paragraph` limits in `skills/agent-plain-writing/languages
 | `en` | words | 20 / 3 | 30 / 6 | 18 / 3 | 12 / 3 | 20 / 3 |
 | `ja` | characters (字) | 60 / 3 | 80 / 6 | 55 / 3 | 40 / 3 | 60 / 3 |
 
-`tech-blog` text length (`length` / `length_short` for a short brief): `vi` 600–800 / 300–500 words, `en` 600–800 / 300–500 words, `ja` 1500–2000 / 750–1250 字. Other types have no length range.
+`tech-blog` text length ceiling (`length` / `length_short` for a short brief; only the upper number triggers a warning): `vi` 600–800 / 300–500 words, `en` 600–800 / 300–500 words, `ja` 1500–2000 / 750–1250 字. Other types have no length range.
 
 ## Evidence
 
@@ -60,7 +60,7 @@ The latest eval run (`evidence/20261122-154249/`, model `gpt-6-luna`) compared t
 - The average sentence is shorter with the skill in 8 of 9 cases (`tech-blog en` ties: 12.3 against 12.2 words).
 - For `api-design`, each skill output carries 8 `TBD-n` markers tied to questions and cuts jargon by 1 term. Two skill outputs fail (`en`: one long sentence; `ja`: a long paragraph and trailing spaces), so only `api-design vi` passes. The checker cannot say if the markers are better.
 - For `essay`, all 6 outputs pass with 0 violations; the skill outputs are shorter overall.
-- For `tech-blog`, the skill outputs have 2, 0 and 0 violations (`en`, `ja`, `vi`) against 5, 1 and 1 without. All 6 are shorter than the length target (printed as a warning).
+- For `tech-blog`, the skill outputs have 2, 0 and 0 violations (`en`, `ja`, `vi`) against 5, 1 and 1 without. All 6 are shorter than the lower length number. Under the old rule this printed a warning; the checker no longer warns on a short text.
 - One invented number without the skill (`tech-blog en`), none with it.
 
 The earlier run (`20261121-235628`) is not comparable: the checker and the baseline prompt changed since. This is a small sample, not proof. Details, table and limits: [evidence/README.md](evidence/README.md).

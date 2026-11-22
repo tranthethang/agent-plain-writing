@@ -128,13 +128,19 @@ class CheckerFeatureTests(unittest.TestCase):
         self.assertEqual(r.returncode, 0)
 
     def test_short_brief_uses_length_short(self):
-        lo, hi = profile("en")["types"]["tech-blog"]["length_short"]
-        text = " ".join(["Word"] * ((lo + hi) // 2)) + ".\n"
+        hi = profile("en")["types"]["tech-blog"]["length_short"][1]
+        text = " ".join(["Word"] * (hi + 50)) + ".\n"
         full = run_checker(text, "--lang", "en", "--type", "tech-blog").stdout
         short = run_checker(text, "--lang", "en", "--type", "tech-blog", "--short-brief")
-        self.assertIn(short.returncode, (0, 1))
-        self.assertIn("Length about", full)
-        self.assertNotIn("Length about", short.stdout)
+        self.assertNotIn("Length about", full)
+        self.assertIn("Length about", short.stdout)
+
+    def test_length_warns_only_above_upper_limit(self):
+        prof = {"length_label": "words"}
+        self.assertIsNone(checker.length_warning(prof, [600, 800], 235))
+        self.assertIsNone(checker.length_warning(prof, [600, 800], 800))
+        self.assertIn("Length about 900", checker.length_warning(prof, [600, 800], 900))
+        self.assertIn("Length about 550", checker.length_warning(prof, [300, 500], 550))
 
 
 class ParityTests(unittest.TestCase):

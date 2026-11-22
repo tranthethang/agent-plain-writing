@@ -17,7 +17,7 @@ Một script kiểm tra bản nháp theo các giới hạn đó.
 
 - Có năm loại văn bản, chia thành hai nhóm giọng. Nhóm `plain` gồm `tech-blog`, `api-design`, `guide`, `common`. Nhóm `creative` gồm `essay`. Hiện chưa hỗ trợ `prose`, `poetry` và `screen-design`.
 - **Thay đổi không tương thích:** `--type blog` nay là `--type tech-blog`. Giá trị mặc định là `common`.
-- Script chỉ đếm, không đánh giá giọng văn. Độ dài ngoài khoảng cho phép chỉ in cảnh báo. Script không báo lỗi.
+- Script chỉ đếm, không đánh giá giọng văn. Script chỉ cảnh báo khi văn bản dài hơn giới hạn trên. Văn bản ngắn hơn là bình thường, không cần kéo dài cho đủ. Cảnh báo này không làm script báo lỗi.
 - Các giới hạn số là ước lượng ban đầu. Chúng chưa được kiểm chứng.
 - Bằng chứng còn ít. Mới có một lần chạy eval, 9 ca mô phỏng, chỉ có điểm tự động. Xem [Bằng chứng](#bằng-chứng).
 - Test tự động kiểm tra các điểm sau. Thống kê `TBD-n` và khoảng độ dài cho brief ngắn trong `evals/score.py`. Tập loại văn bản. Loại mặc định của script. Phép kiểm tra ô bảng, nhãn báo cáo và `--short-brief` của script. Các bảng Đơn vị. Các mẫu hoàn chỉnh trong `examples/`. Tùy chọn `--judge-prompts` của `evals/run_eval.py`. Chạy test bằng `python3 -m unittest discover -s tests`. `AGENTS.md` liệt kê các bước kiểm tra tay còn lại.
@@ -49,7 +49,7 @@ Bảng này khớp với giới hạn `sentence` / `paragraph` trong `skills/age
 | `en` | từ | 20 / 3 | 30 / 6 | 18 / 3 | 12 / 3 | 20 / 3 |
 | `ja` | ký tự (字) | 60 / 3 | 80 / 6 | 55 / 3 | 40 / 3 | 60 / 3 |
 
-Độ dài của `tech-blog` có `length` và `length_short` (cho brief ngắn).
+Độ dài của `tech-blog` có `length` và `length_short` (cho brief ngắn). Chỉ số lớn (giới hạn trên) mới gây cảnh báo.
 
 - `vi`: 600–800 / 300–500 từ.
 - `en`: 600–800 / 300–500 từ.

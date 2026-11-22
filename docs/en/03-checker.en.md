@@ -19,7 +19,7 @@ Exit codes: `0` clean, `1` violations, `2` usage error. `--type blog` was remove
 
 ## What it checks
 
-- Sentence length, paragraph length, banned phrases, jargon count, text length. A text length outside the range prints a warning and does not change the exit code.
+- Sentence length, paragraph length, banned phrases, jargon count, text length. A text longer than the upper length limit prints a warning and does not change the exit code. A shorter text is fine; never pad.
 - Report labels (such as `Result:`) at the start of any line outside code blocks.
 - Line breaks made with trailing spaces.
 

@@ -237,11 +237,11 @@ def length_range(cfg, short_brief=False):
 
 
 def length_warning(prof, rng, length):
-    """Return a warning when the length is outside the range, else None."""
+    """Return a warning only when the length is above the upper limit, else None. A shorter text is fine."""
     if not rng:
         return None
     lo, hi = rng
-    if lo <= length <= hi:
+    if length <= hi:
         return None
     return f'Length about {length} {prof["length_label"]} (allowed {lo}-{hi})'
 
