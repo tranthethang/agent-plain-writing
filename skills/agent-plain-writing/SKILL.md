@@ -28,7 +28,7 @@ Each rule has one owner. Read a rule in its owner file, not in a copy.
 
 0. **Check for `PLAIN-WRITING.md`** in the project root (template: `templates/PLAIN-WRITING.example.md`). If `PLAIN-WRITING.md` exists, read it and let it win on voice and terms. Use `default_lang` and `default_type` to skip the questions in steps 1 and 2.
 1. **Pick the output language** (`vi`, `en` or `ja`). It is the language of the text you produce, not the language of the prompt. A Vietnamese brief that asks for a Japanese manual means `ja`. If unclear, ask one question. Then read `languages/<lang>/profile.json` (the limits for your type) and `languages/<lang>/profile.md`.
-2. **Pick the document type** (table below). Read `doc-types/<type>.md` and `languages/<lang>/examples/<type>.md`. Read only these.
+2. **Pick the document type** (table below). Read the structure file from the type table (`doc-types/<type>.md`; `common` has none) and `languages/<lang>/examples/<type>.md`. Also read `languages/<lang>/banned.txt`, `banned-guide.md` and `terms.txt`. Read only these.
 3. **Know the reader**: who they are, what they already know, what they must do after reading. If missing, ask one question. If you cannot ask, state your assumption outside the document (or mark `TBD:` inline in specs).
 4. **Outline** (one line per idea) for any text longer than about 400 words. Write only ideas that are in the outline. In the `creative` family, the outline fixes the scenes, not every sentence.
 5. **Draft** with the core rules and the type's voice, structure and rhythm. Write normal paragraphs—never put every sentence on its own line.
@@ -45,7 +45,7 @@ Draft and edit are two passes. Do not try to get it right in the first pass.
 | Essay (personal, reflective) | `creative` | `doc-types/essay.md` | `essay` | General readers |
 | API design (one endpoint) | `plain` | `doc-types/api-design.md` | `api-design` | Developers, QA |
 | User guide, manual | `plain` | `doc-types/user-guide.md` | `guide` | General users |
-| Anything else | `plain` | `languages/<lang>/examples/common.md` | `tech-blog` | Varies |
+| Anything else | `plain` | none (`languages/<lang>/examples/common.md`) | `common` | Varies |
 
 Always read `languages/<lang>/banned-guide.md` too (banned phrases and what replaces them).
 
@@ -132,7 +132,7 @@ python3 scripts/check_style.py guide.md --lang vi --type guide
 python3 scripts/check_style.py post.md  --lang en --type tech-blog --non-tech
 ```
 
-- `--lang`: `vi`, `en`, `ja` (optional if `default_lang` is set in `PLAIN-WRITING.md`). `--type`: `tech-blog`, `essay`, `api-design`, `guide` (`user-guide` also works; defaults to `default_type` in `PLAIN-WRITING.md` or `tech-blog`).
+- `--lang`: `vi`, `en`, `ja` (optional if `default_lang` is set in `PLAIN-WRITING.md`). `--type`: `tech-blog`, `essay`, `api-design`, `guide`, `common` (`user-guide` also works; defaults to `default_type` in `PLAIN-WRITING.md` or `tech-blog`).
 - `--config <path>`: path to a `PLAIN-WRITING.md` config file. By default, the script reads `PLAIN-WRITING.md` from the current directory if present.
 - Units differ by language: Vietnamese counts syllables (tiếng), English counts words, Japanese counts characters (字). The unit is set in `profile.json`.
 - The script checks sentence length, paragraph length, banned phrases, jargon count and text length. Text length outside the range is a warning, not a violation. It does **not** judge whether the voice is good.

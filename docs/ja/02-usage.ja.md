@@ -4,7 +4,7 @@
 
 ```
 agent-plain-writing を使って、このメモから日本語のユーザーガイドを書いてください: ...
-この API 設計を英語で書き直してください。api-design のテンプレートを使い、不足している事実は TBD にしてください。
+この API 設計を英語で書き直してください。api-design のテンプレートを使い、不足している事実は `TBD-n` にしてください。
 この技術ブログ記事を短くしてください。リズムの手本として、私が書いた段落を添付します。
 ```
 
@@ -29,8 +29,8 @@ agent-plain-writing を使って、このメモから日本語のユーザーガ
 | API 設計（1 エンドポイント） | `plain` | `api-design` | `doc-types/api-design.md` |
 | ユーザーガイド | `plain` | `guide` | `doc-types/user-guide.md` |
 
-その他の文書は `tech-blog`（`plain` ファミリー、`languages/<lang>/examples/common.md`）として扱います。(no native review yet)
+その他の文書は `common`（`plain` ファミリー、`languages/<lang>/examples/common.md`）として扱います。
 
-`api-design` では、AI は 7 セクションの固定テンプレートを使います。ブリーフに事実が足りないとき、`TBD-n` を書くのは、ブリーフが名指しした空白か、実装を妨げる空白だけです。既知のフィールド型（ブリーフ、用語集、許可値の列挙、または ID のリストから分かる型）は `TBD-n` を付けずに直接書きます。各 `TBD-n` には Open items に質問が 1 つ対応し、2 つの `TBD-n` が同じ質問をしてはなりません。(no native review yet)
+`api-design` では、AI は 7 セクションの固定テンプレートを使います。ブリーフに事実が足りないとき、`TBD-n` を書くのは、ブリーフが名指しした空白か、実装を妨げる空白だけです。既知のフィールド型（ブリーフ、用語集、許可値の列挙、または ID のリストから分かる型）は `TBD-n` を付けずに直接書きます。各 `TBD-n` には Open items に質問が 1 つ対応し、2 つの `TBD-n` が同じ質問をしてはなりません。
 
 次へ：[03-checker](03-checker.ja.md)。

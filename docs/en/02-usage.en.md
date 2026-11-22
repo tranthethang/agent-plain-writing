@@ -4,7 +4,7 @@ Ask in plain words and give a good brief:
 
 ```
 Use agent-plain-writing to write a user guide in Japanese from these notes: ...
-Rewrite this API design in English. Use the api-design template. Mark missing facts as TBD.
+Rewrite this API design in English. Use the api-design template. Mark missing facts as `TBD-n`.
 Shorten this tech blog post. My own paragraph is attached as the model for rhythm.
 ```
 
@@ -29,7 +29,7 @@ Each file in `skills/agent-plain-writing/doc-types/` lists the brief the AI need
 | API design (one endpoint) | `plain` | `api-design` | `doc-types/api-design.md` |
 | User guide | `plain` | `guide` | `doc-types/user-guide.md` |
 
-Anything else falls back to `tech-blog` (`plain` family, `languages/<lang>/examples/common.md`).
+Anything else falls back to `common` (`plain` family, `languages/<lang>/examples/common.md`).
 
 For `api-design`, the AI uses a fixed template of seven sections. When the brief lacks a fact, it writes `TBD-n` only for a gap the brief names or one that blocks implementation. Known field types (from the brief, glossary, allowed-value enum, or id list) are written directly without `TBD-n`. Each `TBD-n` has one question under Open items, and no two `TBD-n` ask the same question.
 
