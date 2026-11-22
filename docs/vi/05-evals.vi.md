@@ -40,8 +40,8 @@ python3 evals/run_eval.py --judge-prompts 20261122-181452
 
 ## Giới hạn trung thực
 
-- Đầu ra các lần chạy được lưu trong `evidence/` và git theo dõi. Lần chạy mới nhất và một lần chạy trước được giữ làm bằng chứng trong [evidence/](../../evidence/README.md). Mỗi lần chỉ là một lần chạy, chỉ có điểm cơ học, nên chưa chứng minh skill làm văn bản tốt hơn.
-- Chín ca phủ ba loại (`api-design`, `essay`, `tech-blog`), và cả chín ca đều đã chạy trong lần chứng cứ đã lưu. `guide` chưa có ca.
+- Đầu ra các lần chạy được lưu trong `evidence/` và git theo dõi. Mỗi lần chạy có bản tóm tắt riêng trong [evidence/](../../evidence/README.md). Mỗi lần chỉ là một lần chạy, chỉ có điểm cơ học, nên chưa chứng minh skill làm văn bản tốt hơn.
+- Các ca trong `evals/cases/` phủ mọi loại văn bản. Mỗi lần chạy phủ những ca nào thì ghi trong `README.md` của lần chạy đó.
 - Giám khảo là AI. Điểm của nó chưa được đối chiếu với người đọc thật.
 - Các ca dùng dữ liệu giả lập. Muốn thêm ca từ đề bài thật, xem `evals/README.md`.
 

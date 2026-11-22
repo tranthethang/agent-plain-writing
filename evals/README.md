@@ -28,7 +28,7 @@ Each file in `cases/` (`<type>-<lang>.md`) has:
 
 ## Running the eval
 
-> **Cost warning:** Running `run_eval.py` makes real AI calls twice per case (30 calls for all 15 cases) and uses API quota or credits. Always preview with `--dry-run` first.
+> **Cost warning:** Running `run_eval.py` makes real AI calls twice per case (36 calls for all 18 cases) and uses API quota or credits. Always preview with `--dry-run` first.
 
 1. By default, `run_eval.py` uses an OpenAI-compatible `/chat/completions` API (`--tool openai`), reading `.env` (in `evals/.env` or repo root `.env`) or environment variables:
    ```env
@@ -50,7 +50,7 @@ Each file in `cases/` (`<type>-<lang>.md`) has:
    python3 evals/run_eval.py
    python3 evals/run_eval.py --type tech-blog --lang vi
    ```
-3. Outputs and `results.json` are saved under `evidence/<timestamp>/` (tracked by git). The `without_skill` baseline is neutral: its prompt does not carry the "do not invent" sentence, so only the `with_skill` prompt gets core rule 5 from `SKILL.md`. `run-meta.json` sits next to `results.json` and records `tool`, `model`, `commit` and `started_at`.
+3. Outputs and `results.json` are saved under `evidence/<timestamp>/` (tracked by git). Both modes get the sentence "using only the facts in the brief". Only the `with_skill` prompt also gets the skill files (`SKILL.md`, the type file, the language files and the examples). `score.py` drops the report after the last `<!-- report -->` line outside code fences (`SKILL.md` step 7), so only the document is scored. A `---` line cuts nothing. `run-meta.json` sits next to `results.json` and records `tool`, `model`, `commit` and `started_at`.
 4. To score a single output or print an AI judge prompt:
    ```bash
    python3 evals/score.py evals/cases/tech-blog-en.md output.md

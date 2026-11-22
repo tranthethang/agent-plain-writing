@@ -91,7 +91,7 @@ Each fact has one owner. Other files point to the owner and do not restate the f
 
 ## Verify your change
 
-Automated tests live in `tests/` and use the standard library only. They cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type, the checker's table-cell, report-label and `--short-brief` checks, the "Units" tables in `README.md` and `docs/vi/README.md`, the shipped samples in `examples/` (`tests/test_examples_samples.py`), and the `--judge-prompts` option of `evals/run_eval.py` (`tests/test_judge_prompts.py`). Run them from the repository root:
+Automated tests live in `tests/` and use the standard library only. They cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type, the checker's table-cell, report-label and `--short-brief` checks, the "Units" tables in `README.md` and `docs/vi/README.md`, the shipped samples in `examples/` (`tests/test_examples_samples.py`), the report marker in `evals/score.py`, the time and date token count, the `PLAIN-WRITING.md` search from a subfolder, the length warning above the upper limit only, the `doc-types/` file for every type (`tests/test_doc_types.py`), and the `--judge-prompts` option and the with-skill prompt of `evals/run_eval.py` (`tests/test_judge_prompts.py`). Run them from the repository root:
 
 ```bash
 python3 -m unittest discover -s tests

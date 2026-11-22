@@ -40,8 +40,8 @@ python3 evals/run_eval.py --judge-prompts 20261122-181452
 
 ## Honest limits
 
-- Run outputs are saved in `evidence/` and tracked by git. The latest run and one earlier run are kept as evidence in [evidence/](../../evidence/README.md). Each is a single run with mechanical scores only, so it does not prove that the skill improves writing.
-- Nine cases cover three types (`api-design`, `essay`, `tech-blog`), and all nine ran in the kept evidence run. `guide` has no case.
+- Run outputs are saved in `evidence/` and tracked by git. Each run has its own summary in [evidence/](../../evidence/README.md). Each is a single run with mechanical scores only, so it does not prove that the skill improves writing.
+- The cases in `evals/cases/` cover every document type. Which cases a run covered is in that run's `README.md`.
 - The judge is an AI. Its scores are not verified against human readers.
 - Cases use simulated data. To add a case from a real brief, see `evals/README.md`.
 

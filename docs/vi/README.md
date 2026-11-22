@@ -19,8 +19,8 @@ Một script kiểm tra bản nháp theo các giới hạn đó.
 - **Thay đổi không tương thích:** `--type blog` nay là `--type tech-blog`. Giá trị mặc định là `common`.
 - Script chỉ đếm, không đánh giá giọng văn. Script chỉ cảnh báo khi văn bản dài hơn giới hạn trên. Văn bản ngắn hơn là bình thường, không cần kéo dài cho đủ. Cảnh báo này không làm script báo lỗi.
 - Các giới hạn số là ước lượng ban đầu. Chúng chưa được kiểm chứng.
-- Bằng chứng còn ít. Mới có một lần chạy eval, 9 ca mô phỏng, chỉ có điểm tự động. Xem [Bằng chứng](#bằng-chứng).
-- Test tự động kiểm tra các điểm sau. Thống kê `TBD-n` và khoảng độ dài cho brief ngắn trong `evals/score.py`. Tập loại văn bản. Loại mặc định của script. Phép kiểm tra ô bảng, nhãn báo cáo và `--short-brief` của script. Các bảng Đơn vị. Các mẫu hoàn chỉnh trong `examples/`. Tùy chọn `--judge-prompts` của `evals/run_eval.py`. Chạy test bằng `python3 -m unittest discover -s tests`. `AGENTS.md` liệt kê các bước kiểm tra tay còn lại.
+- Bằng chứng còn ít. Mới có vài lần chạy eval trên ca mô phỏng, chỉ có điểm tự động. Xem [Bằng chứng](#bằng-chứng).
+- Test tự động kiểm tra các điểm sau. Thống kê `TBD-n` và khoảng độ dài cho brief ngắn trong `evals/score.py`. Tập loại văn bản. Loại mặc định của script. Phép kiểm tra ô bảng, nhãn báo cáo và `--short-brief` của script. Các bảng Đơn vị. Cách đếm mốc giờ và ngày. Việc tìm `PLAIN-WRITING.md` từ thư mục con. Cảnh báo độ dài chỉ ở giới hạn trên. File `doc-types/` của mọi loại. Các mẫu hoàn chỉnh trong `examples/`. Tùy chọn `--judge-prompts` và prompt có skill của `evals/run_eval.py`. Chạy test bằng `python3 -m unittest discover -s tests`. `AGENTS.md` liệt kê các bước kiểm tra tay còn lại.
 
 ## Bắt đầu nhanh
 
@@ -59,20 +59,7 @@ Các loại khác không có khoảng độ dài.
 
 ## Bằng chứng
 
-Lần chạy eval mới nhất (`evidence/20261122-154249/`, model `gpt-6-luna`) so sánh cùng một AI khi có và không có skill.
-
-Eval gồm 9 ca mô phỏng: `api-design`, `essay` và `tech-blog`, mỗi loại bằng `vi`, `en`, `ja`. Kết quả chỉ lấy từ script. Không có AI chấm và không có người duyệt.
-
-- Có skill, 6 trên 9 bản pass script. Không có skill, 5 trên 9 bản pass.
-- Có skill, câu trung bình ngắn hơn ở 8 trên 9 ca. `tech-blog en` hòa: 12,3 so với 12,2 từ.
-- Với `api-design`, mỗi bản có skill có 8 dấu `TBD-n` gắn với câu hỏi, và số thuật ngữ giảm 1. Hai bản không pass (`en`: một câu dài; `ja`: một đoạn dài và khoảng trắng cuối dòng), nên chỉ `api-design vi` pass. Script không cho biết các dấu có tốt hơn không.
-- Với `essay`, cả 6 bản pass và không có lỗi. Các bản có skill ngắn hơn.
-- Với `tech-blog`, bản có skill có 2, 0 và 0 lỗi (`en`, `ja`, `vi`), còn bản không có skill có 5, 1 và 1. Cả 6 bản ngắn hơn mức mục tiêu. Script chỉ in cảnh báo.
-- Một số bịa khi không có skill (`tech-blog en`). Có skill thì không có.
-
-Lần chạy trước (`20261121-235628`) không so sánh được: script kiểm tra và prompt baseline đã đổi.
-
-Mẫu này nhỏ, chưa đủ để chứng minh. Chi tiết, bảng số liệu và giới hạn: [evidence/README.md](../../evidence/README.md).
+Các lần chạy eval nằm ở [evidence/](../../evidence/README.md). Mỗi lần chạy có thư mục riêng chứa đầu ra thô, `results.json`, `run-meta.json` và một `README.md` ghi bảng số liệu, điều các số cho thấy và giới hạn. Eval so sánh cùng một AI khi có và không có skill, trên brief mô phỏng. Kết quả chỉ lấy từ script. Không có AI chấm và không có người duyệt. Mỗi lần chạy là một mẫu nhỏ, chưa đủ để chứng minh.
 
 ## Tài liệu
 
