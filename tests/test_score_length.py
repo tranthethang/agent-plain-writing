@@ -78,3 +78,11 @@ class ShortBriefTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class StripTrailingReportTest(unittest.TestCase):
+    def test_strips_after_last_rule(self):
+        self.assertEqual(score.strip_trailing_report("Body.\n\n---\nGuesses: none.\n"), "Body.\n")
+
+    def test_no_rule_keeps_text(self):
+        self.assertEqual(score.strip_trailing_report("Body.\n"), "Body.\n")

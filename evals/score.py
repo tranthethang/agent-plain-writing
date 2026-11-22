@@ -9,6 +9,7 @@ import argparse
 import json
 import re
 import subprocess
+import tempfile
 import sys
 import unicodedata
 from pathlib import Path
@@ -167,12 +168,29 @@ def parse_checker_output(stdout):
     return violations, warnings
 
 
+def strip_trailing_report(text):
+    """Drop the report after the last horizontal rule (SKILL.md step 7), so only the document is scored."""
+    lines = text.split("\n")
+    in_fence = False
+    last = None
+    for i, line in enumerate(lines):
+        st = line.strip()
+        if st.startswith("```"):
+            in_fence = not in_fence
+        elif not in_fence and st in ("---", "***", "___"):
+            last = i
+    if last is None:
+        return text
+    return "\n".join(lines[:last]).rstrip() + "\n"
+
+
 def score_case(case_path, output_path):
     """Compute mechanical metrics for one output against a case file."""
     case_path = Path(case_path)
     output_path = Path(output_path)
     case_text = case_path.read_text(encoding="utf-8")
     output_text = output_path.read_text(encoding="utf-8")
+    output_text = strip_trailing_report(output_text)
     meta = parse_case_meta(case_text)
 
     lang = meta["lang"]
@@ -190,7 +208,11 @@ def score_case(case_path, output_path):
     ]
     if non_tech:
         cmd.append("--non-tech")
-    proc = subprocess.run(cmd, capture_output=True, text=True)
+    with tempfile.TemporaryDirectory() as tmp:
+        scored = Path(tmp) / output_path.name
+        scored.write_text(output_text, encoding="utf-8")
+        cmd[2] = str(scored)
+        proc = subprocess.run(cmd, capture_output=True, text=True)
     violations, warnings = parse_checker_output(proc.stdout)
 
     prof = check_style.load_profile(lang)
