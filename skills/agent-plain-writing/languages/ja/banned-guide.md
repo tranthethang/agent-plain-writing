@@ -11,8 +11,8 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | 〜において *(warn)* | 〜で | 「本システムにおいて」→「本システムで」 |
 | 〜に関して *(warn)* | 〜について | |
 | させていただ(く) | 〜します (use it only when the situation truly needs humility) | 「報告させていただきます」→「報告します」 |
-| 非常に、大変 *(warn: 大変)* | delete, or give a number | |
-| 画期的、革新的、包括的、強力な、シームレス | say what it does, with a number | 「強力なツール」→「1秒に1万行を処理できるツール」 |
+| 非常に、大変 *(warn: 大変)* | delete, or use a number from the source | |
+| 画期的、革新的、包括的、強力な、シームレス | say what it does. Use a number only when it comes from the source; otherwise use a visible detail, or delete the word | 「強力なツール」→「1秒に1万行を処理できるツール」(only if the source gives this number) |
 | ブリーフ、依頼文、素材には書かれて、素材に記載 | state the fact; in a spec, write `TBD-n` with its question; otherwise delete the point. The reader never saw the brief | 「素材には書かれていないが」→ (delete) |
 
 ## Vague words in API design
@@ -20,9 +20,9 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 | Word | Use instead |
 |---|---|
 | 適切、適宜 | the exact condition |
-| 必要に応じて | the exact condition, or `TBD` |
+| 必要に応じて | the exact condition, or `TBD-n` |
 | 等、など | list everything, or point to an appendix |
-| 迅速、容易に | a number (ms, number of steps) |
+| 迅速、容易に | a number from the source (ms, number of steps). If the source has none: a visible detail, `TBD-n` in a spec, or delete the word |
 | 柔軟 | what can be configured, and how |
 | 効率的、安全に | a measurable criterion |
 
@@ -50,5 +50,5 @@ The machine-readable list is `banned.txt` in this folder. This file explains the
 ## General rules
 
 - A banned phrase may stay when it is a **direct quote**, a proper name or a fixed label on a screen.
-- Banning a phrase does not ban the idea. 「システムは速い」is still needed, with a number.
+- Banning a phrase does not ban the idea. 「システムは速い」is still needed. Give a number only when the source has one. Otherwise state a visible detail, write `TBD-n` in a spec, or delete the word.
 - 「など」 is legitimate in casual text. It is flagged only in API design, where it hides an incomplete list.

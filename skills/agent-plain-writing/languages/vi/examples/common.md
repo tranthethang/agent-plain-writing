@@ -80,6 +80,15 @@ Số liệu trong ví dụ chỉ để minh họa. Khi viết thật, dùng số
 **Good:** Sau khi sửa, thời gian xử lý giảm từ 3 giây xuống 200 ms.
 **Nếu không có số:** "Chưa đo. Cần đo thời gian xử lý trước và sau khi sửa." Đừng bịa số.
 
+## 13. Từ "nhanh" bị đổi thành số bịa
+
+(Nguồn chỉ nói: tìm kiếm mới nhanh, và nó thay trang tìm kiếm cũ.)
+
+**Bad:** Tìm kiếm mới trả kết quả dưới 200 ms.
+**Good:** Tìm kiếm mới thay trang tìm kiếm cũ.
+**Fault:** Con số 200 ms không có trong nguồn.
+**Fix:** Giữ dữ kiện nguồn có, hoặc bỏ tính từ. Không thêm số.
+
 ## Mẫu hoàn chỉnh
 
 ```markdown

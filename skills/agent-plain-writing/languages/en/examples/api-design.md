@@ -163,6 +163,15 @@ sequenceDiagram
 **Fault:** A sentence around the label reads like an open question and is not the label in `profile.md`.
 **Fix:** Write only the label `None` as the section text.
 
+### 20. A speed rule with no number
+
+(The brief says the API responds quickly and gives no time limit.)
+
+**Bad:** The API must respond within 500 ms at P95.
+**Good:** The API must respond within TBD-n. Open items: `- TBD-n: what is the time limit for a response?`
+**Fault:** The number 500 ms is not in the source.
+**Fix:** Write `TBD-n` with a question about the time limit. Number the marks `TBD-1`, `TBD-2` and so on.
+
 ## Complete filled API (reference shape)
 
 ````markdown

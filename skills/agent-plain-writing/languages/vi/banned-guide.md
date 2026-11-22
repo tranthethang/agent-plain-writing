@@ -13,7 +13,7 @@ Danh sách máy đọc nằm ở `banned.txt` cùng thư mục. File này giải
 | trong thế giới ngày nay, trong thời đại ... | (bỏ) | Mở bài bằng sự việc cụ thể |
 | không chỉ ... mà còn *(warn)* | tách thành hai câu | "Không chỉ nhanh mà còn rẻ" → "Nó nhanh. Nó cũng rẻ." |
 | toàn diện | nói cụ thể phủ những gì | "Báo cáo toàn diện" → "Báo cáo gồm doanh thu, chi phí, lợi nhuận" |
-| tối ưu hóa | nói giảm hoặc tăng cái gì, từ đâu đến đâu | "Tối ưu hóa truy vấn" → "Truy vấn giảm từ 3 giây xuống 200 ms" |
+| tối ưu hóa | nói giảm hoặc tăng cái gì; dùng số từ nguồn, nguồn không có số thì tả chi tiết nhìn thấy được hoặc bỏ từ | "Tối ưu hóa truy vấn" → "Truy vấn giảm từ 3 giây xuống 200 ms" (chỉ khi nguồn có số này) |
 | tiến hành, thực hiện việc | động từ trực tiếp | "Tiến hành kiểm tra" → "Kiểm tra" |
 | một cách + tính từ *(warn)* | trạng từ trực tiếp hoặc bỏ | "Một cách nhanh chóng" → "nhanh" |
 | cho phép người dùng có thể | người dùng có thể | |
@@ -30,9 +30,9 @@ Danh sách máy đọc nằm ở `banned.txt` cùng thư mục. File này giải
 | Từ | Thay bằng |
 |---|---|
 | phù hợp, thích hợp | điều kiện cụ thể |
-| nếu cần | điều kiện cụ thể, hoặc `TBD` |
+| nếu cần | điều kiện cụ thể, hoặc `TBD-n` |
 | v.v., và các thứ | liệt kê đủ, hoặc trỏ tới phụ lục |
-| nhanh chóng, dễ dàng | con số (ms, số bước) |
+| nhanh chóng, dễ dàng | con số lấy từ nguồn (ms, số bước). Nguồn không có số thì dùng chi tiết nhìn thấy được, ghi `TBD-n` trong spec, hoặc bỏ từ |
 | linh hoạt | nói cấu hình được gì, bằng cách nào |
 | hiệu quả, an toàn | tiêu chí đo được |
 
@@ -50,8 +50,8 @@ Danh sách máy đọc nằm ở `banned.txt` cùng thư mục. File này giải
 | tôi viết blog này để | vào thẳng sự việc hoặc kết luận |
 | bài học rút ra:, bài học: | lồng vào đoạn kết tự nhiên, không gắn nhãn |
 | lưu ý: | viết thẳng vào mạch bài hoặc bỏ |
-| vô cùng | (bỏ) hoặc số liệu |
-| mạnh mẽ | số liệu hoặc việc nó làm được. "Công cụ mạnh mẽ" → "Công cụ xử lý 10.000 dòng mỗi giây" |
+| vô cùng | (bỏ) hoặc số liệu có trong nguồn |
+| mạnh mẽ | số liệu lấy từ nguồn, hoặc việc nó làm được. Nguồn không có số thì tả chi tiết nhìn thấy được hoặc bỏ từ. "Công cụ mạnh mẽ" → "Công cụ xử lý 10.000 dòng mỗi giây" (chỉ khi nguồn có số này) |
 | tận dụng | dùng |
 | trong quá trình | khi |
 | nhìn chung, tóm lại | (bỏ). Đừng tóm tắt lại điều vừa nói |
@@ -65,5 +65,5 @@ Danh sách máy đọc nằm ở `banned.txt` cùng thư mục. File này giải
 ## Quy tắc chung
 
 - Cụm bị cấm vẫn dùng được khi **trích nguyên văn** hoặc khi nó là tên riêng.
-- Cấm cụm không có nghĩa là cấm ý. Ý "hệ thống nhanh" vẫn cần, chỉ là phải kèm con số.
+- Cấm cụm không có nghĩa là cấm ý. Ý "hệ thống nhanh" vẫn cần. Chỉ kèm con số khi nguồn có số. Nếu không, tả chi tiết nhìn thấy được, ghi `TBD-n` trong spec, hoặc bỏ từ.
 - Thấy mình lặp một cụm từ ba lần trong bài, thay hai lần.

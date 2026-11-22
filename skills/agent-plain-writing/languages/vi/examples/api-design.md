@@ -162,6 +162,15 @@ sequenceDiagram
 **Fault:** Câu quanh nhãn đọc như một câu hỏi còn mở và không phải nhãn trong `profile.md`.
 **Fix:** Mục chỉ ghi đúng nhãn `Không có`.
 
+### 20. Quy tắc tốc độ không có số
+
+(Nguồn chỉ nói API trả kết quả nhanh, không nêu thời hạn.)
+
+**Bad:** API phải trả lời trong ≤ 500 ms ở P95.
+**Good:** API phải trả lời trong thời hạn TBD-n. Mục còn mở: `- TBD-n: thời hạn trả lời của API là bao lâu?`
+**Fault:** Con số 500 ms không có trong nguồn.
+**Fix:** Ghi `TBD-n` kèm câu hỏi về thời hạn. Đánh số các dấu `TBD-1`, `TBD-2`, v.v.
+
 ## Mẫu API điền hoàn chỉnh
 
 Khuôn tham khảo. Cấu trúc nằm trong `doc-types/api-design.md`.
