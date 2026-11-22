@@ -50,7 +50,7 @@ Each file in `cases/` (`<type>-<lang>.md`) has:
    python3 evals/run_eval.py
    python3 evals/run_eval.py --type tech-blog --lang vi
    ```
-3. Outputs and `results.json` are saved under `evals/runs/<timestamp>/` (ignored by git). The `without_skill` baseline is neutral: its prompt does not carry the "do not invent" sentence, so only the `with_skill` prompt gets core rule 5 from `SKILL.md`. `run-meta.json` sits next to `results.json` and records `tool`, `model`, `commit` and `started_at`.
+3. Outputs and `results.json` are saved under `evidence/<timestamp>/` (tracked by git). The `without_skill` baseline is neutral: its prompt does not carry the "do not invent" sentence, so only the `with_skill` prompt gets core rule 5 from `SKILL.md`. `run-meta.json` sits next to `results.json` and records `tool`, `model`, `commit` and `started_at`.
 4. To score a single output or print an AI judge prompt:
    ```bash
    python3 evals/score.py evals/cases/tech-blog-en.md output.md

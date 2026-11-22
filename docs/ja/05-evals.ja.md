@@ -26,7 +26,7 @@ python3 evals/run_eval.py --tool claude   # ローカルの `claude` CLI
 python3 evals/run_eval.py --tool antigravity
 ```
 
-API 設定は `evals/.env` かリポジトリ直下の `.env` に置きます。どちらも git の対象外です。出力は `evals/runs/<timestamp>/` に保存され、これも git の対象外です。
+API 設定は `evals/.env` かリポジトリ直下の `.env` に置きます。どちらも git の対象外です。出力は `evidence/<timestamp>/` に保存され、git で管理されます。
 
 1 つの出力を採点するには：
 

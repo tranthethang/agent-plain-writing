@@ -222,6 +222,5 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Eval outputs
-evals/runs/
+# Eval outputs go to evidence/ (tracked)
 evals/.env.example

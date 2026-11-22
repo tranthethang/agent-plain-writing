@@ -26,7 +26,7 @@ python3 evals/run_eval.py --tool claude   # CLI `claude` trên máy
 python3 evals/run_eval.py --tool antigravity
 ```
 
-Đặt cấu hình API trong `evals/.env` hoặc `.env` ở thư mục gốc. Cả hai đều bị git bỏ qua. Đầu ra nằm ở `evals/runs/<timestamp>/`, cũng bị git bỏ qua.
+Đặt cấu hình API trong `evals/.env` hoặc `.env` ở thư mục gốc. Cả hai đều bị git bỏ qua. Đầu ra nằm ở `evidence/<timestamp>/`, được git theo dõi.
 
 Chấm một đầu ra:
 

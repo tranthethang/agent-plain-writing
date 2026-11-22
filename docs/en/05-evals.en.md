@@ -26,7 +26,7 @@ python3 evals/run_eval.py --tool claude   # local `claude` CLI
 python3 evals/run_eval.py --tool antigravity
 ```
 
-Put API settings in `evals/.env` or the repo root `.env`. Both are ignored by git. Outputs go to `evals/runs/<timestamp>/`, also ignored by git.
+Put API settings in `evals/.env` or the repo root `.env`. Both are ignored by git. Outputs go to `evidence/<timestamp>/`, tracked by git.
 
 Score one output:
 

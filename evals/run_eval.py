@@ -18,7 +18,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CASES_DIR = Path(__file__).resolve().parent / "cases"
-RUNS_DIR = Path(__file__).resolve().parent / "runs"
+RUNS_DIR = ROOT / "evidence"
 SKILL_DIR = ROOT / "skills" / "agent-plain-writing"
 SKILL_FILE = SKILL_DIR / "SKILL.md"
 TYPE_FILES = {
@@ -274,6 +274,11 @@ def main():
             if proc.returncode != 0:
                 print(f"  Tool exited {proc.returncode}: {proc.stderr.strip()}", file=sys.stderr)
         metrics = score.score_case(case, out_file)
+        for key in ("case", "output"):
+            try:
+                metrics[key] = Path(metrics[key]).resolve().relative_to(ROOT).as_posix()
+            except (ValueError, TypeError):
+                pass
         metrics["mode"] = mode
         rows.append(metrics)
 
