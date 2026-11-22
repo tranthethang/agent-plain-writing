@@ -20,7 +20,7 @@ Thêm chữ "rõ ràng" hay "thân thiện" vào prompt không sửa được. S
 ## Gồm những gì
 
 - **Quy tắc lõi và quy trình** trong `SKILL.md` (6 quy tắc chung và quy tắc riêng cho từng nhóm giọng văn, viết nháp rồi sửa).
-- **Bốn loại văn bản trong hai nhóm giọng văn:** `plain` (`tech-blog`, `api-design`, `guide`) và `creative` (`essay`). Mỗi loại có một file trong `doc-types/` về giọng văn, cấu trúc và độ dài.
+- **Năm loại văn bản trong hai nhóm giọng văn:** `plain` (`tech-blog`, `api-design`, `guide`, `common`) và `creative` (`essay`). Mỗi loại có một file trong `doc-types/` về giọng văn, cấu trúc và độ dài, trừ `common` không có file ở đó.
 - **Ba thư mục ngôn ngữ** chứa đơn vị đếm, giới hạn số, cụm từ cấm, danh sách thuật ngữ và ví dụ.
 - **Một script kiểm tra**, `check_style.py` (Python 3.7+, chỉ dùng thư viện chuẩn).
 - **Bộ eval** trong `evals/` (xem [05-evals](05-evals.vi.md)).

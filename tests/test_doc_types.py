@@ -16,7 +16,7 @@ _spec = importlib.util.spec_from_file_location("check_style", CHECKER)
 checker = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(checker)
 LANGS = ["vi", "en", "ja"]
-TYPES = {"tech-blog", "essay", "api-design", "guide"}
+TYPES = {"tech-blog", "essay", "api-design", "guide", "common"}
 UNITS_ROW = {"vi": "vi", "en": "en", "ja": "ja"}
 
 
@@ -94,8 +94,11 @@ class CheckerTypeTests(unittest.TestCase):
 
 class ParityTests(unittest.TestCase):
     def test_readme_units_match_profiles(self):
-        readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        order = ["tech-blog", "essay", "api-design", "guide"]
+        for path in (ROOT / "README.md", ROOT / "docs" / "vi" / "README.md"):
+            self.check_units(path.read_text(encoding="utf-8"), path.name)
+
+    def check_units(self, readme, name):
+        order = ["tech-blog", "essay", "api-design", "guide", "common"]
         for lang in LANGS:
             row = next(l for l in readme.splitlines() if l.startswith(f"| `{lang}` |"))
             cells = [c.strip() for c in row.strip("|").split("|")][2:]
@@ -103,7 +106,7 @@ class ParityTests(unittest.TestCase):
                 f"{profile(lang)['types'][t]['sentence']} / {profile(lang)['types'][t]['paragraph']}"
                 for t in order
             ]
-            self.assertEqual(cells, want, lang)
+            self.assertEqual(cells, want, f"{name} {lang}")
 
     def test_banned_guide_lists_every_phrase(self):
         for lang in LANGS:

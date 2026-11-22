@@ -20,7 +20,7 @@ Words such as "clear" or "friendly" in a prompt do not fix this. The skill uses 
 ## What is in it
 
 - **Core rules and workflow** in `SKILL.md` (6 shared rules plus rules per voice family, draft then edit).
-- **Four document types in two voice families:** `plain` (`tech-blog`, `api-design`, `guide`) and `creative` (`essay`). Each has a file in `doc-types/` for voice, structure and length.
+- **Five document types in two voice families:** `plain` (`tech-blog`, `api-design`, `guide`, `common`) and `creative` (`essay`). Each has a file in `doc-types/` for voice, structure and length, except `common`, which has no file there.
 - **Three language folders** with the unit, numeric limits, banned phrases, jargon list and examples.
 - **A checker script**, `check_style.py` (Python 3.7+, standard library only).
 - **An eval kit** in `evals/` (see [05-evals](05-evals.en.md)).

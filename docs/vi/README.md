@@ -15,11 +15,10 @@ Một script kiểm tra bản nháp theo các giới hạn đó.
 
 ## Trạng thái
 
-- Có bốn loại văn bản, chia thành hai nhóm giọng. Nhóm `plain` gồm `tech-blog`, `api-design`, `guide`. Nhóm `creative` gồm `essay`. Hiện chưa hỗ trợ `prose`, `poetry` và `screen-design`.
+- Có năm loại văn bản, chia thành hai nhóm giọng. Nhóm `plain` gồm `tech-blog`, `api-design`, `guide`, `common`. Nhóm `creative` gồm `essay`. Hiện chưa hỗ trợ `prose`, `poetry` và `screen-design`.
 - **Thay đổi không tương thích:** `--type blog` nay là `--type tech-blog`. Đây cũng là giá trị mặc định mới.
 - Script chỉ đếm, không đánh giá giọng văn. Độ dài ngoài khoảng cho phép chỉ in cảnh báo. Script không báo lỗi.
 - Các giới hạn số là ước lượng ban đầu. Chúng chưa được kiểm chứng.
-- Nội dung tiếng Nhật chưa có người bản ngữ duyệt.
 - Bằng chứng còn ít. Mới có một lần chạy eval, 9 ca mô phỏng, chỉ có điểm tự động. Xem [Bằng chứng](#bằng-chứng).
 - Test tự động kiểm tra các điểm sau. Thống kê `TBD-n` và khoảng độ dài cho brief ngắn trong `evals/score.py`. Tập loại văn bản. Loại mặc định của script. Bảng Đơn vị. Chạy test bằng `python3 -m unittest discover -s tests`. `AGENTS.md` liệt kê các bước kiểm tra tay còn lại.
 
@@ -44,11 +43,11 @@ Mã thoát: `0` là sạch, `1` là có lỗi, `2` là gõ sai cách dùng.
 
 Bảng này khớp với giới hạn `sentence` / `paragraph` trong `skills/agent-plain-writing/languages/<lang>/profile.json`:
 
-| Ngôn ngữ | Đơn vị | `tech-blog` | `essay` | `api-design` | `guide` |
-|---|---|---|---|---|---|
-| `vi` | âm tiết (*tiếng*) | 28 / 3 | 40 / 6 | 25 / 3 | 16 / 3 |
-| `en` | từ | 20 / 3 | 30 / 6 | 18 / 3 | 12 / 3 |
-| `ja` | ký tự (字) | 60 / 3 | 80 / 6 | 55 / 3 | 40 / 3 |
+| Ngôn ngữ | Đơn vị | `tech-blog` | `essay` | `api-design` | `guide` | `common` |
+|---|---|---|---|---|---|---|
+| `vi` | âm tiết (*tiếng*) | 28 / 3 | 40 / 6 | 25 / 3 | 16 / 3 | 28 / 3 |
+| `en` | từ | 20 / 3 | 30 / 6 | 18 / 3 | 12 / 3 | 20 / 3 |
+| `ja` | ký tự (字) | 60 / 3 | 80 / 6 | 55 / 3 | 40 / 3 | 60 / 3 |
 
 Độ dài của `tech-blog` có `length` và `length_short` (cho brief ngắn).
 
