@@ -16,6 +16,11 @@ skills/agent-plain-writing/
 │                         # terms.txt, examples/
 ├── templates/            # PLAIN-WRITING.example.md
 └── scripts/check_style.py
+
+evals/                    # cases/, run_eval.py, score.py, judge-prompt.md
+evidence/<run>/           # outputs and results.json written by run_eval.py (tracked)
+judge-prompts/<run>/      # rendered judge prompts from --judge-prompts (tracked)
+tests/                    # unittest, standard library only
 ```
 
 ## Rules for editing
