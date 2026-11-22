@@ -43,4 +43,4 @@ Use for guides written for general users who are not technical.
 - [ ] Button names match the screen, in bold.
 - [ ] No internal mechanism and no unreplaced jargon.
 - [ ] There is an "If something goes wrong" section.
-- [ ] `python3 scripts/check_style.py guide.md --lang <lang> --type guide`
+- [ ] `python3 <skill-dir>/scripts/check_style.py guide.md --lang <lang> --type guide`

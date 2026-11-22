@@ -59,4 +59,4 @@ Use for personal essays, reflections, and short narrative pieces for general rea
 - [ ] No paragraph ends with a sentence that explains the meaning.
 - [ ] No meta-report opening, no label closing, and no banned phrase from `[all]` or `[tech-blog,essay]`.
 - [ ] No fixed section headings; the closing is one image or one action, not a lesson.
-- [ ] `python3 scripts/check_style.py essay.md --lang <lang> --type essay`
+- [ ] `python3 <skill-dir>/scripts/check_style.py essay.md --lang <lang> --type essay`

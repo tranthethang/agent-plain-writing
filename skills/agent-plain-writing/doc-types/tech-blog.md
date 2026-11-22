@@ -48,4 +48,4 @@ Give these five. Whatever is missing, the AI will guess.
 - [ ] No repeated facts from the opening, no padded restatements, and no recap paragraph before the closing.
 - [ ] At least one place where the author admits a limit or a mistake (if the brief has one).
 - [ ] The closing is one action, not a summary.
-- [ ] `python3 scripts/check_style.py post.md --lang <lang> --type tech-blog`
+- [ ] `python3 <skill-dir>/scripts/check_style.py post.md --lang <lang> --type tech-blog`

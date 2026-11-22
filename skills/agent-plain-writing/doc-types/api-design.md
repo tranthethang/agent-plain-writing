@@ -69,4 +69,4 @@ If item 1 or 2 is missing, ask. Do not infer business rules.
 - [ ] No number, field type, required flag, or component invented by the AI. A known field type (Principle 3) is written, not opened as `TBD-n`.
 - [ ] No vague word.
 - [ ] One concept, one name.
-- [ ] `python3 scripts/check_style.py spec.md --lang <lang> --type api-design`
+- [ ] `python3 <skill-dir>/scripts/check_style.py spec.md --lang <lang> --type api-design`
