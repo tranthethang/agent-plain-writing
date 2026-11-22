@@ -27,7 +27,7 @@ TYPE_FILES = {
     "essay": "essay.md",
     "api-design": "api-design.md",
     "guide": "user-guide.md",
-    "common": None,
+    "common": "common.md",
 }
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -123,7 +123,7 @@ def build_prompt(case_path, with_skill):
         if doc_type not in TYPE_FILES:
             raise ValueError(f"Unknown document type '{doc_type}' in {case_path}")
         type_file = TYPE_FILES[doc_type]
-        example_file = "common.md" if doc_type == "common" else type_file
+        example_file = type_file
 
         parts.append("\n## Skill instructions\n\n" + SKILL_FILE.read_text(encoding="utf-8"))
 

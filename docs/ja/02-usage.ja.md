@@ -28,8 +28,9 @@ agent-plain-writing を使って、このメモから日本語のユーザーガ
 | エッセイ (`essay`) | `creative` | `essay` | `doc-types/essay.md` |
 | API 設計（1 エンドポイント） | `plain` | `api-design` | `doc-types/api-design.md` |
 | ユーザーガイド | `plain` | `guide` | `doc-types/user-guide.md` |
+| その他（短い技術的なお知らせ、告知） | `plain` | `common` | `doc-types/common.md` |
 
-その他の文書は `common`（`plain` ファミリー、`languages/<lang>/examples/common.md`）として扱います。
+その他の文書は `common`（`plain` ファミリー、`doc-types/common.md`、`languages/<lang>/examples/common.md`）として扱います。
 
 `api-design` では、AI は 7 セクションの固定テンプレートを使います。ブリーフに事実が足りないとき、`TBD-n` を書くのは、ブリーフが名指しした空白か、実装を妨げる空白だけです。既知のフィールド型（ブリーフ、用語集、許可値の列挙、または ID のリストから分かる型）は `TBD-n` を付けずに直接書きます。各 `TBD-n` には Open items に質問が 1 つ対応し、2 つの `TBD-n` が同じ質問をしてはなりません。
 

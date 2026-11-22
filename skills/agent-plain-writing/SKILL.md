@@ -28,7 +28,7 @@ Each rule has one owner. Read a rule in its owner file, not in a copy.
 
 0. **Check for `PLAIN-WRITING.md`** in the project root (template: `templates/PLAIN-WRITING.example.md`). If `PLAIN-WRITING.md` exists, read it and let it win on voice and terms. Use `default_lang` and `default_type` to skip the questions in steps 1 and 2.
 1. **Pick the output language** (`vi`, `en` or `ja`). It is the language of the text you produce, not the language of the prompt. A Vietnamese brief that asks for a Japanese manual means `ja`. If unclear, ask one question. Then read `languages/<lang>/profile.json` (the limits for your type) and `languages/<lang>/profile.md`.
-2. **Pick the document type** (table below). Read the structure file from the type table (`doc-types/<type>.md`; `common` has none) and `languages/<lang>/examples/<type>.md` (`guide` uses `examples/user-guide.md`). Also read `languages/<lang>/banned.txt` and `banned-guide.md`. Read `languages/<lang>/terms.txt` only when the type is `guide` or `--non-tech` applies. Read only these.
+2. **Pick the document type** (table below). Read the structure file from the type table (`doc-types/<type>.md`) and `languages/<lang>/examples/<type>.md` (`guide` uses `examples/user-guide.md`). Also read `languages/<lang>/banned.txt` and `banned-guide.md`. Read `languages/<lang>/terms.txt` only when the type is `guide` or `--non-tech` applies. Read only these.
 3. **Know the reader**: who they are, what they already know, what they must do after reading. If missing, ask one question. If you cannot ask, state your assumption outside the document (or mark `TBD-n` inline in specs).
 4. **Outline** (one line per idea) for any text longer than about 400 words. Write only ideas that are in the outline. In the `creative` family, the outline fixes the scenes, not every sentence.
 5. **Draft** with the core rules and the type's voice, structure and rhythm. Write normal paragraphs—never put every sentence on its own line.
@@ -45,7 +45,7 @@ Draft and edit are two passes. Do not try to get it right in the first pass.
 | Essay (personal, reflective) | `creative` | `doc-types/essay.md` | `essay` | General readers |
 | API design (one endpoint) | `plain` | `doc-types/api-design.md` | `api-design` | Developers, QA |
 | User guide, manual | `plain` | `doc-types/user-guide.md` | `guide` | General users |
-| Anything else | `plain` | none (`languages/<lang>/examples/common.md`) | `common` | Varies |
+| Anything else (short notice, announcement) | `plain` | `doc-types/common.md` | `common` | Varies |
 
 Always read `languages/<lang>/banned-guide.md` too (banned phrases and what replaces them).
 
@@ -77,9 +77,6 @@ One voice: **short, concrete, understood on first read.**
 - **Evaluative adjectives** ("great", "powerful", "beautiful"): Replace with a number or a visible detail.
 - **Length**: `length` in `profile.json` is a ceiling, under the type's length policy. The checker warns only above it; a shorter text is fine. Never pad to reach it. Never more than 10% over.
 - **Nothing added beyond the source**: keep human context, reasoning, and reactions grounded in the brief. In specs and guides, write `TBD-n <specific question>` or ask.
-- **`common` voice, no first person**: write about the subject, not about yourself.
-- **`common` voice, no opening recap**: start with the content.
-- **`common` voice, no closing summary**: end when the content ends.
 
 ### `creative` (`essay`)
 

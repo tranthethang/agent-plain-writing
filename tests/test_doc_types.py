@@ -35,6 +35,11 @@ def profile(lang):
 
 
 class TypeSetTests(unittest.TestCase):
+    def test_every_type_has_a_doc_type_file(self):
+        for t in TYPES:
+            name = "user-guide.md" if t == "guide" else f"{t}.md"
+            self.assertTrue((SKILL / "doc-types" / name).is_file(), name)
+
     def test_profiles_have_only_current_types(self):
         for lang in LANGS:
             self.assertEqual(set(profile(lang)["types"]), TYPES, lang)
