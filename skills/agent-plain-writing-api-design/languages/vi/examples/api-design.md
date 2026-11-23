@@ -133,13 +133,13 @@ sequenceDiagram
 
 | Trường | Hướng | Kiểu | Bắt buộc | Ràng buộc |
 |---|---|---|---|---|
-| `title` | Yêu cầu | `TBD-1` | Có | — |
+| `title` | Yêu cầu | `TBD-1` | Có | Không |
 
 **Good:**
 
 | Trường | Hướng | Kiểu | Bắt buộc | Ràng buộc |
 |---|---|---|---|---|
-| `title` | Yêu cầu | string | Có | — |
+| `title` | Yêu cầu | string | Có | Không |
 
 **Fault:** Mở `TBD-n` cho kiểu của trường mà bảng thuật ngữ đã mô tả là văn bản.
 **Fix:** Khi bảng thuật ngữ mô tả trường là văn bản (như tiêu đề, nội dung, tên, phần URL), ghi `string` và không mở `TBD-n`.
@@ -192,9 +192,9 @@ Khuôn tham khảo. Cấu trúc nằm trong phần `api-design` của `SKILL.md`
 | `starts_at` | Yêu cầu | datetime | Có | Giờ bắt đầu phải ở tương lai; đặt trước tối đa `TBD-1` ngày |
 | `minutes` | Yêu cầu | integer | Có | 30 đến 240, bước 30 |
 | `note` | Yêu cầu | string | Không | ≤ 200 ký tự |
-| `reservation_id` | Phản hồi | uuid | — | — |
-| `status` | Phản hồi | string | — | — |
-| `ends_at` | Phản hồi | datetime | — | — |
+| `reservation_id` | Phản hồi | uuid | Không | Không |
+| `status` | Phản hồi | string | Không | Không |
+| `ends_at` | Phản hồi | datetime | Không | Không |
 
 ## Endpoint
 

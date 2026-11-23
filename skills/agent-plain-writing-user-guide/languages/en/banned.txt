@@ -31,8 +31,20 @@ the brief does not
 the brief doesn't
 the brief says
 in the brief
+matters
+worth noting
+a testament to
+pivotal
+quietly
+tapestry
+landscape
+boasts
+carries weight
+as we move forward
+for the time being
 [warn]
 not only
+not just
 furthermore
 moreover
 [api-design]

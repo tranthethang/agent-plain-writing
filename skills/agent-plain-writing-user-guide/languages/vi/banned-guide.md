@@ -26,6 +26,14 @@ AI đọc file này, không đọc `banned.txt`. Tiêu đề mỗi bảng cho bi
 | bên cạnh đó, ngoài ra *(warn)* | (bỏ) hoặc dùng tiêu đề mục | Tránh mở đầu câu liên tục |
 | hạng mục | việc, mục | |
 | brief không, brief chưa, trong brief, theo brief | nói thẳng sự việc; trong spec thì ghi `TBD-n` kèm câu hỏi; nếu không thì bỏ ý đó. Người đọc chưa từng thấy brief | "Chưa nêu trong brief." ở mục Tác động kèm theo → `Không có` |
+| then chốt, vượt trội, đột phá, đáng kinh ngạc | số liệu hoặc chi tiết cụ thể từ nguồn, hoặc bỏ | |
+| minh chứng cho, không thể phủ nhận | nói thẳng sự việc | |
+| thực sự, cực kỳ | bỏ, hoặc dùng con số từ nguồn | |
+| ngày càng phát triển, trên hành trình | bỏ hoặc nêu mốc cụ thể từ nguồn | |
+| hãy cùng tìm hiểu, tổng kết lại, nói tóm lại, hy vọng bài viết | bỏ, vào thẳng nội dung hoặc kết bằng một việc cụ thể | |
+| trong thời gian tới, về lâu dài | bỏ, hoặc nêu thời hạn từ nguồn | |
+| không đơn thuần là, không chỉ đơn giản là | nói thẳng nó là gì | |
+| nâng tầm, kiến tạo, khai phá, hiện thực hóa, góp phần *(warn)* | động từ cụ thể (tạo, mở, giúp, làm) | |
 
 ## Từ mơ hồ trong API design
 
@@ -57,6 +65,7 @@ AI đọc file này, không đọc `banned.txt`. Tiêu đề mỗi bảng cho bi
 | tận dụng | dùng |
 | trong quá trình | khi |
 | nhìn chung, tóm lại | (bỏ). Đừng tóm tắt lại điều vừa nói |
+| trong bối cảnh *(tech-blog, essay, common)* | bỏ, hoặc nêu tình huống cụ thể |
 
 ## Nhãn báo cáo (mọi dòng ngoài khối code)
 

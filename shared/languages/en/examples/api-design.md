@@ -134,13 +134,13 @@ sequenceDiagram
 
 | Field | Direction | Type | Required | Constraint |
 |---|---|---|---|---|
-| `title` | Request | `TBD-1` | Yes | — |
+| `title` | Request | `TBD-1` | Yes | None |
 
 **Good:**
 
 | Field | Direction | Type | Required | Constraint |
 |---|---|---|---|---|
-| `title` | Request | string | Yes | — |
+| `title` | Request | string | Yes | None |
 
 **Fault:** Opening a `TBD-n` for a field type that the glossary already describes as text.
 **Fix:** When the glossary describes a field as text (a title, a body, a name, or a part of a URL), write `string` and do not open a `TBD-n`.
@@ -191,9 +191,9 @@ sequenceDiagram
 | `starts_at` | Request | datetime | Yes | The start must be in the future; at most `TBD-1` days ahead |
 | `minutes` | Request | integer | Yes | 30 to 240, in steps of 30 |
 | `note` | Request | string | No | at most 200 characters |
-| `reservation_id` | Response | uuid | — | — |
-| `status` | Response | string | — | — |
-| `ends_at` | Response | datetime | — | — |
+| `reservation_id` | Response | uuid | None | None |
+| `status` | Response | string | None | None |
+| `ends_at` | Response | datetime | None | None |
 
 ## Endpoint
 

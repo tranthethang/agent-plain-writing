@@ -136,13 +136,13 @@ sequenceDiagram
 
 | 項目 | 方向 | 型 | 必須 | 制約 |
 |---|---|---|---|---|
-| `title` | リクエスト | `TBD-1` | 必須 | — |
+| `title` | リクエスト | `TBD-1` | 必須 | なし |
 
 **Good:**
 
 | 項目 | 方向 | 型 | 必須 | 制約 |
 |---|---|---|---|---|
-| `title` | リクエスト | string | 必須 | — |
+| `title` | リクエスト | string | 必須 | なし |
 
 **Fault:** 用語集がテキストと説明している項目の型に `TBD-n` を開いている。
 **Fix:** 用語集がテキスト(タイトル、本文、名前、URLの一部)を示す場合は `string` と書き、`TBD-n` を開かない。
@@ -193,9 +193,9 @@ sequenceDiagram
 | `starts_at` | リクエスト | datetime | 必須 | 開始が未来であること。予約は `TBD-1` 日先まで |
 | `minutes` | リクエスト | integer | 必須 | 30以上240以下、30刻み |
 | `note` | リクエスト | string | 任意 | 200文字以内 |
-| `reservation_id` | レスポンス | uuid | — | — |
-| `status` | レスポンス | string | — | — |
-| `ends_at` | レスポンス | datetime | — | — |
+| `reservation_id` | レスポンス | uuid | なし | なし |
+| `status` | レスポンス | string | なし | なし |
+| `ends_at` | レスポンス | datetime | なし | なし |
 
 ## エンドポイント
 

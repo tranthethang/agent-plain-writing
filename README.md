@@ -26,6 +26,7 @@ npx skills add tranthethang/agent-plain-writing -g
 2. Prompt the router or call one sub-skill directly:
    - `Use agent-plain-writing to shorten this text: ...` (router picks the type)
    - `Use agent-plain-writing-user-guide to write a user guide in Japanese from these notes: ...`
+   - `Use agent-plain-writing-common to deslopify this reply: ...` (conclusion-first reply rewrite mode)
 
 3. Run the checker on your draft (Python 3.15+, standard library only):
 
@@ -55,7 +56,7 @@ The five types sit in two voice families: `plain` (`tech-blog`, `api-design`, `u
 Two things to know before you rely on the numbers:
 
 - **Breaking change:** `--type blog` is now `--type tech-blog`, and the default `--type` is `common`.
-- **Mechanical checks only:** The script counts tokens and flags banned phrases, without judging voice. It warns only above the upper length limit, never asks for padding, and never fails a run on length alone.
+- **Mechanical checks only:** The script counts tokens and flags banned phrases and structural patterns (dashes, middle dots, `en` curly quotes, count openings, negative parallelism, consecutive questions), without judging voice. It warns only above the upper length limit, never asks for padding, and never fails a run on length alone.
 
 Our numeric limits are starting estimates, not verified standards. Each folder in [evidence/](evidence/README.md) holds raw outputs, `results.json`, and a summary. Each run uses one real agent on simulated cases (see [evals/README.md](evals/README.md)).
 

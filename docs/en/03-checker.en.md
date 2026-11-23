@@ -22,6 +22,7 @@ Exit codes: `0` clean, `1` violations, `2` usage error. `--type blog` was remove
 - Sentence length, paragraph length, banned phrases, jargon count, text length. A text longer than the upper length limit prints a warning and does not change the exit code. A shorter text is fine; never pad.
 - Report labels (such as `Result:`) at the start of any line outside code blocks.
 - Line breaks made with trailing spaces.
+- Pattern checks configured in `profile.json`: em and en dashes, middle dots, curly quotes (enabled for `en` only), count openings at paragraph start, negative parallelism, and consecutive question sentences.
 
 It skips code blocks, tables and headings. For `api-design`, it checks each table cell for sentence length. It checks list items for sentence length, but not for paragraph length.
 

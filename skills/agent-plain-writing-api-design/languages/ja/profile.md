@@ -52,7 +52,7 @@ Use in the field table of an API. The labels follow the document language.
 
 Direction labels (the Direction column): `リクエスト`, `レスポンス`.
 
-Label for an empty Side effects section: `なし`.
+Empty-cell label (and empty Side effects section): `なし`.
 
 ## Section titles (API design)
 
@@ -80,4 +80,5 @@ Label for an empty Side effects section: `なし`.
 - Overuse of 「〜させていただく」.
 - Chains of の ("AのBのCのD"): split the sentence.
 - Dropped subject in design documents: name the actor ("システムは...", "クライアントは...").
+- Vague demonstratives opening a paragraph: 「これにより処理が速くなる。」 → 「キャッシュにより応答が1秒未満になる。」
 - Punctuation: use 、 and 。 in Japanese text. Use half-width digits. Keep one rule for spaces between Latin letters and Japanese, and follow the team rule.

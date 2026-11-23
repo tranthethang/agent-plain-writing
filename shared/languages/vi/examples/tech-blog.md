@@ -60,6 +60,11 @@ Ví dụ minh họa. Chi tiết trong câu chuyện là bịa để làm mẫu. 
 **Fault:** Câu kết luận đứng một mình. Người đọc không thấy vì sao thay đổi không có tác dụng.
 **Fix:** Giữ câu nối nguyên nhân, thay đổi và kết quả.
 
+### 11. Tiêu đề khẩu hiệu
+
+**Bad:** `## Cái giá ẩn của sự tiện lợi`
+**Good:** `## Vì sao state dùng chung làm chậm biểu mẫu`
+
 ## Bài mẫu hoàn chỉnh (khoảng 610 từ)
 
 ```markdown

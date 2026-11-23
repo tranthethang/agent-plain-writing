@@ -7,6 +7,18 @@
   "sentence_split": "(?<=[.!?…])\\s+",
   "boundary": true,
   "non_tech_terms": 3,
+  "patterns": {
+    "dash": true,
+    "middle_dot": true,
+    "curly_quotes": true,
+    "count_opening": true,
+    "negative_parallel": true,
+    "question_run": true
+  },
+  "pattern_regexes": {
+    "count_opening": "^(?:one|two|three|four|five|six|seven|eight|nine|ten|\\d+)\\s+(?:things|ways|reasons|steps|points|lessons|tips|rules|mistakes|notes|items)\\b[^.!?\\n]*[.!?]?",
+    "negative_parallel": "\\bnot\\s+(?:just|only)\\b[^.!?;\\n]{1,80}(?:,\\s*it'?s\\b|,\\s*it\\s+is\\b|\\bbut\\b)"
+  },
   "types": {
     "tech-blog":  {"sentence": 20,   "paragraph": 3,    "length": [600, 800], "length_short": [300, 500], "terms": null},
     "essay":      {"sentence": 30,   "paragraph": 6,    "length": null,       "terms": null},

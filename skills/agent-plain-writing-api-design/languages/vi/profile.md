@@ -39,6 +39,8 @@ Dùng trong bảng trường của API. Nhãn theo ngôn ngữ của tài liệu
 
 Nhãn cột Hướng: `Yêu cầu`, `Phản hồi`.
 
+Nhãn ô trống trong bảng: `Không`.
+
 Nhãn cho mục Tác động kèm theo khi không có tác động: `Không có`.
 
 ## Tên mục của mẫu API (tiếng Việt)
@@ -64,4 +66,5 @@ Nhãn cho mục Tác động kèm theo khi không có tác động: `Không có`
 - Câu bị động kéo dài với "được".
 - Cụm nối thừa: "bên cạnh đó", "ngoài ra" mở đầu câu liên tục.
 - Tính từ rỗng: "toàn diện", "mạnh mẽ", "tối ưu".
+- Đại từ mơ hồ mở đầu đoạn: "Điều này giúp hệ thống nhanh hơn." → "Bộ nhớ đệm giúp hệ thống phản hồi dưới 1 giây."
 - Số: dùng dấu chấm ngăn nghìn (200.000), dấu phẩy thập phân (1,5). Chọn một kiểu và giữ nguyên.

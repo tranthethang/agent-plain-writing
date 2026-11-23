@@ -87,6 +87,93 @@ def hard_break_issues(raw):
     return [f"Line break with trailing spaces: {n}x"] if n else []
 
 
+def _strip_code_and_frontmatter_lines(raw):
+    """Yield (lineno, text) for lines outside frontmatter and fenced code blocks, with inline code masked."""
+    lines = raw.splitlines()
+    in_code = False
+    start = 0
+    if lines and lines[0].strip() == "---":
+        for idx in range(1, len(lines)):
+            if lines[idx].strip() == "---":
+                start = idx + 1
+                break
+    for idx in range(start, len(lines)):
+        line = lines[idx]
+        if line.strip().startswith("```"):
+            in_code = not in_code
+            continue
+        if in_code:
+            continue
+        masked = re.sub(r"`[^`]*`", "X", line)
+        yield idx + 1, masked
+
+
+def pattern_issues(raw, prof):
+    """Flag enabled anti-slop patterns outside code blocks."""
+    patterns = prof.get("patterns") or {}
+    regexes = prof.get("pattern_regexes") or {}
+    if not patterns:
+        return []
+
+    issues = []
+    count_re = re.compile(regexes["count_opening"], re.IGNORECASE) if regexes.get("count_opening") else None
+    neg_re = re.compile(regexes["negative_parallel"], re.IGNORECASE) if regexes.get("negative_parallel") else None
+
+    at_para_start = True
+    prev_was_question = False
+
+    for lineno, line in _strip_code_and_frontmatter_lines(raw):
+        stripped = line.strip()
+        if not stripped:
+            at_para_start = True
+            prev_was_question = False
+            continue
+        is_special = (
+            stripped.startswith("#")
+            or stripped.startswith("|")
+            or bool(ITEM.match(stripped))
+            or bool(re.fullmatch(r"[-=_ ]{3,}", stripped))
+        )
+        if is_special:
+            at_para_start = True
+            prev_was_question = False
+
+        if patterns.get("dash"):
+            c = len(re.findall(r"[—–]", line))
+            if c:
+                issues.append(f'Pattern "dash" (line {lineno}): {c}x')
+
+        if patterns.get("middle_dot"):
+            c = len(re.findall(r"\u00b7", line))
+            if c:
+                issues.append(f'Pattern "middle_dot" (line {lineno}): {c}x')
+
+        if patterns.get("curly_quotes"):
+            c = len(re.findall(r"[“”‘’]", line))
+            if c:
+                issues.append(f'Pattern "curly_quotes" (line {lineno}): {c}x')
+
+        if not is_special:
+            if patterns.get("count_opening") and at_para_start and count_re:
+                if count_re.search(stripped):
+                    issues.append(f'Pattern "count_opening" (line {lineno}): 1x')
+            at_para_start = False
+
+            if patterns.get("negative_parallel") and neg_re:
+                c = len(neg_re.findall(stripped))
+                if c:
+                    issues.append(f'Pattern "negative_parallel" (line {lineno}): {c}x')
+
+            if patterns.get("question_run"):
+                sents = split_sentences(stripped, prof["sentence_split"])
+                for s in sents:
+                    is_q = s.rstrip().endswith(("?", "？"))
+                    if is_q and prev_was_question:
+                        issues.append(f'Pattern "question_run" (line {lineno}): 1x')
+                    prev_was_question = is_q
+    return issues
+
+
 def load_terms(lang):
     path = LANG_DIR / lang / "terms.txt"
     return [
@@ -307,6 +394,7 @@ def main():
     issues, total, n_sent = [], 0, 0
     issues += report_issues(text, load_report_labels(lang))
     issues += hard_break_issues(raw)
+    issues += pattern_issues(raw, prof)
     for kind, body in blocks:
         sents = split_sentences(body, prof["sentence_split"])
         n_sent += len(sents)

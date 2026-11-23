@@ -89,6 +89,36 @@ Số liệu trong ví dụ chỉ để minh họa. Khi viết thật, dùng số
 **Fault:** Con số 200 ms không có trong nguồn.
 **Fix:** Giữ dữ kiện nguồn có, hoặc bỏ tính từ. Không thêm số.
 
+## 14. Câu song song phủ định
+
+**Bad:** Hệ thống này không chỉ là bản sửa lỗi mà còn là nền tảng mới.
+**Good:** Bản sửa lỗi này tách trạng thái theo từng biểu mẫu.
+
+## 15. Mở đoạn bằng đếm số mục
+
+**Bad:** 3 điều cần biết trước khi triển khai.
+**Good:** Chạy bản di trú trước khi bật dịch vụ.
+
+## 16. Tính từ ghép tự chế
+
+**Bad:** Một quy trình thân-thiện-lập-trình-viên và hướng-tương-lai.
+**Good:** Một quy trình mà lập trình viên có thể mở rộng.
+
+## 17. Chuỗi câu hỏi tu từ
+
+**Bad:** Vì sao tác vụ lỗi? Có phải do cache đã cũ?
+**Good:** Tác vụ lỗi vì cache vẫn giữ khóa của hôm qua.
+
+## 18. Dấu gạch ngang dài và dấu chấm giữa
+
+**Bad:** Giá trị dùng chung [gạch ngang dài] người dùng và ngôn ngữ [gạch ngang dài] giữ ở mức toàn cục. Một · Hai.
+**Good:** Giá trị dùng chung, gồm người dùng và ngôn ngữ, giữ ở mức toàn cục. Một, Hai.
+
+## 19. Viết hoa tiêu đề và in đậm trang trí
+
+**Bad:** `## Lợi Ích Chính Của Bộ Nhớ Đệm **Nhanh**`
+**Good:** `## Lợi ích của bộ nhớ đệm`
+
 ## Mẫu hoàn chỉnh
 
 ```markdown

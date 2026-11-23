@@ -83,6 +83,36 @@ Numbers and stories in the examples are illustrations only. In real work, use th
 **Fault:** The number 200 ms is not in the source.
 **Fix:** Keep the fact the source gives, or drop the adjective. Add no number.
 
+## 13. Negative parallelism
+
+**Bad:** This is not just a refactor, it is a new foundation.
+**Good:** This refactor splits the state by form.
+
+## 14. Count opening
+
+**Bad:** Three things to know before deploying.
+**Good:** Run the migration before deploying the worker.
+
+## 15. Invented hyphenated adjectives
+
+**Bad:** A future-proof, developer-centric workflow.
+**Good:** A workflow that developers can extend.
+
+## 16. Rhetorical question chains
+
+**Bad:** Why did it fail? Could the cache be stale?
+**Good:** The job failed because the cache held yesterday's key.
+
+## 17. Dashes and middle dots
+
+**Bad:** Shared values [em dash] the user and the language [em dash] stayed global. First · Second.
+**Good:** Shared values, the user and the language, stayed global. First, Second.
+
+## 18. Heading case and decorative bold
+
+**Bad:** `## Key Benefits Of **Fast** Caching`
+**Good:** `## Benefits of caching`
+
 ## Complete sample
 
 ```markdown

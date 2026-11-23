@@ -85,6 +85,11 @@ Nếu một thuật ngữ **xuất hiện trên màn hình** (ví dụ nút "Tok
 **Bad:** Hướng dẫn này nhằm cung cấp cho người dùng những thông tin cần thiết để có thể sử dụng chức năng xuất báo cáo.
 **Good:** Hướng dẫn này giúp bạn xuất báo cáo ra file Excel.
 
+### 11. Gán hành động cho giao diện
+
+**Bad:** Trang cài đặt quyết định những thông báo bạn sẽ nhận.
+**Good:** Chọn thông báo muốn nhận tại trang **Cài đặt**.
+
 ## Mẫu hướng dẫn hoàn chỉnh
 
 ```markdown

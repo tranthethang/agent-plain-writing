@@ -34,7 +34,7 @@ Each rule has one owner. Read a rule in its owner file, not in a copy.
 2. **Read the type files.** This skill handles one document type. Its voice and structure are in the type section at the end of this file. Read `languages/<lang>/examples/api-design.md`. Also read `languages/<lang>/banned-guide.md`. It is the banned list for the agent. `banned.txt` is the checker's machine list; do not read it. Read `languages/<lang>/terms.txt` only when the type is `user-guide` or `--non-tech` applies. Read only these.
 3. **Know the reader**: who they are, what they already know, what they must do after reading. If missing, ask one question. If you cannot ask, state your assumption outside the document (or mark `TBD-n` inline in specs).
 4. **Outline** (one line per idea) for any text longer than about 400 words. Write only ideas that are in the outline. In the `creative` family, the outline fixes the scenes, not every sentence.
-5. **Draft** with the core rules and the type's voice, structure and rhythm. Write normal paragraphs—never put every sentence on its own line.
+5. **Draft** with the core rules and the type's voice, structure and rhythm. Write normal paragraphs, and never put every sentence on its own line.
 6. **Edit** in a separate pass: cut, run the checklist, run the script. Fix until clean. When Python cannot run, apply the final checklist by hand and say in the report that the script did not run.
 7. **Report** two things outside the generated text: the result, and what you had to guess. Never prepend or append `Result:`, `Guesses:`, or `**推測したこと:**` lines inside the document. Send the report as a second message when you can. Otherwise end the document, add one line `<!-- report -->`, then the report, and keep it out of the file that the checker reads. When you guessed nothing and added nothing, write no report and no marker. Never write a report that only says so, such as "I did not add facts beyond the brief." In specs, mark missing details inline with `TBD-n`. The script flags those labels (see "Report labels" in `banned-guide.md`) on any line outside code blocks.
 
@@ -52,6 +52,33 @@ These rules hold for every document type:
 | 4 | Opening and closing | Opening: at most 2 sentences, straight to the point. No recap, no empty thanks |
 | 5 | No invention | Add no number, event, person, place, technical spec, or outcome that is not in the source. Do not place two numbers with different units or time periods next to each other as a comparison; keep both numbers and narrow the claim to what they support. How much else a text may add (reasoning, reactions, inner thoughts) is set by its voice family |
 | 6 | Consistency | One concept, one name. One register for the whole text |
+
+## Patterns to avoid
+
+- **Negative parallelism.** State what the thing is instead of contrasting what it is not.
+  - Bad: "This is not just a refactor, it is a new foundation."
+  - Good: "This refactor splits the state by form."
+- **Count opening.** Start with the first point instead of announcing how many items follow.
+  - Bad: "Three things to know before deploying."
+  - Good: "Run the migration before deploying the worker."
+- **Fake agency.** Name the person or process that acts instead of making a document or concept act.
+  - Bad: "This architecture decides how requests flow."
+  - Good: "The router sends each request to a worker."
+- **Slogan headings and catchy labels.** Use a plain heading that names the topic.
+  - Bad: "## The hidden cost of convenience"
+  - Good: "## Why shared state slowed the form"
+- **Invented hyphenated adjectives.** Use plain words instead of coining compound modifiers.
+  - Bad: "a future-proof, developer-centric workflow"
+  - Good: "a workflow that developers can extend"
+- **Rhetorical question chains.** Never place two or more question sentences in a row. State the point directly.
+  - Bad: "Why did it fail? Could the cache be stale?"
+  - Good: "The job failed because the cache held yesterday's key."
+- **Em dashes, en dashes, and middle dots.** Use a period, a comma, "and", or "to" instead of an em dash (U+2014), an en dash (U+2013), or a middle dot (U+00B7).
+  - Bad: "Shared values [em dash] the user and the language [em dash] stayed global."
+  - Good: "Shared values, the user and the language, stayed global."
+- **Heading case and decorative bold.** Write headings in sentence case, and use bold only for UI labels or table headers.
+  - Bad: "## Key Benefits Of **Fast** Caching"
+  - Good: "## Benefits of caching"
 
 ## When the reader is outside the field
 
@@ -82,6 +109,7 @@ For `tech-blog` and `essay`, keep human context, reasoning, and tension instead 
 - [ ] The script reports no violations.
 - [ ] One idea per paragraph, one idea per sentence.
 - [ ] No banned phrase from `banned-guide.md`. No empty adjective.
+- [ ] None of the patterns in "Patterns to avoid" appear.
 - [ ] Jargon is within the limit. Each term is explained or replaced.
 - [ ] The type section's checklist passes.
 - [ ] Every number, event and outcome appears in the user's source. In `essay`, every inner thought that the brief does not give is reported outside the text.
@@ -103,7 +131,7 @@ python3 <skill-dir>/scripts/check_style.py draft.md --lang en --type api-design 
 - `--short-brief`: use `length_short` (a lower ceiling) for a type that has it (only `tech-blog` has it).
 - `--config <path>`: path to a `PLAIN-WRITING.md` config file. By default, the script searches the current folder and then its parents (stopping at `.git`).
 - Units differ by language: Vietnamese counts syllables (tiếng), English counts words, Japanese counts characters (字). The unit is set in `profile.json`.
-- The script checks sentence length, paragraph length, banned phrases, jargon count and text length. The checker warns on text length only when the text is longer than the upper limit; a shorter text is fine, so never pad. That warning is not a violation. It does **not** judge whether the voice is good.
+- The script checks sentence length, paragraph length, banned phrases, pattern checks (`dash`, `middle_dot`, `curly_quotes` when enabled, `count_opening`, `negative_parallel`, `question_run`), jargon count and text length. The checker warns on text length only when the text is longer than the upper limit; a shorter text is fine, so never pad. That warning is not a violation. It does **not** judge whether the voice is good.
 - Edit `banned.txt` and `terms.txt` in the language folder to fit your needs.
 
 ## Extend the skill
@@ -129,7 +157,7 @@ One voice: **short, concrete, understood on first read.**
 - **Sentence length**: `sentence` in `profile.json`.
 - **Paragraph length**: `paragraph` in `profile.json`, one idea.
 - **Jargon (reader outside the field)**: `terms` or `non_tech_terms` in `profile.json`. Explain each term in one sentence, or replace it with an everyday word.
-- **Examples and metaphors**: One example or story per section, and a section is one main point.
+- **Examples and metaphors**: One example per section. No metaphors or analogies; describe the thing in literal terms.
 - **Evaluative adjectives** ("great", "powerful", "beautiful"): Replace with a number from the source or a visible detail. If the source has no number, add none.
 - **Length**: `length` in `profile.json` is a ceiling, under the type's length policy. The checker warns only above it; a shorter text is fine. Never pad to reach it. Never more than 10% over.
 - **Nothing added beyond the source**: keep human context, reasoning, and reactions grounded in the brief. In specs and guides, write `TBD-n <specific question>` or ask.
@@ -167,7 +195,7 @@ Use when you write the design of one API endpoint: purpose, fields, processing a
 Write these sections in this order.
 
 1. **Identity.** Method, path, purpose, and every role rule (here only). Add caller and idempotency only when the brief states them or when the developer cannot implement without them.
-2. **DTO and field mapping.** Request and response fields in one table with the columns Field, Direction, Type, Required, Constraint, in this order. Direction states whether the field belongs to the request or to the response (labels in `profile.md`). Response fields are rows in the same table, not a line outside it. A response with unknown fields is one row with `TBD-n` as its type. Required uses the labels in `profile.md`, or `TBD-n`. Write a known field type (Principle 3) directly in the table with no `TBD-n`. Use `TBD-n` for a field type only when the type is not known and it blocks implementation. The Constraint column holds input limits only; a default or a generated value lives in Processing (Principle 2). Write `—` in a cell that has no value. Do not leave a cell empty.
+2. **DTO and field mapping.** Request and response fields in one table with the columns Field, Direction, Type, Required, Constraint, in this order. Direction states whether the field belongs to the request or to the response (labels in `profile.md`). Response fields are rows in the same table, not a line outside it. A response with unknown fields is one row with `TBD-n` as its type. Required uses the labels in `profile.md`, or `TBD-n`. Write a known field type (Principle 3) directly in the table with no `TBD-n`. Use `TBD-n` for a field type only when the type is not known and it blocks implementation. The Constraint column holds input limits only; a default or a generated value lives in Processing (Principle 2). Write the `None` label from `profile.md` in a cell that has no value. Do not leave a cell empty.
 3. **Endpoint.** One request example and one success response example with its status. Write the success status here only. An example holds no `TBD-n`. Use only fields whose type the brief or the glossary gives. When no such field is known, leave out that example and write nothing in its place.
 4. **Processing.** Number the steps in execution order only when the brief states the order; otherwise list unnumbered rules and mark execution order or error precedence `TBD-n`. Processing holds only behavior that no other section owns: generated values, defaults, the execution-order line and the error-precedence line. It lists no validation check and no role check; those live in Errors (and the role rule in Identity). When the section has nothing else, it holds only the order and precedence line. Skip the Mermaid diagram when the execution order is `TBD-n` or fewer than three nodes carry meaning, and write nothing in its place. Otherwise add one Mermaid sequence diagram or flowchart in a fenced code block using only actors and components named in the brief. Give each rule that has an empty or edge case its own step.
 5. **Errors.** One table with condition, HTTP status and code. Errors appear nowhere else.

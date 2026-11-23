@@ -16,6 +16,13 @@ The agent reads this file, not `banned.txt`. Each table heading names the docume
 | 非常に、大変 *(warn: 大変)* | delete, or use a number from the source | |
 | 画期的、革新的、包括的、強力な、シームレス | say what it does. Use a number only when it comes from the source; otherwise use a visible detail, or delete the word | 「強力なツール」→「1秒に1万行を処理できるツール」(only if the source gives this number) |
 | ブリーフ、依頼文、素材には書かれて、素材に記載 | state the fact; in a spec, write `TBD-n` with its question; otherwise delete the point. The reader never saw the brief | 「素材には書かれていないが」→ (delete) |
+| 重要な役割を果たします, 鍵となります, 欠かせない *(warn, pending native review)* | state the concrete role or effect | |
+| 圧倒的, 飛躍的 *(warn, pending native review)* | delete, or use a number from the source | |
+| 現代社会において *(warn, pending native review)* | delete; open with a concrete event | |
+| いかがでしたか, まとめると, について解説します, を見ていきましょう *(warn, pending native review)* | delete; start or end directly on the content | |
+| 単なる, もちろんです, 素晴らしい質問 *(warn, pending native review)* | delete the filler | |
+| だけでなく *(warn, pending native review)* | split into two sentences | |
+| と考えられます, かもしれません *(warn, pending native review)* | state the fact or mark the gap directly | |
 
 ## Vague words in API design
 

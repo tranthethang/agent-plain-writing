@@ -1,6 +1,6 @@
 ---
 name: agent-plain-writing-common
-description: "Write, rewrite or shorten a short notice, announcement or other plain text that fits no other type, in plain concrete language with countable limits, in Vietnamese (vi), English (en) or Japanese (ja). Use for a notice, an announcement, a short message or a short internal note, or when such text is wordy or vague. Do not use for pure translation, fiction, poetry, marketing copy, UI strings or code comments. Viết, viết lại, rút gọn thông báo ngắn tiếng Việt, Anh, Nhật. 短いお知らせの作成・書き直し・簡潔化。"
+description: "Write, rewrite or shorten a short notice, announcement or other plain text that fits no other type, in plain concrete language with countable limits, in Vietnamese (vi), English (en) or Japanese (ja). Use for a notice, an announcement, a short message, a short internal note, or to deslopify or rewrite an agent reply, or when such text is wordy or vague. Do not use for pure translation, fiction, poetry, marketing copy, UI strings or code comments. Viết, viết lại, rút gọn thông báo ngắn hoặc viết lại câu trả lời tiếng Việt, Anh, Nhật. 短いお知らせの作成・書き直し・簡潔化・回答を書き直して。"
 ---
 
 # Common
@@ -32,6 +32,15 @@ Use for any text that no other type fits: a short technical notice, an announcem
 3. **End**: stop when the content ends. Add a closing line only when the reader has one action to take.
 
 No fixed headings. Add a heading only when the text is long enough that a reader needs to find a part.
+
+## Reply rewrite mode
+
+Use this mode when the user asks to deslopify or rewrite an agent reply (or the text pasted after the request).
+
+- Target reader: a sharp reader who has no project context.
+- Order: state the main conclusion first, then the background, then how it works.
+- Keep known technical terms. Define an unfamiliar term once in plain words.
+- Return only the rewrite, with no preamble or commentary.
 
 ## Brief the AI needs
 

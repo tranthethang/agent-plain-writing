@@ -34,6 +34,7 @@ npx skills add tranthethang/agent-plain-writing -g
 2. Gọi router, hoặc gọi thẳng một sub-skill:
    - `Use agent-plain-writing to shorten this text: ...` (router chọn loại)
    - `Use agent-plain-writing-user-guide to write a user guide in Japanese from these notes: ...`
+   - `Use agent-plain-writing-common để viết lại câu trả lời trước cho gọn: ...` (chế độ viết lại câu trả lời, đưa kết luận lên đầu)
 3. Kiểm tra bản nháp. Bạn cần Python 3.15+ và không cần cài thêm gói nào.
 
 ```bash

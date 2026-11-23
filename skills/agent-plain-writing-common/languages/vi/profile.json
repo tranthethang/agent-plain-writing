@@ -7,6 +7,18 @@
   "sentence_split": "(?<=[.!?…])\\s+",
   "boundary": true,
   "non_tech_terms": 3,
+  "patterns": {
+    "dash": true,
+    "middle_dot": true,
+    "curly_quotes": false,
+    "count_opening": true,
+    "negative_parallel": true,
+    "question_run": true
+  },
+  "pattern_regexes": {
+    "count_opening": "^(?:\\d+|một|hai|ba|bốn|năm|sáu|bảy|tám|chín|mười)\\s+(?:điều|cách|lý do|bước|lưu ý|điểm|bài học|mẹo)\\b",
+    "negative_parallel": "\\bkhông\\s+(?:chỉ|đơn thuần)\\b[^.!?;\\n]{1,80}\\bmà\\s+(?:còn|là)\\b"
+  },
   "types": {
     "tech-blog":  {"sentence": 28,   "paragraph": 3,    "length": [600, 800], "length_short": [300, 500], "terms": null},
     "essay":      {"sentence": 40,   "paragraph": 6,    "length": null,       "terms": null},

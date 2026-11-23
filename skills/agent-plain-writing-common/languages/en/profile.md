@@ -38,7 +38,7 @@ Use in the field table of an API. The labels follow the document language.
 
 Direction labels (the Direction column): `Request`, `Response`.
 
-Label for an empty Side effects section: `None`.
+Empty-cell label (and empty Side effects section): `None`.
 
 ## Jargon
 
@@ -52,4 +52,5 @@ Label for an empty Side effects section: `None`.
 - Empty openers: "There is a...", "It is important to note that...".
 - Hedging stacks: "may potentially be able to".
 - Passive voice with no actor: "Errors are logged." → "The system logs errors."
-- Punctuation: keep one style for the Oxford comma. Limit em dashes to one per paragraph.
+- Vague demonstratives opening a paragraph: "This creates a bottleneck." → "The queue depth creates a bottleneck."
+- Punctuation: keep one style for the Oxford comma. Never use em dashes or en dashes.

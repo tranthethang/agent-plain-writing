@@ -83,6 +83,11 @@ If a term **appears on the screen** (for example a button labeled "Token"), use 
 **Bad:** This guide aims to provide users with the information necessary to utilize the report export functionality.
 **Good:** This guide shows you how to export a report to an Excel file.
 
+### 11. Fake agency
+
+**Bad:** The settings page decides which alerts you receive.
+**Good:** Select which alerts to receive on the **Settings** page.
+
 ## Complete sample guide
 
 ```markdown

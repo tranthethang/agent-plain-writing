@@ -25,11 +25,34 @@ brief không
 brief chưa
 trong brief
 theo brief
+then chốt
+vượt trội
+đột phá
+minh chứng cho
+không thể phủ nhận
+đáng kinh ngạc
+thực sự
+cực kỳ
+ngày càng phát triển
+hãy cùng tìm hiểu
+tổng kết lại
+nói tóm lại
+hy vọng bài viết
+trong thời gian tới
+về lâu dài
+trên hành trình
+không đơn thuần là
+không chỉ đơn giản là
 [warn]
 không chỉ
 một cách
 bên cạnh đó
 ngoài ra
+nâng tầm
+kiến tạo
+khai phá
+hiện thực hóa
+góp phần
 [api-design]
 phù hợp
 thích hợp
@@ -54,6 +77,8 @@ tôi viết blog này để
 bài học rút ra:
 bài học:
 lưu ý:
+[tech-blog,essay,common]
+trong bối cảnh
 [report]
 kết quả:
 giả định:

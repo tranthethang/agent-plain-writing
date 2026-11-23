@@ -1,6 +1,6 @@
 ---
 name: agent-plain-writing
-description: "Router for plain, short, concrete writing in Vietnamese (vi), English (en) and Japanese (ja). Use when the user asks to write, rewrite or shorten a text, or says text is wordy, vague or too technical, and the document type is not clear. It picks the document type and the language, then hands off to a sub-skill. Do not use for pure translation, fiction, poetry, marketing copy, UI strings or code comments. Viết, viết lại, rút gọn văn bản tiếng Việt, Anh, Nhật khi chưa rõ loại văn bản. 文章の作成・書き直し・簡潔化 (文書の種類が不明なとき)。"
+description: "Router for plain, short, concrete writing in Vietnamese (vi), English (en) and Japanese (ja). Use when the user asks to write, rewrite, deslopify or shorten a text or an agent reply, or says text is wordy, vague or too technical, and the document type is not clear. It picks the document type and the language, then hands off to a sub-skill. Do not use for pure translation, fiction, poetry, marketing copy, UI strings or code comments. Viết, viết lại câu trả lời, rút gọn văn bản tiếng Việt, Anh, Nhật khi chưa rõ loại văn bản. 文章の作成・書き直し・簡潔化・回答を書き直して (文書の種類が不明なとき)。"
 ---
 
 # Plain writing router
@@ -22,6 +22,7 @@ This skill does one job: it picks the document type and the output language, the
 | A personal, reflective essay | `agent-plain-writing-essay` |
 | A spec for one API endpoint | `agent-plain-writing-api-design` |
 | A step-by-step guide or manual for general users | `agent-plain-writing-user-guide` |
+| A rewrite of an agent reply (deslopify) | `agent-plain-writing-common` |
 | A short notice, an announcement, or anything else | `agent-plain-writing-common` |
 
 ## Limits of this skill

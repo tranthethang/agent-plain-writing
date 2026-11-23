@@ -13,7 +13,7 @@ The agent reads this file, not `banned.txt`. Each table heading names the docume
 | it is important to note that, it's important to note, it is worth noting | (delete), or bold "Note:" | |
 | in today's fast-paced world | (delete). Open with a concrete event | |
 | seamless, robust, comprehensive, cutting-edge, state-of-the-art, game-changer, revolutionize, unlock the, empower | say what it does. Use a number only when it comes from the source; otherwise use a visible detail, or delete the word | "robust tool" → "tool that handles 10,000 rows a second" (only if the source gives 10,000) |
-| not only … but also *(warn)* | two sentences | "Not only fast but cheap" → "It is fast. It is also cheap." |
+| not only … but also, not just *(warn)* | two sentences | "Not only fast but cheap" → "It is fast. It is also cheap." |
 | plays a crucial role, plays a vital role | say the role, with a number only if it comes from the source | "Caching plays a crucial role" → "Caching keeps page loads under 1 second" (only if the source says 1 second) |
 | a wide range of | name them, or "many" | |
 | in the realm of | in | "in the realm of security" → "in security" |
@@ -21,6 +21,9 @@ The agent reads this file, not `banned.txt`. Each table heading names the docume
 | furthermore, moreover *(warn)* | (delete), or use a heading | |
 | very, really | (delete), or use a number from the source | |
 | the brief does not, the brief doesn't, the brief says, in the brief | state the fact; in a spec, write `TBD-n` with its question; otherwise leave the point out. The reader never saw the brief | "The brief does not say whether flour ran out again" → (delete) |
+| matters, worth noting, carries weight | state what changed or why the reader cares | "This matters because..." → state the concrete effect |
+| a testament to, pivotal, quietly, tapestry, landscape, boasts | state the concrete fact or delete the word | "boasts 10 endpoints" → "has 10 endpoints" |
+| as we move forward, for the time being | delete, or give a date or condition from the source | |
 
 ## Vague words in API design
 

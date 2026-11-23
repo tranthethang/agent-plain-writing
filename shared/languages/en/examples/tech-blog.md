@@ -43,6 +43,11 @@ Details in the stories are made up to serve as models. In real work, use the aut
 **Fault:** The claim stands alone. The reader cannot see why the change failed.
 **Fix:** Keep the sentence that links cause, change and result.
 
+### 8. Slogan headings and catchy labels
+
+**Bad:** `## The hidden cost of convenience`
+**Good:** `## Why shared state slowed the form`
+
 ## Complete sample post (about 620 words)
 
 ```markdown
@@ -74,7 +79,7 @@ Around four o'clock, I finally opened React DevTools Profiler and recorded a sin
 
 I closed my editor and sketched on paper which fields actually needed to talk to each other. Most groups on the page were completely independent. Only two permission toggles needed to read anything from the main account object.
 
-Instead of one giant store, I moved each form's state down into its own component. Shared values—the signed-in user and the active language—stayed in the global store. The live preview subscribed only to the form currently open on screen.
+Instead of one giant store, I moved each form's state down into its own component. Shared values, the signed-in user and the active language, stayed in the global store. The live preview subscribed only to the form currently open on screen.
 
 The refactor took one morning, mostly deleting wiring hooks I should never have added. I kept every field name identical so unsaved drafts in browser storage still loaded cleanly after deploy. When I recorded the same keystroke in the Profiler afterward, render time dropped from 1,800 ms to 12 ms.
 

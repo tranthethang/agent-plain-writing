@@ -7,6 +7,18 @@
   "sentence_split": "(?<=[。！？!?])\\s*",
   "boundary": false,
   "non_tech_terms": 3,
+  "patterns": {
+    "dash": true,
+    "middle_dot": true,
+    "curly_quotes": false,
+    "count_opening": true,
+    "negative_parallel": true,
+    "question_run": true
+  },
+  "pattern_regexes": {
+    "count_opening": "^(?:[0-9０-９]+|[一二三四五六七八九十]+)\\s*つの(?:ポイント|理由|方法|ステップ|注意点|こと)",
+    "negative_parallel": "だけでなく[^。！？\\n]{1,60}も"
+  },
   "types": {
     "tech-blog":  {"sentence": 60,   "paragraph": 3,    "length": [1500, 2000], "length_short": [750, 1250], "terms": null},
     "essay":      {"sentence": 80,   "paragraph": 6,    "length": null,         "terms": null},

@@ -22,6 +22,7 @@ Mã thoát: `0` sạch, `1` có vi phạm, `2` sai cách dùng. `--type blog` đ
 - Độ dài câu, độ dài đoạn, cụm từ cấm, số thuật ngữ, độ dài văn bản. Văn bản dài hơn giới hạn trên sẽ in cảnh báo và không làm đổi mã thoát. Văn bản ngắn hơn là bình thường, không cần kéo dài.
 - Nhãn báo cáo (như `Result:`) ở đầu bất kỳ dòng nào ngoài khối code.
 - Xuống dòng bằng dấu cách cuối dòng.
+- Các mẫu cấu hình trong `profile.json`: gạch ngang dài hoặc vừa, dấu chấm giữa, ngoặc kép cong (chỉ bật cho `en`), mở đoạn đếm số mục, câu song song phủ định, và nhiều câu hỏi liên tiếp.
 
 Script bỏ qua khối code, bảng và tiêu đề. Với `api-design`, script kiểm tra độ dài câu trong từng ô bảng. Với mục danh sách, script kiểm tra độ dài câu nhưng không kiểm tra độ dài đoạn.
 
