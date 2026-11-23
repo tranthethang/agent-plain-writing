@@ -1,10 +1,18 @@
 # AGENTS.md
 
-Instructions for AI agents (and humans) working **on this repository**. They are not the instructions of the skill itself. The skills' instructions are in the generated `skills/*/SKILL.md` files. You edit `shared/`, not those files.
+Use this guide when you edit this project.
+The skill rules themselves live in `skills/*/SKILL.md`.
+Edit `shared/` instead of those generated files.
 
-## What this repository is
+## What this project is
 
-A set of six agent skills: a router, `agent-plain-writing`, and five sub-skills, one for each document type (`agent-plain-writing-<type>`). They make AI write short, concrete, plain text in Vietnamese (`vi`), English (`en`) and Japanese (`ja`). See `README.md` for the overview.
+This project holds six skills.
+One router (`agent-plain-writing`) picks the type and language.
+Five sub-skills (`agent-plain-writing-<type>`) hold the writing rules.
+
+They help AI write plain text.
+Supported languages are Vietnamese (`vi`), English (`en`), and Japanese (`ja`).
+See `README.md` for an overview.
 
 ## Layout
 
@@ -34,32 +42,38 @@ evidence/<run>/           # outputs and results.json from real-agent runs (track
 tests/                    # unittest, standard library only
 ```
 
-Run `git config core.hooksPath .githooks` once after you clone. After you edit `shared/`, run `python3 scripts/sync_shared.py` and commit the generated files.
-
+Run `git config core.hooksPath .githooks` once after you clone.
+After you edit `shared/`, run `python3 scripts/sync_shared.py`.
+Then commit the generated files.
 
 ## Rules for editing
 
 ### General
 
-- The supported scope for now is `vi`, `en` and `ja`, all in full. A change for one document type covers all three languages.
-- `prose`, `poetry`, and `screen-design` are out of scope; their plans live in `.agent-relay/`.
-- Keep changes small and focused. Do not reformat files you are not changing.
-- `shared/skill-core.md`, `shared/families/`, `shared/doc-types/` and the router `SKILL.md` are written in **English**.
-- Examples in `languages/<lang>/examples/` are written in that language. Labels (Bad, Good, Fault, Fix) stay in English.
-- Do not invent facts. Stories and numbers in examples are illustrations. Keep the note that says so at the top of the file.
-- Keep each skill folder name, the `name` field in its `SKILL.md` frontmatter and the paths in `README.md` identical (`agent-plain-writing`, `agent-plain-writing-<type>`).
-- The `description` in the frontmatter decides when a skill is triggered. Keep it a single quoted line, under 1,024 characters, with no double quotes inside. Keep trigger words for all three languages. The router `description` matches only a general request with an unclear type. Write each sub-skill `description` at the top of `shared/doc-types/<type>.md`.
-- The type name for the user guide is `user-guide` everywhere. There is no `guide` alias.
+- Support `vi`, `en`, and `ja` in full. Update all three languages when you change a document type.
+- Leave `prose`, `poetry`, and `screen-design` out of scope. Their plans live in `.agent-relay/`.
+- Keep changes small and focused. Do not reformat unchanged files.
+- Write `shared/skill-core.md`, `shared/families/`, `shared/doc-types/`, and the router `SKILL.md` in **English**.
+- Write examples in `languages/<lang>/examples/` in that language. Keep labels (Bad, Good, Fault, Fix) in English.
+- Do not invent facts. Stories and numbers in examples are illustrations. Keep the note at the top of the file.
+- Match each skill folder name, frontmatter `name`, and `README.md` path (`agent-plain-writing`, `agent-plain-writing-<type>`).
+- The frontmatter `description` controls when a skill triggers. Keep it one quoted line under 1,024 characters. Avoid double quotes inside. Keep trigger words for all three languages. Match the router `description` only to unclear requests. Put each sub-skill `description` at the top of `shared/doc-types/<type>.md`.
+- Use `user-guide` everywhere for the user guide type. Do not use a `guide` alias.
 
 ### The three language folders stay parallel
 
-- Every language folder in `shared/` has the **same file set**. If you add a file in one, add it in the others (or open a note saying why not).
-- Every `shared/languages/<lang>/examples/` folder has the same five files: `common.md`, `tech-blog.md`, `essay.md`, `api-design.md`, `user-guide.md`. Each generated folder in `skills/` holds only its own `examples/<type>.md`.
-- Each examples file ends with a "Your own samples" section. Keep it.
+- Every language folder in `shared/` has the **same file set**. Add new files to all three folders, or explain why not.
+- Every `shared/languages/<lang>/examples/` folder has five files: `common.md`, `tech-blog.md`, `essay.md`, `api-design.md`, and `user-guide.md`. Each `skills/` folder keeps only its own `examples/<type>.md`.
+- End each examples file with a "Your own samples" section.
 
 ### Single sources of truth
 
-Each fact has one owner. Other files point to the owner and do not restate the fact. This table matches the "Who owns what" section of each generated `SKILL.md`. Edit the owner in `shared/`. Generated `SKILL.md` files and the copies in `skills/*/` are never edited.
+Each fact has one owner.
+Other files point to the owner without restating the fact.
+This table matches the "Who owns what" section in each generated `SKILL.md`.
+
+Edit only the owner in `shared/`.
+Never edit generated `SKILL.md` files or copies in `skills/*/`.
 
 | Fact | Owner | Mirror (update both) |
 |---|---|---|
@@ -76,67 +90,84 @@ Each fact has one owner. Other files point to the owner and do not restate the f
 
 **Precedence when two owners disagree:**
 
-- On limits and structure, `shared/doc-types/<type>.md` wins over `shared/skill-core.md`.
-- On words and grammar, `shared/languages/<lang>/` wins over `shared/doc-types/<type>.md`.
-- On how much a text may add beyond the source (reasoning, reactions, inner thoughts), the voice family in `shared/families/` and `shared/doc-types/<type>.md` win over the core rules. The facts in core rule 5 never change.
+- On limits and structure, `shared/doc-types/<type>.md` beats `shared/skill-core.md`.
+- On words and grammar, `shared/languages/<lang>/` beats `shared/doc-types/<type>.md`.
+- On extra content (reasoning, reactions, thoughts), voice rules beat core rules. Core rule 5 facts never change.
 - `limits` in `PLAIN-WRITING.md` override `profile.json` for that project. The checker warns above 1.5 times the profile value.
 
 ### Example pairs
 
-- Format: `**Bad:**`, `**Good:**`, then `**Fault:**` and `**Fix:**` where useful.
-- A "Good" example must pass the rules of the skill. In particular, it must contain no banned phrase for its language and type.
-- Complete samples (the fenced blocks near the end of each examples file) must pass the checker for their type.
-- Prefer adding a pair that came from a real failure over inventing a new one.
+- Format pairs as `**Bad:**`, `**Good:**`, then `**Fault:**` and `**Fix:**` when useful.
+- Every "Good" example must pass the skill rules. It must contain no banned phrase for its language and type.
+- Complete samples in each examples file must pass the checker.
+- Add pairs from real failures instead of inventing new ones.
 
 ### Japanese content
 
-- If you are not sure a Japanese sentence is natural, say so in your reply instead of guessing.
-- Do not count Japanese text by words. The unit is characters (`char`).
+- If you are unsure a Japanese sentence is natural, say so. Do not guess.
+- Count Japanese text in characters (`char`), not words.
 
 ### Vietnamese content
 
-- Sentence length is counted in syllables (*tiếng*, split by spaces). One word is about 1.4 syllables.
-- Keep Vietnamese diacritics intact. Do not convert files to ASCII.
+- Count sentence length in syllables (*tiếng*, split by spaces). One word is about 1.4 syllables.
+- Keep Vietnamese diacritics intact. Never convert files to ASCII.
 
 ### The script (`shared/scripts/check_style.py`)
 
-- Python 3.15+, **standard library only**. Do not add dependencies.
-- Keep the exit codes: `0` clean, `1` violations, `2` usage error.
-- Limits and word lists must be read from `languages/<lang>/` next to the script. Do not hard-code them.
-- If you add or rename an option, update `shared/skill-core.md` and `README.md` in the same change, then run `sync_shared.py`.
-- Keep the script mechanical. It must not try to judge voice, rhyme or meter.
+- Use Python 3.15+ with built-in modules only. Do not add dependencies.
+- Keep exit codes: `0` clean, `1` violations, `2` usage error.
+- Read limits and word lists from `languages/<lang>/` next to the script. Do not hard-code them.
+- When you change an option, update `shared/skill-core.md` and `README.md` together. Then run `sync_shared.py`.
+- Keep the script mechanical. Never judge voice, rhyme, or meter.
 
 ## Verify your change
 
-Automated tests live in `tests/` and use the standard library only. They cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type, the checker's table-cell, report-label and `--short-brief` checks, the "Units" tables in `README.md` and `docs/vi/README.md`, the shipped samples in `examples/` (`tests/test_examples_samples.py`), the report marker in `evals/score.py`, the time and date token count, the `PLAIN-WRITING.md` search from a subfolder, the length warning above the upper limit only, the `doc-types/` file for every type (`tests/test_doc_types.py`), and the parity of the generated sub-skills with `shared/` (`tests/test_shared_sync.py`). Run them from the repository root:
+Automated tests live in `tests/` and use built-in Python modules only.
+They cover:
+
+- `TBD-n` statistics and short-brief length range in `evals/score.py`
+- Document-type set and checker default type
+- Table-cell, report-label, and `--short-brief` checks
+- "Units" tables in `README.md` and `docs/vi/README.md`
+- Shipped samples in `examples/` (`tests/test_examples_samples.py`)
+- Report marker in `evals/score.py`
+- Time and date token count
+- `PLAIN-WRITING.md` search from a subfolder
+- Length warning above the upper limit only
+- `doc-types/` file for every type (`tests/test_doc_types.py`)
+- Parity of generated sub-skills with `shared/` (`tests/test_shared_sync.py`)
+
+Run them from the project root:
 
 ```bash
 python3 -m unittest discover -s tests
 python3 scripts/sync_shared.py --check
 ```
 
-GitHub Actions (`.github/workflows/test.yml`) runs both commands on push and pull request to `main` on Python 3.15.2 (pinned in the workflow).
+GitHub Actions (`.github/workflows/test.yml`) runs both commands on `main`.
+It uses Python 3.15.2 for pushes and pull requests.
 
-Run these checks by hand for the rest.
+Run these manual checks for everything else:
 
-1. **Bad and good samples.** For each language you touched, write one bad paragraph (long sentence, banned phrases) and one good paragraph. The bad one must exit with `1`, the good one with `0`:
+1. **Bad and good samples.** Write one bad paragraph and one good paragraph per language. The bad one must exit `1`. The good one must exit `0`:
 
    ```bash
    python3 shared/scripts/check_style.py bad.md  --lang en --type api-design
    python3 shared/scripts/check_style.py good.md --lang en --type api-design
    ```
 
-2. **Shipped samples.** Covered by `tests/test_examples_samples.py`. As a manual fallback, extract the last fenced block of each examples file and run the checker with the matching type (`tech-blog`, `essay`, `api-design`, `user-guide`, `common`). Expect no violations.
-3. **Parallel folders.** Compare the file lists of `shared/languages/vi`, `shared/languages/en` and `shared/languages/ja`. They must match.
-4. **Generated files.** Run `python3 scripts/sync_shared.py --check`. It exits `0` when every sub-skill matches `shared/`.
-5. **Mirrors.** If you changed `profile.json`, check the "Units" table in `README.md`. If you changed `banned.txt`, check that `banned-guide.md` lists the same phrases.
+2. **Shipped samples.** `tests/test_examples_samples.py` covers these. As a fallback, test the last fenced block of each examples file. Use its matching type and expect zero violations.
+3. **Parallel folders.** Compare file lists in `shared/languages/vi`, `en`, and `ja`. They must match.
+4. **Generated files.** Run `python3 scripts/sync_shared.py --check`. It exits `0` when all sub-skills match `shared/`.
+5. **Mirrors.** If you changed `profile.json`, check the "Units" table in `README.md`. If you changed `banned.txt`, check `banned-guide.md` for matching phrases.
 
-If you add more automated tests, put them under `tests/` and update this section and `README.md` when the run command changes.
+Put new automated tests under `tests/`.
+Update this section and `README.md` if the run command changes.
 
 ## Do not
 
-- Do not edit a generated `SKILL.md` or a copied file in `skills/agent-plain-writing-<type>/`.
-- Do not add a language, a document type or a core rule without updating `shared/`, the router, `README.md` and the files listed in the table above.
-- Do not put secrets, personal data or real customer content in examples.
+- Do not edit a generated `SKILL.md` or copied file in `skills/agent-plain-writing-<type>/`.
+- Never add a language, type, or core rule in one place. Update `shared/`, the router, `README.md`, and the owner table.
+- Do not put secrets, personal data, or real customer content in examples.
 - Do not delete the "Your own samples" sections.
-- Do not state that something was tested if you did not run it.
+- Never claim you tested something you did not run.
