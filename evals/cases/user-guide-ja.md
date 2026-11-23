@@ -1,6 +1,6 @@
 ---
 lang: ja
-type: guide
+type: user-guide
 non_tech: true
 ---
 

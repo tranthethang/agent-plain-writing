@@ -1,5 +1,5 @@
 # Technical terms. One term per line (case-insensitive).
-# Counted with --non-tech and for the guide type.
+# Counted with --non-tech and for the user-guide type.
 api
 cache
 token

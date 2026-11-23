@@ -16,7 +16,7 @@ _spec = importlib.util.spec_from_file_location("check_style", CHECKER)
 checker = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(checker)
 LANGS = ["vi", "en", "ja"]
-TYPES = {"tech-blog", "essay", "api-design", "guide", "common"}
+TYPES = {"tech-blog", "essay", "api-design", "user-guide", "common"}
 UNITS_ROW = {"vi": "vi", "en": "en", "ja": "ja"}
 
 
@@ -37,7 +37,7 @@ def profile(lang):
 class TypeSetTests(unittest.TestCase):
     def test_every_type_has_a_doc_type_file(self):
         for t in TYPES:
-            name = "user-guide.md" if t == "guide" else f"{t}.md"
+            name = f"{t}.md"
             self.assertTrue((SKILL / "doc-types" / name).is_file(), name)
 
     def test_profiles_have_only_current_types(self):
@@ -154,7 +154,7 @@ class ParityTests(unittest.TestCase):
             self.check_units(path.read_text(encoding="utf-8"), path.name)
 
     def check_units(self, readme, name):
-        order = ["tech-blog", "essay", "api-design", "guide", "common"]
+        order = ["tech-blog", "essay", "api-design", "user-guide", "common"]
         for lang in LANGS:
             row = next(l for l in readme.splitlines() if l.startswith(f"| `{lang}` |"))
             cells = [c.strip() for c in row.strip("|").split("|")][2:]

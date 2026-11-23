@@ -1,5 +1,5 @@
 # Thuật ngữ kỹ thuật. Mỗi dòng một thuật ngữ (không phân biệt hoa thường).
-# Dùng để đếm khi chạy với --non-tech hoặc --type guide.
+# Dùng để đếm khi chạy với --non-tech hoặc --type user-guide.
 api
 cache
 token

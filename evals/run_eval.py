@@ -26,7 +26,7 @@ TYPE_FILES = {
     "tech-blog": "tech-blog.md",
     "essay": "essay.md",
     "api-design": "api-design.md",
-    "guide": "user-guide.md",
+    "user-guide": "user-guide.md",
     "common": "common.md",
 }
 
@@ -135,7 +135,7 @@ def build_prompt(case_path, with_skill):
             ("Language profile", SKILL_DIR / "languages" / lang / "profile.md"),
             ("Banned phrases guide", SKILL_DIR / "languages" / lang / "banned-guide.md"),
         ])
-        if doc_type == "guide" or meta.get("non_tech"):
+        if doc_type == "user-guide" or meta.get("non_tech"):
             extra_files.append(("Terms", SKILL_DIR / "languages" / lang / "terms.txt"))
         extra_files.append(("Examples", SKILL_DIR / "languages" / lang / "examples" / example_file))
         for label, path in extra_files:

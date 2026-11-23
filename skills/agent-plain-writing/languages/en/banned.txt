@@ -46,7 +46,7 @@ flexible
 efficient
 secure
 user-friendly
-[guide]
+[user-guide]
 carry out
 perform the
 perform a

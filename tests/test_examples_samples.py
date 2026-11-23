@@ -15,7 +15,7 @@ FILE_TYPES = {
     "tech-blog.md": "tech-blog",
     "essay.md": "essay",
     "api-design.md": "api-design",
-    "user-guide.md": "guide",
+    "user-guide.md": "user-guide",
     "common.md": "common",
 }
 FENCE_RE = re.compile(r"^(`{3,})[^\n]*\n(.*?)\n^\1[ \t]*$", re.M | re.S)

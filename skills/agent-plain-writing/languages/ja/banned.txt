@@ -32,7 +32,7 @@
 柔軟
 効率的
 安全に
-[guide]
+[user-guide]
 実施
 設定を行
 [tech-blog,essay]

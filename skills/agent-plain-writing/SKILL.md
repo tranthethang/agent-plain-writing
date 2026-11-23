@@ -67,7 +67,7 @@ These rules hold for every document type:
 
 Numeric limits are per language and type. They live only in `languages/<lang>/profile.json`. A type file may relax or tighten a rule. See "Who owns what" for which file wins.
 
-### `plain` (`tech-blog`, `api-design`, `guide`, `common`)
+### `plain` (`tech-blog`, `api-design`, `user-guide`, `common`)
 
 One voice: **short, concrete, understood on first read.**
 
@@ -131,7 +131,7 @@ For `tech-blog` and `essay`, keep human context, reasoning, and tension instead 
 ```
 python3 <skill-dir>/scripts/check_style.py draft.md --lang en --type tech-blog
 python3 <skill-dir>/scripts/check_style.py spec.md  --lang ja --type api-design
-python3 <skill-dir>/scripts/check_style.py guide.md --lang vi --type guide
+python3 <skill-dir>/scripts/check_style.py user-guide.md --lang vi --type user-guide
 python3 <skill-dir>/scripts/check_style.py post.md  --lang en --type tech-blog --non-tech
 ```
 

@@ -35,7 +35,7 @@ def parse_case_meta(case_text):
         if k == "lang":
             meta["lang"] = v
         elif k == "type":
-            meta["type"] = check_style.TYPE_ALIASES.get(v, v)
+            meta["type"] = v
         elif k == "non_tech":
             meta["non_tech"] = v.lower() in ("true", "1", "yes")
         elif k == "short_brief":

@@ -23,7 +23,7 @@ The register is a Japanese form, so it is listed here. Choose one register per d
 |---|---|---|
 | tech-blog | です・ます調 | Friendly but direct |
 | essay | だ・である調 | Plain form by default |
-| guide | です・ます調 | Steps end in 「〜します」. Instructions use 「〜してください」 sparingly (one per section at most) |
+| user-guide | です・ます調 | Steps end in 「〜します」. Instructions use 「〜してください」 sparingly (one per section at most) |
 | api-design | である調 / 常体 | Plain form: 「〜する。」「〜しない。」. Table cells may end in a noun (体言止め) |
 | common | です・ます調 | Plain, direct form for general text |
 

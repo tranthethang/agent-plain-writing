@@ -40,7 +40,7 @@ dễ dàng
 linh hoạt
 hiệu quả
 an toàn
-[guide]
+[user-guide]
 thực hiện
 cấu hình
 [tech-blog,essay]

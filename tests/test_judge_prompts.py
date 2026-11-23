@@ -30,16 +30,16 @@ class WriteJudgePromptsTests(unittest.TestCase):
         self.addCleanup(patcher.stop)
 
     def test_writes_one_prompt_per_with_skill_output(self):
-        cases = [CASES / "guide-en.md", CASES / "common-en.md"]
-        (self.run_dir / "guide-en.with_skill.md").write_text("GUIDE-OUTPUT-MARK", encoding="utf-8")
+        cases = [CASES / "user-guide-en.md", CASES / "common-en.md"]
+        (self.run_dir / "user-guide-en.with_skill.md").write_text("GUIDE-OUTPUT-MARK", encoding="utf-8")
         (self.run_dir / "common-en.with_skill.md").write_text("COMMON-OUTPUT-MARK", encoding="utf-8")
-        (self.run_dir / "guide-en.without_skill.md").write_text("BASELINE-MARK", encoding="utf-8")
+        (self.run_dir / "user-guide-en.without_skill.md").write_text("BASELINE-MARK", encoding="utf-8")
         count = run_eval.write_judge_prompts(self.run_dir, cases)
         self.assertEqual(count, 2)
         target = self.judge_dir / self.run_dir.name
         self.assertEqual(sorted(p.name for p in target.iterdir()),
-                         ["common-en.judge.md", "guide-en.judge.md"])
-        guide = (target / "guide-en.judge.md").read_text(encoding="utf-8")
+                         ["common-en.judge.md", "user-guide-en.judge.md"])
+        guide = (target / "user-guide-en.judge.md").read_text(encoding="utf-8")
         self.assertIn("GUIDE-OUTPUT-MARK", guide)
         self.assertNotIn("BASELINE-MARK", guide)
         self.assertIn("invented_steps", guide)
@@ -47,13 +47,13 @@ class WriteJudgePromptsTests(unittest.TestCase):
         self.assertNotIn("{{OUTPUT}}", guide)
 
     def test_skips_case_without_output(self):
-        (self.run_dir / "guide-en.with_skill.md").write_text("x", encoding="utf-8")
-        count = run_eval.write_judge_prompts(self.run_dir, [CASES / "guide-en.md", CASES / "essay-en.md"])
+        (self.run_dir / "user-guide-en.with_skill.md").write_text("x", encoding="utf-8")
+        count = run_eval.write_judge_prompts(self.run_dir, [CASES / "user-guide-en.md", CASES / "essay-en.md"])
         self.assertEqual(count, 1)
         self.assertFalse((self.judge_dir / self.run_dir.name / "essay-en.judge.md").exists())
 
     def test_no_outputs_creates_no_folder(self):
-        self.assertEqual(run_eval.write_judge_prompts(self.run_dir, [CASES / "guide-en.md"]), 0)
+        self.assertEqual(run_eval.write_judge_prompts(self.run_dir, [CASES / "user-guide-en.md"]), 0)
         self.assertFalse(self.judge_dir.exists())
 
 
