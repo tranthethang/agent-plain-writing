@@ -37,7 +37,7 @@ npx skills add tranthethang/agent-plain-writing -g
 2. Ask the router, or name one sub-skill:
    - `Use agent-plain-writing to shorten this text: ...` (the router picks the type)
    - `Use agent-plain-writing-user-guide to write a user guide in Japanese from these notes: ...`
-3. Check a draft (Python 3.7+, no packages):
+3. Check a draft (Python 3.15+, no packages):
 
 ```bash
 python3 skills/agent-plain-writing-tech-blog/scripts/check_style.py draft.md --lang en --type tech-blog

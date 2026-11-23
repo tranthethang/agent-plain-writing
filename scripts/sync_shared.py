@@ -4,7 +4,7 @@
     python3 scripts/sync_shared.py          write the generated files
     python3 scripts/sync_shared.py --check  exit 1 when any file differs
 
-Python 3.7+, standard library only.
+Python 3.15+, standard library only.
 """
 import argparse
 import re

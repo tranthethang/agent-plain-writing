@@ -100,7 +100,7 @@ Each fact has one owner. Other files point to the owner and do not restate the f
 
 ### The script (`shared/scripts/check_style.py`)
 
-- Python 3.7+, **standard library only**. Do not add dependencies.
+- Python 3.15+, **standard library only**. Do not add dependencies.
 - Keep the exit codes: `0` clean, `1` violations, `2` usage error.
 - Limits and word lists must be read from `languages/<lang>/` next to the script. Do not hard-code them.
 - If you add or rename an option, update `shared/skill-core.md` and `README.md` in the same change, then run `sync_shared.py`.
