@@ -1,0 +1,67 @@
+# One phrase per line (case-insensitive). [name] = applies only to that document type. [all] = every type. [warn] = warning only.
+# Keep in sync with banned-guide.md. Phrases match from the start of a word.
+# [report] = report labels that must not start any line of the document outside code blocks.
+[all]
+in order to
+delve
+it is important to note
+it's important to note
+it is worth noting
+in today's
+fast-paced
+seamless
+robust
+comprehensive
+cutting-edge
+state-of-the-art
+game-changer
+revolutionize
+unlock the
+empower
+a wide range of
+plays a crucial role
+plays a vital role
+in the realm of
+at the end of the day
+needless to say
+as we all know
+very
+really
+the brief does not
+the brief doesn't
+the brief says
+in the brief
+[warn]
+not only
+furthermore
+moreover
+[api-design]
+appropriate
+as needed
+if necessary
+etc.
+quickly
+easily
+flexible
+efficient
+secure
+user-friendly
+[user-guide]
+carry out
+perform the
+perform a
+configure
+[tech-blog,essay]
+utilize
+leverage
+in conclusion
+to sum up
+i am writing this blog to
+i'm writing this blog to
+lesson learned:
+lesson:
+key takeaway:
+[report]
+result:
+guesses:
+assumptions:

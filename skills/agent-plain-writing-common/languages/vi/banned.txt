@@ -1,0 +1,60 @@
+# Mỗi dòng một cụm (không phân biệt hoa thường).
+# [tên] = chỉ áp dụng cho profile đó. [all] = mọi profile. [warn] = cảnh báo, không tính lỗi.
+# Giữ đồng bộ với banned-guide.md. Cụm khớp từ đầu từ.
+# [report] = nhãn báo cáo không được mở đầu bất kỳ dòng nào của văn bản, trừ dòng trong khối code.
+[all]
+nhằm mục đích
+có thể nói rằng
+đóng vai trò quan trọng
+đóng vai trò then chốt
+hãy cùng
+trong thế giới ngày nay
+trong thời đại
+toàn diện
+tối ưu hóa
+tiến hành
+thực hiện việc
+cho phép người dùng có thể
+đảm bảo rằng
+điều quan trọng cần lưu ý
+cần lưu ý rằng
+thông qua việc
+như chúng ta đã biết
+hạng mục
+brief không
+brief chưa
+trong brief
+theo brief
+[warn]
+không chỉ
+một cách
+bên cạnh đó
+ngoài ra
+[api-design]
+phù hợp
+thích hợp
+nếu cần
+v.v
+nhanh chóng
+dễ dàng
+linh hoạt
+hiệu quả
+an toàn
+[user-guide]
+thực hiện
+cấu hình
+[tech-blog,essay]
+vô cùng
+mạnh mẽ
+tận dụng
+trong quá trình
+nhìn chung
+tóm lại
+tôi viết blog này để
+bài học rút ra:
+bài học:
+lưu ý:
+[report]
+kết quả:
+giả định:
+phỏng đoán:
