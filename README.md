@@ -1,10 +1,8 @@
 # agent-plain-writing
 
-A set of agent skills that tells an AI to write **short, concrete text** in Vietnamese (`vi`), English (`en`) and Japanese (`ja`).
+AI models often write padded, abstract prose by default. I built six skills so AI writes short, concrete text in Vietnamese (`vi`), English (`en`), and Japanese (`ja`).
 
-The Vietnamese README is at [docs/vi/README.md](docs/vi/README.md).
-
-The set has a router skill and five sub-skills, one for each document type. Each sub-skill handles `vi`, `en` and `ja`. It gives the AI limits it can count (sentence length, paragraph length, banned phrases, jargon), bad → good examples per language and document type, and a script that checks a draft against those limits.
+For Vietnamese, see [docs/vi/README.md](docs/vi/README.md).
 
 | | |
 |---|---|
@@ -13,31 +11,23 @@ The set has a router skill and five sub-skills, one for each document type. Each
 
 ![agent-plain-writing banner](assets/screenshot.png)
 
-
-## Status
-
-- Five document types in two voice families: `plain` (`tech-blog`, `api-design`, `user-guide`, `common`) and `creative` (`essay`). Each type has its own sub-skill: `agent-plain-writing-<type>`. The router `agent-plain-writing` picks the type when the request does not name it. `prose`, `poetry`, and `screen-design` are out of scope for now.
-- **Breaking change:** `--type blog` is now `--type tech-blog`. The default `--type` is `common`.
-- The checker is mechanical. It counts. It does not judge voice. The checker warns only when the text is longer than the upper length limit; a shorter text is fine, and it never asks for padding. The warning does not fail the check.
-- The numeric limits are starting estimates, not verified standards.
-- The evidence is small: one eval run per version, simulated cases, mechanical scores only. See [Evidence](#evidence).
-- Automated tests cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type, the checker's table-cell, report-label and `--short-brief` checks, the time and date token count, the `PLAIN-WRITING.md` search from a subfolder, the length warning above the upper limit only, the `doc-types/` file for every type, the Units tables, the shipped samples in `examples/`, and the parity of the generated sub-skills with `shared/`. Run them with `python3 -m unittest discover -s tests` and `python3 scripts/sync_shared.py --check`. `AGENTS.md` lists the manual checks for the rest.
-- GitHub Actions runs those two commands on push and pull request to `main` (Python 3.15.2).
-
 ## Quick start
 
-1. Install (needs Node.js; manual install is in [docs](docs/en/01-install.en.md)). All six skills install together:
+One router skill picks the document type, and five sub-skills enforce countable limits per language and type. Each sub-skill ships bad-to-good examples and a Python script that checks your draft against those limits.
+
+1. Install all six skills together (requires Node.js; manual steps are in [docs](docs/en/01-install.en.md)):
 
 ```bash
 npx skills add tranthethang/agent-plain-writing -g
 ```
 
-> **Note for Antigravity IDE:** Install with `npx skills add tranthethang/agent-plain-writing -a antigravity -g`, and make sure all six skills (`agent-plain-writing` and the five `agent-plain-writing-<type>` sub-skills) are in `~/.gemini/config/skills/` (global) or `.agents/skills/` (project). Start a new chat or reload the IDE so it loads the new skills.
+> **Antigravity IDE:** Run `npx skills add tranthethang/agent-plain-writing -a antigravity -g`. Confirm all six skills sit in `~/.gemini/config/skills/` (global) or `.agents/skills/` (project), then reload the IDE or open a new chat.
 
-2. Ask the router, or name one sub-skill:
-   - `Use agent-plain-writing to shorten this text: ...` (the router picks the type)
+2. Prompt the router or call one sub-skill directly:
+   - `Use agent-plain-writing to shorten this text: ...` (router picks the type)
    - `Use agent-plain-writing-user-guide to write a user guide in Japanese from these notes: ...`
-3. Check a draft (Python 3.15+, no packages):
+
+3. Run the checker on your draft (Python 3.15+, standard library only):
 
 ```bash
 python3 skills/agent-plain-writing-tech-blog/scripts/check_style.py draft.md --lang en --type tech-blog
@@ -48,7 +38,7 @@ Exit codes: `0` clean, `1` violations, `2` usage error.
 
 ## Units
 
-Mirrors `sentence` / `paragraph` limits in `shared/languages/<lang>/profile.json`:
+This table mirrors the `sentence` / `paragraph` limits in `shared/languages/<lang>/profile.json`:
 
 | Language | Unit | `tech-blog` | `essay` | `api-design` | `user-guide` | `common` |
 |---|---|---|---|---|---|---|
@@ -56,15 +46,28 @@ Mirrors `sentence` / `paragraph` limits in `shared/languages/<lang>/profile.json
 | `en` | words | 20 / 3 | 30 / 6 | 18 / 3 | 12 / 3 | 20 / 3 |
 | `ja` | characters (字) | 60 / 3 | 80 / 6 | 55 / 3 | 40 / 3 | 60 / 3 |
 
-`tech-blog` text length ceiling (`length` / `length_short` for a short brief; only the upper number triggers a warning): `vi` 600–800 / 300–500 words, `en` 600–800 / 300–500 words, `ja` 1500–2000 / 750–1250 字. Other types have no length range.
+For `tech-blog`, the length ceiling (`length` / `length_short`) is 600–800 / 300–500 words for `vi` and `en`. For `ja`, it is 1500–2000 / 750–1250 字; other types have no length range.
 
-## Evidence
+## Status and evidence
 
-Eval runs live in [evidence/](evidence/README.md). Each run has its own folder with the raw outputs, `results.json` and a `README.md` that holds the table, what the numbers show and the limits. Each run uses a real agent with the skills installed (see [evals/README.md](evals/README.md)). They use checker results only, with no AI judge and no human review. A run is a small sample, not proof.
+The five types sit in two voice families: `plain` (`tech-blog`, `api-design`, `user-guide`, `common`) and `creative` (`essay`). `prose`, `poetry`, and `screen-design` are out of scope for now.
+
+Two things to know before you rely on the numbers:
+
+- **Breaking change:** `--type blog` is now `--type tech-blog`, and the default `--type` is `common`.
+- **Mechanical checks only:** The script counts tokens and flags banned phrases, without judging voice. It warns only above the upper length limit, never asks for padding, and never fails a run on length alone.
+
+Our numeric limits are starting estimates, not verified standards. Each folder in [evidence/](evidence/README.md) holds raw outputs, `results.json`, and a summary. Each run uses one real agent on simulated cases (see [evals/README.md](evals/README.md)).
+
+Those runs use checker scores without an AI judge or human review. Treat them as small samples, not proof.
+
+Automated tests check `evals/score.py` stats, document types, default type, `--short-brief`, table cells, and report labels. They also check time/date counts, `PLAIN-WRITING.md` lookup, length warnings, `doc-types/`, Units tables, `examples/`, and `shared/` parity.
+
+GitHub Actions runs `python3 -m unittest discover -s tests` and `python3 scripts/sync_shared.py --check` on Python 3.15.2. See `AGENTS.md` for manual checks.
 
 ## Documentation
 
-Each topic has one file per language, in `docs/<lang>/`.
+Each topic has one file per language under `docs/<lang>/`:
 
 | # | Topic | English | Tiếng Việt | 日本語 |
 |---|---|---|---|---|
@@ -76,16 +79,12 @@ Each topic has one file per language, in `docs/<lang>/`.
 | 05 | Evals | [en](docs/en/05-evals.en.md) | [vi](docs/vi/05-evals.vi.md) | [ja](docs/ja/05-evals.ja.md) |
 | 06 | Limitations | [en](docs/en/06-limitations.en.md) | [vi](docs/vi/06-limitations.vi.md) | [ja](docs/ja/06-limitations.ja.md) |
 
-## Contributing
+## Contributing and license
 
-Read [AGENTS.md](AGENTS.md) before changing anything. It keeps the three language folders parallel.
-
-Enable the `pre-commit` hook once after cloning so commits cannot leave `skills/` out of sync with `shared/`:
+Read [AGENTS.md](AGENTS.md) before you edit anything so the three language folders stay parallel. Enable the `pre-commit` hook once after cloning so commits cannot leave `skills/` out of sync with `shared/`:
 
 ```bash
 git config core.hooksPath .githooks
 ```
 
-## License
-
-GNU GPL v3. See [LICENSE](LICENSE).
+Licensed under GNU GPL v3; see [LICENSE](LICENSE).
