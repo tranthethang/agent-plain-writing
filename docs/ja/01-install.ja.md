@@ -22,6 +22,6 @@ npx skills add tranthethang/agent-plain-writing -g
 
 ## 注記
 
-- Python 3.7 以上が必要なのは、チェックスクリプトを実行するときだけです（[03-checker](03-checker.ja.md)）。ほかの依存はありません。
+- Python 3.15 以上が必要なのは、チェックスクリプトを実行するときだけです（[03-checker](03-checker.ja.md)）。ほかの依存はありません。
 
 次へ：[02-usage](02-usage.ja.md)。

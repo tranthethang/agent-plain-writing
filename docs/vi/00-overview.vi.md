@@ -23,7 +23,7 @@ Thêm chữ "rõ ràng" hay "thân thiện" vào prompt không sửa được. S
 - **Năm sub-skill**, `agent-plain-writing-<type>`. Mỗi sub-skill có quy tắc lõi và quy trình (6 quy tắc chung và quy tắc riêng cho từng nhóm giọng văn, viết nháp rồi sửa), cùng giọng văn, cấu trúc và độ dài của loại đó.
 - **Năm loại văn bản trong hai nhóm giọng văn:** `plain` (`tech-blog`, `api-design`, `user-guide`, `common`) và `creative` (`essay`). Mỗi loại có một file trong `shared/doc-types/`.
 - **Ba thư mục ngôn ngữ** chứa đơn vị đếm, giới hạn số, cụm từ cấm, danh sách thuật ngữ và ví dụ.
-- **Một script kiểm tra**, `check_style.py` (Python 3.7+, chỉ dùng thư viện chuẩn). Mỗi sub-skill giữ một bản sao riêng.
+- **Một script kiểm tra**, `check_style.py` (Python 3.15+, chỉ dùng thư viện chuẩn). Mỗi sub-skill giữ một bản sao riêng.
 - **Bộ eval** trong `evals/` (xem [05-evals](05-evals.vi.md)).
 
 `prose`, `poetry` và `screen-design` hiện nằm ngoài phạm vi.

@@ -23,7 +23,7 @@ Words such as "clear" or "friendly" in a prompt do not fix this. The skill uses 
 - **Five sub-skills,** `agent-plain-writing-<type>`. Each has the core rules and workflow (6 shared rules plus rules per voice family, draft then edit) and the voice, structure and length of its type.
 - **Five document types in two voice families:** `plain` (`tech-blog`, `api-design`, `user-guide`, `common`) and `creative` (`essay`). Each type has a file in `shared/doc-types/`.
 - **Three language folders** with the unit, numeric limits, banned phrases, jargon list and examples.
-- **A checker script**, `check_style.py` (Python 3.7+, standard library only). Each sub-skill holds its own copy.
+- **A checker script**, `check_style.py` (Python 3.15+, standard library only). Each sub-skill holds its own copy.
 - **An eval kit** in `evals/` (see [05-evals](05-evals.en.md)).
 
 `prose`, `poetry`, and `screen-design` are out of scope for now.

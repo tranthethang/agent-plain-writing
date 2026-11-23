@@ -22,6 +22,6 @@ Nếu không dùng `npx`, chép mọi thư mục `skills/agent-plain-writing*/` 
 
 ## Lưu ý
 
-- Chỉ cần Python 3.7 trở lên để chạy script kiểm tra ([03-checker](03-checker.vi.md)). Skill không phụ thuộc gì khác.
+- Chỉ cần Python 3.15 trở lên để chạy script kiểm tra ([03-checker](03-checker.vi.md)). Skill không phụ thuộc gì khác.
 
 Tiếp theo: [02-usage](02-usage.vi.md).

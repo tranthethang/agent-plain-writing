@@ -22,6 +22,6 @@ If you do not use `npx`, copy every folder `skills/agent-plain-writing*/` into t
 
 ## Notes
 
-- Python 3.7 or later is needed only to run the checker ([03-checker](03-checker.en.md)). The skill has no other dependency.
+- Python 3.15 or later is needed only to run the checker ([03-checker](03-checker.en.md)). The skill has no other dependency.
 
 Next: [02-usage](02-usage.en.md).
