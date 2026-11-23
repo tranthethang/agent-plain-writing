@@ -15,7 +15,7 @@ import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SCRIPTS_DIR = ROOT / "skills" / "agent-plain-writing" / "scripts"
+SCRIPTS_DIR = ROOT / "shared" / "scripts"
 JUDGE_TEMPLATE = Path(__file__).resolve().parent / "judge-prompt.md"
 
 sys.path.insert(0, str(SCRIPTS_DIR))
