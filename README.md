@@ -31,6 +31,8 @@ The set has a router skill and five sub-skills, one for each document type. Each
 npx skills add tranthethang/agent-plain-writing -g
 ```
 
+> **Note for Antigravity IDE:** Install with `npx skills add tranthethang/agent-plain-writing -a antigravity -g`, and make sure all six skills (`agent-plain-writing` and the five `agent-plain-writing-<type>` sub-skills) are in `~/.gemini/config/skills/` (global) or `.agents/skills/` (project). Start a new chat or reload the IDE so it loads the new skills.
+
 2. Ask the router, or name one sub-skill:
    - `Use agent-plain-writing to shorten this text: ...` (the router picks the type)
    - `Use agent-plain-writing-user-guide to write a user guide in Japanese from these notes: ...`
