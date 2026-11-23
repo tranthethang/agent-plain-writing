@@ -51,6 +51,8 @@ def expected():
                 if "__pycache__" in p.parts or p.name == ".DS_Store":
                     continue
                 rel = p.relative_to(src) if src.is_dir() else Path()
+                if src_rel == "languages" and len(rel.parts) >= 2 and rel.parts[1] == "examples" and p.name != f"{t}.md":
+                    continue
                 files[out / dst_rel / rel] = p.read_bytes()
     return files
 

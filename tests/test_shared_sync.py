@@ -49,6 +49,15 @@ class SharedSyncTests(unittest.TestCase):
             self.assertEqual(sets[0], sets[1], d.name)
             self.assertEqual(sets[0], sets[2], d.name)
 
+    def test_subskills_hold_only_matching_example(self):
+        prefix = "agent-plain-writing-"
+        for d in (p for p in skill_dirs() if p.name != "agent-plain-writing"):
+            self.assertTrue(d.name.startswith(prefix), d.name)
+            doc_type = d.name[len(prefix):]
+            for lang in LANGS:
+                examples = sorted(p.name for p in (d / "languages" / lang / "examples").iterdir() if p.is_file())
+                self.assertEqual(examples, [f"{doc_type}.md"], f"{d.name}/{lang}")
+
 
 if __name__ == "__main__":
     unittest.main()
