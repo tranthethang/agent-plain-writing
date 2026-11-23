@@ -115,7 +115,7 @@ python3 -m unittest discover -s tests
 python3 scripts/sync_shared.py --check
 ```
 
-GitHub Actions (`.github/workflows/test.yml`) runs both commands on push and pull request to `main` across Python 3.7 and 3.x.
+GitHub Actions (`.github/workflows/test.yml`) runs both commands on push and pull request to `main` on Python 3.15.2 (pinned in the workflow).
 
 Run these checks by hand for the rest.
 

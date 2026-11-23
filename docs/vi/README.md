@@ -21,7 +21,7 @@ Một script kiểm tra bản nháp theo các giới hạn đó.
 - Các giới hạn số là ước lượng ban đầu. Chúng chưa được kiểm chứng.
 - Bằng chứng còn ít. Mới có vài lần chạy eval trên ca mô phỏng, chỉ có điểm tự động. Xem [Bằng chứng](#bằng-chứng).
 - Test tự động kiểm tra các điểm sau. Thống kê `TBD-n` và khoảng độ dài cho brief ngắn trong `evals/score.py`. Tập loại văn bản. Loại mặc định của script. Phép kiểm tra ô bảng, nhãn báo cáo và `--short-brief` của script. Các bảng Đơn vị. Cách đếm mốc giờ và ngày. Việc tìm `PLAIN-WRITING.md` từ thư mục con. Cảnh báo độ dài chỉ ở giới hạn trên. File `doc-types/` của mọi loại. Các mẫu hoàn chỉnh trong `examples/`. Việc các sub-skill được sinh ra khớp với `shared/`. Chạy test bằng `python3 -m unittest discover -s tests` và `python3 scripts/sync_shared.py --check`. `AGENTS.md` liệt kê các bước kiểm tra tay còn lại.
-- GitHub Actions chạy hai lệnh trên khi push và mở pull request vào `main` (Python 3.7 và 3.x).
+- GitHub Actions chạy hai lệnh trên khi push và mở pull request vào `main` (Python 3.15.2).
 
 ## Bắt đầu nhanh
 
