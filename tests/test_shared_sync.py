@@ -37,6 +37,10 @@ class SharedSyncTests(unittest.TestCase):
             self.assertIsNotNone(m, f"{d.name}: description must be one quoted line with no inner quotes")
             self.assertLess(len(m.group(1)), 1024, d.name)
 
+    def test_router_holds_only_skill_md(self):
+        files = sorted(p.name for p in (SKILLS / "agent-plain-writing").iterdir())
+        self.assertEqual(files, ["SKILL.md"])
+
     def test_language_file_sets_match(self):
         for d in (p for p in skill_dirs() if p.name != "agent-plain-writing"):
             sets = [sorted(str(p.relative_to(d / "languages" / l))
