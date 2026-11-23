@@ -25,7 +25,7 @@ skills/                   # generated, except the router. Never edit by hand
 ├── agent-plain-writing/               # router: SKILL.md only, edited by hand
 └── agent-plain-writing-<type>/        # tech-blog, essay, api-design, user-guide, common
     ├── SKILL.md          # generated
-    ├── languages/        # copy of shared/languages/
+    ├── languages/        # copy of shared/languages/ (only examples/<type>.md)
     ├── scripts/          # copy of shared/scripts/check_style.py
     └── templates/        # copy of shared/templates/
 
@@ -53,8 +53,8 @@ Run `git config core.hooksPath .githooks` once after you clone. After you edit `
 
 ### The three language folders stay parallel
 
-- Every language folder has the **same file set**. If you add a file in one, add it in the others (or open a note saying why not).
-- Every `examples/` folder has the same five files: `common.md`, `tech-blog.md`, `essay.md`, `api-design.md`, `user-guide.md`.
+- Every language folder in `shared/` has the **same file set**. If you add a file in one, add it in the others (or open a note saying why not).
+- Every `shared/languages/<lang>/examples/` folder has the same five files: `common.md`, `tech-blog.md`, `essay.md`, `api-design.md`, `user-guide.md`. Each generated folder in `skills/` holds only its own `examples/<type>.md`.
 - Each examples file ends with a "Your own samples" section. Keep it.
 
 ### Single sources of truth
@@ -114,6 +114,8 @@ Automated tests live in `tests/` and use the standard library only. They cover t
 python3 -m unittest discover -s tests
 python3 scripts/sync_shared.py --check
 ```
+
+GitHub Actions (`.github/workflows/test.yml`) runs both commands on push and pull request to `main` across Python 3.7 and 3.x.
 
 Run these checks by hand for the rest.
 

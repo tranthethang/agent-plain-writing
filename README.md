@@ -22,6 +22,7 @@ The set has a router skill and five sub-skills, one for each document type. Each
 - The numeric limits are starting estimates, not verified standards.
 - The evidence is small: one eval run per version, simulated cases, mechanical scores only. See [Evidence](#evidence).
 - Automated tests cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type, the checker's table-cell, report-label and `--short-brief` checks, the time and date token count, the `PLAIN-WRITING.md` search from a subfolder, the length warning above the upper limit only, the `doc-types/` file for every type, the Units tables, the shipped samples in `examples/`, and the parity of the generated sub-skills with `shared/`. Run them with `python3 -m unittest discover -s tests` and `python3 scripts/sync_shared.py --check`. `AGENTS.md` lists the manual checks for the rest.
+- GitHub Actions runs those two commands on push and pull request to `main` (Python 3.7 and 3.x).
 
 ## Quick start
 
