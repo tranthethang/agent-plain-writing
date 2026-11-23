@@ -139,7 +139,7 @@ def pattern_issues(raw, prof):
             prev_was_question = False
 
         if patterns.get("dash"):
-            c = len(re.findall(r"[—–]", line))
+            c = len(re.findall(r"[\u2014\u2013]", line))
             if c:
                 issues.append(f'Pattern "dash" (line {lineno}): {c}x')
 
