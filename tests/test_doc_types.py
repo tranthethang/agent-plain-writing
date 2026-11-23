@@ -10,7 +10,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SKILL = ROOT / "skills" / "agent-plain-writing"
+SKILL = ROOT / "shared"
 CHECKER = SKILL / "scripts" / "check_style.py"
 _spec = importlib.util.spec_from_file_location("check_style", CHECKER)
 checker = importlib.util.module_from_spec(_spec)

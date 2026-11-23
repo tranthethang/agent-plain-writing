@@ -36,7 +36,7 @@ def length_warnings(result):
 
 class ShortBriefTests(unittest.TestCase):
     def setUp(self):
-        prof = json.loads((ROOT / "skills" / "agent-plain-writing" / "languages" / "en" / "profile.json").read_text(encoding="utf-8"))
+        prof = json.loads((ROOT / "shared" / "languages" / "en" / "profile.json").read_text(encoding="utf-8"))
         self.full = prof["types"]["tech-blog"]["length"]
         self.short = prof["types"]["tech-blog"]["length_short"]
 
