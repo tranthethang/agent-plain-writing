@@ -14,7 +14,7 @@
 No script calls an API. A real agent writes each output.
 
 1. Local gate: `python3 -m unittest discover -s tests` and `python3 scripts/sync_shared.py --check`.
-2. Install all six skills: `npx skills add <repo>`.
+2. Install all six skills: `npx skills add tranthethang/agent-plain-writing -g`.
 3. Create `evidence/<run>/`.
 4. Run the prompts in your agent. The Smoke set is `evals/smoke-prompts.md`. The Full set is every file in `evals/cases/`. Each prompt tells the agent to write its output to `evidence/<run>/<case>.with_skill.md`.
 5. Score each output and save the results in `evidence/<run>/results.json`:
@@ -28,7 +28,7 @@ python3 evals/score.py evals/cases/tech-blog-en.md evidence/<run>/tech-blog-en.w
 
 ## Honest limits
 
-- Run outputs are saved in `evidence/` and tracked by git. Each run has its own summary in [evidence/](../../evidence/README.md). The runs up to `20261122-201235` used an API runner that no longer exists. Each is a single run with mechanical scores only, so it does not prove that the skill improves writing.
+- Run outputs are saved in `evidence/` and tracked by git. Each run has its own summary in [evidence/](../../evidence/README.md). A run has mechanical scores only, so it does not prove that the skill improves writing.
 - The cases in `evals/cases/` cover every document type. Which cases a run covered is in that run's `README.md`.
 - The judge is an AI. Its scores are not verified against human readers.
 - Cases use simulated data. To add a case from a real brief, see `evals/README.md`.

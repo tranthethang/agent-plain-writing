@@ -57,7 +57,7 @@ Mirrors `sentence` / `paragraph` limits in `shared/languages/<lang>/profile.json
 
 ## Evidence
 
-Eval runs live in [evidence/](evidence/README.md). Each run has its own folder with the raw outputs, `results.json` and a `README.md` that holds the table, what the numbers show and the limits. The runs up to `20261122-201235` compare the same AI with and without the skill on simulated briefs. New runs use a real agent with the skills installed (see [evals/README.md](evals/README.md)). They use checker results only, with no AI judge and no human review. A run is a small sample, not proof.
+Eval runs live in [evidence/](evidence/README.md). Each run has its own folder with the raw outputs, `results.json` and a `README.md` that holds the table, what the numbers show and the limits. Each run uses a real agent with the skills installed (see [evals/README.md](evals/README.md)). They use checker results only, with no AI judge and no human review. A run is a small sample, not proof.
 
 ## Documentation
 
@@ -76,6 +76,12 @@ Each topic has one file per language, in `docs/<lang>/`.
 ## Contributing
 
 Read [AGENTS.md](AGENTS.md) before changing anything. It keeps the three language folders parallel.
+
+Enable the `pre-commit` hook once after cloning so commits cannot leave `skills/` out of sync with `shared/`:
+
+```bash
+git config core.hooksPath .githooks
+```
 
 ## License
 

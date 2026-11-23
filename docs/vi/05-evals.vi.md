@@ -14,7 +14,7 @@
 Không có script nào gọi API. Một agent thật viết từng đầu ra.
 
 1. Cổng cục bộ: `python3 -m unittest discover -s tests` và `python3 scripts/sync_shared.py --check`.
-2. Cài cả sáu skill: `npx skills add <repo>`.
+2. Cài cả sáu skill: `npx skills add tranthethang/agent-plain-writing -g`.
 3. Tạo `evidence/<run>/`.
 4. Chạy các prompt trong agent của bạn. Bộ Smoke là `evals/smoke-prompts.md`. Bộ Full là mọi file trong `evals/cases/`. Mỗi prompt yêu cầu agent ghi đầu ra vào `evidence/<run>/<case>.with_skill.md`.
 5. Chấm từng đầu ra và lưu kết quả vào `evidence/<run>/results.json`:
@@ -28,7 +28,7 @@ python3 evals/score.py evals/cases/tech-blog-en.md evidence/<run>/tech-blog-en.w
 
 ## Giới hạn trung thực
 
-- Đầu ra các lần chạy được lưu trong `evidence/` và git theo dõi. Mỗi lần chạy có bản tóm tắt riêng trong [evidence/](../../evidence/README.md). Các lần chạy đến `20261122-201235` dùng một bộ chạy API không còn tồn tại. Mỗi lần chỉ là một lần chạy, chỉ có điểm cơ học, nên chưa chứng minh skill làm văn bản tốt hơn.
+- Đầu ra các lần chạy được lưu trong `evidence/` và git theo dõi. Mỗi lần chạy có bản tóm tắt riêng trong [evidence/](../../evidence/README.md). Mỗi lần chạy chỉ có điểm cơ học, nên chưa chứng minh skill làm văn bản tốt hơn.
 - Các ca trong `evals/cases/` phủ mọi loại văn bản. Mỗi lần chạy phủ những ca nào thì ghi trong `README.md` của lần chạy đó.
 - Giám khảo là AI. Điểm của nó chưa được đối chiếu với người đọc thật.
 - Các ca dùng dữ liệu giả lập. Muốn thêm ca từ đề bài thật, xem `evals/README.md`.

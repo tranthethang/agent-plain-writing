@@ -31,7 +31,6 @@ skills/                   # generated, except the router. Never edit by hand
 
 evals/                    # cases/, smoke-prompts.md, score.py, judge-prompt.md
 evidence/<run>/           # outputs and results.json from real-agent runs (tracked)
-judge-prompts/<run>/      # rendered judge prompts, history (tracked)
 tests/                    # unittest, standard library only
 ```
 

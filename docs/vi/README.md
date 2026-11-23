@@ -62,7 +62,7 @@ Các loại khác không có khoảng độ dài.
 
 ## Bằng chứng
 
-Các lần chạy eval nằm ở [evidence/](../../evidence/README.md). Mỗi lần chạy có thư mục riêng chứa đầu ra thô, `results.json` và một `README.md` ghi bảng số liệu, điều các số cho thấy và giới hạn. Các lần chạy đến `20261122-201235` so sánh cùng một AI khi có và không có skill, trên brief mô phỏng. Các lần chạy mới dùng một agent thật đã cài các skill (xem [evals/README.md](../../evals/README.md)). Kết quả chỉ lấy từ script. Không có AI chấm và không có người duyệt. Mỗi lần chạy là một mẫu nhỏ, chưa đủ để chứng minh.
+Các lần chạy eval nằm ở [evidence/](../../evidence/README.md). Mỗi lần chạy có thư mục riêng chứa đầu ra thô, `results.json` và một `README.md` ghi bảng số liệu, điều các số cho thấy và giới hạn. Mỗi lần chạy dùng một agent thật đã cài các skill (xem [evals/README.md](../../evals/README.md)). Kết quả chỉ lấy từ script. Không có AI chấm và không có người duyệt. Mỗi lần chạy là một mẫu nhỏ, chưa đủ để chứng minh.
 
 ## Tài liệu
 
@@ -81,6 +81,12 @@ Mỗi chủ đề có một file cho mỗi ngôn ngữ, nằm trong `docs/<lang>
 ## Đóng góp
 
 Hãy đọc [AGENTS.md](../../AGENTS.md) trước khi sửa bất cứ thứ gì. File này giữ ba thư mục ngôn ngữ song song với nhau.
+
+Bật hook `pre-commit` một lần sau khi clone để tránh commit khi `skills/` chưa đồng bộ với `shared/`:
+
+```bash
+git config core.hooksPath .githooks
+```
 
 ## Giấy phép
 

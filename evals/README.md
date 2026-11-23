@@ -37,7 +37,7 @@ A real agent writes each output. No script calls an API.
    ```
 2. Install the skills. All six install together (the router and five sub-skills):
    ```bash
-   npx skills add <repo>
+   npx skills add tranthethang/agent-plain-writing -g
    ```
 3. Create `evidence/<run>/`, where `<run>` is a timestamp such as `20261124-101500`.
 4. Run the prompts in your agent. Use a fresh session for each prompt.

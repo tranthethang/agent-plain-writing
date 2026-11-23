@@ -14,7 +14,7 @@
 API を呼ぶスクリプトはありません。出力は実際のエージェントが書きます。
 
 1. ローカルのゲート：`python3 -m unittest discover -s tests` と `python3 scripts/sync_shared.py --check`。
-2. 6 つのスキルをすべてインストールします：`npx skills add <repo>`。
+2. 6 つのスキルをすべてインストールします：`npx skills add tranthethang/agent-plain-writing -g`。
 3. `evidence/<run>/` を作ります。
 4. エージェントでプロンプトを実行します。スモークセットは `evals/smoke-prompts.md` です。フルセットは `evals/cases/` のすべてのファイルです。各プロンプトで、出力を `evidence/<run>/<case>.with_skill.md` に書くよう指示します。
 5. 出力ごとに採点し、結果を `evidence/<run>/results.json` に保存します。
@@ -28,7 +28,7 @@ python3 evals/score.py evals/cases/tech-blog-en.md evidence/<run>/tech-blog-en.w
 
 ## 正直な限界
 
-- 実行結果は `evidence/` に保存され、git で管理されます。実行ごとの要約は [evidence/](../../evidence/README.md) にあります。`20261122-201235` までの実行は、現在は存在しない API ランナーを使いました。どちらも 1 回の実行で、機械的なスコアだけなので、スキルが文章を改善する証明にはなりません。
+- 実行結果は `evidence/` に保存され、git で管理されます。実行ごとの要約は [evidence/](../../evidence/README.md) にあります。各実行には機械的なスコアしかないため、スキルが文章を改善する証明にはなりません。
 - `evals/cases/` のケースはすべての文書タイプを対象にします。各実行がどのケースを扱ったかは、その実行の `README.md` に書いてあります。
 - 審査員は AI です。そのスコアを人間の読者と照らし合わせて検証していません。
 - ケースは架空のデータです。実際のブリーフからケースを足す方法は `evals/README.md` を参照してください。
