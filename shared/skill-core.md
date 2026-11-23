@@ -1,0 +1,112 @@
+# Plain writing
+
+Works in Vietnamese (`vi`), English (`en`) and Japanese (`ja`). This skill handles one document type and uses one of two voice families: `plain` or `creative`.
+
+## Who owns what
+
+Each rule has one owner. Read a rule in its owner file, not in a copy.
+
+| Owner | Owns |
+|---|---|
+| This file, from "Workflow" to "Extend the skill" | The workflow and the core rules that hold for every type and every language |
+| The voice family and type sections at the end of this file | Everything that depends on the type: voice, structure, length policy, sentence rhythm, and the kinds of phrases to ban |
+| `languages/<lang>/` | Everything that depends on the language: the unit, numeric limits (`profile.json`), the actual banned phrases (`banned.txt`, `banned-guide.md`), grammar traps, pronoun and level words, terms (`terms.txt`), and examples |
+
+**When two owners disagree:**
+
+- On limits and structure, the type section wins over the core rules.
+- On words and grammar, `languages/<lang>/` wins over the type section.
+- On how much a text may add beyond the source (reasoning, reactions, inner thoughts), the voice family section and the type section win over the core rules. The facts in core rule 5 never change.
+- Every limit that has a key in `profile.json` comes from `profile.json`. No other file repeats it.
+- `limits` in `PLAIN-WRITING.md` override `profile.json` for that project. The checker warns when a project limit is above 1.5 times the profile value.
+
+## Workflow
+
+0. **Check for `PLAIN-WRITING.md`** in the project root (template: `templates/PLAIN-WRITING.example.md`). If `PLAIN-WRITING.md` exists, read it and let it win on voice and terms. Use `default_lang` and `default_type` to skip the questions in steps 1 and 2.
+1. **Pick the output language** (`vi`, `en` or `ja`). It is the language of the text you produce, not the language of the prompt. A Vietnamese brief that asks for a Japanese manual means `ja`. If unclear, ask one question. Then read `languages/<lang>/profile.json` (the limits for your type) and `languages/<lang>/profile.md`.
+2. **Read the type files.** This skill handles one document type. Its voice and structure are in the type section at the end of this file. Read `languages/<lang>/examples/{{type}}.md`. Also read `languages/<lang>/banned-guide.md`. It is the banned list for the agent. `banned.txt` is the checker's machine list; do not read it. Read `languages/<lang>/terms.txt` only when the type is `user-guide` or `--non-tech` applies. Read only these.
+3. **Know the reader**: who they are, what they already know, what they must do after reading. If missing, ask one question. If you cannot ask, state your assumption outside the document (or mark `TBD-n` inline in specs).
+4. **Outline** (one line per idea) for any text longer than about 400 words. Write only ideas that are in the outline. In the `creative` family, the outline fixes the scenes, not every sentence.
+5. **Draft** with the core rules and the type's voice, structure and rhythm. Write normal paragraphs—never put every sentence on its own line.
+6. **Edit** in a separate pass: cut, run the checklist, run the script. Fix until clean. When Python cannot run, apply the final checklist by hand and say in the report that the script did not run.
+7. **Report** two things outside the generated text: the result, and what you had to guess. Never prepend or append `Result:`, `Guesses:`, or `**推測したこと:**` lines inside the document. Send the report as a second message when you can. Otherwise end the document, add one line `<!-- report -->`, then the report, and keep it out of the file that the checker reads. When you guessed nothing and added nothing, write no report and no marker. Never write a report that only says so, such as "I did not add facts beyond the brief." In specs, mark missing details inline with `TBD-n`. The script flags those labels (see "Report labels" in `banned-guide.md`) on any line outside code blocks.
+
+Draft and edit are two passes. Do not try to get it right in the first pass.
+
+## Core rules (both families, all languages)
+
+These rules hold for every document type:
+
+| # | Rule | Limit |
+|---|---|---|
+| 1 | One idea per sentence | In `plain`, two subordinate clauses means split. In `creative`, the type file sets sentence rhythm |
+| 2 | Concrete verbs, active voice | "send", not "perform the sending of" |
+| 3 | Banned phrases | Zero hits from `banned-guide.md` (the all-types section plus the section for the type) |
+| 4 | Opening and closing | Opening: at most 2 sentences, straight to the point. No recap, no empty thanks |
+| 5 | No invention | Add no number, event, person, place, technical spec, or outcome that is not in the source. Do not place two numbers with different units or time periods next to each other as a comparison; keep both numbers and narrow the claim to what they support. How much else a text may add (reasoning, reactions, inner thoughts) is set by its voice family |
+| 6 | Consistency | One concept, one name. One register for the whole text |
+
+## When the reader is outside the field
+
+Common failure: the AI "translates" every technical detail into plain words. The result is three times longer and still unclear. Do the opposite:
+
+1. Pick **at most 3 ideas** the reader needs.
+2. For each idea, say **what the reader gets or can do**. Drop the internal mechanism.
+3. Test each sentence: if you delete it, will the reader fail at something or misunderstand something? If not, delete it.
+
+## Cutting order for long drafts
+
+1. Sentences that repeat an earlier idea.
+2. Sentences that explain internal mechanism.
+3. The second and later examples.
+4. Adjectives and adverbs.
+5. Empty opening and closing.
+
+For `tech-blog` and `essay`, keep human context, reasoning, and tension instead of cutting down to a bare fact list. In `essay`, also keep the narrator's inner thoughts and the sensory detail each scene needs.
+
+## When editing existing text
+
+- Keep meaning, proper names, numbers, paths and code unchanged.
+- Add no new information. List ambiguous spots at the end so the author can decide.
+- Give a table "original → revised → reason" if the user wants to learn from the edit.
+
+## Final checklist
+
+- [ ] The script reports no violations.
+- [ ] One idea per paragraph, one idea per sentence.
+- [ ] No banned phrase from `banned-guide.md`. No empty adjective.
+- [ ] Jargon is within the limit. Each term is explained or replaced.
+- [ ] The type section's checklist passes.
+- [ ] Every number, event and outcome appears in the user's source. In `essay`, every inner thought that the brief does not give is reported outside the text.
+- [ ] Register is consistent.
+- [ ] Guesses are reported outside the generated document (or marked `TBD-n` inline in specs).
+
+## Check with the script
+
+`<skill-dir>` is the folder that holds `SKILL.md`.
+
+```
+python3 <skill-dir>/scripts/check_style.py draft.md --lang en --type {{type}}
+python3 <skill-dir>/scripts/check_style.py draft.md --lang ja --type {{type}}
+python3 <skill-dir>/scripts/check_style.py draft.md --lang vi --type {{type}} --config PLAIN-WRITING.md
+python3 <skill-dir>/scripts/check_style.py draft.md --lang en --type {{type}} --non-tech
+```
+
+- `--lang`: `vi`, `en`, `ja` (optional if `default_lang` is set in `PLAIN-WRITING.md`). `--type`: `{{type}}` for this skill (defaults to `default_type` in `PLAIN-WRITING.md` or `common`).
+- `--short-brief`: use `length_short` (a lower ceiling) for a type that has it (only `tech-blog` has it).
+- `--config <path>`: path to a `PLAIN-WRITING.md` config file. By default, the script searches the current folder and then its parents (stopping at `.git`).
+- Units differ by language: Vietnamese counts syllables (tiếng), English counts words, Japanese counts characters (字). The unit is set in `profile.json`.
+- The script checks sentence length, paragraph length, banned phrases, jargon count and text length. The checker warns on text length only when the text is longer than the upper limit; a shorter text is fine, so never pad. That warning is not a violation. It does **not** judge whether the voice is good.
+- Edit `banned.txt` and `terms.txt` in the language folder to fit your needs.
+
+## Extend the skill
+
+Edit `shared/` in the repository, never a generated copy. Whenever the AI writes a sentence you dislike:
+
+1. Rewrite it the way you want.
+2. Add the pair "bad → good" to the section "Your own samples" in the matching `examples/<type>.md` of that language.
+3. If one phrase keeps coming back, add it to that language's `banned.txt` and `banned-guide.md`.
+
+Real samples written by you always outweigh samples written by AI.
+
+**Add a language:** create `languages/<code>/` with `profile.md`, `profile.json`, `banned.txt`, `terms.txt`, `banned-guide.md` and `examples/`. The script supports three units (`syllable`, `word`, `char`). No code change is needed.
