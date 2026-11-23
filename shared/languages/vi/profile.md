@@ -11,7 +11,7 @@ Các con số nằm trong `profile.json`. File này giải thích cách dùng.
 ## Ngưỡng và giọng
 
 Mọi con số (câu, đoạn, độ dài, thuật ngữ) nằm trong `profile.json`. File này không nhắc lại số.
-Giọng, người xưng và cấu trúc do `doc-types/<loại>.md` quyết định. Ngôn ngữ chỉ cho dạng từ:
+Giọng, người xưng và cấu trúc do phần loại văn bản trong `SKILL.md` quyết định. Ngôn ngữ chỉ cho dạng từ:
 
 - Ngôi thứ nhất: "tôi". Gọi người đọc: "bạn".
 - Tên nút in đậm, đúng nhãn trên màn hình.

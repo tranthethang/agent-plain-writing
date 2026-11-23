@@ -13,7 +13,7 @@ The numbers live in `profile.json`. This file explains how to use them.
 ## Limits and voice
 
 Every number (sentence, paragraph, length, jargon) lives in `profile.json`. This file does not repeat them.
-Voice, speaker and structure are set by `doc-types/<type>.md`. This file adds only the Japanese forms below.
+Voice, speaker and structure are set by the type section of `SKILL.md`. This file adds only the Japanese forms below.
 
 ## Register (文体)
 

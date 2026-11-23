@@ -174,7 +174,7 @@ sequenceDiagram
 **Fault:** 500ミリ秒という数字は素材にない。
 **Fix:** `TBD-n` と、時間の上限についての質問を書く。印は `TBD-1`、`TBD-2` のように番号を振る。
 
-## 完成見本(参考の形。構造は `doc-types/api-design.md` が決める)
+## 完成見本(参考の形。構造は `SKILL.md` の api-design の節が決める)
 
 ````markdown
 ## 識別情報

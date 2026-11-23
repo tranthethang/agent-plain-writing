@@ -10,7 +10,7 @@ The numbers live in `profile.json`. This file explains how to use them.
 ## Limits and voice
 
 Every number (sentence, paragraph, length, jargon) lives in `profile.json`. This file does not repeat them.
-Voice, speaker and structure are set by `doc-types/<type>.md`. The language adds only its forms:
+Voice, speaker and structure are set by the type section of `SKILL.md`. The language adds only its forms:
 
 - Pronouns: "I" and "you". Contractions ("don't", "it's") are a register choice that the type file makes.
 - Plain imperative verbs for steps ("Click", "Select", "Enter"). Button names in bold, exactly as on screen.

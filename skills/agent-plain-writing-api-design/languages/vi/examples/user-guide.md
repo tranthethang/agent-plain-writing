@@ -1,6 +1,6 @@
 # Ví dụ tiếng Việt: user guide
 
-Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng nằm trong `profile.json`.
+Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong phần loại văn bản của `SKILL.md`, ngưỡng nằm trong `profile.json`.
 
 ## Cách thay thuật ngữ
 

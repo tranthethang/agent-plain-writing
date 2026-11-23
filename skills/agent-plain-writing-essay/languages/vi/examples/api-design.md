@@ -2,7 +2,7 @@
 
 Câu chuyện và con số trong các ví dụ chỉ để minh họa, không phải sự thật.
 
-Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong `doc-types/`, ngưỡng nằm trong `profile.json`.
+Mẫu riêng cho tiếng Việt. Cấu trúc nằm trong phần loại văn bản của `SKILL.md`, ngưỡng nằm trong `profile.json`.
 
 ## Bad → good pairs
 
@@ -173,7 +173,7 @@ sequenceDiagram
 
 ## Mẫu API điền hoàn chỉnh
 
-Khuôn tham khảo. Cấu trúc nằm trong `doc-types/api-design.md`.
+Khuôn tham khảo. Cấu trúc nằm trong phần `api-design` của `SKILL.md`.
 
 ````markdown
 ## Thông tin chung
