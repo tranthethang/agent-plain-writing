@@ -9,11 +9,11 @@ npx skills add tranthethang/agent-plain-writing -g
 - `tranthethang/agent-plain-writing` là repo GitHub chứa skill.
 - `-g` cài skill ở mức toàn cục (cho tài khoản của bạn), không chỉ cho một dự án. Bỏ `-g` để cài vào dự án hiện tại.
 
-Sau đó yêu cầu agent dùng `agent-plain-writing`. Xem [02-usage](02-usage.vi.md).
+Lệnh này cài cả sáu skill cùng lúc: router `agent-plain-writing` và năm sub-skill `agent-plain-writing-<type>`. Sau đó yêu cầu agent dùng `agent-plain-writing`, hoặc một sub-skill. Xem [02-usage](02-usage.vi.md).
 
 ## Cài thủ công
 
-Nếu không dùng `npx`, chép thư mục `skills/agent-plain-writing/` vào thư mục skill của agent. Giữ tên thư mục trùng với trường `name` trong `SKILL.md`.
+Nếu không dùng `npx`, chép mọi thư mục `skills/agent-plain-writing*/` vào thư mục skill của agent. Chép đủ cả sáu. Giữ tên mỗi thư mục trùng với trường `name` trong `SKILL.md` của nó.
 
 | Công cụ | Vị trí |
 |---|---|

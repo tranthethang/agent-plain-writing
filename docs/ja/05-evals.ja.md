@@ -1,46 +1,34 @@
 # 評価（Evals）
 
-`evals/` は、スキルありとなしの AI 出力を比べます。小さなキットで、ベンチマークではありません。
+`evals/` は、実際のエージェントでスキルを試します。小さなキットで、ベンチマークではありません。
 
 | ファイル | 役割 |
 |---|---|
-| `cases/` | 15 ケース：`tech-blog`、`essay`、`api-design`、`guide`、`common` を、それぞれ `vi`、`en`、`ja` で。データはすべて架空です |
+| `cases/` | 18 ケース：`tech-blog`、`essay`、`api-design`、`user-guide`、`common` を、それぞれ `vi`、`en`、`ja` で。さらに `api-design-speed` の 3 ケース。データはすべて架空です |
+| `smoke-prompts.md` | スモークセット：変更後にすばやく確認するための 5 つのプロンプト |
 | `score.py` | 機械的な採点。ケースにない数字を数え、`api-design` では `tbd_ids`、`tbd_without_question`、`tbd_in_code`、`tbd_duplicate_questions`、`tbd_without_inline` も報告する |
-| `judge-prompt.md` | AI 審査員用のプロンプト（明瞭さ、網羅性、`api-design`・`tech-blog`・`essay`・`guide`・`common` ごとの意味チェック） |
-| `run_eval.py` | 各ケースを 2 回（スキルあり・なし）実行する |
+| `judge-prompt.md` | AI 審査員用のプロンプト（明瞭さ、網羅性、`api-design`・`tech-blog`・`essay`・`user-guide`・`common` ごとの意味チェック） |
 
-## コスト
+## 手順
 
-`run_eval.py` は 1 ケースにつき AI を 2 回呼びます。15 ケースすべてで 30 回となり、利用枠や料金を消費します。必ず先にプレビューしてください。
+API を呼ぶスクリプトはありません。出力は実際のエージェントが書きます。
 
-```bash
-python3 evals/run_eval.py --dry-run
-python3 evals/run_eval.py --type tech-blog --lang vi --dry-run
-```
-
-そのあと実行します。スクリプトは `yes` の入力を求めます。
+1. ローカルのゲート：`python3 -m unittest discover -s tests` と `python3 scripts/sync_shared.py --check`。
+2. 6 つのスキルをすべてインストールします：`npx skills add <repo>`。
+3. `evidence/<run>/` を作ります。
+4. エージェントでプロンプトを実行します。スモークセットは `evals/smoke-prompts.md` です。フルセットは `evals/cases/` のすべてのファイルです。各プロンプトで、出力を `evidence/<run>/<case>.with_skill.md` に書くよう指示します。
+5. 出力ごとに採点し、結果を `evidence/<run>/results.json` に保存します。
 
 ```bash
-python3 evals/run_eval.py --tool openai   # 既定。OPENAI_API_URL, OPENAI_API_KEY, OPENAI_API_MODEL を読む
-python3 evals/run_eval.py --tool claude   # ローカルの `claude` CLI
-python3 evals/run_eval.py --tool antigravity
+python3 evals/score.py evals/cases/tech-blog-en.md evidence/<run>/tech-blog-en.with_skill.md
+python3 evals/score.py evals/cases/tech-blog-en.md evidence/<run>/tech-blog-en.with_skill.md --judge-prompt
 ```
 
-API 設定は `evals/.env` かリポジトリ直下の `.env` に置きます。どちらも git の対象外です。出力は `evidence/<timestamp>/` に保存され、git で管理されます。
-
-1 つの出力を採点するには：
-
-```bash
-python3 evals/score.py evals/cases/tech-blog-en.md output.md
-python3 evals/score.py evals/cases/tech-blog-en.md output.md --judge-prompt
-python3 evals/run_eval.py --judge-prompts 20261122-181452
-```
-
-`--judge-prompts <run>` は `evidence/` 内の実行フォルダにある `with_skill` 出力すべてについて、審査員プロンプトを作ります。出力先は `judge-prompts/<run>/<case>.judge.md` で、AI は呼びません。値を省略すると、新しい実行の後に同じ処理をします。
+`evals/README.md` に、1 回の実行のすべての出力を 1 つの `results.json` にまとめて採点する短いスクリプトがあります。
 
 ## 正直な限界
 
-- 実行結果は `evidence/` に保存され、git で管理されます。実行ごとの要約は [evidence/](../../evidence/README.md) にあります。どちらも 1 回の実行で、機械的なスコアだけなので、スキルが文章を改善する証明にはなりません。
+- 実行結果は `evidence/` に保存され、git で管理されます。実行ごとの要約は [evidence/](../../evidence/README.md) にあります。`20261122-201235` までの実行は、現在は存在しない API ランナーを使いました。どちらも 1 回の実行で、機械的なスコアだけなので、スキルが文章を改善する証明にはなりません。
 - `evals/cases/` のケースはすべての文書タイプを対象にします。各実行がどのケースを扱ったかは、その実行の `README.md` に書いてあります。
 - 審査員は AI です。そのスコアを人間の読者と照らし合わせて検証していません。
 - ケースは架空のデータです。実際のブリーフからケースを足す方法は `evals/README.md` を参照してください。

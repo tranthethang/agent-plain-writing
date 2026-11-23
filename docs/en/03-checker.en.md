@@ -1,17 +1,17 @@
 # Checker script
 
 ```bash
-python3 skills/agent-plain-writing/scripts/check_style.py draft.md --lang en --type tech-blog
-python3 skills/agent-plain-writing/scripts/check_style.py spec.md  --lang ja --type api-design
-python3 skills/agent-plain-writing/scripts/check_style.py guide.md --lang vi --type guide
-python3 skills/agent-plain-writing/scripts/check_style.py post.md  --lang en --type tech-blog --non-tech
+python3 skills/agent-plain-writing-tech-blog/scripts/check_style.py draft.md --lang en --type tech-blog
+python3 skills/agent-plain-writing-api-design/scripts/check_style.py spec.md  --lang ja --type api-design
+python3 skills/agent-plain-writing-user-guide/scripts/check_style.py guide.md --lang vi --type user-guide
+python3 skills/agent-plain-writing-tech-blog/scripts/check_style.py post.md  --lang en --type tech-blog --non-tech
 ```
 
 | Option | Values |
 |---|---|
 | `--lang` | `vi`, `en`, `ja`. Optional if `default_lang` is set in `PLAIN-WRITING.md` |
-| `--type` | `tech-blog`, `essay`, `api-design`, `guide`, `common` (`user-guide` also works). Default: `default_type` or `common` |
-| `--non-tech` | Limit jargon to 3 terms. The `guide` type always applies a jargon limit |
+| `--type` | `tech-blog`, `essay`, `api-design`, `user-guide`, `common`. Default: `default_type` or `common` |
+| `--non-tech` | Limit jargon to 3 terms. The `user-guide` type always applies a jargon limit |
 | `--config` | Path to a `PLAIN-WRITING.md` file. Default: search the current folder, then its parents (stopping at `.git`) |
 | `--short-brief` | Use `length_short` for a type that has it (for example `tech-blog`) |
 

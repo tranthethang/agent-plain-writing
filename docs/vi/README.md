@@ -1,8 +1,8 @@
 # agent-plain-writing
 
-Skill này giúp AI viết **văn bản ngắn, cụ thể**. Hỗ trợ tiếng Việt (`vi`), Anh (`en`) và Nhật (`ja`).
+Bộ skill này giúp AI viết **văn bản ngắn, cụ thể**. Hỗ trợ tiếng Việt (`vi`), Anh (`en`) và Nhật (`ja`).
 
-Skill đưa cho AI các giới hạn đếm được. Đó là độ dài câu, độ dài đoạn, cụm từ bị cấm và thuật ngữ. Mỗi ngôn ngữ và loại văn bản có ví dụ xấu → tốt.
+Bộ này gồm một skill router và năm sub-skill, mỗi loại văn bản một sub-skill. Mỗi sub-skill xử lý `vi`, `en` và `ja`. Các skill đưa cho AI các giới hạn đếm được. Đó là độ dài câu, độ dài đoạn, cụm từ bị cấm và thuật ngữ. Mỗi ngôn ngữ và loại văn bản có ví dụ xấu → tốt.
 
 Một script kiểm tra bản nháp theo các giới hạn đó.
 
@@ -15,35 +15,38 @@ Một script kiểm tra bản nháp theo các giới hạn đó.
 
 ## Trạng thái
 
-- Có năm loại văn bản, chia thành hai nhóm giọng. Nhóm `plain` gồm `tech-blog`, `api-design`, `guide`, `common`. Nhóm `creative` gồm `essay`. Hiện chưa hỗ trợ `prose`, `poetry` và `screen-design`.
+- Có năm loại văn bản, chia thành hai nhóm giọng. Nhóm `plain` gồm `tech-blog`, `api-design`, `user-guide`, `common`. Nhóm `creative` gồm `essay`. Mỗi loại có sub-skill riêng: `agent-plain-writing-<type>`. Router `agent-plain-writing` chọn loại khi yêu cầu không nêu rõ. Hiện chưa hỗ trợ `prose`, `poetry` và `screen-design`.
 - **Thay đổi không tương thích:** `--type blog` nay là `--type tech-blog`. Giá trị mặc định là `common`.
 - Script chỉ đếm, không đánh giá giọng văn. Script chỉ cảnh báo khi văn bản dài hơn giới hạn trên. Văn bản ngắn hơn là bình thường, không cần kéo dài cho đủ. Cảnh báo này không làm script báo lỗi.
 - Các giới hạn số là ước lượng ban đầu. Chúng chưa được kiểm chứng.
 - Bằng chứng còn ít. Mới có vài lần chạy eval trên ca mô phỏng, chỉ có điểm tự động. Xem [Bằng chứng](#bằng-chứng).
-- Test tự động kiểm tra các điểm sau. Thống kê `TBD-n` và khoảng độ dài cho brief ngắn trong `evals/score.py`. Tập loại văn bản. Loại mặc định của script. Phép kiểm tra ô bảng, nhãn báo cáo và `--short-brief` của script. Các bảng Đơn vị. Cách đếm mốc giờ và ngày. Việc tìm `PLAIN-WRITING.md` từ thư mục con. Cảnh báo độ dài chỉ ở giới hạn trên. File `doc-types/` của mọi loại. Các mẫu hoàn chỉnh trong `examples/`. Tùy chọn `--judge-prompts` và prompt có skill của `evals/run_eval.py`. Chạy test bằng `python3 -m unittest discover -s tests`. `AGENTS.md` liệt kê các bước kiểm tra tay còn lại.
+- Test tự động kiểm tra các điểm sau. Thống kê `TBD-n` và khoảng độ dài cho brief ngắn trong `evals/score.py`. Tập loại văn bản. Loại mặc định của script. Phép kiểm tra ô bảng, nhãn báo cáo và `--short-brief` của script. Các bảng Đơn vị. Cách đếm mốc giờ và ngày. Việc tìm `PLAIN-WRITING.md` từ thư mục con. Cảnh báo độ dài chỉ ở giới hạn trên. File `doc-types/` của mọi loại. Các mẫu hoàn chỉnh trong `examples/`. Việc các sub-skill được sinh ra khớp với `shared/`. Chạy test bằng `python3 -m unittest discover -s tests` và `python3 scripts/sync_shared.py --check`. `AGENTS.md` liệt kê các bước kiểm tra tay còn lại.
 
 ## Bắt đầu nhanh
 
-1. Cài đặt. Bạn cần Node.js. Cách cài thủ công nằm trong [tài liệu](01-install.vi.md).
+1. Cài đặt. Bạn cần Node.js. Cách cài thủ công nằm trong [tài liệu](01-install.vi.md). Cả sáu skill được cài cùng lúc.
 
 ```bash
 npx skills add tranthethang/agent-plain-writing -g
 ```
 
-2. Ra lệnh cho AI: `Use agent-plain-writing to write a user guide in Japanese from these notes: ...`
+2. Gọi router, hoặc gọi thẳng một sub-skill:
+   - `Use agent-plain-writing to shorten this text: ...` (router chọn loại)
+   - `Use agent-plain-writing-user-guide to write a user guide in Japanese from these notes: ...`
 3. Kiểm tra bản nháp. Bạn cần Python 3.7+ và không cần cài thêm gói nào.
 
 ```bash
-python3 skills/agent-plain-writing/scripts/check_style.py draft.md --lang en --type tech-blog
+python3 skills/agent-plain-writing-tech-blog/scripts/check_style.py draft.md --lang en --type tech-blog
+python3 skills/agent-plain-writing-user-guide/scripts/check_style.py guide.md --lang vi --type user-guide
 ```
 
 Mã thoát: `0` là sạch, `1` là có lỗi, `2` là gõ sai cách dùng.
 
 ## Đơn vị
 
-Bảng này khớp với giới hạn `sentence` / `paragraph` trong `skills/agent-plain-writing/languages/<lang>/profile.json`:
+Bảng này khớp với giới hạn `sentence` / `paragraph` trong `shared/languages/<lang>/profile.json`:
 
-| Ngôn ngữ | Đơn vị | `tech-blog` | `essay` | `api-design` | `guide` | `common` |
+| Ngôn ngữ | Đơn vị | `tech-blog` | `essay` | `api-design` | `user-guide` | `common` |
 |---|---|---|---|---|---|---|
 | `vi` | âm tiết (*tiếng*) | 28 / 3 | 40 / 6 | 25 / 3 | 16 / 3 | 28 / 3 |
 | `en` | từ | 20 / 3 | 30 / 6 | 18 / 3 | 12 / 3 | 20 / 3 |
@@ -59,7 +62,7 @@ Các loại khác không có khoảng độ dài.
 
 ## Bằng chứng
 
-Các lần chạy eval nằm ở [evidence/](../../evidence/README.md). Mỗi lần chạy có thư mục riêng chứa đầu ra thô, `results.json`, `run-meta.json` và một `README.md` ghi bảng số liệu, điều các số cho thấy và giới hạn. Eval so sánh cùng một AI khi có và không có skill, trên brief mô phỏng. Kết quả chỉ lấy từ script. Không có AI chấm và không có người duyệt. Mỗi lần chạy là một mẫu nhỏ, chưa đủ để chứng minh.
+Các lần chạy eval nằm ở [evidence/](../../evidence/README.md). Mỗi lần chạy có thư mục riêng chứa đầu ra thô, `results.json` và một `README.md` ghi bảng số liệu, điều các số cho thấy và giới hạn. Các lần chạy đến `20261122-201235` so sánh cùng một AI khi có và không có skill, trên brief mô phỏng. Các lần chạy mới dùng một agent thật đã cài các skill (xem [evals/README.md](../../evals/README.md)). Kết quả chỉ lấy từ script. Không có AI chấm và không có người duyệt. Mỗi lần chạy là một mẫu nhỏ, chưa đủ để chứng minh.
 
 ## Tài liệu
 

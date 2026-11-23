@@ -1,19 +1,21 @@
 # Usage
 
-Ask in plain words and give a good brief:
+Ask in plain words and give a good brief. Name the router `agent-plain-writing` when the type is unclear. Name a sub-skill such as `agent-plain-writing-api-design` when you know the type:
 
 ```
-Use agent-plain-writing to write a user guide in Japanese from these notes: ...
+Use agent-plain-writing to shorten this text: ...
+Use agent-plain-writing-user-guide to write a user guide in Japanese from these notes: ...
 Rewrite this API design in English. Use the api-design template. Mark missing facts as `TBD-n`.
 Shorten this tech blog post. My own paragraph is attached as the model for rhythm.
 ```
 
-Each file in `skills/agent-plain-writing/doc-types/` lists the brief the AI needs for that type: summary, main points, reader, a sample of your own writing, words to use or avoid. The less you give, the more the AI guesses.
+Each file in `shared/doc-types/` lists the brief the AI needs for that type: summary, main points, reader, a sample of your own writing, words to use or avoid. The less you give, the more the AI guesses.
 
-## Workflow the skill follows
+## Workflow the skills follow
 
+0. The router picks the document type and the language, then hands off to the sub-skill. A request that names a sub-skill skips the router.
 1. Pick the output language (`vi`, `en`, `ja`). It is the language of the text produced, not of the prompt.
-2. Pick the document type. Read only that type's file and that language's examples.
+2. Read the sub-skill's own type section and that language's examples.
 3. Find the reader. Ask one question if unclear.
 4. Outline, for texts longer than about 400 words.
 5. Draft.
@@ -22,15 +24,15 @@ Each file in `skills/agent-plain-writing/doc-types/` lists the brief the AI need
 
 ## Document types
 
-| Type | Family | `--type` | Rules file |
+| Type | Family | `--type` and sub-skill | Rules file |
 |---|---|---|---|
-| Tech blog | `plain` | `tech-blog` | `doc-types/tech-blog.md` |
-| Essay (personal, reflective) | `creative` | `essay` | `doc-types/essay.md` |
-| API design (one endpoint) | `plain` | `api-design` | `doc-types/api-design.md` |
-| User guide | `plain` | `guide` | `doc-types/user-guide.md` |
-| Anything else (short notice, announcement) | `plain` | `common` | `doc-types/common.md` |
+| Tech blog | `plain` | `tech-blog`, `agent-plain-writing-tech-blog` | `shared/doc-types/tech-blog.md` |
+| Essay (personal, reflective) | `creative` | `essay`, `agent-plain-writing-essay` | `shared/doc-types/essay.md` |
+| API design (one endpoint) | `plain` | `api-design`, `agent-plain-writing-api-design` | `shared/doc-types/api-design.md` |
+| User guide | `plain` | `user-guide`, `agent-plain-writing-user-guide` | `shared/doc-types/user-guide.md` |
+| Anything else (short notice, announcement) | `plain` | `common`, `agent-plain-writing-common` | `shared/doc-types/common.md` |
 
-Anything else falls back to `common` (`plain` family, `doc-types/common.md`, `languages/<lang>/examples/common.md`).
+Anything else goes to `common` (`plain` family, `shared/doc-types/common.md`, `languages/<lang>/examples/common.md`).
 
 For `api-design`, the AI uses a fixed template of seven sections. When the brief lacks a fact, it writes `TBD-n` only for a gap the brief names or one that blocks implementation. Known field types (from the brief, glossary, allowed-value enum, or id list) are written directly without `TBD-n`. Each `TBD-n` has one question under Open items, and no two `TBD-n` ask the same question.
 

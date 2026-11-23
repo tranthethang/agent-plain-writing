@@ -1,10 +1,10 @@
 # agent-plain-writing
 
-An agent skill that tells an AI to write **short, concrete text** in Vietnamese (`vi`), English (`en`) and Japanese (`ja`).
+A set of agent skills that tells an AI to write **short, concrete text** in Vietnamese (`vi`), English (`en`) and Japanese (`ja`).
 
 The Vietnamese README is at [docs/vi/README.md](docs/vi/README.md).
 
-It gives the AI limits it can count (sentence length, paragraph length, banned phrases, jargon), bad → good examples per language and document type, and a script that checks a draft against those limits.
+The set has a router skill and five sub-skills, one for each document type. Each sub-skill handles `vi`, `en` and `ja`. It gives the AI limits it can count (sentence length, paragraph length, banned phrases, jargon), bad → good examples per language and document type, and a script that checks a draft against those limits.
 
 | | |
 |---|---|
@@ -16,35 +16,38 @@ It gives the AI limits it can count (sentence length, paragraph length, banned p
 
 ## Status
 
-- Five document types in two voice families: `plain` (`tech-blog`, `api-design`, `guide`, `common`) and `creative` (`essay`). `prose`, `poetry`, and `screen-design` are out of scope for now.
+- Five document types in two voice families: `plain` (`tech-blog`, `api-design`, `user-guide`, `common`) and `creative` (`essay`). Each type has its own sub-skill: `agent-plain-writing-<type>`. The router `agent-plain-writing` picks the type when the request does not name it. `prose`, `poetry`, and `screen-design` are out of scope for now.
 - **Breaking change:** `--type blog` is now `--type tech-blog`. The default `--type` is `common`.
 - The checker is mechanical. It counts. It does not judge voice. The checker warns only when the text is longer than the upper length limit; a shorter text is fine, and it never asks for padding. The warning does not fail the check.
 - The numeric limits are starting estimates, not verified standards.
 - The evidence is small: one eval run per version, simulated cases, mechanical scores only. See [Evidence](#evidence).
-- Automated tests cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type, the checker's table-cell, report-label and `--short-brief` checks, the time and date token count, the `PLAIN-WRITING.md` search from a subfolder, the length warning above the upper limit only, the `doc-types/` file for every type, the Units tables, the shipped samples in `examples/`, and the `--judge-prompts` option and the with-skill prompt of `evals/run_eval.py`. Run them with `python3 -m unittest discover -s tests`. `AGENTS.md` lists the manual checks for the rest.
+- Automated tests cover the `TBD-n` statistics and the short-brief length range in `evals/score.py`, the document-type set, the checker default type, the checker's table-cell, report-label and `--short-brief` checks, the time and date token count, the `PLAIN-WRITING.md` search from a subfolder, the length warning above the upper limit only, the `doc-types/` file for every type, the Units tables, the shipped samples in `examples/`, and the parity of the generated sub-skills with `shared/`. Run them with `python3 -m unittest discover -s tests` and `python3 scripts/sync_shared.py --check`. `AGENTS.md` lists the manual checks for the rest.
 
 ## Quick start
 
-1. Install (needs Node.js; manual install is in [docs](docs/en/01-install.en.md)):
+1. Install (needs Node.js; manual install is in [docs](docs/en/01-install.en.md)). All six skills install together:
 
 ```bash
 npx skills add tranthethang/agent-plain-writing -g
 ```
 
-2. Ask: `Use agent-plain-writing to write a user guide in Japanese from these notes: ...`
+2. Ask the router, or name one sub-skill:
+   - `Use agent-plain-writing to shorten this text: ...` (the router picks the type)
+   - `Use agent-plain-writing-user-guide to write a user guide in Japanese from these notes: ...`
 3. Check a draft (Python 3.7+, no packages):
 
 ```bash
-python3 skills/agent-plain-writing/scripts/check_style.py draft.md --lang en --type tech-blog
+python3 skills/agent-plain-writing-tech-blog/scripts/check_style.py draft.md --lang en --type tech-blog
+python3 skills/agent-plain-writing-user-guide/scripts/check_style.py guide.md --lang vi --type user-guide
 ```
 
 Exit codes: `0` clean, `1` violations, `2` usage error.
 
 ## Units
 
-Mirrors `sentence` / `paragraph` limits in `skills/agent-plain-writing/languages/<lang>/profile.json`:
+Mirrors `sentence` / `paragraph` limits in `shared/languages/<lang>/profile.json`:
 
-| Language | Unit | `tech-blog` | `essay` | `api-design` | `guide` | `common` |
+| Language | Unit | `tech-blog` | `essay` | `api-design` | `user-guide` | `common` |
 |---|---|---|---|---|---|---|
 | `vi` | syllables (*tiếng*) | 28 / 3 | 40 / 6 | 25 / 3 | 16 / 3 | 28 / 3 |
 | `en` | words | 20 / 3 | 30 / 6 | 18 / 3 | 12 / 3 | 20 / 3 |
@@ -54,7 +57,7 @@ Mirrors `sentence` / `paragraph` limits in `skills/agent-plain-writing/languages
 
 ## Evidence
 
-Eval runs live in [evidence/](evidence/README.md). Each run has its own folder with the raw outputs, `results.json`, `run-meta.json` and a `README.md` that holds the table, what the numbers show and the limits. The evals compare the same AI with and without the skill on simulated briefs. They use checker results only, with no AI judge and no human review. A run is a small sample, not proof.
+Eval runs live in [evidence/](evidence/README.md). Each run has its own folder with the raw outputs, `results.json` and a `README.md` that holds the table, what the numbers show and the limits. The runs up to `20261122-201235` compare the same AI with and without the skill on simulated briefs. New runs use a real agent with the skills installed (see [evals/README.md](evals/README.md)). They use checker results only, with no AI judge and no human review. A run is a small sample, not proof.
 
 ## Documentation
 

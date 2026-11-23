@@ -4,7 +4,7 @@
 - **数値の上限は、出発点の見積もりです。** 標準として検証されたものではありません。チームの実際の文章でスクリプトを実行し、`profile.json` を調整してください。
 - **例文は説明用です。** `examples/` の話や数字は事実ではありません。実務では、書き手の事実を使うか、`TBD-n` と書いてください。
 - **効果の証拠はまだありません。** [05-evals](05-evals.ja.md) を参照。評価は小さく、手元の証拠はバージョンごとに 1 回分の実行です（[evidence/](../../evidence/README.md)）。
-- **自動テストはわずかです。** テストは `evals/score.py` の `TBD-n` 集計、文書タイプの一覧、チェッカーの既定タイプ、チェッカーによる表のセル・報告ラベル・`--short-brief` の確認、Units 表、`examples/` の完成見本、`evals/score.py` の報告マーカー（`strip_trailing_report`）、時刻と日付の数え方、サブフォルダからの `PLAIN-WRITING.md` 検索、上限を超えたときだけ出す長さの警告、全タイプに `doc-types/` のファイルがあること、そして `evals/run_eval.py` の `--judge-prompts` と with-skill プロンプトを対象にします（`python3 -m unittest discover -s tests`）。それ以外の手動の確認手順は `AGENTS.md` にあります。
+- **自動テストはわずかです。** テストは `evals/score.py` の `TBD-n` 集計、文書タイプの一覧、チェッカーの既定タイプ、チェッカーによる表のセル・報告ラベル・`--short-brief` の確認、Units 表、`examples/` の完成見本、`evals/score.py` の報告マーカー（`strip_trailing_report`）、時刻と日付の数え方、サブフォルダからの `PLAIN-WRITING.md` 検索、上限を超えたときだけ出す長さの警告、全タイプに `doc-types/` のファイルがあること、そして生成されたサブスキルが `shared/` と一致していることを対象にします（`python3 -m unittest discover -s tests` と `python3 scripts/sync_shared.py --check`）。それ以外の手動の確認手順は `AGENTS.md` にあります。
 - **対象外のタイプ。** `prose`、`poetry`、`screen-design` は現時点では対象外です。
 
 ## 貢献

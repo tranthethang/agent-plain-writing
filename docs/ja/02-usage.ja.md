@@ -1,19 +1,21 @@
 # 使い方
 
-ふつうの言葉で頼み、よい下書き材料（ブリーフ）を渡します。
+ふつうの言葉で頼み、よい下書き材料（ブリーフ）を渡します。タイプが不明なときはルーターの `agent-plain-writing` を指定します。タイプが分かっているときは、`agent-plain-writing-api-design` のようにサブスキルを指定します。
 
 ```
-agent-plain-writing を使って、このメモから日本語のユーザーガイドを書いてください: ...
+agent-plain-writing を使って、この文章を短くしてください: ...
+agent-plain-writing-user-guide を使って、このメモから日本語のユーザーガイドを書いてください: ...
 この API 設計を英語で書き直してください。api-design のテンプレートを使い、不足している事実は `TBD-n` にしてください。
 この技術ブログ記事を短くしてください。リズムの手本として、私が書いた段落を添付します。
 ```
 
-`skills/agent-plain-writing/doc-types/` の各ファイルに、そのタイプで AI が必要とするブリーフが載っています。要約、要点、読者、自分の文章の見本、使う語と避ける語です。渡す情報が少ないほど、AI は推測します。
+`shared/doc-types/` の各ファイルに、そのタイプで AI が必要とするブリーフが載っています。要約、要点、読者、自分の文章の見本、使う語と避ける語です。渡す情報が少ないほど、AI は推測します。
 
 ## スキルが従う手順
 
+0. ルーターが文書タイプと言語を選び、サブスキルに引き継ぎます。サブスキルを名指しした依頼では、ルーターを通りません。
 1. 出力言語（`vi`、`en`、`ja`）を選ぶ。プロンプトの言語ではなく、書き上げる文章の言語です。
-2. 文書タイプを選ぶ。そのタイプのファイルと、その言語の例文だけを読む。
+2. サブスキル自身のタイプの節と、その言語の例文だけを読む。
 3. 読者を確認する。不明なら 1 つだけ質問する。
 4. 約 400 語を超える文章は、アウトラインを作る。
 5. 下書きを書く。
@@ -22,15 +24,15 @@ agent-plain-writing を使って、このメモから日本語のユーザーガ
 
 ## 文書タイプ
 
-| タイプ | ファミリー | `--type` | ルールファイル |
+| タイプ | ファミリー | `--type` とサブスキル | ルールファイル |
 |---|---|---|---|
-| 技術ブログ (`tech-blog`) | `plain` | `tech-blog` | `doc-types/tech-blog.md` |
-| エッセイ (`essay`) | `creative` | `essay` | `doc-types/essay.md` |
-| API 設計（1 エンドポイント） | `plain` | `api-design` | `doc-types/api-design.md` |
-| ユーザーガイド | `plain` | `guide` | `doc-types/user-guide.md` |
-| その他（短い技術的なお知らせ、告知） | `plain` | `common` | `doc-types/common.md` |
+| 技術ブログ (`tech-blog`) | `plain` | `tech-blog`、`agent-plain-writing-tech-blog` | `shared/doc-types/tech-blog.md` |
+| エッセイ (`essay`) | `creative` | `essay`、`agent-plain-writing-essay` | `shared/doc-types/essay.md` |
+| API 設計（1 エンドポイント） | `plain` | `api-design`、`agent-plain-writing-api-design` | `shared/doc-types/api-design.md` |
+| ユーザーガイド | `plain` | `user-guide`、`agent-plain-writing-user-guide` | `shared/doc-types/user-guide.md` |
+| その他（短い技術的なお知らせ、告知） | `plain` | `common`、`agent-plain-writing-common` | `shared/doc-types/common.md` |
 
-その他の文書は `common`（`plain` ファミリー、`doc-types/common.md`、`languages/<lang>/examples/common.md`）として扱います。
+その他の文書は `common`（`plain` ファミリー、`shared/doc-types/common.md`、`languages/<lang>/examples/common.md`）として扱います。
 
 `api-design` では、AI は 7 セクションの固定テンプレートを使います。ブリーフに事実が足りないとき、`TBD-n` を書くのは、ブリーフが名指しした空白か、実装を妨げる空白だけです。既知のフィールド型（ブリーフ、用語集、許可値の列挙、または ID のリストから分かる型）は `TBD-n` を付けずに直接書きます。各 `TBD-n` には Open items に質問が 1 つ対応し、2 つの `TBD-n` が同じ質問をしてはなりません。
 
